@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "covers/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/covers/:id payload",
+  "properties": { "cover": { "$ref": "file:/cover.json#" } },
+  "required": ["cover"],
+  "type": "object"
+}

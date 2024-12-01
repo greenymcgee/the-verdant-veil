@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game_engine_logos/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/game_engine_logos payload",
+  "properties": {
+    "gameEngineLogos": {
+      "items": { "$ref": "file:/game_engine_logo.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["gameEngineLogos"],
+  "type": "object"
+}

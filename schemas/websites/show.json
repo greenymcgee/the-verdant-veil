@@ -1,0 +1,10 @@
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "websites/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/websites/:id payload",
+  "properties": { "website": { "$ref": "file:/website.json#" } },
+  "required": ["website"],
+  "type": "object"
+}

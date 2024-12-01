@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/game_engine.json#",
+  "additionalProperties": false,
+  "description": "A GameEngine.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "createdAt",
+    "description",
+    "id",
+    "igdbId",
+    "name",
+    "slug",
+    "updatedAt"
+  ],
+  "title": "Game Engine",
+  "type": "object"
+}

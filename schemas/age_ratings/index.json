@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "age_ratings/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/age_ratings payload",
+  "properties": {
+    "ageRatings": {
+      "items": {"$ref": "file:/age_rating.json#"},
+      "type": "array"
+    }
+  },
+  "required": ["ageRatings"],
+  "type": "object"
+}

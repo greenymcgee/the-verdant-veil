@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/release_date.json#",
+  "additionalProperties": false,
+  "description": "A ReleaseDate.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "date": {
+      "description": "The date of the release.",
+      "type": ["string", "null"]
+    },
+    "humanReadable": {
+      "description": "A human readable representation of the date.",
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "month": {
+      "description": "The month as an integer starting at 1 (January).",
+      "type": ["integer", "null"]
+    },
+    "platformName": { "type": "string" },
+    "updatedAt": {
+      "type": "string"
+    },
+    "year": {
+      "description": "The year in full (2018).",
+      "type": ["integer", "null"]
+    }
+  },
+  "required": [
+    "createdAt",
+    "date",
+    "humanReadable",
+    "id",
+    "igdbId",
+    "month",
+    "platformName",
+    "updatedAt",
+    "year"
+  ],
+  "title": "Release Date",
+  "type": "object"
+}

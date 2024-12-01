@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "franchises/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/franchises payload",
+  "properties": {
+    "franchises": {
+      "items": { "$ref": "file:/franchise.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["franchises"],
+  "type": "object"
+}

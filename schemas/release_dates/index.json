@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "release_dates/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/release_dates payload",
+  "properties": {
+    "releaseDates": {
+      "items": { "$ref": "file:/release_date.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["releaseDates"],
+  "type": "object"
+}

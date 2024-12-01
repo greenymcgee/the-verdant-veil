@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "company_logos/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/company_logos payload",
+  "properties": {
+    "companyLogos": {
+      "items": { "$ref": "file:/company_logo.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["companyLogos"],
+  "type": "object"
+}

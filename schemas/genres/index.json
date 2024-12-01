@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "genres/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/genres payload",
+  "properties": {
+    "genres": {
+      "properties": {
+        "createdAt": {
+          "description": "The datetime of the record's creation",
+          "type": "string"
+        },
+        "id": {
+          "description": "The unique identifier for a genre.",
+          "type": "integer"
+        },
+        "igdbId": {
+          "type": "integer"
+        },
+        "name": {
+          "description": "The name of the genre",
+          "type": "string"
+        },
+        "slug": {
+          "description": "The slug of the genre",
+          "type": "string"
+        },
+        "updatedAt": {
+          "description": "The datetime of the record's last update",
+          "type": "string"
+        }
+      },
+      "required": ["createdAt", "id", "igdbId", "name", "slug", "updatedAt"],
+      "type": "array"
+    }
+  },
+  "required": ["genres"],
+  "type": "object"
+}

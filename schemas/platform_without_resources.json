@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/platform_without_resources.json#",
+  "additionalProperties": false,
+  "description": "A version of a Platform that doesn't include relational resources.",
+  "properties": {
+    "abbreviation": {
+      "description": "An abbreviated name for the platform.",
+      "type": "string"
+    },
+    "alternativeName": {
+      "description": "An alternative name for the platform.",
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "generation": {
+      "type": ["integer", "null"]
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "summary": {
+      "description": "The summary of the first Version of this platform.",
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "abbreviation",
+    "alternativeName",
+    "createdAt",
+    "generation",
+    "id",
+    "igdbId",
+    "name",
+    "slug",
+    "summary",
+    "updatedAt"
+  ],
+  "title": "PlatformWithoutResources",
+  "type": "object"
+}

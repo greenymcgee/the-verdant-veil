@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/game_mode.json#",
+  "additionalProperties": false,
+  "description": "A GameMode.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": { "type": "string" },
+    "slug": { "type": "string" },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "createdAt",
+    "id",
+    "igdbId",
+    "name",
+    "slug",
+    "updatedAt"
+  ],
+  "title": "Game Mode",
+  "type": "object"
+}

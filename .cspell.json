@@ -1,4 +1,9 @@
 {
-  "ignorePaths": ["node_modules/**", "tsconfig.tsbuildinfo", "public/**", "coverage/**"],
-  "words": []
+  "ignorePaths": [
+    "node_modules/**",
+    "tsconfig.tsbuildinfo",
+    "public/**",
+    "coverage/**"
+  ],
+  "words": ["igdb"]
 }

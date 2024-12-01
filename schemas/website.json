@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/website.json#",
+  "additionalProperties": false,
+  "description": "A Website.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "trusted": { "type": "boolean" },
+    "url": { "type": "string" },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": ["createdAt", "id", "igdbId", "trusted", "updatedAt", "url"],
+  "title": "Website",
+  "type": "object"
+}

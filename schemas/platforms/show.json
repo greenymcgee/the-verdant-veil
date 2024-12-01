@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "platforms/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/platforms/:id payload",
+  "properties": { "platform": { "$ref": "file:/platform.json#" } },
+  "required": ["platform"],
+  "type": "object"
+}
