@@ -1,0 +1,4 @@
+{
+  "ignorePaths": ["node_modules/**", "tsconfig.tsbuildinfo", "public/**", "coverage/**"],
+  "words": []
+}

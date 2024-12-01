@@ -1,0 +1,43 @@
+name: Code Quality
+
+on:
+  push:
+
+env:
+  NEXT_PUBLIC_COMMIT_SHA: ${{ github.sha }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  code-quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install node@22
+        uses: actions/setup-node@v1
+        with:
+          node-version: 22.11.0
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Dependencies Audit
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: TSC
+        run: npm run compile
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Spellcheck
+        run: npm run spellcheck
+
+      - name: Test
+        run: npm run test:coverage
