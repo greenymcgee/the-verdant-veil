@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "users/sessions.json",
+  "additionalProperties": false,
+  "description": "A User payload.",
+  "properties": { "user": { "$ref": "file:/user.json#" } },
+  "required": ["user"],
+  "type": "object"
+}

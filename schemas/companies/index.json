@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "companies/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/companies payload",
+  "properties": {
+    "companies": {
+      "items": { "$ref": "file:/company.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["companies"],
+  "type": "object"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/covers payload",
+  "properties": {
+    "covers": {
+      "items": { "$ref": "file:/cover.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["covers"],
+  "type": "object"
+}

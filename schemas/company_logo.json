@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/company_logo.json#",
+  "description": "A CompanyLogo.",
+  "additionalProperties": false,
+  "properties": {
+    "animated": { "type": "boolean" },
+    "createdAt": { "type": "string" },
+    "height": { "type": ["integer", "null"] },
+    "id": { "type": "integer" },
+    "igdbId": {
+      "type": "integer"
+    },
+    "updatedAt": { "type": "string" },
+    "url": { "type": "string" },
+    "width": { "type": ["integer", "null"] }
+  },
+  "required": [
+    "animated",
+    "createdAt",
+    "height",
+    "id",
+    "igdbId",
+    "updatedAt",
+    "url",
+    "width"
+  ],
+  "title": "Company Logo",
+  "type": "object"
+}

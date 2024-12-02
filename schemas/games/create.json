@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "games/create.json",
+  "additionalProperties": false,
+  "description": "The POST /api/games response payload",
+  "properties": { "game": { "$ref": "file:/game.json#" } },
+  "required": ["game"],
+  "type": "object"
+}

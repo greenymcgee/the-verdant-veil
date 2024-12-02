@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "themes/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/themes/:id payload",
+  "properties": { "theme": { "$ref": "file:/theme.json#" } },
+  "required": ["theme"],
+  "type": "object"
+}

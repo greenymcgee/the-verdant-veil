@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "themes/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/themes payload",
+  "properties": {
+    "themes": {
+      "items": { "$ref": "file:/theme.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["themes"],
+  "type": "object"
+}

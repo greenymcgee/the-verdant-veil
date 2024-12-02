@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/franchise.json#",
+  "additionalProperties": false,
+  "description": "A Franchise.",
+  "properties": {
+    "createdAt": { "type": "string" },
+    "id": { "type": "integer" },
+    "igdbId": {
+      "type": "integer"
+    },
+    "main": {
+      "description": "Whether or not the franchise is the main franchise of the game.",
+      "type": "boolean"
+    },
+    "name": { "type": "string" },
+    "slug": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  },
+  "required": [
+    "createdAt",
+    "id",
+    "igdbId",
+    "main",
+    "name",
+    "slug",
+    "updatedAt"
+  ],
+  "title": "Franchise",
+  "type": "object"
+}

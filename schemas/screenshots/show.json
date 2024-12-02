@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "screenshots/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/screenshots/:id payload",
+  "properties": { "screenshot": { "$ref": "file:/screenshot.json#" } },
+  "required": ["screenshot"],
+  "type": "object"
+}

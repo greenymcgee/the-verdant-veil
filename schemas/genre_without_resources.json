@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/genre_without_resources.json#",
+  "additionalProperties": false,
+  "description": "A version of a Genre that doesn't include relational resources.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": ["createdAt", "id", "igdbId", "name", "slug", "updatedAt"],
+  "title": "GenreWithoutResources",
+  "type": "object"
+}

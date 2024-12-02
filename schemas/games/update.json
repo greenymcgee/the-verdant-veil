@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "games/update.json",
+  "additionalProperties": false,
+  "description": "The PATCH /api/games/:id response payload",
+  "properties": { "game": { "$ref": "file:/game.json#" } },
+  "required": ["game"],
+  "type": "object"
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/game.json#",
+  "additionalProperties": false,
+  "description": "A Game.",
+  "properties": {
+    "ageRatings": {
+      "items": { "$ref": "file:/age_rating.json#" },
+      "type": "array"
+    },
+    "artworks": {
+      "items": { "$ref": "file:/artwork.json#" },
+      "type": "array"
+    },
+    "cover": { "$ref": "file:/cover.json#" },
+    "createdAt": {
+      "type": "string"
+    },
+    "developers": {
+      "items": { "$ref": "file:/company.json#" },
+      "type": "array"
+    },
+    "errors": {
+      "description": "Any errors that might be present after fulfilling a game create request.",
+      "type": "array"
+    },
+    "franchises": {
+      "items": { "$ref": "file:/franchise.json#" },
+      "type": "array"
+    },
+    "gameEngines": {
+      "items": { "$ref": "file:/game_engine.json#" },
+      "type": "array"
+    },
+    "gameModes": {
+      "items": { "$ref": "file:/game_mode.json#" },
+      "type": "array"
+    },
+    "genres": {
+      "items": { "$ref": "file:/genre_without_resources.json#" },
+      "type": "array"
+    },
+    "platforms": {
+      "items": { "$ref": "file:/platform_without_resources.json#" },
+      "type": "array"
+    },
+    "playerPerspectives": {
+      "items": { "$ref": "file:/player_perspective.json#" },
+      "type": "array"
+    },
+    "porters": {
+      "items": { "$ref": "file:/company.json#" },
+      "type": "array"
+    },
+    "publishers": {
+      "items": { "$ref": "file:/company.json#" },
+      "type": "array"
+    },
+    "id": {
+      "description": "The unique identifier for a game.",
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": { "type": "string" },
+    "review": {
+      "description": "Richtext: the review of the game.",
+      "type": "string"
+    },
+    "rating": {
+      "description": "Float: the rating for the game from 1 - 5.",
+      "type": "number"
+    },
+    "releaseDates": {
+      "items": { "$ref": "file:/release_date.json#" },
+      "type": "array"
+    },
+    "screenshots": {
+      "items": { "$ref": "file:/screenshot.json#" },
+      "type": "array"
+    },
+    "supporters": {
+      "items": { "$ref": "file:/company.json#" },
+      "type": "array"
+    },
+    "themes": {
+      "items": { "$ref": "file:/theme.json#" },
+      "type": "array"
+    },
+    "websites": {
+      "items": { "$ref": "file:/website.json#" },
+      "type": "array"
+    },
+    "updatedAt": { "type": "string" }
+  },
+  "required": [
+    "ageRatings",
+    "artworks",
+    "cover",
+    "createdAt",
+    "developers",
+    "franchises",
+    "gameEngines",
+    "gameModes",
+    "genres",
+    "id",
+    "igdbId",
+    "name",
+    "platforms",
+    "playerPerspectives",
+    "porters",
+    "publishers",
+    "rating",
+    "releaseDates",
+    "review",
+    "screenshots",
+    "supporters",
+    "themes",
+    "updatedAt",
+    "websites"
+  ],
+  "title": "Game",
+  "type": "object"
+}

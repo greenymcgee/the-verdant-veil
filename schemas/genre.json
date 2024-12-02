@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/genre.json#",
+  "additionalProperties": false,
+  "description": "A Genre.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "games": {
+      "items": { "$ref": "file:/game_without_resources.json#" },
+      "type": "array"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "createdAt",
+    "games",
+    "id",
+    "igdbId",
+    "name",
+    "slug",
+    "updatedAt"
+  ],
+  "title": "Genre",
+  "type": "object"
+}

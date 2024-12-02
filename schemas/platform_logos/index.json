@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "games/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/platform_logos payload",
+  "properties": {
+    "platformLogos": {
+      "items": { "$ref": "file:/platform_logo.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["platformLogos"],
+  "type": "object"
+}

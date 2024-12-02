@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/platform.json#",
+  "additionalProperties": false,
+  "description": "A Platform.",
+  "properties": {
+    "abbreviation": {
+      "description": "An abbreviated name for the platform.",
+      "type": "string"
+    },
+    "alternativeName": {
+      "description": "An alternative name for the platform",
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "games": {
+      "items": { "$ref": "file:/game_without_resources.json#" },
+      "type": "array"
+    },
+    "generation": {
+      "type": ["integer", "null"]
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "summary": {
+      "description": "The summary of the first Version of this platform.",
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "abbreviation",
+    "alternativeName",
+    "createdAt",
+    "games",
+    "generation",
+    "id",
+    "igdbId",
+    "name",
+    "slug",
+    "summary",
+    "updatedAt"
+  ],
+  "title": "Platform",
+  "type": "object"
+}

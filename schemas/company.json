@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/company.json#",
+  "additionalProperties": false,
+  "description": "A Company.",
+  "properties": {
+    "countryCode": {
+      "description": "ISO 3166-1 country code.",
+      "type": ["integer", "null"]
+    },
+    "createdAt": { "type": "string" },
+    "description": { "type": "string" },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "name": { "type": "string" },
+    "slug": { "type": "string" },
+    "startDate": {
+      "description": "The date the company was founded.",
+      "type": ["string", "null"]
+    },
+    "updatedAt": { "type": "string" }
+  },
+  "required": [
+    "countryCode",
+    "createdAt",
+    "description",
+    "id",
+    "igdbId",
+    "name",
+    "slug",
+    "startDate",
+    "updatedAt"
+  ],
+  "title": "Company",
+  "type": "object"
+}

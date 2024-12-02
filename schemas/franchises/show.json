@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "franchises/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/franchises/:id payload",
+  "properties": { "franchise": { "$ref": "file:/franchise.json#" } },
+  "required": ["franchise"],
+  "type": "object"
+}

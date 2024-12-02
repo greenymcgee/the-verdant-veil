@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/involved_company.json#",
+  "additionalProperties": false,
+  "description": "An InvolvedCompany.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "isDeveloper": { "type": "boolean" },
+    "isPorter": { "type": "boolean" },
+    "isPublisher": { "type": "boolean" },
+    "isSupporter": { "type": "boolean" },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "createdAt",
+    "id",
+    "igdbId",
+    "isDeveloper",
+    "isPorter",
+    "isPublisher",
+    "isSupporter",
+    "updatedAt"
+  ],
+  "title": "Involved Company",
+  "type": "object"
+}

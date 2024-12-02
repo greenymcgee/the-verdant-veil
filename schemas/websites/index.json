@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "websites/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/websites payload",
+  "properties": {
+    "websites": {
+      "items": { "$ref": "file:/website.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["websites"],
+  "type": "object"
+}

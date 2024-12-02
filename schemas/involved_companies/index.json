@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "involved_companies/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/involved_companies payload",
+  "properties": {
+    "involvedCompanies": {
+      "items": { "$ref": "file:/involved_company.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["involvedCompanies"],
+  "type": "object"
+}

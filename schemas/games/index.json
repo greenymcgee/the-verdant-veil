@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "games/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/games payload",
+  "properties": {
+    "games": {
+      "items": { "$ref": "file:/game_without_resources.json#" },
+      "type": "array"
+    }
+  },
+  "required": ["games"],
+  "type": "object"
+}

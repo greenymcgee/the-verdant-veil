@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/user.json#",
+  "additionalProperties": false,
+  "description": "A User.",
+  "properties": {
+    "admin": {
+      "description": "A flag for whether or not the user is an admin.",
+      "type": "boolean"
+    },
+    "email": {
+      "description": "The email used to register the user.",
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    }
+  },
+  "required": ["admin", "email", "firstName", "id", "lastName", "username"],
+  "title": "User",
+  "type": "object"
+}

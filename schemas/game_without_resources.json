@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/game_without_resources.json#",
+  "additionalProperties": false,
+  "description": "A version of a Game that doesn't include relational resources.",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": { "type": "integer" },
+    "name": {
+      "type": "string"
+    },
+    "rating": {
+      "description": "Float: the rating for the game from 1 - 5.",
+      "type": "number"
+    },
+    "review": {
+      "description": "Richtext: the review of the game.",
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "createdAt",
+    "id",
+    "igdbId",
+    "name",
+    "rating",
+    "review",
+    "updatedAt"
+  ],
+  "title": "GameWithoutResources",
+  "type": "object"
+}

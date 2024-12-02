@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/age_rating.json#",
+  "description": "An AgeRating.",
+  "additionalProperties": false,
+  "properties": {
+    "createdAt": { "type": "string" },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
+    "ratingCoverUrl": {
+      "description": "The url for the image of a age rating.",
+      "type": "string"
+    },
+    "synopsis": {
+      "description": "A free text motivating a rating.",
+      "type": "string"
+    },
+    "updatedAt": { "type": "string" }
+  },
+  "required": [
+    "createdAt",
+    "id",
+    "igdbId",
+    "ratingCoverUrl",
+    "synopsis",
+    "updatedAt"
+  ],
+  "title": "Age Rating",
+  "type": "object"
+}

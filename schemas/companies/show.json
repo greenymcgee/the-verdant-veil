@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "companies/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/companies/:id payload",
+  "properties": { "company": { "$ref": "file:/company.json#" } },
+  "required": ["company"],
+  "type": "object"
+}
