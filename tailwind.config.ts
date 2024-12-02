@@ -73,6 +73,10 @@ export default {
           100: '#FFF9F2',
         },
       },
+      fontFamily: {
+        sans: ['var(--font-noto-sans-jp)'],
+        serif: ['var(--font-libre-baskerville)'],
+      },
     },
   },
   plugins: [],

@@ -1,17 +1,17 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
+import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+const libreBaskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: '700',
+  variable: '--font-libre-baskerville',
 })
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+
+const notoSansJp = Noto_Sans_JP({
+  subsets: ['latin'],
+  variable: '--font-noto-sans-jp',
 })
 
 export const metadata: Metadata = {
@@ -26,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${notoSansJp.variable} ${libreBaskerville.variable}`}>
         {children}
       </body>
     </html>
