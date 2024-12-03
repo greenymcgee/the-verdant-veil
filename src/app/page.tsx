@@ -11,7 +11,7 @@ export default function Home() {
         data-testid="page"
       >
         <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
-          <h1 className="font-serif text-7xl">Green Quest</h1>
+          <h1 className="text-h-xxl font-serif">Green Quest</h1>
           <Image
             className="dark:invert"
             src="/next.svg"
