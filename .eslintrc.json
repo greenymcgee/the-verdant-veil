@@ -6,7 +6,10 @@
     "plugin:jsx-a11y/recommended",
     "plugin:import/recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended"
   ],
-  "plugins": ["jsx-a11y"]
+  "plugins": [
+    "jsx-a11y"
+  ]
 }
