@@ -3,9 +3,12 @@
     "node_modules/**",
     "tsconfig.tsbuildinfo",
     "public/**",
-    "coverage/**"
+    "coverage/**",
+    "src/stories/Configure.mdx",
+    "src/stories/assets/**"
   ],
   "words": [
+    "Autodocs",
     "igdb",
     "noto"
   ]

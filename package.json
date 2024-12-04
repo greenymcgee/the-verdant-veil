@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
+    "build-storybook": "storybook build",
     "compile": "tsc",
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +11,7 @@
     "lint": "next lint",
     "spellcheck": "cspell \"/**/*.*\"",
     "start": "next start",
+    "storybook": "storybook dev -p 6006",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "validate": "npm run compile && npm run lint && npm run spellcheck && npm run test:coverage"
@@ -24,6 +26,15 @@
     "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.2",
+    "@storybook/addon-a11y": "^8.4.6",
+    "@storybook/addon-essentials": "^8.4.6",
+    "@storybook/addon-interactions": "^8.4.6",
+    "@storybook/addon-onboarding": "^8.4.6",
+    "@storybook/blocks": "^8.4.6",
+    "@storybook/nextjs": "^8.4.6",
+    "@storybook/react": "^8.4.6",
+    "@storybook/test": "^8.4.6",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
@@ -33,20 +44,18 @@
     "@types/react-dom": "^18",
     "@vitest/coverage-v8": "^2.1.7",
     "cspell": "^8.16.1",
-    "eslint": "^9",
+    "eslint": "^8.57.1",
     "eslint-config-next": "15.0.3",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-storybook": "^0.11.1",
     "glob": "^11.0.0",
     "jsdom": "^25.0.1",
     "json-schema-to-typescript": "^15.0.3",
     "postcss": "^8",
     "prettier": "3.4.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "storybook": "^8.4.6",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5",
+    "typescript": "^5.7.2",
     "vitest": "^2.1.7"
   }
 }
