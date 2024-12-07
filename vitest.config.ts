@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 import path from 'path'
 import { defineConfig } from 'vitest/config'
 
@@ -15,6 +16,8 @@ export default defineConfig({
         'vitest.config.ts',
         'src/stories/**',
         '.storybook/**',
+        'types/**',
+        'src/components/index.ts',
       ],
       thresholds: {
         branches: 97,
@@ -33,3 +36,5 @@ export default defineConfig({
     },
   },
 })
+
+/* eslint-enable sort-keys */
