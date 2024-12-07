@@ -3,6 +3,16 @@ import type { Config } from 'tailwindcss'
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1.5rem',
+        sm: '2rem',
+        lg: '3.5rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
     extend: {
       colors: {
         background: 'var(--background)',
