@@ -1,12 +1,13 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
+
 import './globals.css'
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
-  weight: '700',
   variable: '--font-libre-baskerville',
+  weight: '700',
 })
 
 const notoSansJp = Noto_Sans_JP({
@@ -15,8 +16,8 @@ const notoSansJp = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  title: 'Green Quest',
   description: 'A video game review site.',
+  title: 'Green Quest',
 }
 
 export default function RootLayout({

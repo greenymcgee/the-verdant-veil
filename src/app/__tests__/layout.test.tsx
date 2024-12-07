@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+
 import Layout from '../layout'
 
 vi.mock('next/font/google', () => ({
