@@ -5,5 +5,23 @@
     "next/core-web-vitals",
     "plugin:@next/next/recommended",
     "next/typescript"
-  ]
+  ],
+  "plugins": ["simple-import-sort", "typescript-sort-keys"],
+  "rules": {
+    "react/jsx-sort-props": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react$", "^@?\\w"], // react and external packages
+          ["^"], // anything not matched in another group
+          ["^\\."] // relative imports
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "sort-keys": "error",
+    "typescript-sort-keys/interface": "error",
+    "typescript-sort-keys/string-enum": "error"
+  }
 }

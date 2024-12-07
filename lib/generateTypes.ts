@@ -1,9 +1,9 @@
+import { execSync } from 'child_process'
+import { readFileSync, writeFileSync } from 'fs'
 import { glob } from 'glob'
 import { compileFromFile, Options } from 'json-schema-to-typescript'
-import { snakeCase } from 'snake-case'
-import { readFileSync, writeFileSync } from 'fs'
 import { resolve } from 'path'
-import { execSync } from 'child_process'
+import { snakeCase } from 'snake-case'
 
 /**
  * This script collects the JSON schemas from green-quest-api and generates type
