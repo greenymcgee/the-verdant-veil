@@ -18,6 +18,7 @@ export default defineConfig({
         '.storybook/**',
         'types/**',
         'src/components/index.ts',
+        'index.d.ts',
       ],
       thresholds: {
         branches: 97,

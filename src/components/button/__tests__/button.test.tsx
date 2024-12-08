@@ -63,4 +63,9 @@ describe('<Button />', () => {
       expect(screen.getByText('Children')).toHaveClass(className)
     })
   })
+
+  it('should render a given className', () => {
+    render(<Button className="mb-4">Children</Button>)
+    expect(screen.getByText('Children')).toHaveClass('mb-4')
+  })
 })

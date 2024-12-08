@@ -8,12 +8,13 @@
   --foreground: #17181a;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Later */
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #17181a;
     --foreground: #fcfcff;
   }
-}
+} */
 
 body {
   color: var(--foreground);
@@ -32,5 +33,29 @@ h3,
 h4,
 h5,
 h6 {
-  @apply leading-heading;
+  @apply font-bold leading-heading;
+}
+
+h1 {
+  @apply text-h-l md:text-h-xl;
+}
+
+h2 {
+  @apply text-h-m md:text-h-l;
+}
+
+h3 {
+  @apply text-h-s md:text-h-m;
+}
+
+h4 {
+  @apply text-h-xs md:text-h-s;
+}
+
+h5 {
+  @apply text-h-xs;
+}
+
+h6 {
+  @apply text-h-xs;
 }
