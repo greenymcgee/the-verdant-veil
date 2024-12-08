@@ -8,6 +8,8 @@
   ],
   "plugins": ["simple-import-sort", "typescript-sort-keys"],
   "rules": {
+    "react/button-has-type": "error",
+    "react/self-closing-comp": "error",
     "react/jsx-sort-props": "error",
     "simple-import-sort/imports": [
       "error",

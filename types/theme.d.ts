@@ -5,3 +5,5 @@ type StyleTheme =
   | 'secondary'
   | 'success'
   | 'warning'
+
+type ButtonVariant = 'solid' | 'outline'

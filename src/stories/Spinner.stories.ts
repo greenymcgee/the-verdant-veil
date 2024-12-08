@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-// import '../app/css/spinner.module.css'
 import { Spinner } from '@/components'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -9,12 +8,10 @@ const meta = {
   argTypes: {
     size: {
       control: 'select',
-      description: 'Controls the color of the spinner.',
       options: ['sm', 'md', 'lg'],
     },
     theme: {
       control: 'select',
-      description: 'Controls the color of the spinner.',
       options: [
         'primary',
         'secondary',
