@@ -9,13 +9,14 @@ import {
 } from './constants'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: 'sm' | 'md' | 'lg'
+  size?: keyof typeof BUTTON_SIZES
   theme?: StyleTheme
   variant?: ButtonVariant
 }
 
 export function Button({
   children,
+  className,
   size = 'md',
   theme = 'primary',
   variant = 'solid',
@@ -27,6 +28,7 @@ export function Button({
         BUTTON_THEMES[variant][theme],
         BUTTON_SIZES[size],
         DEFAULT_BUTTON_CLASS_NAMES,
+        className,
       )}
       type={type}
     >

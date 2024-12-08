@@ -27,8 +27,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Dependencies Audit
-        run: npm audit --omit=dev --audit-level=high
+      # Getting a weird 400. Dependabot covers this repo pretty well. Try again later
+      # - name: Dependencies Audit
+      #   run: npm audit --omit=dev --audit-level=high
 
       - name: TSC
         run: npm run compile

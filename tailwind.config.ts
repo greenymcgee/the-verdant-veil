@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 import type { Config } from 'tailwindcss'
 
 export default {
@@ -102,3 +103,5 @@ export default {
   },
   plugins: [],
 } satisfies Config
+
+/* eslint-enable sort-keys */
