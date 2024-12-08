@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './css/spinner.css';
 
 :root {
   --background: #fcfcff;
