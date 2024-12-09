@@ -1,12 +1,16 @@
 import clsx from 'clsx'
 
+import { TRANSITION_STYLES } from '@/constants'
+
 interface ButtonThemes {
   outline: Record<StyleTheme, string>
   solid: Record<StyleTheme, string>
 }
 
-export const DEFAULT_BUTTON_CLASS_NAMES =
-  'rounded-md font-semibold transition-colors duration-100 ease-linear'
+export const DEFAULT_BUTTON_CLASS_NAMES = clsx(
+  'rounded-md font-semibold transition-colors',
+  TRANSITION_STYLES.inputFocus,
+)
 
 export const BUTTON_THEMES: ButtonThemes = {
   outline: {
