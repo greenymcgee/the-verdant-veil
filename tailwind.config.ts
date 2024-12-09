@@ -15,6 +15,7 @@ export default {
       },
     },
     extend: {
+      boxShadow: { 'input-focus': '0px 0px 0px 2px #B3BCC8' },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
