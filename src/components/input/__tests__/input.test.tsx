@@ -26,4 +26,16 @@ describe('<TextInput />', () => {
     render(<Input data-testid="input" type="checkbox" />)
     expect(screen.getByTestId('input').getAttribute('type')).toEqual('checkbox')
   })
+
+  it('should render the required prop', () => {
+    render(<Input data-testid="input" required />)
+    expect(screen.getByTestId('input')).toBeRequired()
+  })
+
+  it('should set aria-required with the required prop', () => {
+    render(<Input data-testid="input" required />)
+    expect(screen.getByTestId('input').getAttribute('aria-required')).toEqual(
+      'true',
+    )
+  })
 })

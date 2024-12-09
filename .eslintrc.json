@@ -2,12 +2,18 @@
   "extends": [
     "eslint:recommended",
     "plugin:storybook/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
     "plugin:@next/next/recommended",
     "next/typescript"
   ],
   "plugins": ["simple-import-sort", "typescript-sort-keys"],
   "rules": {
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      { "labelComponents": ["Label"] }
+    ],
     "react/button-has-type": "error",
     "react/self-closing-comp": "error",
     "react/jsx-sort-props": "error",
@@ -22,6 +28,7 @@
       }
     ],
     "simple-import-sort/exports": "error",
+    "react/no-unused-prop-types": 2,
     "sort-keys": "error",
     "typescript-sort-keys/interface": "error",
     "typescript-sort-keys/string-enum": "error"
