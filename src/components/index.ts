@@ -1,3 +1,5 @@
 export * from './button'
 export * from './input'
+export * from './inputGroup'
+export * from './label'
 export * from './spinner'
