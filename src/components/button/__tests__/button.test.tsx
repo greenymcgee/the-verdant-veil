@@ -27,20 +27,12 @@ describe('<Button />', () => {
 
   it('should render default hover and focus styles', () => {
     render(<Button>Children</Button>)
-    const classNames = ['hover:bg-primary-700', 'focus:bg-primary-700']
-    classNames.forEach((className) => {
-      expect(screen.getByText('Children')).toHaveClass(className)
-    })
+    expect(screen.getByText('Children')).toHaveClass('hover:bg-primary-700')
   })
 
   it('should render default hover and focus styles for outline variant', () => {
     render(<Button variant="outline">Children</Button>)
-    const classNames = [
-      'hover:text-primary-700',
-      'focus:text-primary-700',
-      'hover:border-primary-700',
-      'focus:border-primary-700',
-    ]
+    const classNames = ['hover:text-primary-700', 'hover:border-primary-700']
     classNames.forEach((className) => {
       expect(screen.getByText('Children')).toHaveClass(className)
     })

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
 
 import './globals.css'
+import { FocusManagement } from '@/components'
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSansJp.variable} ${libreBaskerville.variable}`}>
+        <FocusManagement />
         {children}
       </body>
     </html>

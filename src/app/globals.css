@@ -4,8 +4,12 @@
 @import './css/spinner.css';
 
 :root {
-  --background: #fcfcff;
-  --foreground: #17181a;
+  --background: #17181a;
+  --foreground: #fcfcff;
+}
+
+:focus-visible {
+  @apply outline-blue-500 outline-offset-1;
 }
 
 /* Later */
@@ -58,4 +62,15 @@ h5 {
 
 h6 {
   @apply text-h-xs;
+}
+
+/* Managed by FocusManagement component */
+.focus-disabled {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    @apply focus:outline-none;
+  }
 }

@@ -20,9 +20,9 @@ type InputTypes = Exclude<
 >
 
 export const BASE_INPUT_CLASSNAMES = clsx(
-  'hover:shadow-input-focus focus:shadow-input-focus',
+  'hover:shadow-input-hover',
   'transition-shadow',
-  TRANSITION_STYLES.inputFocus,
+  TRANSITION_STYLES.inputHover,
 )
 
 const TEXT_INPUT_CLASS_NAMES =
