@@ -20,16 +20,12 @@ describe('<InputGroup />', () => {
   })
 
   it('should render a required label', () => {
-    render(
-      <InputGroup id="test" inputProps={{ required: true }} label="Test" />,
-    )
+    render(<InputGroup id="test" label="Test" required />)
     expect(screen.getByTestId('label-required-star')).toBeVisible()
   })
 
   it('should render a required input', () => {
-    render(
-      <InputGroup id="test" inputProps={{ required: true }} label="Test" />,
-    )
+    render(<InputGroup id="test" label="Test" required />)
     expect(screen.getByTestId('input-test')).toBeRequired()
   })
 })
