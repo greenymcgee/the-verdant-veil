@@ -19,6 +19,7 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        'focus-ring': '#00A6FF',
         neutral: {
           900: '#17181A',
           800: '#2A2E35',
