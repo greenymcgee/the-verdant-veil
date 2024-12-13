@@ -1,5 +1,4 @@
 export * from './button'
-export * from './focusManagement'
 export * from './input'
 export * from './inputGroup'
 export * from './label'
