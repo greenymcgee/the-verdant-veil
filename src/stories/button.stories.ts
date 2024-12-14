@@ -6,14 +6,7 @@ const meta = {
   argTypes: {
     theme: {
       control: 'radio',
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'neutral',
-        'warning',
-        'danger',
-      ],
+      options: ['primary', 'secondary', 'success', 'neutral', 'danger'],
     },
     variant: {
       control: 'radio',
@@ -36,7 +29,6 @@ export const Primary: Story = {}
 export const Secondary: Story = { args: { theme: 'secondary' } }
 export const Success: Story = { args: { theme: 'success' } }
 export const Neutral: Story = { args: { theme: 'neutral' } }
-export const Warning: Story = { args: { theme: 'warning' } }
 export const Danger: Story = { args: { theme: 'danger' } }
 export const Small: Story = { args: { size: 'sm' } }
 export const Medium: Story = { args: { size: 'md' } }

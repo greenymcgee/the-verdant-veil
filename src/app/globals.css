@@ -3,23 +3,15 @@
 @tailwind utilities;
 @import './css/spinner.css';
 
-:root {
-  --background: #17181a;
-  --foreground: #fcfcff;
-}
-
 /* Later */
 /* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #17181a;
-    --foreground: #fcfcff;
+  body {
+    @apply bg-neutral-700 font-sans text-white;
   }
 } */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  @apply font-sans;
+  @apply bg-white font-sans text-neutral-700;
 }
 
 html,
@@ -58,4 +50,12 @@ h5 {
 
 h6 {
   @apply text-h-xs;
+}
+
+button,
+input,
+textarea,
+select,
+a {
+  @apply focus:outline-focus-ring focus:border-focus-ring;
 }

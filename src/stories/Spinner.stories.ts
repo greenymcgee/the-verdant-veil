@@ -12,14 +12,7 @@ const meta = {
     },
     theme: {
       control: 'select',
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'neutral',
-        'warning',
-        'danger',
-      ],
+      options: ['primary', 'secondary', 'success', 'neutral', 'danger'],
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
@@ -43,7 +36,6 @@ export const Primary: Story = {}
 export const Secondary: Story = { args: { theme: 'secondary' } }
 export const Success: Story = { args: { theme: 'success' } }
 export const Neutral: Story = { args: { theme: 'neutral' } }
-export const Warning: Story = { args: { theme: 'warning' } }
 export const Danger: Story = { args: { theme: 'danger' } }
 
 export const Small: Story = { args: { size: 'sm' } }
