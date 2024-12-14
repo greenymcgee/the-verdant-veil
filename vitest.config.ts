@@ -19,6 +19,7 @@ export default defineConfig({
         'types/**',
         'src/components/index.ts',
         'index.d.ts',
+        'src/components/svgs/**',
       ],
       thresholds: {
         branches: 97,
