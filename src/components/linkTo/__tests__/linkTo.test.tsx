@@ -54,10 +54,8 @@ describe('<LinkTo />', () => {
     expect(screen.getByText('Games')).toHaveClass('text-secondary-800')
   })
 
-  it('should render hover and focus styles', () => {
+  it('should render hover styles', () => {
     render(<LinkTo href={ROUTES.games}>Games</LinkTo>)
-    expect(screen.getByText('Games')).toHaveClass(
-      'hover:opacity-70 focus:opacity-70',
-    )
+    expect(screen.getByText('Games')).toHaveClass('hover:opacity-70')
   })
 })

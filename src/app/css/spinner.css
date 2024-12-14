@@ -7,38 +7,32 @@
 
 .spinner.danger {
   background:
-    radial-gradient(farthest-side, #DC7F7F 94%, #0000) top/9px 9px no-repeat,
-    conic-gradient(#0000 30%, #DC7F7F);
+    radial-gradient(farthest-side, #DA6772 94%, #0000) top/9px 9px no-repeat,
+    conic-gradient(#0000 30%, #DA6772);
 }
 
 .spinner.neutral {
   background:
-    radial-gradient(farthest-side, #88929F 94%, #0000) top/9px 9px no-repeat,
-    conic-gradient(#0000 30%, #88929F);
+    radial-gradient(farthest-side, #6D6C6A 94%, #0000) top/9px 9px no-repeat,
+    conic-gradient(#0000 30%, #6D6C6A);
 }
 
 .spinner.primary {
   background:
-    radial-gradient(farthest-side, #7adfd2 94%, #0000) top/9px 9px no-repeat,
-    conic-gradient(#0000 30%, #7adfd2);
+    radial-gradient(farthest-side, #8D9E8E 94%, #0000) top/9px 9px no-repeat,
+    conic-gradient(#0000 30%, #8D9E8E);
 }
 
 .spinner.secondary {
   background:
-    radial-gradient(farthest-side, #858FE9 94%, #0000) top/9px 9px no-repeat,
-    conic-gradient(#0000 30%, #858FE9);
+    radial-gradient(farthest-side, #A87CBF 94%, #0000) top/9px 9px no-repeat,
+    conic-gradient(#0000 30%, #A87CBF);
 }
 
 .spinner.success {
   background:
-    radial-gradient(farthest-side, #AD64E5 94%, #0000) top/9px 9px no-repeat,
-    conic-gradient(#0000 30%, #AD64E5);
-}
-
-.spinner.warning {
-  background:
-    radial-gradient(farthest-side, #FFD5A4 94%, #0000) top/9px 9px no-repeat,
-    conic-gradient(#0000 30%, #FFD5A4);
+    radial-gradient(farthest-side, #7DDCB6 94%, #0000) top/9px 9px no-repeat,
+    conic-gradient(#0000 30%, #7DDCB6);
 }
 
 

@@ -15,7 +15,7 @@ describe('<TextInput />', () => {
     expect(screen.getByTestId('input')).toHaveClass('mb-4')
   })
 
-  it('should render hover and focus styles', () => {
+  it('should render base classes', () => {
     render(<Input data-testid="input" />)
     BASE_INPUT_CLASSNAMES.split(' ').forEach((className) =>
       expect(screen.getByTestId('input')).toHaveClass(className),
