@@ -57,5 +57,11 @@ input,
 textarea,
 select,
 a {
-  @apply focus:outline-focus-ring focus:border-focus-ring;
+  @apply focus:border-focus-ring focus:outline-focus-ring;
+}
+
+@layer base {
+  .stars-layout {
+    @apply bg-stars bg-neutral-900 bg-contain bg-center font-sans text-white;
+  }
 }

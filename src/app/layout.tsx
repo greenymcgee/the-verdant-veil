@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 import './globals.css'
 
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSansJp.variable} ${libreBaskerville.variable}`}>
+        <Toaster />
         {children}
       </body>
     </html>

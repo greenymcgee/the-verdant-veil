@@ -1,5 +1,11 @@
-export const BASE_LINK_TO_CLASSNAME =
-  'hover:opacity-70 hover:underline font-medium'
+import clsx from 'clsx'
+
+import { TRANSITION_STYLES } from '@/constants'
+
+export const BASE_LINK_TO_CLASSNAME = clsx(
+  'hover:opacity-70 hover:underline font-medium transition-opacity',
+  TRANSITION_STYLES.inputHover,
+)
 
 export const LINK_TO_THEME_MAP: Record<StyleTheme, string> = {
   danger: 'text-danger-800',
