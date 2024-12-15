@@ -6,6 +6,7 @@ export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     backgroundImage: { stars: "url('/images/backgrounds/stars-xxl.svg')" },
+    backgroundPosition: { 'top-center': 'top center' },
     container: {
       center: true,
       padding: {

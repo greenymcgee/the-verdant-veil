@@ -1,11 +1,12 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Page from '../page'
+import HomePage from '../page'
 
-describe('<Page />', () => {
+
+describe('<HomePage />', () => {
   it('should render an h1', () => {
-    render(<Page />)
+    render(<HomePage />)
     expect(screen.getByText('Green Quest').tagName).toEqual('H1')
   })
 })

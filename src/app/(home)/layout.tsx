@@ -1,9 +1,11 @@
 import React from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
-import './globals.css'
+import '../globals.css'
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -21,14 +23,21 @@ export const metadata: Metadata = {
   title: 'Green Quest',
 }
 
-export default function RootLayout({
+export default function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSansJp.variable} ${libreBaskerville.variable}`}>
+      <body
+        className={clsx(
+          notoSansJp.variable,
+          libreBaskerville.variable,
+          'bg-stars bg-top-center bg-neutral-900 font-sans text-white',
+        )}
+      >
+        <SpeedInsights />
         <Toaster />
         {children}
       </body>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Layout from '../layout'
+import HomeLayout from '../layout'
 
 vi.mock('next/font/google', () => ({
   Libre_Baskerville: vi.fn(() => ({})),
@@ -9,8 +9,8 @@ vi.mock('next/font/google', () => ({
 }))
 
 describe('<Layout />', () => {
-  it('should render', () => {
-    render(<Layout>Children</Layout>)
+  it('should render children', () => {
+    render(<HomeLayout>Children</HomeLayout>)
     expect(screen.getByText('Children')).toBeVisible()
   })
 })
