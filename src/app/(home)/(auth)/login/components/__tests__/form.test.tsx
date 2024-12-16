@@ -26,7 +26,7 @@ afterAll(() => {
 })
 
 describe('<LoginForm />', () => {
-  it('should render a form that make a POST request to the login endpoint', async () => {
+  it('should render a form that makes a POST request to the login endpoint', async () => {
     render(<LoginForm />)
     fireEvent.change(screen.getByTestId('input-email'), {
       target: { value: ADMIN_USER.email },
