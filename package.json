@@ -57,7 +57,7 @@
     "glob": "^11.0.0",
     "jsdom": "^25.0.1",
     "json-schema-to-typescript": "^15.0.3",
-    "msw": "^2.6.8",
+    "msw": "^2.6.9",
     "postcss": "^8",
     "prettier": "3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
