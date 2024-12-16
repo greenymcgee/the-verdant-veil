@@ -9,6 +9,7 @@ interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function Spinner({
+  className,
   size = 'md',
   theme = 'primary',
   ...options
@@ -16,7 +17,7 @@ export function Spinner({
   return (
     <div
       aria-label="Loading"
-      className={clsx('spinner', theme, SPINNER_SIZES[size])}
+      className={clsx('spinner', theme, SPINNER_SIZES[size], className)}
       role="alert"
       {...options}
     />

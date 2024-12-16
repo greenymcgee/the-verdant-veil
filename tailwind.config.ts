@@ -1,9 +1,12 @@
 /* eslint-disable sort-keys */
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from 'tailwindcss'
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
+    backgroundImage: { stars: "url('/images/backgrounds/stars-xxl.svg')" },
+    backgroundPosition: { 'top-center': 'top center' },
     container: {
       center: true,
       padding: {
@@ -96,7 +99,8 @@ export default {
       lineHeight: { body: '150%', heading: '125%' },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 } satisfies Config
 
+/* eslint-enable @typescript-eslint/no-require-imports */
 /* eslint-enable sort-keys */

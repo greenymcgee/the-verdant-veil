@@ -57,5 +57,5 @@ input,
 textarea,
 select,
 a {
-  @apply focus:outline-focus-ring focus:border-focus-ring;
+  @apply focus:border-focus-ring focus:outline-focus-ring;
 }

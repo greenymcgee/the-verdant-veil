@@ -1,1 +1,6 @@
-export const ROUTES = { games: '/games', home: '/', login: '/login' } as const
+export const ROUTES = {
+  forgotYourPassword: '/forgot-your-password',
+  games: '/games',
+  home: '/',
+  login: '/login',
+} as const
