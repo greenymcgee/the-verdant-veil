@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import { LinkTo, Logo } from '@/components'
 import { ROUTES } from '@/constants'
 
-import { LoginForm } from './components'
-
-export default function LoginPage() {
+export default function AuthLayout({ children }: PropsWithChildren) {
   return (
     <main>
       <div className="container flex h-screen flex-col justify-center">
@@ -16,7 +14,7 @@ export default function LoginPage() {
             </LinkTo>
             <h1 className="mb-8 font-serif text-h-xl">Green Quest</h1>
           </header>
-          <LoginForm />
+          {children}
         </div>
       </div>
     </main>
