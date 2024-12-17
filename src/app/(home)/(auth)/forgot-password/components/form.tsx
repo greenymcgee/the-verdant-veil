@@ -45,7 +45,7 @@ export function ForgotPasswordForm() {
   return (
     <form data-testid="forgot-password-form" onSubmit={handleSubmit}>
       <InputGroup
-        className="mb-6"
+        className="mb-2"
         id="email"
         inputProps={{
           name: 'email',
@@ -56,7 +56,7 @@ export function ForgotPasswordForm() {
         label="Email"
         required
       />
-      <LinkTo className="mb-6 block text-b-s" href={ROUTES.login}>
+      <LinkTo className="text-body-sm mb-6 block" href={ROUTES.login}>
         Back to login
       </LinkTo>
       <Button className="ml-auto block" type="submit">

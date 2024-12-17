@@ -29,27 +29,27 @@ h6 {
 }
 
 h1 {
-  @apply text-h-l md:text-h-xl;
+  @apply text-heading-lg md:text-heading-xl;
 }
 
 h2 {
-  @apply text-h-m md:text-h-l;
+  @apply text-heading-md md:text-heading-lg;
 }
 
 h3 {
-  @apply text-h-s md:text-h-m;
+  @apply text-heading-sm md:text-heading-md;
 }
 
 h4 {
-  @apply text-h-xs md:text-h-s;
+  @apply text-heading-xs md:text-heading-sm;
 }
 
 h5 {
-  @apply text-h-xs;
+  @apply text-heading-xs;
 }
 
 h6 {
-  @apply text-h-xs;
+  @apply text-heading-xs;
 }
 
 button,

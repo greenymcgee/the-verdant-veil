@@ -39,7 +39,7 @@ export function LoginForm() {
             required
           />
           <LinkTo
-            className="mb-6 block text-b-s"
+            className="text-body-sm mb-6 block"
             href={ROUTES.forgotYourPassword}
           >
             Forgot your password?

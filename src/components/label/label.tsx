@@ -13,7 +13,7 @@ export function Label({
 }: LabelProps) {
   return (
     <label
-      className={clsx('cursor-pointer text-b-s font-semibold', className)}
+      className={clsx('text-body-sm cursor-pointer font-semibold', className)}
       {...options}
     >
       {children}{' '}
