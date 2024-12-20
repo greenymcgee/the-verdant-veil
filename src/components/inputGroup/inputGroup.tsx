@@ -21,7 +21,7 @@ export function InputGroup({
     <div {...options}>
       <Label
         className="mb-2 block"
-        data-testid={`label-${id}`}
+        data-testid={`${id}-label`}
         htmlFor={id}
         required={required}
       >
@@ -29,7 +29,7 @@ export function InputGroup({
       </Label>
       <Input
         {...inputProps}
-        data-testid={`input-${id}`}
+        data-testid={`${id}-input`}
         id={id}
         required={required}
       />

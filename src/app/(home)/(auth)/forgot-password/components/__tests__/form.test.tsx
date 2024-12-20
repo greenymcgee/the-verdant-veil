@@ -26,7 +26,7 @@ afterAll(() => {
 describe('<ForgotPasswordForm />', () => {
   it('should render a form that makes a POST request to the reset password endpoint', async () => {
     render(<ForgotPasswordForm />)
-    fireEvent.change(screen.getByTestId('input-email'), {
+    fireEvent.change(screen.getByTestId('email-input'), {
       target: { value: ADMIN_USER.email },
     })
     fireEvent.click(screen.getByText('Submit'))

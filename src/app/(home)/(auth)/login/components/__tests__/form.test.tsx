@@ -28,10 +28,10 @@ afterAll(() => {
 describe('<LoginForm />', () => {
   it('should render a form that makes a POST request to the login endpoint', async () => {
     render(<LoginForm />)
-    fireEvent.change(screen.getByTestId('input-email'), {
+    fireEvent.change(screen.getByTestId('email-input'), {
       target: { value: ADMIN_USER.email },
     })
-    fireEvent.change(screen.getByTestId('input-password'), {
+    fireEvent.change(screen.getByTestId('password-input'), {
       target: { value: 'Testpass123!' },
     })
     fireEvent.click(screen.getByText('Login'))
