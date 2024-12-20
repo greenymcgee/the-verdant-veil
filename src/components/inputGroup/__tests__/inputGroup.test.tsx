@@ -9,7 +9,7 @@ describe('<InputGroup />', () => {
     render(
       <InputGroup id="test" inputProps={{ type: 'checkbox' }} label="Test" />,
     )
-    expect(screen.getByTestId('input-test').getAttribute('type')).toEqual(
+    expect(screen.getByTestId('test-input').getAttribute('type')).toEqual(
       'checkbox',
     )
   })
@@ -26,7 +26,7 @@ describe('<InputGroup />', () => {
 
   it('should render a required input', () => {
     render(<InputGroup id="test" label="Test" required />)
-    expect(screen.getByTestId('input-test')).toBeRequired()
+    expect(screen.getByTestId('test-input')).toBeRequired()
   })
 })
 
