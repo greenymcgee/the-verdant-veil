@@ -3,14 +3,20 @@ import { setupServer } from 'msw/node'
 
 import { API_ROUTES } from '@/constants'
 
-const handlers = [http.post(API_ROUTES.resetPassword, () => new HttpResponse())]
+const handlers = [
+  http.post(API_ROUTES.resetPassword, () => new HttpResponse()),
+  http.patch(API_ROUTES.resetPassword, () => new HttpResponse()),
+]
 
 export const resetPasswordServer = setupServer(...handlers)
 
-export function mockUnprocessablePostResetPasswordResponse() {
-  const message = 'Email not found'
+export function mockUnprocessableResetPasswordResponse(
+  method: 'post' | 'patch',
+) {
+  const message =
+    method === 'post' ? 'Email not found' : 'Reset password token is invalid'
   resetPasswordServer.use(
-    http.post(
+    http[method](
       API_ROUTES.resetPassword,
       () => new HttpResponse(JSON.stringify({ message }), { status: 422 }),
     ),
@@ -18,8 +24,8 @@ export function mockUnprocessablePostResetPasswordResponse() {
   return message
 }
 
-export function mockErrorPostResetPasswordResponse() {
+export function mockErrorResetPasswordResponse(method: 'post' | 'patch') {
   resetPasswordServer.use(
-    http.post(API_ROUTES.resetPassword, () => HttpResponse.error()),
+    http[method](API_ROUTES.resetPassword, () => HttpResponse.error()),
   )
 }
