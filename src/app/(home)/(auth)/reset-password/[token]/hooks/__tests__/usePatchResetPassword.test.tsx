@@ -11,18 +11,13 @@ import {
 
 import { usePatchResetPassword } from '..'
 
-beforeAll(() => {
-  resetPasswordServer.listen()
-})
-
+beforeAll(() => resetPasswordServer.listen())
+beforeEach(() => mockRouter.push('/reset-password/123'))
 afterEach(() => {
   resetPasswordServer.resetHandlers()
   vi.clearAllMocks()
 })
-
-afterAll(() => {
-  resetPasswordServer.close()
-})
+afterAll(() => resetPasswordServer.close())
 
 describe('usePatchResetPassword', () => {
   it('should toast a message upon success', async () => {
@@ -38,7 +33,7 @@ describe('usePatchResetPassword', () => {
     const { result } = renderHook(() => usePatchResetPassword())
     result.current.trigger(new FormData())
     await waitFor(() => expect(result.current.isMutating).toEqual(false))
-    expect(mockRouter.asPath).toEqual(ROUTES.login)
+    expect(mockRouter.pathname).toEqual(ROUTES.login)
   })
 
   it('should toast a message from the API upon failure', async () => {
