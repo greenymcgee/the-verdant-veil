@@ -9,6 +9,7 @@ vi.mock('next/navigation', async () => {
   mockRouter.useParser(createDynamicRouteParser(['/reset-password/[token]']))
   return {
     useParams: () => mockRouter.query,
+    usePathname: () => mockRouter.pathname,
     useRouter: mockRouter.useRouter,
     useSearchParams: () =>
       new URLSearchParams(mockRouter.query as Record<string, string>),
