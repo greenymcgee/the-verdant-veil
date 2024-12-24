@@ -5,36 +5,20 @@
 'use client'
 import React, { SyntheticEvent, useCallback, useRef, useState } from 'react'
 import clsx from 'clsx'
-import Link from 'next/link'
 
 import { Hamburger } from '@/components'
-import { ROUTES, TRANSITION_STYLES } from '@/constants'
+import { ROUTES } from '@/constants'
 
+import { MainNavLink } from '../mainNavLink'
 import { toggleDialogOpen } from './utils'
 
 interface HamburgerMenuProps {
   activeLinkTitle: 'Home' | 'About'
 }
 
-// TODO: clean this up before merge
-const BASE_LINK_CLASSNAME = clsx(
-  TRANSITION_STYLES.inputHover,
-  'relative font-bold transition-colors hover:text-secondary-900',
-  'after:absolute after:-bottom-2 after:left-0 after:h-1 after:w-0',
-  'after:rounded after:bg-secondary-900 after:transition-[width] after:content-[""] hover:after:w-[75%]',
-)
-
 export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
   const hamburgerMenuRef = useRef<HTMLDialogElement>(null)
   const [expanded, setExpanded] = useState(false)
-  const getLinkClassName = useCallback(
-    (linkTitle: 'Home' | 'About') => {
-      return clsx(BASE_LINK_CLASSNAME, {
-        'after:w-[75%] text-secondary-900': activeLinkTitle === linkTitle,
-      })
-    },
-    [activeLinkTitle],
-  )
 
   const toggleHamburgerMenu = useCallback(() => {
     setExpanded((prevExpanded) => !prevExpanded)
@@ -84,32 +68,32 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
           <nav>
             <ul className="flex flex-col gap-4 pl-4 pr-20 font-bold">
               <li>
-                <Link
-                  className={getLinkClassName('Home')}
+                <MainNavLink
+                  activeLinkTitle={activeLinkTitle}
                   data-testid="mobile-home-link"
                   href={ROUTES.home}
                   onClick={toggleHamburgerMenu}
-                >
-                  Home
-                </Link>
+                  title="Home"
+                  type="mobile"
+                />
               </li>
               <li>
-                <Link
-                  className={getLinkClassName('About')}
+                <MainNavLink
+                  activeLinkTitle={activeLinkTitle}
                   href={ROUTES.about}
                   onClick={toggleHamburgerMenu}
-                >
-                  About
-                </Link>
+                  title="About"
+                  type="mobile"
+                />
               </li>
               <li>
-                <Link
-                  className={BASE_LINK_CLASSNAME}
+                <MainNavLink
+                  activeLinkTitle={activeLinkTitle}
                   href={ROUTES.login}
                   onClick={toggleHamburgerMenu}
-                >
-                  Login
-                </Link>
+                  title="Login"
+                  type="mobile"
+                />
               </li>
             </ul>
           </nav>
