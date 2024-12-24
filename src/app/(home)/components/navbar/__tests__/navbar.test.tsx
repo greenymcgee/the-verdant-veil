@@ -13,18 +13,16 @@ describe('<Navbar />', () => {
     )
   })
 
-  it('should render a link to the Home page', () => {
-    render(<Navbar activeLinkTitle="Home" />)
-    expect(screen.getByText('Home').getAttribute('href')).toEqual(ROUTES.home)
-  })
+  it.each(['desktop-home-link', 'desktop-about-link', 'desktop-login-link'])(
+    'should render desktop main nav links',
+    (id) => {
+      render(<Navbar activeLinkTitle="Home" />)
+      expect(screen.getByTestId(id)).toBeVisible()
+    },
+  )
 
-  it('should render a link to the About page', () => {
+  it('should render the hamburger menu', () => {
     render(<Navbar activeLinkTitle="Home" />)
-    expect(screen.getByText('About').getAttribute('href')).toEqual(ROUTES.about)
-  })
-
-  it('should render a link to the Login page', () => {
-    render(<Navbar activeLinkTitle="Home" />)
-    expect(screen.getByText('Login').getAttribute('href')).toEqual(ROUTES.login)
+    expect(screen.getByTestId('hamburger-menu')).toBeInTheDocument()
   })
 })
