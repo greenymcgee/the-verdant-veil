@@ -7,5 +7,5 @@ export function toggleDialogOpen(dialog: HTMLDialogElement | null) {
   }
 
   dialog.showModal()
-  dialog.classList.remove('translate-x-full')
+  setTimeout(() => dialog.classList.remove('translate-x-full'))
 }

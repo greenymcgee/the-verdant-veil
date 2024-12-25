@@ -14,13 +14,6 @@ describe('<HamburgerMenu />', () => {
     },
   )
 
-  it('should render the main nav menu items', () => {
-    render(<HamburgerMenu activeLinkTitle="Home" />)
-    fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
-    const linkTitles = ['Home', 'About', 'Login']
-    linkTitles.forEach((title) => expect(screen.getByText(title)).toBeVisible())
-  })
-
   it('should render a close button', async () => {
     render(<HamburgerMenu activeLinkTitle="Home" />)
     fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))

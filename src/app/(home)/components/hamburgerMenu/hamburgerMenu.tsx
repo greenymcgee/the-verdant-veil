@@ -59,7 +59,7 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
         <div className="min-h-[inherit] pt-4">
           <button
             aria-label="Close Hamburger Menu"
-            className="mb-4 ml-auto block pr-4 text-heading-sm font-medium"
+            className="mb-4 ml-auto mr-4 block text-heading-sm font-medium"
             onClick={toggleHamburgerMenu}
             type="button"
           >
