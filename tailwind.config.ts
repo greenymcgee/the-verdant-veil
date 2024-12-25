@@ -18,7 +18,10 @@ export default {
       },
     },
     extend: {
-      boxShadow: { 'input-hover': '0px 0px 0px 2px #B3BCC8' },
+      boxShadow: {
+        'input-hover': '0px 0px 0px 2px #B3BCC8',
+        'nav-light': '0px 2px 4px 0px #FCFCFF',
+      },
       colors: {
         'focus-ring': '#00A6FF',
         neutral: {
@@ -97,6 +100,10 @@ export default {
         'body-xs': '0.75rem',
       },
       lineHeight: { body: '150%', heading: '125%' },
+      transitionProperty: {
+        width: 'width',
+        'main-nav': 'background-color, color, shadow',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],

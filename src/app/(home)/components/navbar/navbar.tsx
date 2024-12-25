@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import { Logo } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
+import { useScrollPosition } from '@/hooks'
 
 import { HamburgerMenu } from '../hamburgerMenu'
 import { MainNavLink } from '../mainNavLink'
@@ -14,8 +15,16 @@ interface NavbarProps {
 }
 
 export function Navbar({ activeLinkTitle }: NavbarProps) {
+  const { y } = useScrollPosition()
+
   return (
-    <nav className="fixed w-full py-6" data-testid="main-nav">
+    <nav
+      className={clsx(
+        'transition-main-nav fixed w-full py-6 duration-300 ease-linear',
+        { 'shadow-nav-light bg-white text-neutral-900': y },
+      )}
+      data-testid="main-nav"
+    >
       <div className="container flex items-center justify-between">
         <Link
           aria-label="Home"
