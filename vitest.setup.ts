@@ -9,6 +9,7 @@ vi.mock('next/navigation', async () => {
   mockRouter.useParser(createDynamicRouteParser(['/reset-password/[token]']))
   return {
     useParams: () => mockRouter.query,
+    usePathname: () => mockRouter.pathname,
     useRouter: mockRouter.useRouter,
     useSearchParams: () =>
       new URLSearchParams(mockRouter.query as Record<string, string>),
@@ -29,6 +30,26 @@ beforeAll(() => {
       removeListener: vi.fn(), // deprecated
     })),
     writable: true,
+  })
+})
+
+beforeAll(() => {
+  HTMLDialogElement.prototype.show = vi.fn(function mock(
+    this: HTMLDialogElement,
+  ) {
+    this.open = true
+  })
+
+  HTMLDialogElement.prototype.showModal = vi.fn(function mock(
+    this: HTMLDialogElement,
+  ) {
+    this.open = true
+  })
+
+  HTMLDialogElement.prototype.close = vi.fn(function mock(
+    this: HTMLDialogElement,
+  ) {
+    this.open = false
   })
 })
 

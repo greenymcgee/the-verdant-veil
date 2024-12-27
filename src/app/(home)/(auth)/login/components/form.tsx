@@ -27,19 +27,27 @@ export function LoginForm() {
           <InputGroup
             className="mb-6"
             id="email"
-            inputProps={{ name: 'user[email]', type: 'email' }}
+            inputProps={{
+              autoComplete: 'email',
+              name: 'user[email]',
+              type: 'email',
+            }}
             label="Email"
             required
           />
           <InputGroup
             className="mb-2"
             id="password"
-            inputProps={{ name: 'user[password]', type: 'password' }}
+            inputProps={{
+              autoComplete: 'current-password',
+              name: 'user[password]',
+              type: 'password',
+            }}
             label="Password"
             required
           />
           <LinkTo
-            className="text-body-sm mb-6 block"
+            className="mb-6 block text-body-sm"
             href={ROUTES.forgotYourPassword}
           >
             Forgot your password?

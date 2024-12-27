@@ -34,7 +34,7 @@ export default function HomeLayout({
         className={clsx(
           notoSansJp.variable,
           libreBaskerville.variable,
-          'bg-stars bg-top-center bg-neutral-900 font-sans text-white',
+          'relative bg-neutral-900 bg-stars bg-top-center font-sans text-white',
         )}
       >
         <SpeedInsights />
