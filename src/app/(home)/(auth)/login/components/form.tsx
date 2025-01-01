@@ -1,26 +1,37 @@
 'use client'
-import React, { FormEvent, useCallback } from 'react'
+import React, { useActionState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 import { Button, InputGroup, LinkTo, Spinner } from '@/components'
 import { ROUTES } from '@/constants'
 
-import { usePostLogin } from '../hooks'
+import { login } from '../actions'
 
 export function LoginForm() {
-  const { trigger, isMutating } = usePostLogin()
-
-  const handleSubmit = useCallback(
-    async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
-      const formData = new FormData(event.currentTarget)
-      await trigger(formData).catch((error) => error)
-    },
-    [trigger],
+  const [{ email, error, password, user }, action, loggingIn] = useActionState(
+    login,
+    {},
+    ROUTES.login,
   )
+  const { push } = useRouter()
+
+  useEffect(() => {
+    if (loggingIn || !error) return
+
+    toast.error(error)
+  }, [error, loggingIn, user])
+
+  useEffect(() => {
+    if (!user) return
+
+    push(ROUTES.home)
+    setTimeout(() => toast.success(`Welcome back ${user.username}`))
+  }, [push, user])
 
   return (
-    <form data-testid="login-form" onSubmit={handleSubmit}>
-      {isMutating ? (
+    <form action={action} data-testid="login-form">
+      {loggingIn || user ? (
         <Spinner className="mx-auto" />
       ) : (
         <>
@@ -29,7 +40,8 @@ export function LoginForm() {
             id="email"
             inputProps={{
               autoComplete: 'email',
-              name: 'user[email]',
+              defaultValue: email,
+              name: 'email',
               type: 'email',
             }}
             label="Email"
@@ -40,7 +52,8 @@ export function LoginForm() {
             id="password"
             inputProps={{
               autoComplete: 'current-password',
-              name: 'user[password]',
+              defaultValue: password,
+              name: 'password',
               type: 'password',
             }}
             label="Password"

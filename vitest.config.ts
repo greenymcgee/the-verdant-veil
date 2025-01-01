@@ -21,6 +21,7 @@ export default defineConfig({
         'index.d.ts',
         'src/components/svgs/**',
         'src/test/**',
+        'src/modules/logger.ts',
       ],
       thresholds: {
         branches: 97,

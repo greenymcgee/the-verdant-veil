@@ -15,6 +15,7 @@
       { "labelComponents": ["Label"] }
     ],
     "no-console": "error",
+    "object-shorthand": "error",
     "react/button-has-type": "error",
     "react/self-closing-comp": "error",
     "react/jsx-sort-props": "error",
