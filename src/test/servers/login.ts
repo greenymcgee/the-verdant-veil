@@ -10,7 +10,7 @@ const handlers = [
   http.post(
     API_ROUTES.login,
     () =>
-      new HttpResponse(JSON.stringify(ADMIN_USER), {
+      new HttpResponse(JSON.stringify({ user: ADMIN_USER }), {
         headers: { authorization: AUTH_TOKEN },
       }),
   ),

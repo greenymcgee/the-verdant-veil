@@ -3,6 +3,23 @@ import { createDynamicRouteParser } from 'next-router-mock/dynamic-routes'
 
 import '@testing-library/jest-dom'
 
+vi.mock('next/cache', async () => {
+  const cache = await vi.importActual('next/cache')
+  return {
+    ...cache,
+    revalidateTag: vi.fn(),
+  }
+})
+
+vi.mock('next/headers', async () => {
+  const headers = await vi.importActual('next/headers')
+  const set = vi.fn()
+  return {
+    ...headers,
+    cookies: vi.fn().mockImplementation(() => ({ set })),
+  }
+})
+
 vi.mock('next/navigation', async () => {
   const mockRouter = await vi.importActual('next-router-mock')
   // @ts-ignore
@@ -52,5 +69,7 @@ beforeAll(() => {
     this.open = false
   })
 })
+
+vi.mock('./src/modules/logger.ts', () => ({ logger: { error: vi.fn() } }))
 
 /* eslint-enable @typescript-eslint/ban-ts-comment */
