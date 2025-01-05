@@ -13,10 +13,11 @@ vi.mock('next/cache', async () => {
 
 vi.mock('next/headers', async () => {
   const headers = await vi.importActual('next/headers')
+  const get = vi.fn()
   const set = vi.fn()
   return {
     ...headers,
-    cookies: vi.fn().mockImplementation(() => ({ set })),
+    cookies: vi.fn().mockImplementation(() => ({ get, set })),
   }
 })
 
@@ -70,6 +71,18 @@ beforeAll(() => {
   })
 })
 
-vi.mock('./src/modules/logger.ts', () => ({ logger: { error: vi.fn() } }))
+vi.mock('./src/modules/logger.ts', async () => {
+  const { logger } = await vi.importActual('./src/modules/logger.ts')
+  return { logger: { ...(logger as Record<string, unknown>), error: vi.fn() } }
+})
+
+vi.mock('jose', async () => {
+  const jose = await vi.importActual('jose')
+  const payload = { exp: Date.now() + 10 * 1000 }
+  return {
+    ...jose,
+    jwtVerify: vi.fn().mockImplementation(() => ({ payload })),
+  }
+})
 
 /* eslint-enable @typescript-eslint/ban-ts-comment */

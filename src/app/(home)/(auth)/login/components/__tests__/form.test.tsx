@@ -4,13 +4,12 @@ import mockRouter from 'next-router-mock'
 
 import { ROUTES } from '@/constants'
 import { ADMIN_USER } from '@/test/fixtures'
-import { mockJwtVerify, toastMock } from '@/test/helpers'
+import { toastMock } from '@/test/helpers'
 import { loginServer, mockUnauthorizedLoginResponse } from '@/test/servers'
 
 import { LoginForm } from '..'
 
 beforeAll(() => {
-  mockJwtVerify()
   loginServer.listen()
 })
 

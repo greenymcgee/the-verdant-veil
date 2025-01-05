@@ -20,13 +20,13 @@ afterEach(() => {
 afterAll(() => loginServer.close())
 
 describe('login', () => {
-  const decodedJwt = mockJwtVerify()
   const formData = new FormData()
   formData.set('email', ADMIN_USER.email)
   formData.set('password', 'Testpass1!')
 
   describe('success', () => {
     it('should store the jwt in a cookie', async () => {
+      const decodedJwt = mockJwtVerify()
       await login({}, formData)
       const [, token] = AUTH_TOKEN.split(' ')
       const { set } = await cookies()

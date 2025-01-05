@@ -7,6 +7,7 @@ import { Button, InputGroup, LinkTo, Spinner } from '@/components'
 import { ROUTES } from '@/constants'
 
 import { login } from '../actions'
+import { useLoginRedirectUrl } from '../hooks'
 
 export function LoginForm() {
   const [{ email, error, password, user }, action, loggingIn] = useActionState(
@@ -15,6 +16,7 @@ export function LoginForm() {
     ROUTES.login,
   )
   const { push } = useRouter()
+  const redirectUrl = useLoginRedirectUrl()
 
   useEffect(() => {
     if (loggingIn || !error) return
@@ -25,9 +27,9 @@ export function LoginForm() {
   useEffect(() => {
     if (!user) return
 
-    push(ROUTES.home)
+    push(redirectUrl)
     setTimeout(() => toast.success(`Welcome back ${user.username}`))
-  }, [push, user])
+  }, [push, redirectUrl, user])
 
   return (
     <form action={action} data-testid="login-form">
