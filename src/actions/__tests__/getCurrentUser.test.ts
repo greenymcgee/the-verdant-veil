@@ -6,7 +6,6 @@ import { currentUserServer, mockCurrentUserFailure } from '@/test/servers'
 
 import { getCurrentUser } from '..'
 
-process.env.NEXT_PUBLIC_GREEN_QUEST_API_URL = 'http://www.test_api.com'
 beforeAll(() => currentUserServer.listen())
 afterEach(() => currentUserServer.resetHandlers())
 afterAll(() => currentUserServer.close())
