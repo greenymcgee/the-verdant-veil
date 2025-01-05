@@ -21,7 +21,7 @@ export async function login(_: LoginState, formData: FormData) {
     const cookieStore = await cookies()
     cookieStore.set(GREEN_QUEST_JWT, token, {
       httpOnly: true,
-      maxAge: verifyJwt(token).exp,
+      maxAge: (await verifyJwt(token)).exp,
     })
     revalidateTag(CURRENT_USER_CACHE_TAG)
     return { user } as LoginState

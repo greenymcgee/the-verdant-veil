@@ -1,15 +1,17 @@
-import winston from 'winston'
+import pino from 'pino'
 
-export const logger = winston.createLogger({
-  format: winston.format.json(),
-  level: 'info',
-  transports: [new winston.transports.Console()],
-})
+async function importPinoPretty() {
+  if (process.env.NEXT_RUNTIME === 'edge') return {}
 
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(
-    new winston.transports.Console({
-      format: winston.format.simple(),
-    }),
+  const pinoPretty = await import('pino-pretty').then(
+    (pinoPretty) => pinoPretty.default,
   )
+  return pinoPretty()
 }
+
+let logger: ReturnType<typeof pino>
+;(async () => {
+  logger = pino(await importPinoPretty())
+})()
+
+export { logger }
