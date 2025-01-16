@@ -21,6 +21,7 @@ export function Button({
   theme = 'primary',
   variant = 'solid',
   type = 'button',
+  ...options
 }: ButtonProps) {
   return (
     <button
@@ -31,6 +32,7 @@ export function Button({
         className,
       )}
       type={type}
+      {...options}
     >
       {children}
     </button>

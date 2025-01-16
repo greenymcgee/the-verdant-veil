@@ -23,7 +23,8 @@ export default defineConfig({
         'src/test/**',
         'src/modules/logger.ts',
         'src/app/(home)/layout.tsx',
-        'src/app/forbidden/layout.tsx',
+        'src/app/admin/layout.tsx',
+        'src/app/admin/components/index.ts',
       ],
       thresholds: {
         branches: 97,
