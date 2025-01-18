@@ -42,6 +42,7 @@ interface Game {
   rating: number
   releaseDates: ReleaseDate[]
   screenshots: Screenshot[]
+  slug: string
   supporters: Company[]
   themes: Theme1[]
   websites: Website[]
