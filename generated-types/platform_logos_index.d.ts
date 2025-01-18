@@ -8,7 +8,7 @@
 /**
  * The GET /api/platform_logos payload
  */
-interface GamesIndexJson {
+interface PlatformLogosIndexJson {
   platformLogos: PlatformLogo[]
 }
 /**
