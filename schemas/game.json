@@ -80,6 +80,7 @@
       "items": { "$ref": "file:/screenshot.json#" },
       "type": "array"
     },
+    "slug": { "type": "string" },
     "supporters": {
       "items": { "$ref": "file:/company.json#" },
       "type": "array"
@@ -115,6 +116,7 @@
     "releaseDates",
     "review",
     "screenshots",
+    "slug",
     "supporters",
     "themes",
     "updatedAt",

@@ -11,9 +11,8 @@
       "type": "integer"
     },
     "igdbId": { "type": "integer" },
-    "name": {
-      "type": "string"
-    },
+    "name": { "type": "string" },
+    "slug": { "type": "string" },
     "rating": {
       "description": "Float: the rating for the game from 1 - 5.",
       "type": "number"
@@ -31,6 +30,7 @@
     "id",
     "igdbId",
     "name",
+    "slug",
     "rating",
     "review",
     "updatedAt"

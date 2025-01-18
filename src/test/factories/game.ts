@@ -32,6 +32,7 @@ export const gameFactory = Factory.define<Game>(({ sequence }) => ({
   releaseDates: [],
   review: '<p>So good</p>',
   screenshots: [],
+  slug: 'super-metroid',
   supporters: [],
   themes: [],
   updatedAt: currentTime,
