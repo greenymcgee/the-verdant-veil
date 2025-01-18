@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "games/index.json",
+  "$id": "platforms/index.json",
   "additionalProperties": false,
   "description": "The GET /api/platforms payload",
   "properties": {

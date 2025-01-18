@@ -3,7 +3,9 @@ import { readFileSync, writeFileSync } from 'fs'
 import { glob } from 'glob'
 import { compileFromFile, Options } from 'json-schema-to-typescript'
 import { resolve } from 'path'
-import { snakeCase } from 'snake-case'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { snakecase } from 'snakecase'
 
 /**
  * This script collects the JSON schemas from green-quest-api and generates type
@@ -47,7 +49,7 @@ const compilerOptions: Partial<Options> = {
 }
 
 schemas.forEach((schema) => {
-  const sanitized = snakeCase(
+  const sanitized = snakecase(
     schema.replace(`${SCHEMA_DIR}/`, '').replace(/.json/, ''),
   )
 

@@ -8,7 +8,7 @@
 /**
  * The GET /api/platforms payload
  */
-interface GamesIndexJson {
+interface PlatformsIndexJson {
   platforms: PlatformWithoutResources[]
 }
 /**
