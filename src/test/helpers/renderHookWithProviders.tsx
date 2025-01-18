@@ -1,13 +1,13 @@
-import React, { PropsWithChildren, ReactElement } from 'react'
-import { render } from '@testing-library/react'
+import React, { PropsWithChildren } from 'react'
+import { render, renderHook } from '@testing-library/react'
 import { SWRConfig } from 'swr'
 
 import { Providers } from '@/context'
 
 type Options = SecondParameterOf<typeof render> & PropsOf<typeof Providers>
 
-export function renderWithProviders(
-  jsx: ReactElement,
+export function renderHookWithProviders<Result, Props>(
+  renderFunction: (initialProps: Props) => Result,
   { initialPageContext, wrapper: OptionalWrapper, ...rest }: Options = {},
 ) {
   function Wrapper({ children }: PropsWithChildren) {
@@ -23,5 +23,8 @@ export function renderWithProviders(
       </Providers>
     )
   }
-  return render(jsx, { wrapper: Wrapper, ...rest })
+  return renderHook<Result, Props>(renderFunction, {
+    wrapper: Wrapper,
+    ...rest,
+  })
 }
