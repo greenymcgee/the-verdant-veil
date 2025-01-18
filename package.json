@@ -55,6 +55,7 @@
     "cspell": "^8.17.2",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.1.4",
+    "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-storybook": "^0.11.2",
     "eslint-plugin-typescript-sort-keys": "^3.3.0",
