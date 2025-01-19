@@ -8,6 +8,10 @@ const meta = {
       control: 'radio',
       options: ['primary', 'secondary', 'success', 'neutral', 'danger'],
     },
+    variant: {
+      control: 'radio',
+      options: ['outline', 'solid'],
+    },
   },
   args: { children: 'Games' },
   component: LinkTo,

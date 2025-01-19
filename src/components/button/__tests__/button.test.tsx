@@ -1,8 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
+import { DEFAULT_BUTTON_CLASS_NAMES } from '@/constants'
+
 import { Button } from '..'
-import { DEFAULT_BUTTON_CLASS_NAMES } from '../constants'
 
 describe('<Button />', () => {
   it('should render a default theme and variant', () => {

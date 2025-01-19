@@ -6,7 +6,7 @@ import {
   BUTTON_SIZES,
   BUTTON_THEMES,
   DEFAULT_BUTTON_CLASS_NAMES,
-} from './constants'
+} from '@/constants'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: keyof typeof BUTTON_SIZES
