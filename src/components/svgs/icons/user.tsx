@@ -3,7 +3,7 @@ import React, { HTMLAttributes } from 'react'
 /**
  * mid:user
  */
-export function User(props: HTMLAttributes<HTMLOrSVGElement>) {
+export function UserIcon(props: HTMLAttributes<HTMLOrSVGElement>) {
   return (
     <svg
       aria-hidden="true"

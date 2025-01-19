@@ -3,7 +3,7 @@ import React, { HTMLAttributes } from 'react'
 /**
  * mid:baseline-videogame-asset
  */
-export function VideoGame(props: HTMLAttributes<HTMLOrSVGElement>) {
+export function VideogameIcon(props: HTMLAttributes<HTMLOrSVGElement>) {
   return (
     <svg
       aria-hidden="true"
