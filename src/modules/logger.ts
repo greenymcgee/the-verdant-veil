@@ -1,17 +1,24 @@
 import pino from 'pino'
 
-async function importPinoPretty() {
-  if (process.env.NEXT_RUNTIME === 'edge') return {}
-
-  const pinoPretty = await import('pino-pretty').then(
-    (pinoPretty) => pinoPretty.default,
-  )
-  return pinoPretty()
-}
-
 let logger: ReturnType<typeof pino>
 ;(async () => {
-  logger = pino(await importPinoPretty())
+  // Logger for middleware
+  if (process.env.NEXT_RUNTIME === 'edge') {
+    logger = pino({ transport: { target: 'pino-pretty' } })
+    return
+  }
+
+  // Logger for server
+  if (typeof window === 'undefined') {
+    const pinoPretty = await import('pino-pretty').then((module) =>
+      module.default(),
+    )
+    logger = pino(pinoPretty)
+    return
+  }
+
+  // Logger for browser
+  logger = pino({ transport: { target: 'pino-pretty' } })
 })()
 
 export { logger }
