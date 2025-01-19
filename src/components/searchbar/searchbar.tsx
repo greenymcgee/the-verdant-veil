@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
-import { Icon } from '@iconify/react/dist/iconify.js'
 import clsx from 'clsx'
 
+import { Icon } from '../icon'
 import { Input } from '../input'
 
 interface SearchbarProps extends HTMLAttributes<HTMLDivElement> {
@@ -24,7 +24,7 @@ export function Searchbar({
         )}
         htmlFor={id}
       >
-        <Icon icon="mdi:magnify" />
+        <Icon icon="magnify" />
       </label>
       <Input
         className="pl-8"
