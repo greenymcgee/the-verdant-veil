@@ -10,7 +10,12 @@ export default function AdminGamesPage() {
     <>
       <header className="mb-8 flex items-center justify-between">
         <h1 className="text-neutral-800">Games</h1>
-        <LinkTo data-testid="new-game-link" href={ROUTES.adminNewGame}>
+        <LinkTo
+          data-testid="new-game-link"
+          href={ROUTES.adminNewGame}
+          size="sm"
+          variant="solid"
+        >
           New
         </LinkTo>
       </header>

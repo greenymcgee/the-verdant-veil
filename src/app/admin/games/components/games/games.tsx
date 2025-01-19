@@ -33,6 +33,8 @@ export function Games() {
                   aria-label={`Edit ${game.name}`}
                   className="mr-4"
                   href={ROUTES.adminEditGame(game.slug)}
+                  size="sm"
+                  variant="solid"
                 >
                   Edit
                 </LinkTo>
