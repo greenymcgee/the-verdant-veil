@@ -20,7 +20,7 @@ export function Navbar() {
         'sm:static sm:h-[100vh] sm:w-auto sm:border-b-0',
       )}
     >
-      <div className="container flex items-center justify-between sm:flex-col">
+      <div className="flex items-center justify-between px-4 sm:flex-col">
         <Link
           aria-label="Green Quest"
           className={clsx(

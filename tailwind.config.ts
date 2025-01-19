@@ -18,7 +18,9 @@ export default {
       },
     },
     extend: {
+      borderWidth: { 1: '1px' },
       boxShadow: {
+        'card-dark': '4px 4px 4px 0px rgba(23, 24, 26, 0.20)',
         'input-hover': '0px 0px 0px 2px #B3BCC8',
         'nav-light': '0px 2px 4px 0px #FCFCFF',
       },
