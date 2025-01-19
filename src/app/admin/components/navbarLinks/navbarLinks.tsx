@@ -1,9 +1,9 @@
 'use client'
 import React, { HTMLAttributes } from 'react'
-import { Icon } from '@iconify/react'
 import clsx from 'clsx'
 import Link from 'next/link'
 
+import { Icon } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
 import { usePageContext } from '@/context'
 
@@ -27,10 +27,7 @@ export function NavbarLinks({ onLinkClick, ...options }: NavbarLinksProps) {
           href={ROUTES.adminGames}
           onClick={onLinkClick}
         >
-          <Icon
-            className="text-[1.5rem] text-primary-900"
-            icon="ic:baseline-videogame-asset"
-          />{' '}
+          <Icon className="text-[1.5rem] text-primary-900" icon="videogame" />{' '}
           <span className="-mt-[1px] font-medium">Games</span>
         </Link>
       </li>
@@ -46,7 +43,7 @@ export function NavbarLinks({ onLinkClick, ...options }: NavbarLinksProps) {
           href={ROUTES.adminUsers}
           onClick={onLinkClick}
         >
-          <Icon className="text-[1.5rem] text-primary-900" icon="mdi:user" />{' '}
+          <Icon className="text-[1.5rem] text-primary-900" icon="user" />{' '}
           <span className="font-medium">Users</span>
         </Link>
       </li>
