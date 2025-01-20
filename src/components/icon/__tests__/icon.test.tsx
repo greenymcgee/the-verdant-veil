@@ -11,6 +11,11 @@ describe('<Icon />', () => {
     expect(container.firstChild).toBeNull()
   })
 
+  it('should render an edit icon', () => {
+    render(<Icon icon="edit" />)
+    expect(screen.getByTestId('edit-icon')).toBeVisible()
+  })
+
   it('should render a filter-alt icon', () => {
     render(<Icon icon="filter-alt" />)
     expect(screen.getByTestId('filter-alt-icon')).toBeVisible()
@@ -41,9 +46,9 @@ describe('<Icon />', () => {
     expect(screen.getByTestId('outline-filter-alt-icon')).toBeVisible()
   })
 
-  it('should render round-plus icon', () => {
-    render(<Icon icon="round-plus" />)
-    expect(screen.getByTestId('round-plus-icon')).toBeVisible()
+  it('should render plus-thick icon', () => {
+    render(<Icon icon="plus-thick" />)
+    expect(screen.getByTestId('plus-thick-icon')).toBeVisible()
   })
 
   it('should render round-sort icon', () => {
@@ -54,6 +59,11 @@ describe('<Icon />', () => {
   it('should render a table icon', () => {
     render(<Icon icon="table" />)
     expect(screen.getByTestId('table-icon')).toBeVisible()
+  })
+
+  it('should render a trash icon', () => {
+    render(<Icon icon="trash" />)
+    expect(screen.getByTestId('trash-icon')).toBeVisible()
   })
 
   it('should render a user icon', () => {

@@ -8,11 +8,15 @@ import {
   DEFAULT_BUTTON_CLASS_NAMES,
 } from '@/constants'
 
+import { Icon } from '../icon'
 import { BASE_LINK_TO_CLASSNAME, LINK_TO_THEME_MAP } from './constants'
 
 interface LinkToProps extends PropsOf<typeof Link> {
+  leftIcon?: IconType
   opensNewTab?: boolean
+  rightIcon?: IconType
   size?: keyof typeof BUTTON_SIZES
+  text?: string
   theme?: StyleTheme
   variant?: ButtonVariant
 }
@@ -20,8 +24,11 @@ interface LinkToProps extends PropsOf<typeof Link> {
 export function LinkTo({
   children,
   className,
+  leftIcon,
   opensNewTab,
+  rightIcon,
   size = 'md',
+  text,
   theme = 'primary',
   variant,
   ...options
@@ -43,7 +50,9 @@ export function LinkTo({
       target={opensNewTab ? '_blank' : undefined}
       {...options}
     >
-      {children}
+      {leftIcon ? <Icon className="mt-[3px]" icon={leftIcon} /> : null}
+      {text ?? children}
+      {rightIcon ? <Icon className="mt-[3px]" icon={rightIcon} /> : null}
     </Link>
   )
 }

@@ -1,34 +1,28 @@
 import React, { HTMLAttributes } from 'react'
 
 import {
+  EditIcon,
   FilterAlt,
   ImageIcon,
   Magnify,
   MessageDraw,
   OutlineFilterAlt,
-  RoundPlus,
+  PlusThick,
   RoundSort,
   TableIcon,
+  TrashIcon,
   UserIcon,
   VideogameIcon,
 } from '../svgs'
 
 interface IconProps extends HTMLAttributes<HTMLOrSVGElement> {
-  icon:
-    | 'filter-alt'
-    | 'image'
-    | 'magnify'
-    | 'message-draw'
-    | 'outline-filter-alt'
-    | 'round-plus'
-    | 'round-sort'
-    | 'table'
-    | 'user'
-    | 'videogame'
+  icon: IconType
 }
 
 export function Icon({ icon, ...options }: IconProps) {
   switch (icon) {
+    case 'edit':
+      return <EditIcon data-testid="edit-icon" {...options} />
     case 'filter-alt':
       return <FilterAlt data-testid="filter-alt-icon" {...options} />
     case 'image':
@@ -41,12 +35,14 @@ export function Icon({ icon, ...options }: IconProps) {
       return (
         <OutlineFilterAlt data-testid="outline-filter-alt-icon" {...options} />
       )
-    case 'round-plus':
-      return <RoundPlus data-testid="round-plus-icon" {...options} />
+    case 'plus-thick':
+      return <PlusThick data-testid="plus-thick-icon" {...options} />
     case 'round-sort':
       return <RoundSort data-testid="round-sort-icon" {...options} />
     case 'table':
       return <TableIcon data-testid="table-icon" {...options} />
+    case 'trash':
+      return <TrashIcon data-testid="trash-icon" {...options} />
     case 'user':
       return <UserIcon data-testid="user-icon" {...options} />
     case 'videogame':

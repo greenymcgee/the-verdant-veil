@@ -13,7 +13,7 @@ export const TRANSITION_STYLES = {
 } as const
 
 export const DEFAULT_BUTTON_CLASS_NAMES = clsx(
-  'rounded-md font-semibold transition-colors',
+  'inline-flex items-center gap-1 rounded-md font-semibold transition-colors',
   TRANSITION_STYLES.inputHover,
 )
 
