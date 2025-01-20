@@ -1,0 +1,13 @@
+type IconType =
+  | 'edit'
+  | 'filter-alt'
+  | 'image'
+  | 'magnify'
+  | 'message-draw'
+  | 'outline-filter-alt'
+  | 'plus-thick'
+  | 'round-sort'
+  | 'table'
+  | 'trash'
+  | 'user'
+  | 'videogame'

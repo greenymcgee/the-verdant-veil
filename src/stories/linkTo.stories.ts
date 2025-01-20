@@ -4,6 +4,8 @@ import { LinkTo } from '@/components'
 
 const meta = {
   argTypes: {
+    leftIcon: { control: 'text' },
+    rightIcon: { control: 'text' },
     theme: {
       control: 'radio',
       options: ['primary', 'secondary', 'success', 'neutral', 'danger'],
@@ -28,3 +30,10 @@ export const Secondary: Story = { args: { href: '/games', theme: 'secondary' } }
 export const Success: Story = { args: { href: '/games', theme: 'success' } }
 export const Neutral: Story = { args: { href: '/games', theme: 'neutral' } }
 export const Danger: Story = { args: { href: '/games', theme: 'danger' } }
+export const Variant: Story = { args: { href: '/games', variant: 'solid' } }
+export const LeftIcon: Story = {
+  args: { href: '/games', leftIcon: 'image', variant: 'solid' },
+}
+export const RightIcon: Story = {
+  args: { href: '/games', rightIcon: 'image', variant: 'solid' },
+}

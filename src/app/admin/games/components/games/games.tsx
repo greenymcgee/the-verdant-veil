@@ -33,18 +33,16 @@ export function Games() {
                   aria-label={`Edit ${game.name}`}
                   className="mr-4"
                   href={ROUTES.adminEditGame(game.slug)}
+                  leftIcon="edit"
                   size="sm"
                   variant="solid"
-                >
-                  Edit
-                </LinkTo>
+                />
                 <Button
                   aria-label={`Delete ${game.name}`}
+                  leftIcon="trash"
                   size="sm"
                   theme="danger"
-                >
-                  Destroy
-                </Button>
+                />
               </td>
             </tr>
           ))}

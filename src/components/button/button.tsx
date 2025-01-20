@@ -8,8 +8,13 @@ import {
   DEFAULT_BUTTON_CLASS_NAMES,
 } from '@/constants'
 
+import { Icon } from '../icon'
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  leftIcon?: IconType
+  rightIcon?: IconType
   size?: keyof typeof BUTTON_SIZES
+  text?: string
   theme?: StyleTheme
   variant?: ButtonVariant
 }
@@ -17,7 +22,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function Button({
   children,
   className,
+  leftIcon,
+  rightIcon,
   size = 'md',
+  text,
   theme = 'primary',
   variant = 'solid',
   type = 'button',
@@ -34,7 +42,9 @@ export function Button({
       type={type}
       {...options}
     >
-      {children}
+      {leftIcon ? <Icon className="mt-[3px]" icon={leftIcon} /> : null}
+      {text ?? children}
+      {rightIcon ? <Icon className="mt-[3px]" icon={rightIcon} /> : null}
     </button>
   )
 }

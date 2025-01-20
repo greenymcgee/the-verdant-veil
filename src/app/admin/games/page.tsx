@@ -13,6 +13,7 @@ export default function AdminGamesPage() {
         <LinkTo
           data-testid="new-game-link"
           href={ROUTES.adminNewGame}
+          rightIcon="plus-thick"
           size="sm"
           variant="solid"
         >

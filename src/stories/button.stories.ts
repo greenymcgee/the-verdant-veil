@@ -4,6 +4,8 @@ import { Button } from '@/components'
 
 const meta = {
   argTypes: {
+    leftIcon: { control: 'text' },
+    rightIcon: { control: 'text' },
     theme: {
       control: 'radio',
       options: ['primary', 'secondary', 'success', 'neutral', 'danger'],
@@ -34,3 +36,5 @@ export const Small: Story = { args: { size: 'sm' } }
 export const Medium: Story = { args: { size: 'md' } }
 export const Large: Story = { args: { size: 'lg' } }
 export const Outline: Story = { args: { variant: 'outline' } }
+export const LeftIcon: Story = { args: { leftIcon: 'filter-alt' } }
+export const RightIcon: Story = { args: { rightIcon: 'plus-thick' } }
