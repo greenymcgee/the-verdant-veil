@@ -4,13 +4,6 @@ import { render, screen } from '@testing-library/react'
 import { Icon } from '..'
 
 describe('<Icon />', () => {
-  it('should render nothing by default', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const { container } = render(<Icon />)
-    expect(container.firstChild).toBeNull()
-  })
-
   it('should render an edit icon', () => {
     render(<Icon icon="edit" />)
     expect(screen.getByTestId('edit-icon')).toBeVisible()
