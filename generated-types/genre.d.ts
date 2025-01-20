@@ -25,6 +25,7 @@ interface GameWithoutResources {
   id: number
   igdbId: number
   name: string
+  published: boolean
   slug: string
   /**
    * Float: the rating for the game from 1 - 5.

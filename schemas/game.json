@@ -64,6 +64,7 @@
       "type": "integer"
     },
     "name": { "type": "string" },
+    "published": { "type": "boolean"},
     "review": {
       "description": "Richtext: the review of the game.",
       "type": "string"
@@ -111,6 +112,7 @@
     "platforms",
     "playerPerspectives",
     "porters",
+    "published",
     "publishers",
     "rating",
     "releaseDates",
