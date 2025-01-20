@@ -6,11 +6,9 @@ import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
 import '../globals.css'
-import { LinkTo } from '@/components'
-import { ROUTES } from '@/constants'
 
 import { Providers } from '../../context'
-import { Navbar } from './components'
+import { Breadcrumbs, Navbar } from './components'
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -47,17 +45,8 @@ export default function AdminLayout({
             <Navbar />
             <main className="min-h-[100vh] w-full bg-primary-50">
               <div className="container pt-32 sm:pt-8">
-                <nav className="mb-4">
-                  <ul className="flex">
-                    <li>
-                      <LinkTo href={ROUTES.adminGames} theme="secondary">
-                        Games
-                      </LinkTo>{' '}
-                      /
-                    </li>
-                  </ul>
-                </nav>
-                <article className="shadow-card-dark border-1 rounded-lg border-neutral-100 bg-white p-3">
+                <Breadcrumbs />
+                <article className="rounded-lg border-1 border-neutral-100 bg-white p-3 shadow-card-dark">
                   {children}
                 </article>
               </div>
