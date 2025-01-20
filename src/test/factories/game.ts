@@ -27,6 +27,7 @@ export const gameFactory = Factory.define<Game>(({ sequence }) => ({
   platforms: [],
   playerPerspectives: [],
   porters: [],
+  published: true,
   publishers: [],
   rating: 5,
   releaseDates: [],

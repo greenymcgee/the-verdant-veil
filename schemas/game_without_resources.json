@@ -12,6 +12,7 @@
     },
     "igdbId": { "type": "integer" },
     "name": { "type": "string" },
+    "published": { "type": "boolean" },
     "slug": { "type": "string" },
     "rating": {
       "description": "Float: the rating for the game from 1 - 5.",
@@ -30,6 +31,7 @@
     "id",
     "igdbId",
     "name",
+    "published",
     "slug",
     "rating",
     "review",

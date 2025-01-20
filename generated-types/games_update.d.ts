@@ -38,6 +38,7 @@ interface Game {
   id: number
   igdbId: number
   name: string
+  published: boolean
   /**
    * Richtext: the review of the game.
    */
