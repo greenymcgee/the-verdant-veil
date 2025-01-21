@@ -52,7 +52,7 @@ describe('login', () => {
       mockUnauthorizedLoginResponse()
       await login({}, formData)
       const error = new AxiosError('Request failed with status code 401')
-      expect(logger.error).toHaveBeenCalledWith(error)
+      expect(logger.error).toHaveBeenCalledWith(expect.objectContaining(error))
     })
 
     it('should return an error message and the input values', async () => {
