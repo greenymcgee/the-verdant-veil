@@ -18,7 +18,7 @@ describe('<AdminGameShowPage />', () => {
   it('should render the game name as an h1', async () => {
     const jsx = await AdminGameShowPage(PROPS)
     renderWithProviders(jsx)
-    expect(screen.getByText(SUPER_METROID.name).tagName).toEqual('H1')
+    expect(screen.getByTestId('main-heading').tagName).toEqual('H1')
   })
 
   describe('published', () => {

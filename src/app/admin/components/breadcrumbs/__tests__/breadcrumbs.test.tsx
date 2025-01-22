@@ -12,18 +12,8 @@ const BREADCRUMBS: Breadcrumb[] = [
 ]
 
 describe('<Breadcrumbs', () => {
-  it('should render a spinner until the breadcrumbs have been set', () => {
-    renderWithProviders(<Breadcrumbs />)
-    expect(screen.getByRole('alert')).toBeVisible()
+  it.each(BREADCRUMBS)('should render breadcrumb', (breadcrumb) => {
+    renderWithProviders(<Breadcrumbs breadcrumbs={BREADCRUMBS} />)
+    expect(screen.getByText(breadcrumb.name)).toBeVisible()
   })
-
-  it.each(BREADCRUMBS)(
-    'should render PageContext breadcrumbs',
-    (breadcrumb) => {
-      renderWithProviders(<Breadcrumbs />, {
-        initialPageContext: { initialBreadcrumbs: BREADCRUMBS },
-      })
-      expect(screen.getByText(breadcrumb.name)).toBeVisible()
-    },
-  )
 })
