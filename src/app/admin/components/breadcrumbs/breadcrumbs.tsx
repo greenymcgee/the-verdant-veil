@@ -11,9 +11,9 @@ export function Breadcrumbs() {
 
   return (
     <nav className="mb-4">
-      <ul className="flex">
+      <ul className="flex gap-1">
         {breadcrumbs.map(({ name, route }) => (
-          <li key={name}>
+          <li key={route}>
             <LinkTo
               data-testid={`${name}-breadcrumb`}
               href={route}
