@@ -8,7 +8,7 @@ import { Toaster } from 'react-hot-toast'
 import '../globals.css'
 
 import { Providers } from '../../context'
-import { Breadcrumbs, Navbar } from './components'
+import { Navbar } from './components'
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -44,12 +44,7 @@ export default function AdminLayout({
           <Providers>
             <Navbar />
             <main className="min-h-[100vh] w-full bg-primary-50">
-              <div className="container pt-32 sm:pt-8">
-                <Breadcrumbs />
-                <article className="rounded-lg border-1 border-neutral-100 bg-white p-3 shadow-card-dark">
-                  {children}
-                </article>
-              </div>
+              <div className="container pt-32 sm:pt-8">{children}</div>
             </main>
           </Providers>
         </div>

@@ -3,11 +3,9 @@ import React from 'react'
 
 import { Button, LinkTo, Spinner } from '@/components'
 import { ROUTES } from '@/constants'
-import { useSetBreadcrumbs } from '@/context'
 import { useGetGamesQuery } from '@/hooks'
 
 export function Games() {
-  useSetBreadcrumbs([{ name: 'Games', route: ROUTES.games }])
   const { games, isLoading } = useGetGamesQuery()
 
   if (isLoading) return <Spinner className="mx-auto" size="lg" />

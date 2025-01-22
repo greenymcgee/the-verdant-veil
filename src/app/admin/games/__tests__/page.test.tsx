@@ -14,7 +14,7 @@ afterAll(() => gamesServer.close())
 describe('<AdminGamesPage />', () => {
   it('should render an h1', () => {
     renderWithProviders(<AdminGamesPage />)
-    expect(screen.getByText('Games').tagName).toEqual('H1')
+    expect(screen.getByTestId('main-heading').tagName).toEqual('H1')
   })
 
   it('should render a link to create a new game', () => {

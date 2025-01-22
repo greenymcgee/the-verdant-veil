@@ -1,14 +1,13 @@
 'use client'
 import React from 'react'
 
-import { LinkTo, Spinner } from '@/components'
-import { usePageContext } from '@/context'
+import { LinkTo } from '@/components'
 
-export function Breadcrumbs() {
-  const { breadcrumbs } = usePageContext()
+interface Props {
+  breadcrumbs: Breadcrumb[]
+}
 
-  if (!breadcrumbs.length) return <Spinner className="mb-4" size="xs" />
-
+export function Breadcrumbs({ breadcrumbs }: Props) {
   return (
     <nav className="mb-4">
       <ul className="flex gap-1">
