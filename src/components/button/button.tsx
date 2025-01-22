@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { ButtonHTMLAttributes } from 'react'
 import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 import {
   BUTTON_SIZES,
@@ -33,10 +34,13 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={clsx(
-        BUTTON_THEMES[variant][theme],
-        BUTTON_SIZES[size],
-        DEFAULT_BUTTON_CLASS_NAMES,
+      className={twMerge(
+        clsx(
+          BUTTON_THEMES[variant][theme],
+          BUTTON_SIZES[size],
+          DEFAULT_BUTTON_CLASS_NAMES,
+          className,
+        ),
         className,
       )}
       type={type}
