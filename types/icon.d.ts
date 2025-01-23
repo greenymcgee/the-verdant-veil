@@ -1,4 +1,5 @@
 type IconType =
+  | 'chevron-left'
   | 'edit'
   | 'filter-alt'
   | 'image'

@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { TRANSITION_STYLES } from '@/constants'
 
 export const BASE_LINK_TO_CLASSNAME = clsx(
-  'hover:opacity-70 hover:underline font-medium transition-opacity',
+  'inline-flex items-center hover:opacity-70 hover:underline font-medium transition-opacity',
   TRANSITION_STYLES.inputHover,
 )
 

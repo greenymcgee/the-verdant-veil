@@ -1,6 +1,7 @@
 import { HTMLAttributes, JSX } from 'react'
 
 import {
+  ChevronLeft,
   EditIcon,
   FilterAlt,
   ImageIcon,
@@ -19,6 +20,7 @@ export const ICON_TYPE_MAP: Record<
   IconType,
   (props: HTMLAttributes<HTMLOrSVGElement>) => JSX.Element
 > = {
+  'chevron-left': ChevronLeft,
   edit: EditIcon,
   'filter-alt': FilterAlt,
   image: ImageIcon,
@@ -31,4 +33,4 @@ export const ICON_TYPE_MAP: Record<
   trash: TrashIcon,
   user: UserIcon,
   videogame: VideogameIcon,
-}
+} as const

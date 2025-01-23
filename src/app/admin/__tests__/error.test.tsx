@@ -8,9 +8,11 @@ const reset = vi.fn()
 afterEach(() => vi.clearAllMocks())
 
 describe('<AdminErrorBoundary />', () => {
-  it('should render the error', () => {
+  it('should render an h1', () => {
     render(<AdminErrorBoundary error={Error('whoops')} reset={reset} />)
-    expect(screen.getByText('whoops')).toBeVisible()
+    expect(screen.getByText('Whoops! Something went wrong').tagName).toEqual(
+      'H1',
+    )
   })
 
   it('should call reset on click', () => {
