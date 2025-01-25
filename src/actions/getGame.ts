@@ -1,4 +1,5 @@
 import { API_ROUTES } from '@/constants'
+import { ErrorFacade } from '@/facades'
 import { baseApi, logger } from '@/modules'
 
 export async function getGame(slug: Game['slug']) {
@@ -6,7 +7,8 @@ export async function getGame(slug: Game['slug']) {
     const { data } = await baseApi.get<GamesShowJson>(API_ROUTES.game(slug))
     return { game: data.game }
   } catch (error) {
-    logger.error(error)
-    throw Error(`Something went wrong while retrieving ${slug}`)
+    const { message } = new ErrorFacade(error)
+    logger.error(error, message)
+    return { error, game: {} as Game, message }
   }
 }

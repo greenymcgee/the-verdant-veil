@@ -1,8 +1,5 @@
-import { http, HttpResponse } from 'msw'
-
 import { SUPER_METROID } from '@/test/fixtures'
-import { getApiUrl } from '@/test/helpers'
-import { gamesServer } from '@/test/servers'
+import { gamesServer, mockGameRequestFailure } from '@/test/servers'
 
 import { getGame } from '..'
 
@@ -19,15 +16,18 @@ describe('getGame', () => {
   })
 
   describe('failure', () => {
-    it('should throw an error', async () => {
-      gamesServer.use(
-        http.get(getApiUrl('game', [SUPER_METROID.slug]), () =>
-          HttpResponse.error(),
-        ),
-      )
-      expect(async () => await getGame(SUPER_METROID.slug)).rejects.toThrow(
-        Error(`Something went wrong while retrieving ${SUPER_METROID.slug}`),
-      )
+    it('should return an error', async () => {
+      const { response } = mockGameRequestFailure()
+      const result = await getGame(SUPER_METROID.slug)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      expect(result.error.status).toEqual(response().status)
+    })
+
+    it('should return a message', async () => {
+      const { message } = mockGameRequestFailure()
+      const result = await getGame(SUPER_METROID.slug)
+      expect(result.message).toEqual(message)
     })
   })
 })

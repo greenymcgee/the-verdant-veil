@@ -17,3 +17,11 @@ const handlers = [
 ]
 
 export const gamesServer = setupServer(...handlers)
+
+export function mockGameRequestFailure() {
+  const message = `No games found matching ${SUPER_METROID.slug}`
+  const response = () =>
+    new HttpResponse(JSON.stringify({ message }), { status: 404 })
+  gamesServer.use(http.get(getApiUrl('game', [SUPER_METROID.slug]), response))
+  return { message, response }
+}
