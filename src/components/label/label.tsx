@@ -1,5 +1,5 @@
 import React, { LabelHTMLAttributes } from 'react'
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   required?: boolean
@@ -13,7 +13,10 @@ export function Label({
 }: LabelProps) {
   return (
     <label
-      className={clsx('text-body-sm cursor-pointer font-semibold', className)}
+      className={twMerge(
+        'cursor-pointer text-body-sm font-semibold',
+        className,
+      )}
       {...options}
     >
       {children}{' '}

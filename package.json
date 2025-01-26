@@ -17,6 +17,9 @@
     "validate": "npm run compile && npm run lint && npm run spellcheck && npm run test:coverage"
   },
   "dependencies": {
+    "@tiptap/pm": "^2.11.3",
+    "@tiptap/react": "^2.11.3",
+    "@tiptap/starter-kit": "^2.11.3",
     "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",

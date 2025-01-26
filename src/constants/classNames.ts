@@ -49,8 +49,9 @@ export const BUTTON_THEMES: ButtonThemes = {
   },
 } as const
 
-export const BUTTON_SIZES: Record<'sm' | 'md' | 'lg', string> = {
+export const BUTTON_SIZES: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
   lg: 'px-6 py-4',
   md: 'px-5 py-3',
   sm: 'px-3 py-2',
+  xs: 'px-2 py-1 text-sm',
 } as const
