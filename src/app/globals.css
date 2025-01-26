@@ -59,3 +59,7 @@ select,
 a {
   @apply focus-visible:border-focus-ring focus-visible:outline-focus-ring;
 }
+
+.ProseMirror {
+  @apply p-2;
+}
