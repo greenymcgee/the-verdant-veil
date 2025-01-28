@@ -2,7 +2,6 @@
 
 import React from 'react'
 import {
-  Editor,
   EditorContent,
   EditorContentProps,
   EditorEvents,
@@ -18,15 +17,13 @@ import { RichTextEditorControl } from '../richTextEditorControl'
 import {
   getEditorState,
   handleBoldClicked,
+  handleHardBreakClicked,
   handleHeadingClicked,
+  handleItalicClicked,
 } from './utils'
 
 interface Props extends Omit<EditorContentProps, 'editor'> {
   onUpdate?: (event: EditorEvents['update']) => void
-}
-
-function handleItalicClicked(editor: Editor) {
-  return () => editor.chain().focus().toggleItalic().run()
 }
 
 export function RichTextEditor({
@@ -50,7 +47,12 @@ export function RichTextEditor({
   if (!editor || !editorState) return null
 
   return (
-    <div className="space-y-4 rounded border border-neutral-600 p-4">
+    <div
+      className={clsx(
+        'space-y-4 rounded border border-neutral-600 p-4',
+        className,
+      )}
+    >
       <div className="flex gap-2" data-testid="rich-text-menu">
         <RichTextEditorControl
           active={editorState.isH2Active}
@@ -87,13 +89,17 @@ export function RichTextEditor({
           onClick={handleItalicClicked(editor)}
           text="Italic"
         />
+        <RichTextEditorControl
+          active={true}
+          onClick={handleHardBreakClicked(editor)}
+          text="Hard Break"
+        />
       </div>
       <hr />
       <EditorContent
         className={clsx(
           'rounded border border-neutral-400 text-neutral-700 transition-shadow hover:shadow-input-hover',
           TRANSITION_STYLES.inputHover,
-          className,
         )}
         data-testid="rich-text-editor"
         editor={editor}

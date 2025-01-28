@@ -3,7 +3,7 @@ import React, { HTMLAttributes, ReactNode } from 'react'
 import { Input } from '../input'
 import { Label } from '../label'
 
-interface InputGroupProps extends HTMLAttributes<HTMLDivElement> {
+interface InputGroupProps extends HTMLAttributes<HTMLParagraphElement> {
   id: string
   inputProps?: Omit<PropsOf<typeof Input>, 'id' | 'data-testid' | 'required'>
   label: ReactNode
@@ -12,13 +12,13 @@ interface InputGroupProps extends HTMLAttributes<HTMLDivElement> {
 
 export function InputGroup({
   id,
-  inputProps,
+  inputProps = { name: id },
   label,
   required,
   ...options
 }: InputGroupProps) {
   return (
-    <div {...options}>
+    <p {...options}>
       <Label
         className="mb-2 block"
         data-testid={`${id}-label`}
@@ -33,6 +33,6 @@ export function InputGroup({
         id={id}
         required={required}
       />
-    </div>
+    </p>
   )
 }

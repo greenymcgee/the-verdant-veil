@@ -23,6 +23,7 @@
     "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
+    "isomorphic-dompurify": "^2.20.0",
     "jose": "^5.9.6",
     "next": "^15.1.6",
     "pino": "^9.6.0",

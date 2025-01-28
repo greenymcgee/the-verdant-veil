@@ -6,6 +6,7 @@ import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
 import '../globals.css'
+import { setBaseApiAuthorization } from '@/actions'
 
 import { Providers } from '../../context'
 import { Navbar } from './components'
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
 export default function AdminLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
+  setBaseApiAuthorization()
   return (
     <html lang="en">
       <body

@@ -3,6 +3,7 @@ import { Editor } from '@tiptap/react'
 export const TIP_TAP_EDITOR: Editor = {
   chain: vi.fn().mockReturnValue({
     focus: vi.fn().mockReturnValue({
+      setHardBreak: vi.fn().mockReturnValue({ run: vi.fn() }),
       setHeading: vi.fn().mockReturnValue({ run: vi.fn() }),
       toggleBold: vi.fn().mockReturnValue({ run: vi.fn() }),
       toggleItalic: vi.fn().mockReturnValue({ run: vi.fn() }),

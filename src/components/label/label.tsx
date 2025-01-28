@@ -22,7 +22,7 @@ export function Label({
       {children}{' '}
       {required ? (
         <span
-          aria-hidden
+          aria-label="required"
           className="text-danger-500"
           data-testid="label-required-star"
         >
