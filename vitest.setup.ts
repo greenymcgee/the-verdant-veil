@@ -28,6 +28,10 @@ vi.mock('next/navigation', async () => {
   // @ts-ignore
   mockRouter.useParser(createDynamicRouteParser(['/reset-password/[token]']))
   return {
+    redirect: vi
+      .fn()
+      // @ts-ignore
+      .mockImplementation((pathname: string) => mockRouter.push(pathname)),
     useParams: () => mockRouter.query,
     usePathname: () => mockRouter.pathname,
     useRouter: mockRouter.useRouter,
@@ -75,7 +79,13 @@ beforeAll(() => {
 
 vi.mock('./src/modules/logger.ts', async () => {
   const { logger } = await vi.importActual('./src/modules/logger.ts')
-  return { logger: { ...(logger as Record<string, unknown>), error: vi.fn() } }
+  return {
+    logger: {
+      ...(logger as Record<string, unknown>),
+      error: vi.fn(),
+      info: vi.fn(),
+    },
+  }
 })
 
 vi.mock('jose', async () => {

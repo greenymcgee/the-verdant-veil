@@ -46,9 +46,9 @@ export function Button({
       type={type}
       {...options}
     >
-      {leftIcon ? <Icon className="mt-[2%]" icon={leftIcon} /> : null}
+      {leftIcon ? <Icon className="mt-[5%]" icon={leftIcon} /> : null}
       {text ?? children}
-      {rightIcon ? <Icon className="mt-[2%]" icon={rightIcon} /> : null}
+      {rightIcon ? <Icon className="mt-[5%]" icon={rightIcon} /> : null}
     </button>
   )
 }

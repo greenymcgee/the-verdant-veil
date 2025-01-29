@@ -1,4 +1,5 @@
 export * from './getEditorState'
 export * from './handleBoldClicked'
+export * from './handleHardBreakClicked'
 export * from './handleHeadingClicked'
 export * from './handleItalicClicked'

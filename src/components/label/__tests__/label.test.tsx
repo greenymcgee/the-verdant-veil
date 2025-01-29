@@ -24,8 +24,6 @@ describe('<Label />', () => {
         Label
       </Label>,
     )
-    expect(
-      screen.getByTestId('label-required-star').getAttribute('aria-hidden'),
-    ).toEqual('true')
+    expect(screen.getByLabelText('required')).toBeVisible()
   })
 })

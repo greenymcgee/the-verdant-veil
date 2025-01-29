@@ -11,7 +11,7 @@ export function Breadcrumbs({ breadcrumbs }: Props) {
   return (
     <nav className="mb-4">
       <ul className="flex gap-1">
-        {breadcrumbs.map(({ name, route }) => (
+        {breadcrumbs.map(({ name, route }, index) => (
           <li key={route}>
             <LinkTo
               data-testid={`${name}-breadcrumb`}
@@ -20,7 +20,7 @@ export function Breadcrumbs({ breadcrumbs }: Props) {
             >
               {name}
             </LinkTo>{' '}
-            /
+            {index === breadcrumbs.length - 1 ? null : '/'}
           </li>
         ))}
       </ul>

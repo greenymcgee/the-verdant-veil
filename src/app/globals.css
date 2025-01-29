@@ -63,3 +63,7 @@ a {
 .ProseMirror {
   @apply p-2;
 }
+
+div.rich-text p:empty::after {
+  @apply content-["\00A0"];
+}

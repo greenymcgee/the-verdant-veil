@@ -48,7 +48,7 @@ describe('<AdminGameShowPage />', () => {
     it('should render the review', async () => {
       const jsx = await AdminGameShowPage(PROPS)
       renderWithProviders(jsx)
-      expect(screen.getByText(SUPER_METROID.review)).toBeVisible()
+      expect(screen.getByTestId('review')).toBeVisible()
     })
   })
 
