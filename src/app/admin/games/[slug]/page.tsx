@@ -1,8 +1,7 @@
 import React from 'react'
-import DOMPurify from 'isomorphic-dompurify'
 
 import { getGame } from '@/actions'
-import { Card, LinkTo } from '@/components'
+import { Card, HTMLParser, LinkTo } from '@/components'
 import { ROUTES } from '@/constants'
 
 import { AdminErrorCard, Breadcrumbs } from '../../components'
@@ -50,13 +49,7 @@ export default async function AdminGameShowPage({ params }: Props) {
         </div>
         <dt className="text-body-sm font-semibold">Review</dt>
         <dd>
-          <div
-            className="rich-text"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(game.review),
-            }}
-            data-testid="review"
-          />
+          <HTMLParser data-testid="review" html={game.review} />
         </dd>
       </Card>
     </>
