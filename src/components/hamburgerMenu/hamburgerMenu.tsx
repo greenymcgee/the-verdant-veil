@@ -12,7 +12,7 @@ import React, {
 import clsx from 'clsx'
 
 import { Hamburger } from '@/components'
-import { toggleDialogOpen } from '@/utils'
+import { toggleSidebarDialog } from '@/utils'
 
 interface HamburgerMenuProps extends HTMLAttributes<HTMLDivElement> {
   ref: RefObject<HTMLDialogElement | null>
@@ -25,7 +25,7 @@ export function HamburgerMenu({
 }: HamburgerMenuProps) {
   const [expanded, setExpanded] = useState(false)
   const toggleExpanded = () => setExpanded((prevExpanded) => !prevExpanded)
-  const toggleHamburgerMenu = () => toggleDialogOpen(ref.current)
+  const toggleHamburgerMenu = () => toggleSidebarDialog(ref.current)
 
   const openHamburgerMenu = () => {
     toggleExpanded()

@@ -10,7 +10,7 @@ import { Hamburger } from '@/components'
 import { ROUTES } from '@/constants'
 
 import { MainNavLink } from '../mainNavLink'
-import { toggleDialogOpen } from './utils'
+import { toggleSidebarDialog } from './utils'
 
 interface HamburgerMenuProps {
   activeLinkTitle: 'Home' | 'About'
@@ -22,7 +22,7 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
 
   const toggleHamburgerMenu = useCallback(() => {
     setExpanded((prevExpanded) => !prevExpanded)
-    toggleDialogOpen(hamburgerMenuRef.current)
+    toggleSidebarDialog(hamburgerMenuRef.current)
   }, [])
 
   const handleOutsideContentClick = useCallback(

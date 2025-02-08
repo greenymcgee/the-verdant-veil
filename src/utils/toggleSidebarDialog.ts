@@ -1,4 +1,4 @@
-export function toggleDialogOpen(dialog: HTMLDialogElement | null) {
+export function toggleSidebarDialog(dialog: HTMLDialogElement | null) {
   if (!dialog) return
 
   if (dialog.open) {
