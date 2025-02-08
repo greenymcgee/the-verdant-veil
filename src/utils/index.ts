@@ -1,1 +1,1 @@
-export * from './toggleDialogOpen'
+export * from './toggleSidebarDialog'

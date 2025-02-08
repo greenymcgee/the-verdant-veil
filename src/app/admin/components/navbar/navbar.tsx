@@ -5,13 +5,13 @@ import Link from 'next/link'
 
 import { Button, HamburgerMenu, Logo } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
-import { toggleDialogOpen } from '@/utils'
+import { toggleSidebarDialog } from '@/utils'
 
 import { NavbarLinks } from '../navbarLinks'
 
 export function Navbar() {
   const hamburgerMenuRef = useRef<HTMLDialogElement>(null)
-  const closeHamburgerMenu = () => toggleDialogOpen(hamburgerMenuRef.current)
+  const closeHamburgerMenu = () => toggleSidebarDialog(hamburgerMenuRef.current)
 
   return (
     <nav
