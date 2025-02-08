@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 import { SPINNER_SIZES } from './constants'
 
@@ -16,10 +17,14 @@ export function Spinner({
 }: SpinnerProps) {
   return (
     <div
-      aria-label="Loading"
-      className={clsx('spinner', theme, SPINNER_SIZES[size], className)}
-      role="alert"
+      className={twMerge('flex items-center justify-center', className)}
       {...options}
-    />
+    >
+      <div
+        aria-label="Loading"
+        className={clsx('spinner', theme, SPINNER_SIZES[size])}
+        role="alert"
+      />
+    </div>
   )
 }
