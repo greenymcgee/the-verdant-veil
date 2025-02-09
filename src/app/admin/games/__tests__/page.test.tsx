@@ -1,7 +1,6 @@
 import React from 'react'
 import { screen, waitForElementToBeRemoved } from '@testing-library/dom'
 
-import { ROUTES } from '@/constants'
 import { renderWithProviders } from '@/test/helpers'
 import { gamesServer } from '@/test/servers'
 
@@ -17,11 +16,9 @@ describe('<AdminGamesPage />', () => {
     expect(screen.getByTestId('main-heading').tagName).toEqual('H1')
   })
 
-  it('should render a link to create a new game', () => {
+  it('should render a button to create a new game', () => {
     renderWithProviders(<AdminGamesPage />)
-    expect(screen.getByTestId('new-game-link').getAttribute('href')).toEqual(
-      ROUTES.adminNewGame,
-    )
+    expect(screen.getByTestId('new-game-button')).toBeVisible()
   })
 
   it('should render games', async () => {

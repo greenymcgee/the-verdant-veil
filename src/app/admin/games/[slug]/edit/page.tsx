@@ -5,7 +5,7 @@ import { AdminErrorCard, Breadcrumbs } from '@/app/admin/components'
 import { Card } from '@/components'
 import { ROUTES } from '@/constants'
 
-import { EditGameForm } from './components'
+import { EditGameForm, GameCreateToaster } from './components'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -19,6 +19,7 @@ export default async function EditGamePage({ params }: Props) {
 
   return (
     <>
+      <GameCreateToaster game={game} />
       <Breadcrumbs
         breadcrumbs={[
           { name: 'Games', route: ROUTES.adminGames },

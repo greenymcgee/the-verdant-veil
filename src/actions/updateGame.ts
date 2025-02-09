@@ -6,6 +6,8 @@ import { API_ROUTES, ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
 import { baseApi, logger } from '@/modules'
 
+import { setBaseApiAuthorization } from './setBaseApiAuthorization'
+
 interface GameState {
   message?: string
   rating?: Game['rating']
@@ -32,6 +34,7 @@ function validateUpdateData(formData: FormData) {
 }
 
 export async function updateGame({ slug }: GameState, formData: FormData) {
+  await setBaseApiAuthorization()
   try {
     const data = validateUpdateData(formData)
     logger.info({ data, slug }, 'Updating game')

@@ -8,8 +8,7 @@ import { useGetGamesQuery } from '@/hooks'
 export function Games() {
   const { games, isLoading } = useGetGamesQuery()
 
-  if (isLoading)
-    return <Spinner className="py-32" size="lg" theme="secondary" />
+  if (isLoading) return <Spinner className="py-32" size="lg" />
 
   return (
     <div className="overflow-x-auto">

@@ -6,6 +6,11 @@ export const DARK_SOULS = gameFactory.build({
   published: false,
   slug: 'dark-souls',
 })
+export const NEW_GAME = gameFactory.build({
+  name: 'Secret of Evermore',
+  published: false,
+  slug: 'secret-of-evermore',
+})
 
 export const GAMES = [SUPER_METROID, DARK_SOULS]
 

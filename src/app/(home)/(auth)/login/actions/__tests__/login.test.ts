@@ -3,7 +3,7 @@ import { revalidateTag } from 'next/cache'
 import { cookies } from 'next/headers'
 
 import { CURRENT_USER_CACHE_TAG, GREEN_QUEST_JWT } from '@/constants'
-import { logger } from '@/modules'
+import { baseApi, logger } from '@/modules'
 import { ADMIN_USER, AUTH_TOKEN } from '@/test/fixtures'
 import { mockJwtVerify } from '@/test/helpers'
 import { loginServer, mockUnauthorizedLoginResponse } from '@/test/servers'
@@ -23,6 +23,12 @@ describe('login', () => {
   const formData = new FormData()
   formData.set('email', ADMIN_USER.email)
   formData.set('password', 'Testpass1!')
+
+  it('should reset the auth header', () => {
+    baseApi.defaults.headers.common['Authorization'] = 'token'
+    login({}, formData)
+    expect(baseApi.defaults.headers.common['Authorization']).toBeUndefined()
+  })
 
   describe('success', () => {
     it('should store the jwt in a cookie', async () => {

@@ -4,7 +4,7 @@ import { revalidateTag } from 'next/cache'
 import { cookies } from 'next/headers'
 
 import { CURRENT_USER_CACHE_TAG, GREEN_QUEST_JWT } from '@/constants'
-import { logger, verifyJwt } from '@/modules'
+import { baseApi, logger, verifyJwt } from '@/modules'
 
 import { getLoginErrorMessage, postLoginRequest } from '../utils'
 
@@ -16,6 +16,7 @@ interface LoginState {
 }
 
 export async function login(_: LoginState, formData: FormData) {
+  baseApi.defaults.headers.common['Authorization'] = undefined
   try {
     const { token, user } = await postLoginRequest(formData)
     const cookieStore = await cookies()

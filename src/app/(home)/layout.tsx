@@ -2,6 +2,7 @@ import React from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
+// eslint-disable-next-line camelcase
 import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
