@@ -10,7 +10,7 @@ interface Props {
 
 export function AdminErrorCard({ message }: Props) {
   return (
-    <Card>
+    <Card data-testid="admin-error-card">
       <header>
         <LinkTo
           className="mb-3"

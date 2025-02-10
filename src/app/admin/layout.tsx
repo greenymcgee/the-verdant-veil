@@ -45,7 +45,7 @@ export default function AdminLayout({
           <Providers>
             <Navbar />
             <main className="min-h-[100vh] w-full bg-primary-50">
-              <div className="container pt-32 sm:pt-8">{children}</div>
+              <div className="container pb-8 pt-32 sm:pt-8">{children}</div>
             </main>
           </Providers>
         </div>

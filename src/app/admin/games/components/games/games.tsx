@@ -1,15 +1,13 @@
-'use client'
 import React from 'react'
 
-import { Button, LinkTo, Spinner } from '@/components'
+import { Button, LinkTo } from '@/components'
 import { ROUTES } from '@/constants'
-import { useGetGamesQuery } from '@/hooks'
 
-export function Games() {
-  const { games, isLoading } = useGetGamesQuery()
+interface Props {
+  games: GameWithoutResources[]
+}
 
-  if (isLoading) return <Spinner className="py-32" size="lg" />
-
+export function Games({ games }: Props) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-96 text-left" data-testid="games">
