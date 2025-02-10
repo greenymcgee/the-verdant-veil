@@ -35,6 +35,8 @@
     "react/no-unused-prop-types": 2,
     "sort-keys": "error",
     "typescript-sort-keys/interface": "error",
-    "typescript-sort-keys/string-enum": "error"
+    "typescript-sort-keys/string-enum": "error",
+    "camelcase": "error",
+    "react/no-multi-comp": "error"
   }
 }

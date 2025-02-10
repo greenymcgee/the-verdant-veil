@@ -10,7 +10,8 @@
   }
 } */
 
-body {
+body,
+dialog {
   @apply bg-white font-sans text-neutral-700;
 }
 

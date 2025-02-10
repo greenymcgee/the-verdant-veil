@@ -20,7 +20,7 @@ export function InputGroup({
   return (
     <p {...options}>
       <Label
-        className="mb-2 block"
+        className="mb-1 block"
         data-testid={`${id}-label`}
         htmlFor={id}
         required={required}

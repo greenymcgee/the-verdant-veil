@@ -1,13 +1,19 @@
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 
-import { DARK_SOULS, GET_GAMES_RESPONSE_DATA, SUPER_METROID } from '../fixtures'
+import {
+  DARK_SOULS,
+  GET_GAMES_RESPONSE_DATA,
+  NEW_GAME,
+  SUPER_METROID,
+} from '../fixtures'
 import { getApiUrl } from '../helpers'
 
 const handlers = [
   http.get(getApiUrl('games'), () =>
     HttpResponse.json(GET_GAMES_RESPONSE_DATA),
   ),
+  http.post(getApiUrl('games'), () => HttpResponse.json({ game: NEW_GAME })),
   http.get(getApiUrl('game', [SUPER_METROID.slug]), () =>
     HttpResponse.json({ game: SUPER_METROID }),
   ),
@@ -34,5 +40,13 @@ export function mockGameUpdateRequestFailure() {
   const response = () =>
     new HttpResponse(JSON.stringify({ message }), { status: 422 })
   gamesServer.use(http.patch(getApiUrl('game', [SUPER_METROID.slug]), response))
+  return { message, response }
+}
+
+export function mockGameCreateRequestFailure() {
+  const message = 'Bad request'
+  const response = () =>
+    new HttpResponse(JSON.stringify({ message }), { status: 422 })
+  gamesServer.use(http.post(getApiUrl('games'), response))
   return { message, response }
 }

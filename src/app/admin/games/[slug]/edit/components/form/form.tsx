@@ -41,7 +41,7 @@ export function EditGameForm({ game }: Props) {
     toast.error(state.message)
   }, [state.message])
 
-  if (updating) return <Spinner className="py-32" size="lg" theme="secondary" />
+  if (updating) return <Spinner className="py-32" size="lg" />
 
   return (
     <form action={action} data-testid="edit-game-form">

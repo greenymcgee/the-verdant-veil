@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { Card, LinkTo, Searchbar } from '@/components'
-import { ROUTES } from '@/constants'
+import { Card, Searchbar } from '@/components'
 
 import { Games } from './components'
+import { NewGameModal } from './components/newGameModal'
 
 export default function AdminGamesPage() {
   return (
@@ -12,15 +12,7 @@ export default function AdminGamesPage() {
         <h1 className="text-neutral-800" data-testid="main-heading">
           Games
         </h1>
-        <LinkTo
-          data-testid="new-game-link"
-          href={ROUTES.adminNewGame}
-          rightIcon="plus-thick"
-          size="sm"
-          variant="solid"
-        >
-          New
-        </LinkTo>
+        <NewGameModal />
       </header>
       <Searchbar className="mb-1 max-w-60" />
       <Games />
