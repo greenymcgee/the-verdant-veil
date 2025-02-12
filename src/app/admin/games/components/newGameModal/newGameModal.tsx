@@ -1,9 +1,8 @@
 'use client'
 import React, { useActionState, useRef } from 'react'
-import clsx from 'clsx'
 
 import { createGame } from '@/actions'
-import { Banner, Button, Icon, InputGroup, Modal, Spinner } from '@/components'
+import { Banner, Button, Icon, InputGroup, Modal } from '@/components'
 import { toggleModalDialog } from '@/utils'
 
 import { NewGameModalToggle } from './toggle'
@@ -48,15 +47,8 @@ export function NewGameModal() {
               theme="neutral"
               variant="outline"
             />
-            <Button
-              className={clsx({
-                'opacity-70': creating,
-              })}
-              disabled={creating}
-              size="sm"
-              type="submit"
-            >
-              {creating ? <Spinner size="xs" /> : null} Generate
+            <Button loading={creating} size="sm" type="submit">
+              Generate
             </Button>
           </div>
         </div>

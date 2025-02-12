@@ -93,4 +93,16 @@ describe('<Button />', () => {
       expect(screen.getByText('Children')).toHaveClass('border-primary-900')
     })
   })
+
+  describe('loading', () => {
+    it('should render a spinner', () => {
+      render(<Button loading text="Text" variant="outline" />)
+      expect(screen.getByRole('alert')).toBeVisible()
+    })
+
+    it('should set the aria-disabled attribute', () => {
+      render(<Button loading text="Text" variant="outline" />)
+      expect(screen.getByText('Text')).toHaveAttribute('aria-disabled', 'true')
+    })
+  })
 })

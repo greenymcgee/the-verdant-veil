@@ -10,9 +10,11 @@ import {
 } from '@/constants'
 
 import { Icon } from '../icon'
+import { Spinner } from '../spinner'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   leftIcon?: IconType
+  loading?: boolean
   rightIcon?: IconType
   size?: keyof typeof BUTTON_SIZES
   text?: string
@@ -24,6 +26,7 @@ export function Button({
   children,
   className,
   leftIcon,
+  loading,
   rightIcon,
   size = 'md',
   text,
@@ -34,18 +37,20 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
+      aria-disabled={loading}
       className={twMerge(
         clsx(
           BUTTON_THEMES[variant][theme],
           BUTTON_SIZES[size],
           DEFAULT_BUTTON_CLASS_NAMES,
-          className,
+          { 'pointer-events-none opacity-70': loading },
         ),
         className,
       )}
       type={type}
       {...options}
     >
+      {loading ? <Spinner size="xs" /> : null}
       {leftIcon ? <Icon className="mt-[5%]" icon={leftIcon} /> : null}
       {text ?? children}
       {rightIcon ? <Icon className="mt-[5%]" icon={rightIcon} /> : null}
