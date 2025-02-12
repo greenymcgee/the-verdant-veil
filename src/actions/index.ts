@@ -1,5 +1,6 @@
 export * from './createGame'
 export * from './getCurrentUser'
 export * from './getGame'
+export * from './getGames'
 export * from './setBaseApiAuthorization'
 export * from './updateGame'

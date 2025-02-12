@@ -1,8 +1,7 @@
-import React from 'react'
-import { screen, waitForElementToBeRemoved } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 
 import { renderWithProviders } from '@/test/helpers'
-import { gamesServer } from '@/test/servers'
+import { gamesServer, mockGamesRequestFailure } from '@/test/servers'
 
 import AdminGamesPage from '../page'
 
@@ -11,25 +10,34 @@ afterEach(() => gamesServer.resetHandlers())
 afterAll(() => gamesServer.close())
 
 describe('<AdminGamesPage />', () => {
-  it('should render an h1', () => {
-    renderWithProviders(<AdminGamesPage />)
+  it('should render an h1', async () => {
+    const jsx = await AdminGamesPage()
+    renderWithProviders(jsx)
     expect(screen.getByTestId('main-heading').tagName).toEqual('H1')
   })
 
-  it('should render a button to create a new game', () => {
-    renderWithProviders(<AdminGamesPage />)
+  it('should render a button to create a new game', async () => {
+    const jsx = await AdminGamesPage()
+    renderWithProviders(jsx)
     expect(screen.getByTestId('new-game-button')).toBeVisible()
   })
 
   it('should render games', async () => {
-    renderWithProviders(<AdminGamesPage />)
-    await waitForElementToBeRemoved(() => screen.getByRole('alert'))
+    const jsx = await AdminGamesPage()
+    renderWithProviders(jsx)
     expect(screen.getByTestId('games')).toBeVisible()
   })
 
   it('should render a search bar', async () => {
-    renderWithProviders(<AdminGamesPage />)
-    await waitForElementToBeRemoved(() => screen.getByRole('alert'))
+    const jsx = await AdminGamesPage()
+    renderWithProviders(jsx)
     expect(screen.getByTestId('searchbar')).toBeVisible()
+  })
+
+  it('should render an error message', async () => {
+    mockGamesRequestFailure()
+    const jsx = await AdminGamesPage()
+    renderWithProviders(jsx)
+    expect(screen.getByTestId('admin-error-card')).toBeVisible()
   })
 })

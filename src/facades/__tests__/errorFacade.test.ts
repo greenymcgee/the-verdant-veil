@@ -46,9 +46,14 @@ describe('ErrorFacade', () => {
       expect(result.message).toEqual(MESSAGE)
     })
 
-    it('should return the error.message when data.error is blank', () => {
+    it('should return a default message', () => {
       const result = new ErrorFacade(new AxiosError(STATUS_TEXT))
-      expect(result.message).toEqual(STATUS_TEXT)
+      expect(result.message).toEqual('Whoops, something went wrong')
+    })
+
+    it('should return the given default message', () => {
+      const result = new ErrorFacade(new AxiosError(STATUS_TEXT), 'Message')
+      expect(result.message).toEqual('Message')
     })
   })
 })
