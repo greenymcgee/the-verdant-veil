@@ -90,7 +90,7 @@ export function RichTextEditor({
           text="Italic"
         />
         <RichTextEditorControl
-          active={true}
+          active
           onClick={handleHardBreakClicked(editor)}
           text="Hard Break"
         />

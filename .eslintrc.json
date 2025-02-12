@@ -37,6 +37,7 @@
     "typescript-sort-keys/interface": "error",
     "typescript-sort-keys/string-enum": "error",
     "camelcase": "error",
-    "react/no-multi-comp": "error"
+    "react/no-multi-comp": "error",
+    "react/jsx-boolean-value": "error"
   }
 }
