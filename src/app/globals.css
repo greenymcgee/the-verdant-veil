@@ -68,3 +68,14 @@ a {
 div.rich-text p:empty::after {
   @apply content-["\00A0"];
 }
+
+.skeleton {
+  background-clip: padding-box !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  @apply pointer-events-none animate-pulse cursor-default rounded-sm border-neutral-50 bg-neutral-50;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
