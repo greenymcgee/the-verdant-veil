@@ -67,7 +67,7 @@
     "json-schema-to-typescript": "^15.0.4",
     "msw": "^2.7.0",
     "next-router-mock": "^0.9.13",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.2",
     "prettier": "3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "snakecase": "^1.0.0",
