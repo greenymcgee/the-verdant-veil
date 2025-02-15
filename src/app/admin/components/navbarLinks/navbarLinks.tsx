@@ -22,6 +22,7 @@ export function NavbarLinks({ onLinkClick, ...options }: NavbarLinksProps) {
             'flex gap-1 whitespace-nowrap rounded-lg p-2 hover:bg-primary-100',
             {
               'bg-primary-50': activeNavbarLink === 'adminGames',
+              skeleton: !activeNavbarLink,
             },
           )}
           href={ROUTES.adminGames}
@@ -38,6 +39,7 @@ export function NavbarLinks({ onLinkClick, ...options }: NavbarLinksProps) {
             'flex gap-1 whitespace-nowrap rounded-lg p-2 hover:bg-primary-100',
             {
               'bg-primary-50': activeNavbarLink === 'adminUsers',
+              skeleton: !activeNavbarLink,
             },
           )}
           href={ROUTES.adminUsers}
