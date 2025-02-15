@@ -24,7 +24,7 @@
     "axios": "^1.7.9",
     "change-case": "^5.4.4",
     "clsx": "^2.1.1",
-    "isomorphic-dompurify": "^2.20.0",
+    "isomorphic-dompurify": "^2.21.0",
     "jose": "^5.9.6",
     "next": "^15.1.6",
     "pino": "^9.6.0",
