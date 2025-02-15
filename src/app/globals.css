@@ -79,3 +79,7 @@ div.rich-text p:empty::after {
   -ms-user-select: none;
   user-select: none;
 }
+
+.skeleton svg {
+  @apply text-transparent;
+}
