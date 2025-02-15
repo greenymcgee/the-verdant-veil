@@ -23,6 +23,9 @@ const handlers = [
   http.patch(getApiUrl('game', [SUPER_METROID.slug]), () =>
     HttpResponse.json({ game: SUPER_METROID }),
   ),
+  http.delete(getApiUrl('game', [SUPER_METROID.slug]), () =>
+    HttpResponse.json(),
+  ),
 ]
 
 export const gamesServer = setupServer(...handlers)
@@ -57,4 +60,22 @@ export function mockGameCreateRequestFailure() {
     new HttpResponse(JSON.stringify({ message }), { status: 422 })
   gamesServer.use(http.post(getApiUrl('games'), response))
   return { message, response }
+}
+
+export function mockGameDeleteRequestFailure() {
+  const message = 'Bad request'
+  const response = () =>
+    new HttpResponse(JSON.stringify({ message }), { status: 422 })
+  gamesServer.use(
+    http.delete(getApiUrl('game', [SUPER_METROID.slug]), response),
+  )
+  return { message, response }
+}
+
+export function mockGamesWithoutDeletedGameRequest() {
+  gamesServer.use(
+    http.get(getApiUrl('games'), () =>
+      HttpResponse.json({ games: [DARK_SOULS] }),
+    ),
+  )
 }
