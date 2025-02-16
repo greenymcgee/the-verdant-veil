@@ -1,12 +1,12 @@
-import zod from 'zod'
+import { object, string } from 'zod'
 
 import { API_ROUTES } from '@/constants'
 import { baseApi } from '@/modules'
 
-const schema = zod.object({
-  user: zod.object({
-    email: zod.string().nonempty(),
-    password: zod.string().nonempty(),
+const schema = object({
+  user: object({
+    email: string().nonempty(),
+    password: string().nonempty(),
   }),
 })
 

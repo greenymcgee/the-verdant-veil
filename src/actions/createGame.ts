@@ -2,7 +2,7 @@
 import { AxiosResponse } from 'axios'
 import { snakeCase } from 'change-case/keys'
 import { redirect } from 'next/navigation'
-import zod from 'zod'
+import { number, object } from 'zod'
 
 import { API_ROUTES, ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
@@ -20,7 +20,7 @@ interface CreateGameParams {
   game: { igdbId: number }
 }
 
-const schema = zod.object({ igdbId: zod.number().nonnegative() })
+const schema = object({ igdbId: number().nonnegative() })
 
 function getFormDataValues(formData: FormData) {
   return { igdbId: Number(formData.get('igdb-id')) }

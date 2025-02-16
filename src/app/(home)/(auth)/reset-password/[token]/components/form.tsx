@@ -1,6 +1,5 @@
 'use client'
-import React, { FormEvent } from 'react'
-import { useCallback } from 'react'
+import React, { FormEvent, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 
 import { Button, InputGroup, Spinner } from '@/components'
