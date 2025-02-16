@@ -5,10 +5,6 @@ import { GREEN_QUEST_JWT } from '@/constants'
 import { baseApi } from '@/modules'
 
 export async function setBaseApiAuthorization() {
-  const header = baseApi.defaults.headers.common['Authorization']
-
-  if (header) return
-
   const { get } = await cookies()
   const token = get(GREEN_QUEST_JWT)?.value
 

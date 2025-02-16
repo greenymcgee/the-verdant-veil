@@ -1,5 +1,6 @@
 export * from './createGame'
 export * from './deleteGame'
+export * from './deleteSessionStorage'
 export * from './getCurrentUser'
 export * from './getGame'
 export * from './getGames'
