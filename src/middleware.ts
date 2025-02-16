@@ -3,16 +3,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import { ROUTES } from './constants'
 import { authenticateUser, logger } from './modules'
 import { authorizeAdminRouteRequest } from './policies'
+import { redirectUnauthenticatedUser } from './utils'
 
 export default async function middleware(request: NextRequest) {
-  const { pathname } = new URL(request.url)
   try {
     await authenticateUser(request)
   } catch (error) {
     logger.error(error)
-    return NextResponse.redirect(
-      new URL(`${ROUTES.login}?redirect=${pathname}`, request.url),
-    )
+    return redirectUnauthenticatedUser(request)
   }
 
   try {
