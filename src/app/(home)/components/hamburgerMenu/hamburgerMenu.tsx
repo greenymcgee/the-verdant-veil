@@ -8,6 +8,7 @@ import clsx from 'clsx'
 
 import { Hamburger } from '@/components'
 import { ROUTES } from '@/constants'
+import { useCurrentUser } from '@/context'
 
 import { MainNavLink } from '../mainNavLink'
 import { toggleSidebarDialog } from './utils'
@@ -19,6 +20,7 @@ interface HamburgerMenuProps {
 export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
   const hamburgerMenuRef = useRef<HTMLDialogElement>(null)
   const [expanded, setExpanded] = useState(false)
+  const { user } = useCurrentUser()
 
   const toggleHamburgerMenu = useCallback(() => {
     setExpanded((prevExpanded) => !prevExpanded)
@@ -67,6 +69,18 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
           </button>
           <nav>
             <ul className="flex flex-col gap-4 pl-4 pr-20 font-bold">
+              {user.admin ? (
+                <li>
+                  <MainNavLink
+                    activeLinkTitle={activeLinkTitle}
+                    data-testid="mobile-admin-link"
+                    href={ROUTES.adminGames}
+                    onClick={toggleHamburgerMenu}
+                    title="Admin"
+                    type="mobile"
+                  />
+                </li>
+              ) : null}
               <li>
                 <MainNavLink
                   activeLinkTitle={activeLinkTitle}
