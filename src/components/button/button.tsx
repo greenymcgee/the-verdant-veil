@@ -50,7 +50,7 @@ export function Button({
       type={type}
       {...options}
     >
-      {loading ? <Spinner size="xs" /> : null}
+      {loading ? <Spinner size="xs" theme={theme} /> : null}
       {leftIcon ? <Icon className="mt-[5%]" icon={leftIcon} /> : null}
       {text ?? children}
       {rightIcon ? <Icon className="mt-[5%]" icon={rightIcon} /> : null}

@@ -2,9 +2,11 @@
 import React from 'react'
 import clsx from 'clsx'
 
-import { Button, LinkTo, Spinner } from '@/components'
+import { LinkTo, Spinner } from '@/components'
 import { ROUTES } from '@/constants'
 import { useGetGamesQuery } from '@/hooks/api'
+
+import { DeleteGameForm } from '../deleteGameForm'
 
 export function Games() {
   const { games, isLoading, isValidating } = useGetGamesQuery()
@@ -35,7 +37,7 @@ export function Games() {
                   {game.name}
                 </LinkTo>
               </td>
-              <td className="px-4 py-3">
+              <td className="whitespace-nowrap px-4 py-3">
                 <LinkTo
                   aria-label={`Edit ${game.name}`}
                   className={clsx('mr-4', { skeleton })}
@@ -44,13 +46,7 @@ export function Games() {
                   size="sm"
                   variant="solid"
                 />
-                <Button
-                  aria-label={`Delete ${game.name}`}
-                  className={clsx({ skeleton })}
-                  leftIcon="trash"
-                  size="sm"
-                  theme="danger"
-                />
+                <DeleteGameForm game={game} />
               </td>
             </tr>
           ))}
