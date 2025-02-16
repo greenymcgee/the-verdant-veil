@@ -32,6 +32,7 @@ export function NewGameModal() {
             className="mb-4 sm:max-w-[50%]"
             id="igdb-id"
             inputProps={{
+              autoComplete: 'off',
               defaultValue: state.igdbId,
               name: 'igdb-id',
               type: 'number',

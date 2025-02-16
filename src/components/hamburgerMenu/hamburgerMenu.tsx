@@ -11,8 +11,9 @@ import React, {
 } from 'react'
 import clsx from 'clsx'
 
-import { Hamburger } from '@/components'
 import { toggleSidebarDialog } from '@/utils'
+
+import { Hamburger } from '../svgs/hamburger'
 
 interface HamburgerMenuProps extends HTMLAttributes<HTMLDivElement> {
   ref: RefObject<HTMLDialogElement | null>

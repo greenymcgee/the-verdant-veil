@@ -1,6 +1,6 @@
 'use server'
 import { redirect } from 'next/navigation'
-import zod from 'zod'
+import { number, object, string } from 'zod'
 
 import { API_ROUTES, ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
@@ -15,10 +15,10 @@ interface GameState {
   slug: Game['slug']
 }
 
-const schema = zod.object({
-  game: zod.object({
-    rating: zod.number().optional(),
-    review: zod.string().optional(),
+const schema = object({
+  game: object({
+    rating: number().optional(),
+    review: string().optional(),
   }),
 })
 
