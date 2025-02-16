@@ -1,10 +1,13 @@
 'use server'
 
-import { revalidateTag } from 'next/cache'
 import { cookies } from 'next/headers'
 
-import { CURRENT_USER_CACHE_TAG, GREEN_QUEST_JWT } from '@/constants'
-import { baseApi, logger, verifyJwt } from '@/modules'
+import {
+  GREEN_QUEST_CURRENT_USER,
+  GREEN_QUEST_JWT,
+  IS_PRODUCTION_NODE_ENV,
+} from '@/constants'
+import { logger, verifyJwt } from '@/modules'
 
 import { getLoginErrorMessage, postLoginRequest } from '../utils'
 
@@ -15,17 +18,27 @@ interface LoginState {
   user?: UsersShowJson['user']
 }
 
-export async function login(_: LoginState, formData: FormData) {
-  baseApi.defaults.headers.common['Authorization'] = undefined
+export async function login(
+  _: LoginState,
+  formData: FormData,
+): Promise<LoginState> {
   try {
     const { token, user } = await postLoginRequest(formData)
-    const cookieStore = await cookies()
-    cookieStore.set(GREEN_QUEST_JWT, token, {
+    const decodedToken = await verifyJwt(token)
+    const { set } = await cookies()
+    set(GREEN_QUEST_JWT, token, {
       httpOnly: true,
-      maxAge: (await verifyJwt(token)).exp,
+      maxAge: decodedToken.exp,
+      sameSite: 'strict',
+      secure: IS_PRODUCTION_NODE_ENV,
     })
-    revalidateTag(CURRENT_USER_CACHE_TAG)
-    return { user } as LoginState
+    set(GREEN_QUEST_CURRENT_USER, JSON.stringify(user), {
+      httpOnly: true,
+      maxAge: decodedToken.exp,
+      sameSite: 'strict',
+      secure: IS_PRODUCTION_NODE_ENV,
+    })
+    return { user }
   } catch (error) {
     logger.error(error)
     return {

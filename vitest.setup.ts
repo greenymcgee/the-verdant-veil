@@ -15,11 +15,14 @@ vi.mock('next/cache', async () => {
 
 vi.mock('next/headers', async () => {
   const headers = await vi.importActual('next/headers')
+  const deleteCookie = vi.fn()
   const get = vi.fn()
   const set = vi.fn()
   return {
     ...headers,
-    cookies: vi.fn().mockImplementation(() => ({ get, set })),
+    cookies: vi
+      .fn()
+      .mockImplementation(() => ({ delete: deleteCookie, get, set })),
   }
 })
 

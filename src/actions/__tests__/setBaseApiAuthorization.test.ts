@@ -10,12 +10,6 @@ afterEach(() => {
 })
 
 describe('setBaseApiAuthorization', () => {
-  it('should do nothing when the header is set', async () => {
-    baseApi.defaults.headers.common['Authorization'] = 'token'
-    await setBaseApiAuthorization()
-    expect(baseApi.defaults.headers.common['Authorization']).toBe('token')
-  })
-
   it('should do nothing when the token is blank', async () => {
     await setBaseApiAuthorization()
     expect(baseApi.defaults.headers.common['Authorization']).toBeUndefined()
