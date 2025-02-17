@@ -1,7 +1,131 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import './css/spinner.css';
+@import 'tailwindcss';
+@import './css/spinner.css' layer(utilities);
+
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --background-image-*: initial;
+  --background-image-stars: url('/images/backgrounds/stars-xxl.svg');
+
+  --background-position-*: initial;
+  --background-position-top-center: top center;
+
+  --border-width-1: 1px;
+
+  --shadow-card-dark: 4px 4px 4px 0px rgba(23, 24, 26, 0.2);
+  --shadow-input-hover: 0px 0px 0px 2px #b3bcc8;
+  --shadow-nav-light: 0px 2px 4px 0px #fcfcff;
+
+  --color-ring-color: #00a6ff;
+
+  --color-neutral-50: #e7e7e6;
+  --color-neutral-100: #cececd;
+  --color-neutral-200: #b6b6b5;
+  --color-neutral-300: #9d9d9c;
+  --color-neutral-400: #858583;
+  --color-neutral-500: #6d6c6a;
+  --color-neutral-600: #545451;
+  --color-neutral-700: #3c3b39;
+  --color-neutral-800: #232320;
+  --color-neutral-900: #0b0a07;
+
+  --color-primary-50: #ecefec;
+  --color-primary-100: #d9dfd9;
+  --color-primary-200: #c6cec7;
+  --color-primary-300: #b3beb4;
+  --color-primary-400: #a0aea1;
+  --color-primary-500: #8d9e8e;
+  --color-primary-600: #7a8e7b;
+  --color-primary-700: #677d69;
+  --color-primary-800: #546d56;
+  --color-primary-900: #415d43;
+
+  --color-secondary-50: #f1e9f4;
+  --color-secondary-100: #e2d3ea;
+  --color-secondary-200: #d4bedf;
+  --color-secondary-300: #c5a8d4;
+  --color-secondary-400: #b792ca;
+  --color-secondary-500: #a87cbf;
+  --color-secondary-600: #9a66b4;
+  --color-secondary-700: #8b51a9;
+  --color-secondary-800: #7d3b9f;
+  --color-secondary-900: #6e2594;
+
+  --color-success-50: #e9f9f3;
+  --color-success-100: #d4f3e7;
+  --color-success-200: #beedda;
+  --color-success-300: #a8e7ce;
+  --color-success-400: #93e2c2;
+  --color-success-500: #7ddcb6;
+  --color-success-600: #67d6aa;
+  --color-success-700: #51d09d;
+  --color-success-800: #3cca91;
+  --color-success-900: #26c485;
+
+  --color-danger-50: #f9e6e8;
+  --color-danger-100: #f3ccd0;
+  --color-danger-200: #edb3b9;
+  --color-danger-300: #e799a1;
+  --color-danger-400: #e1808a;
+  --color-danger-500: #da6772;
+  --color-danger-600: #d44d5b;
+  --color-danger-700: #ce3443;
+  --color-danger-800: #c81a2c;
+  --color-danger-900: #c20114;
+
+  --font-sans: 'Noto Sans JP', 'Noto Sans JP Fallback';
+  --font-serif: 'Libre Baskerville', 'Libre Baskerville Fallback';
+
+  --text-heading-xxl: 3.5rem;
+  --text-heading-xl: 2.5rem;
+  --text-heading-lg: 2rem;
+  --text-heading-md: 1.5rem;
+  --text-heading-sm: 1.125rem;
+  --text-heading-xs: 0.875rem;
+  --text-body-sm: 0.875rem;
+  --text-body-xs: 0.75rem;
+
+  --leading-body: 150%;
+  --leading-heading: 125%;
+
+  --transition-property-width: width;
+  --transition-property-main-nav: background-color, color, shadow;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (width >= theme(--breakpoint-sm)) {
+    padding-inline: 2rem;
+  }
+  @media (width >= theme(--breakpoint-lg)) {
+    padding-inline: 3.5rem;
+  }
+  @media (width >= theme(--breakpoint-xl)) {
+    padding-inline: 5rem;
+  }
+  @media (width >= theme(--breakpoint-2xl)) {
+    padding-inline: 6rem;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-neutral-200, currentColor);
+  }
+}
 
 /* Later */
 /* @media (prefers-color-scheme: dark) {
@@ -10,7 +134,10 @@
   }
 } */
 
-body,
+body {
+  @apply bg-white font-sans text-neutral-700;
+}
+
 dialog {
   @apply bg-white font-sans text-neutral-700;
 }
@@ -26,7 +153,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-bold leading-heading;
+  @apply leading-heading font-bold;
 }
 
 h1 {
@@ -51,14 +178,6 @@ h5 {
 
 h6 {
   @apply text-heading-xs;
-}
-
-button,
-input,
-textarea,
-select,
-a {
-  @apply focus-visible:border-focus-ring focus-visible:outline-focus-ring;
 }
 
 .ProseMirror {

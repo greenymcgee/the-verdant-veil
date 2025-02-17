@@ -8,7 +8,7 @@ interface Props extends HTMLAttributes<HTMLParagraphElement> {
 export function Banner({ className, message, ...options }: Props) {
   return (
     <p
-      className={twMerge('rounded bg-danger-800 p-3 text-white', className)}
+      className={twMerge('rounded-sm bg-danger-800 p-3 text-white', className)}
       role="alert"
       {...options}
     >

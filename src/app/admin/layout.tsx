@@ -44,8 +44,8 @@ export default function AdminLayout({
         <div className="relative sm:flex">
           <Providers>
             <Navbar />
-            <main className="min-h-[100vh] w-full bg-primary-50">
-              <div className="container pb-8 pt-32 sm:pt-8">{children}</div>
+            <main className="bg-primary-50 min-h-[100vh] w-full">
+              <div className="container pt-32 pb-8 sm:pt-8">{children}</div>
             </main>
           </Providers>
         </div>

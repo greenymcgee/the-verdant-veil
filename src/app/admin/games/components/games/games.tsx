@@ -18,7 +18,7 @@ export function Games() {
     <div className="overflow-x-auto">
       <table className="w-full min-w-96 text-left" data-testid="games">
         <thead className="font-semibold">
-          <tr className="border-b-1 border-primary-400 text-neutral-800">
+          <tr className="border-primary-400 border-b-1 text-neutral-800">
             <th className="px-4 py-3">Name</th>
             <th className="px-4 py-3">Actions</th>
           </tr>
@@ -26,7 +26,7 @@ export function Games() {
         <tbody>
           {games.map((game) => (
             <tr
-              className="border-b-1 border-b-primary-400 last:border-b-0 even:bg-neutral-50 even:bg-opacity-30"
+              className="border-b-primary-400 border-b-1 last:border-b-0 even:bg-neutral-50/30"
               key={game.id}
             >
               <td className="px-4 py-3">
@@ -37,7 +37,7 @@ export function Games() {
                   {game.name}
                 </LinkTo>
               </td>
-              <td className="whitespace-nowrap px-4 py-3">
+              <td className="px-4 py-3 whitespace-nowrap">
                 <LinkTo
                   aria-label={`Edit ${game.name}`}
                   className={clsx('mr-4', { skeleton })}
