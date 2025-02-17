@@ -25,6 +25,7 @@ export function LogoutForm({ className, testId }: Props) {
         className="flex w-full justify-center"
         data-testid={testId}
         loading={isLoggingOut}
+        size="sm"
         text="Logout"
         theme="secondary"
         type="submit"

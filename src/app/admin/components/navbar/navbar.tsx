@@ -17,7 +17,7 @@ export function Navbar() {
   return (
     <nav
       className={clsx(
-        'fixed w-full border-b-[1px] border-neutral-300 bg-white py-6',
+        'fixed z-10 w-full border-b-[1px] border-neutral-300 bg-white py-6',
         'sm:static sm:flex sm:h-[100vh] sm:w-auto sm:flex-col sm:justify-between sm:border-b-0',
       )}
     >
@@ -33,21 +33,22 @@ export function Navbar() {
           <Logo />
         </Link>
         <HamburgerMenu className="flex sm:hidden" ref={hamburgerMenuRef}>
-          <div className="flex min-h-[inherit] min-w-[220px] flex-col justify-between px-3 pb-3 pt-6">
-            <NavbarLinks
-              className="flex flex-col gap-3"
-              onLinkClick={closeHamburgerMenu}
-            />
-            <div className="flex flex-col gap-2">
-              <LogoutForm testId="mobile-logout-button" />
+          <div className="flex min-h-[inherit] min-w-[156px] flex-col px-3 pt-6 pb-3">
+            <div className="mb-6 flex flex-col gap-3 border-b-1 pb-6">
               <Button
                 className="block w-full text-center"
                 onClick={closeHamburgerMenu}
+                size="sm"
                 theme="neutral"
               >
                 Close
               </Button>
+              <LogoutForm testId="mobile-logout-button" />
             </div>
+            <NavbarLinks
+              className="flex flex-col gap-3"
+              onLinkClick={closeHamburgerMenu}
+            />
           </div>
         </HamburgerMenu>
         <NavbarLinks

@@ -7,8 +7,15 @@ import React, {
   ReactElement,
   RefObject,
   SyntheticEvent,
+  useCallback,
+  useEffect,
   useState,
 } from 'react'
+import {
+  clearAllBodyScrollLocks,
+  disableBodyScroll,
+  enableBodyScroll,
+} from 'body-scroll-lock'
 import clsx from 'clsx'
 
 import { toggleModalDialog } from '@/utils'
@@ -22,11 +29,25 @@ interface ModalProps extends PropsWithChildren {
 export function Modal({ Toggle, children, id, ref }: ModalProps) {
   const [expanded, setExpanded] = useState(false)
   const toggleExpanded = () => setExpanded((prevExpanded) => !prevExpanded)
+  const toggleModal = useCallback(() => toggleModalDialog(ref.current), [ref])
 
-  const toggleModal = () => {
+  const toggleBodyScrollLock = useCallback(() => {
+    const dialog = ref.current as HTMLDialogElement
+    if (expanded) return enableBodyScroll(dialog)
+
+    disableBodyScroll(dialog)
+  }, [expanded, ref])
+
+  const openDialog = useCallback(() => {
+    toggleBodyScrollLock()
     toggleExpanded()
-    toggleModalDialog(ref.current)
-  }
+    toggleModal()
+  }, [toggleBodyScrollLock, toggleModal])
+
+  const toggleLeftoverStates = useCallback(() => {
+    toggleExpanded()
+    toggleBodyScrollLock()
+  }, [toggleBodyScrollLock])
 
   const handleOutsideContentClick = (
     event: SyntheticEvent<HTMLDialogElement>,
@@ -36,12 +57,14 @@ export function Modal({ Toggle, children, id, ref }: ModalProps) {
     toggleModal()
   }
 
+  useEffect(() => () => clearAllBodyScrollLocks(), [])
+
   return (
     <>
       <Toggle
         aria-controls={id}
         aria-expanded={expanded}
-        onClick={toggleModal}
+        onClick={openDialog}
       />
       <dialog
         className={clsx(
@@ -51,7 +74,7 @@ export function Modal({ Toggle, children, id, ref }: ModalProps) {
         data-testid={id}
         id={id}
         onClick={handleOutsideContentClick}
-        onClose={toggleExpanded}
+        onClose={toggleLeftoverStates}
         ref={ref}
       >
         {children}
