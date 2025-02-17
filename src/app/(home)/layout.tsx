@@ -7,6 +7,7 @@ import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
 import '../globals.css'
+import { Providers } from '@/context'
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -40,7 +41,7 @@ export default function HomeLayout({
       >
         <SpeedInsights />
         <Toaster />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 
 import { Button, InputGroup, LinkTo, Spinner } from '@/components'
 import { ROUTES } from '@/constants'
+import { useCurrentUser } from '@/context'
 
 import { login } from '../actions'
 import { useLoginRedirectUrl } from '../hooks'
@@ -17,6 +18,7 @@ export function LoginForm() {
   )
   const { push } = useRouter()
   const redirectUrl = useLoginRedirectUrl()
+  const { setUser } = useCurrentUser()
 
   useEffect(() => {
     if (loggingIn || !error) return
@@ -27,9 +29,10 @@ export function LoginForm() {
   useEffect(() => {
     if (!user) return
 
+    setUser(user)
     push(redirectUrl)
     setTimeout(() => toast.success(`Welcome back ${user.username}`))
-  }, [push, redirectUrl, user])
+  }, [push, redirectUrl, setUser, user])
 
   return (
     <form action={action} data-testid="login-form">

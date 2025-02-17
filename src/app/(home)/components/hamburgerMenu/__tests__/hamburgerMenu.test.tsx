@@ -1,6 +1,12 @@
 import React from 'react'
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+
+import {
+  renderWithProviders,
+  signInAdminUser,
+  signInBasicUser,
+} from '@/test/helpers'
 
 import { HamburgerMenu } from '..'
 
@@ -50,5 +56,26 @@ describe('<HamburgerMenu />', () => {
       await new Promise((resolve) => setTimeout(() => resolve(''), 100))
     })
     expect(screen.getByTestId('hamburger-menu')).toBeVisible()
+  })
+
+  describe('admin link', () => {
+    it('should render an admin link for an admin user', async () => {
+      await signInAdminUser()
+      renderWithProviders(<HamburgerMenu activeLinkTitle="Home" />)
+      fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
+      await waitFor(() =>
+        expect(screen.getByTestId('mobile-admin-link')).toBeVisible(),
+      )
+    })
+
+    it('should not render an admin link for a basic user', async () => {
+      await signInBasicUser()
+      renderWithProviders(<HamburgerMenu activeLinkTitle="Home" />)
+      fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
+      await waitFor(
+        () => new Promise((resolve) => setTimeout(() => resolve(''), 3)),
+      )
+      expect(screen.queryByTestId('mobile-admin-link')).not.toBeInTheDocument()
+    })
   })
 })

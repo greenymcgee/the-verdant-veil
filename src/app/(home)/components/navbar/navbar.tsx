@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import { Logo } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
+import { useCurrentUser } from '@/context'
 import { useScrollPosition } from '@/hooks'
 
 import { HamburgerMenu } from '../hamburgerMenu'
@@ -16,12 +17,13 @@ interface NavbarProps {
 
 export function Navbar({ activeLinkTitle }: NavbarProps) {
   const { y } = useScrollPosition()
+  const { user } = useCurrentUser()
 
   return (
     <nav
       className={clsx(
-        'transition-main-nav fixed w-full py-6 duration-300 ease-linear',
-        { 'shadow-nav-light bg-white text-neutral-900': y },
+        'fixed w-full py-6 transition-main-nav duration-300 ease-linear',
+        { 'bg-white text-neutral-900 shadow-nav-light': y },
       )}
       data-testid="main-nav"
     >
@@ -38,6 +40,17 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
         </Link>
         <HamburgerMenu activeLinkTitle={activeLinkTitle} />
         <ul className="hidden gap-6 sm:flex">
+          {user.admin ? (
+            <li>
+              <MainNavLink
+                activeLinkTitle={activeLinkTitle}
+                data-testid="desktop-admin-link"
+                href={ROUTES.adminGames}
+                title="Admin"
+                type="desktop"
+              />
+            </li>
+          ) : null}
           <li>
             <MainNavLink
               activeLinkTitle={activeLinkTitle}

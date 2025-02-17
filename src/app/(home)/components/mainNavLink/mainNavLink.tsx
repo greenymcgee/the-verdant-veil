@@ -9,7 +9,7 @@ interface MainNavLinkProps {
   activeLinkTitle: 'Home' | 'About'
   href: PropsOf<typeof Link>['href']
   onClick?: VoidFunction
-  title: 'Home' | 'About' | 'Login'
+  title: 'Home' | 'Admin' | 'About' | 'Login'
   type: 'desktop' | 'mobile'
 }
 
