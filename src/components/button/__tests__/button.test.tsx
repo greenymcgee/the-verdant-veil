@@ -96,13 +96,23 @@ describe('<Button />', () => {
 
   describe('loading', () => {
     it('should render a spinner', () => {
-      render(<Button loading text="Text" variant="outline" />)
+      render(<Button loading text="Text" />)
       expect(screen.getByRole('alert')).toBeVisible()
     })
 
     it('should set the aria-disabled attribute', () => {
-      render(<Button loading text="Text" variant="outline" />)
+      render(<Button loading text="Text" />)
       expect(screen.getByText('Text')).toHaveAttribute('aria-disabled', 'true')
+    })
+
+    it('should add an aria-label', () => {
+      render(<Button loading text="Text" />)
+      expect(screen.getByText('Text')).toHaveAttribute('aria-label', 'Loading')
+    })
+
+    it('should add a cursor-not-allowed className', () => {
+      render(<Button loading text="Text" />)
+      expect(screen.getByText('Text')).toHaveClass('cursor-not-allowed')
     })
   })
 })
