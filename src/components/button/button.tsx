@@ -38,12 +38,13 @@ export function Button({
   return (
     <button
       aria-disabled={loading}
+      aria-label={loading ? 'Loading' : undefined}
       className={twMerge(
         clsx(
           BUTTON_THEMES[variant][theme],
           BUTTON_SIZES[size],
           DEFAULT_BUTTON_CLASS_NAMES,
-          { 'pointer-events-none opacity-70': loading },
+          { 'pointer-events-none cursor-not-allowed opacity-70': loading },
         ),
         className,
       )}

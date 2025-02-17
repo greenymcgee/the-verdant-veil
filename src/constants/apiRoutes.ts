@@ -3,5 +3,6 @@ export const API_ROUTES = {
   game: (slug: Game['slug']) => `/games/${slug}`,
   games: '/games',
   login: '/login',
+  logout: '/logout',
   resetPassword: '/reset_password',
 } as const

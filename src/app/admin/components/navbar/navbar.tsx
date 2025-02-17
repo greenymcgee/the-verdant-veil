@@ -7,6 +7,7 @@ import { Button, HamburgerMenu, Logo } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
 import { toggleSidebarDialog } from '@/utils'
 
+import { LogoutForm } from '../logoutForm'
 import { NavbarLinks } from '../navbarLinks'
 
 export function Navbar() {
@@ -17,7 +18,7 @@ export function Navbar() {
     <nav
       className={clsx(
         'fixed w-full border-b-[1px] border-neutral-300 bg-white py-6',
-        'sm:static sm:h-[100vh] sm:w-auto sm:border-b-0',
+        'sm:static sm:flex sm:h-[100vh] sm:w-auto sm:flex-col sm:justify-between sm:border-b-0',
       )}
     >
       <div className="flex items-center justify-between px-4 sm:flex-col">
@@ -37,9 +38,16 @@ export function Navbar() {
               className="flex flex-col gap-3"
               onLinkClick={closeHamburgerMenu}
             />
-            <Button onClick={closeHamburgerMenu} theme="neutral">
-              Close
-            </Button>
+            <div className="flex flex-col gap-2">
+              <LogoutForm testId="mobile-logout-button" />
+              <Button
+                className="block w-full text-center"
+                onClick={closeHamburgerMenu}
+                theme="neutral"
+              >
+                Close
+              </Button>
+            </div>
           </div>
         </HamburgerMenu>
         <NavbarLinks
@@ -47,6 +55,10 @@ export function Navbar() {
           data-testid="desktop-navigation"
         />
       </div>
+      <LogoutForm
+        className="hidden px-4 sm:block"
+        testId="desktop-logout-button"
+      />
     </nav>
   )
 }
