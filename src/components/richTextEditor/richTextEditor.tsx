@@ -50,7 +50,7 @@ export function RichTextEditor({
   return (
     <div
       className={clsx(
-        'space-y-4 rounded border border-neutral-600 p-4',
+        'space-y-4 rounded-sm border border-neutral-600 p-4',
         className,
       )}
     >
@@ -99,7 +99,7 @@ export function RichTextEditor({
       <hr />
       <EditorContent
         className={clsx(
-          'rounded border border-neutral-400 text-neutral-700 transition-shadow hover:shadow-input-hover',
+          'rounded-sm border border-neutral-400 text-neutral-700 transition-shadow hover:shadow-input-hover',
           TRANSITION_STYLES.inputHover,
         )}
         data-testid="rich-text-editor"

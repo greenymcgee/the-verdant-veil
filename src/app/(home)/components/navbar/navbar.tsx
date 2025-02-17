@@ -22,8 +22,8 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
   return (
     <nav
       className={clsx(
-        'fixed w-full py-6 transition-main-nav duration-300 ease-linear',
-        { 'bg-white text-neutral-900 shadow-nav-light': y },
+        'transition-main-nav fixed w-full py-6 text-white duration-300 ease-linear',
+        { 'shadow-nav-light bg-white text-neutral-900': y },
       )}
       data-testid="main-nav"
     >

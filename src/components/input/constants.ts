@@ -26,7 +26,7 @@ export const BASE_INPUT_CLASSNAMES = clsx(
 )
 
 const TEXT_INPUT_CLASS_NAMES =
-  'rounded border border-neutral-400 px-2 py-2 text-neutral-700'
+  'rounded-sm border border-neutral-400 px-2 py-2 text-neutral-700'
 
 export const INPUT_CLASS_NAMES_MAP: Record<InputTypes, string> = {
   checkbox: '',

@@ -17,7 +17,7 @@ const BASE_CLASSNAME = clsx(
   TRANSITION_STYLES.inputHover,
   'relative font-bold transition-colors',
   'after:absolute after:-bottom-2 after:left-0 after:h-1 after:w-0',
-  'after:rounded after:transition-width after:content-[""] hover:after:w-[75%]',
+  'after:rounded-sm after:transition-width after:content-[""] hover:after:w-[75%]',
 )
 
 export function MainNavLink({
