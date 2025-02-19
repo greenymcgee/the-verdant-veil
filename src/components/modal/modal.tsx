@@ -18,7 +18,8 @@ import {
 } from 'body-scroll-lock'
 import clsx from 'clsx'
 
-import { toggleModalDialog } from '@/utils'
+import { usePageContext } from '@/context'
+import { useModalDialogToggle } from '@/hooks'
 
 interface ModalProps extends PropsWithChildren {
   Toggle(props: HTMLAttributes<HTMLButtonElement>): ReactElement
@@ -27,9 +28,10 @@ interface ModalProps extends PropsWithChildren {
 }
 
 export function Modal({ Toggle, children, id, ref }: ModalProps) {
+  const { isIOSDevice } = usePageContext()
   const [expanded, setExpanded] = useState(false)
   const toggleExpanded = () => setExpanded((prevExpanded) => !prevExpanded)
-  const toggleModal = useCallback(() => toggleModalDialog(ref.current), [ref])
+  const toggleModal = useModalDialogToggle(ref)
 
   const toggleBodyScrollLock = useCallback(() => {
     const dialog = ref.current as HTMLDialogElement
@@ -68,8 +70,12 @@ export function Modal({ Toggle, children, id, ref }: ModalProps) {
       />
       <dialog
         className={clsx(
-          'top-[50%] left-[50%] -translate-x-[50%] rounded-lg transition-transform duration-300 ease-out',
+          'top-[50%] left-[50%] -translate-x-[50%] rounded-lg duration-300 ease-out',
           'backdrop:bg-neutral-900/30',
+          {
+            '-translate-y-[50%]': isIOSDevice,
+            'transition-transform': !isIOSDevice,
+          },
         )}
         data-testid={id}
         id={id}
