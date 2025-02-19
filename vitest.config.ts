@@ -35,7 +35,7 @@ export default defineConfig({
     },
     globals: true,
     environment: 'jsdom',
-    setupFiles: './vitest.setup.ts',
+    setupFiles: ['./vitest.setup.ts', 'jest-useragent-mock'],
   },
   resolve: {
     alias: {

@@ -10,7 +10,7 @@ interface Props {
 export function Breadcrumbs({ breadcrumbs }: Props) {
   return (
     <nav className="mb-4">
-      <ul className="flex gap-1">
+      <ul className="flex max-w-full gap-1 overflow-x-auto whitespace-nowrap">
         {breadcrumbs.map(({ name, route }, index) => (
           <li key={route}>
             <LinkTo

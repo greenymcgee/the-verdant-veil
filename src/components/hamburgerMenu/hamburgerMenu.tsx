@@ -7,8 +7,15 @@ import React, {
   HTMLAttributes,
   RefObject,
   SyntheticEvent,
+  useCallback,
+  useEffect,
   useState,
 } from 'react'
+import {
+  clearAllBodyScrollLocks,
+  disableBodyScroll,
+  enableBodyScroll,
+} from 'body-scroll-lock'
 import clsx from 'clsx'
 
 import { toggleSidebarDialog } from '@/utils'
@@ -28,10 +35,23 @@ export function HamburgerMenu({
   const toggleExpanded = () => setExpanded((prevExpanded) => !prevExpanded)
   const toggleHamburgerMenu = () => toggleSidebarDialog(ref.current)
 
-  const openHamburgerMenu = () => {
+  const toggleBodyScrollLock = useCallback(() => {
+    const dialog = ref.current as HTMLDialogElement
+    if (expanded) return enableBodyScroll(dialog)
+
+    disableBodyScroll(dialog)
+  }, [expanded, ref])
+
+  const openDialog = () => {
+    toggleBodyScrollLock()
     toggleExpanded()
     toggleHamburgerMenu()
   }
+
+  const toggleLeftoverStates = useCallback(() => {
+    toggleExpanded()
+    toggleBodyScrollLock()
+  }, [toggleBodyScrollLock])
 
   const handleOutsideContentClick = (
     event: SyntheticEvent<HTMLDialogElement>,
@@ -41,13 +61,15 @@ export function HamburgerMenu({
     toggleHamburgerMenu()
   }
 
+  useEffect(() => () => clearAllBodyScrollLocks(), [])
+
   return (
     <div {...options}>
       <button
         aria-controls="hamburger-menu"
         aria-expanded={expanded}
         aria-label="Open Hamburger Menu"
-        onClick={openHamburgerMenu}
+        onClick={openDialog}
         type="button"
       >
         <Hamburger className="text-[2.5rem]" />
@@ -61,7 +83,7 @@ export function HamburgerMenu({
         data-testid="hamburger-menu"
         id="hamburger-menu"
         onClick={handleOutsideContentClick}
-        onClose={toggleExpanded}
+        onClose={toggleLeftoverStates}
         ref={ref}
       >
         <div className="min-h-[inherit]">{children}</div>

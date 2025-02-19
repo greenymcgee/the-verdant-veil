@@ -6,8 +6,10 @@ import { RouteKey } from '@/constants'
 
 export const PageContext = createContext<{
   activeNavbarLink: RouteKey
+  isIOSDevice: boolean
   setActiveNavbarLink: Dispatch<SetStateAction<RouteKey>>
 }>({
   activeNavbarLink: '' as RouteKey,
+  isIOSDevice: false,
   setActiveNavbarLink: noop,
 })

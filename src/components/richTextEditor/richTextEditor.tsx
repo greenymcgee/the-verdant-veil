@@ -54,7 +54,10 @@ export function RichTextEditor({
         className,
       )}
     >
-      <div className="flex gap-2" data-testid="rich-text-menu">
+      <div
+        className="flex max-w-full gap-2 overflow-x-auto"
+        data-testid="rich-text-menu"
+      >
         <RichTextEditorControl
           active={editorState.isH2Active}
           onClick={handleHeadingClicked(editor, 2)}
@@ -99,7 +102,7 @@ export function RichTextEditor({
       <hr />
       <EditorContent
         className={clsx(
-          'rounded-sm border border-neutral-400 text-neutral-700 transition-shadow hover:shadow-input-hover',
+          'hover:shadow-input-hover rounded-sm border border-neutral-400 text-neutral-700 transition-shadow',
           TRANSITION_STYLES.inputHover,
         )}
         data-testid="rich-text-editor"
