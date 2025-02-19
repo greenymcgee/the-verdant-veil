@@ -1,8 +1,8 @@
 import React from 'react'
 import { screen } from '@testing-library/dom'
+import { render } from '@testing-library/react'
 
 import { ROUTES } from '@/constants'
-import { renderWithProviders } from '@/test/helpers'
 
 import { Breadcrumbs } from '..'
 
@@ -13,7 +13,7 @@ const BREADCRUMBS: Breadcrumb[] = [
 
 describe('<Breadcrumbs', () => {
   it.each(BREADCRUMBS)('should render breadcrumb', (breadcrumb) => {
-    renderWithProviders(<Breadcrumbs breadcrumbs={BREADCRUMBS} />)
+    render(<Breadcrumbs breadcrumbs={BREADCRUMBS} />)
     expect(screen.getByText(breadcrumb.name)).toBeVisible()
   })
 })

@@ -1,8 +1,6 @@
 import React, { createRef } from 'react'
-import { act, fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-
-import { renderWithProviders } from '@/test/helpers'
 
 import { HamburgerMenu } from '..'
 
@@ -11,7 +9,7 @@ const ref = createRef<HTMLDialogElement>()
 describe('<HamburgerMenu />', () => {
   describe('expanded', () => {
     it('should be true when the menu opens', () => {
-      renderWithProviders(
+      render(
         <HamburgerMenu ref={ref}>
           <nav>Hamburger</nav>
         </HamburgerMenu>,
@@ -27,7 +25,7 @@ describe('<HamburgerMenu />', () => {
 
   describe('close on outside click', () => {
     it('should close on outside click', async () => {
-      renderWithProviders(
+      render(
         <HamburgerMenu ref={ref}>
           <nav>Hamburger</nav>
         </HamburgerMenu>,
@@ -45,7 +43,7 @@ describe('<HamburgerMenu />', () => {
     })
 
     it('should not close on inside click', async () => {
-      renderWithProviders(
+      render(
         <HamburgerMenu ref={ref}>
           <nav>Hamburger</nav>
         </HamburgerMenu>,

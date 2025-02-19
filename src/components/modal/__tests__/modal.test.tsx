@@ -1,5 +1,5 @@
 import React, { createRef } from 'react'
-import { act, fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { renderWithProviders } from '@/test/helpers'
@@ -22,7 +22,7 @@ const PROPS: PropsOf<typeof Modal> = {
 describe('<Modal />', () => {
   describe('expanded', () => {
     it('should be true when the menu opens', () => {
-      renderWithProviders(<Modal {...PROPS} />)
+      render(<Modal {...PROPS} />)
       fireEvent.click(screen.getByText('Toggle'))
       expect(screen.getByText('Toggle').getAttribute('aria-expanded')).toEqual(
         'true',
