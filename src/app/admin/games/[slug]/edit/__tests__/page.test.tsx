@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/dom'
+import { render } from '@testing-library/react'
 
 import { ROUTES } from '@/constants'
 import { SUPER_METROID } from '@/test/fixtures'
-import { renderWithProviders } from '@/test/helpers'
 import { gamesServer, mockGameRequestFailure } from '@/test/servers'
 
 import EditGamePage from '../page'
@@ -19,7 +19,7 @@ describe('<EditGamePage />', () => {
   describe('success', () => {
     it('should render the edit game form', async () => {
       const jsx = await EditGamePage(PROPS)
-      renderWithProviders(jsx)
+      render(jsx)
       expect(screen.getByTestId('edit-game-form')).toBeVisible()
     })
   })
@@ -28,14 +28,14 @@ describe('<EditGamePage />', () => {
     it('should render a message', async () => {
       const { message } = mockGameRequestFailure()
       const jsx = await EditGamePage(PROPS)
-      renderWithProviders(jsx)
+      render(jsx)
       expect(screen.getByText(message)).toBeVisible()
     })
 
     it('should render a link back to games', async () => {
       mockGameRequestFailure()
       const jsx = await EditGamePage(PROPS)
-      renderWithProviders(jsx)
+      render(jsx)
       expect(
         screen.getByTestId('back-to-games-link').getAttribute('href'),
       ).toEqual(ROUTES.adminGames)
