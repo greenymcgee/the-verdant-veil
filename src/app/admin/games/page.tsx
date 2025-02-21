@@ -6,11 +6,10 @@ import { Card, Searchbar } from '@/components'
 import { API_ROUTES } from '@/constants'
 
 import { AdminErrorCard } from '../components'
-import { Games } from './components'
-import { NewGameModal } from './components/newGameModal'
+import { Games, NewGameModal } from './components'
 
 export default async function AdminGamesPage() {
-  const { error, games, message } = await getGames()
+  const { error, games, message, totalPages } = await getGames()
 
   if (error) return <AdminErrorCard message={message} />
 
@@ -24,7 +23,7 @@ export default async function AdminGamesPage() {
           <NewGameModal />
         </header>
         <Searchbar className="mb-1 max-w-60" />
-        <Games />
+        <Games fallbackTotalPages={totalPages} />
       </Card>
     </SWRConfig>
   )

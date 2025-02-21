@@ -40,4 +40,10 @@ describe('<AdminGamesPage />', () => {
     render(jsx)
     expect(screen.getByTestId('admin-error-card')).toBeVisible()
   })
+
+  it('should render pagination', async () => {
+    const jsx = await AdminGamesPage()
+    render(jsx)
+    expect(screen.getByTestId('admin-games-pagination')).toBeVisible()
+  })
 })

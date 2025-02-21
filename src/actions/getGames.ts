@@ -15,6 +15,6 @@ export async function getGames(): Promise<GetGames> {
   } catch (error) {
     const { message } = new ErrorFacade(error)
     logger.error(error, message)
-    return { error, games: [], message }
+    return { error, games: [], message, totalPages: 0 }
   }
 }

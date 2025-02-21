@@ -1,6 +1,8 @@
 import { HTMLAttributes, JSX } from 'react'
 
 import {
+  ChevronDoubleLeft,
+  ChevronDoubleRight,
   ChevronLeft,
   EditIcon,
   FilterAlt,
@@ -20,6 +22,8 @@ export const ICON_TYPE_MAP: Record<
   IconType,
   (props: HTMLAttributes<HTMLOrSVGElement>) => JSX.Element
 > = {
+  'chevron-double-left': ChevronDoubleLeft,
+  'chevron-double-right': ChevronDoubleRight,
   'chevron-left': ChevronLeft,
   edit: EditIcon,
   'filter-alt': FilterAlt,
