@@ -10,6 +10,7 @@
  */
 interface GamesIndexJson {
   games: GameWithoutResources[]
+  totalPages: number
 }
 /**
  * A version of a Game that doesn't include relational resources.

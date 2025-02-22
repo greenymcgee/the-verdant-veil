@@ -1,7 +1,12 @@
 import { waitFor } from '@testing-library/react'
 import { http, HttpResponse } from 'msw'
+import mockRouter from 'next-router-mock'
 
-import { GET_GAMES_RESPONSE_DATA } from '@/test/fixtures'
+import { ROUTES } from '@/constants'
+import {
+  GET_GAMES_RESPONSE_DATA,
+  GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA,
+} from '@/test/fixtures'
 import { getApiUrl, renderHookWithProviders, toastMock } from '@/test/helpers'
 import { gamesServer } from '@/test/servers'
 
@@ -13,6 +18,7 @@ afterEach(() => {
   gamesServer.resetHandlers()
   vi.clearAllMocks()
 })
+beforeEach(() => mockRouter.push(ROUTES.adminGames))
 
 describe('useGetGamesQuery', () => {
   describe('success', () => {
@@ -20,6 +26,15 @@ describe('useGetGamesQuery', () => {
       const { result } = renderHookWithProviders(() => useGetGamesQuery())
       await waitFor(() => expect(result.current.isLoading).toEqual(false))
       expect(result.current.games).toEqual(GET_GAMES_RESPONSE_DATA.games)
+    })
+
+    it('should use search params', async () => {
+      mockRouter.push(`${ROUTES.adminGames}?page=1`)
+      const { result } = renderHookWithProviders(() => useGetGamesQuery())
+      await waitFor(() => expect(result.current.isLoading).toEqual(false))
+      expect(result.current.games).toEqual(
+        GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA.games,
+      )
     })
   })
 

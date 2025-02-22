@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import React from 'react'
 import { createDynamicRouteParser } from 'next-router-mock/dynamic-routes'
 
 import '@testing-library/jest-dom'
@@ -38,9 +39,37 @@ vi.mock('next/navigation', async () => {
     useParams: () => mockRouter.query,
     usePathname: () => mockRouter.pathname,
     useRouter: mockRouter.useRouter,
-    useSearchParams: () =>
-      new URLSearchParams(mockRouter.query as Record<string, string>),
+    useSearchParams: vi
+      .fn()
+      .mockImplementation(
+        () => new URLSearchParams(mockRouter.query as Record<string, string>),
+      ),
   }
+})
+
+// https://github.com/vercel/next.js/discussions/60125#discussioncomment-9653211
+vi.mock('next/link', () => {
+  interface Props {
+    children: React.ReactNode
+    href: string
+    onClick: () => void
+  }
+  function mockLink({ children, href, onClick, ...options }: Props) {
+    return (
+      <a
+        href={href}
+        onClick={(event) => {
+          event.preventDefault()
+          onClick()
+        }}
+        {...options}
+      >
+        {children}
+      </a>
+    )
+  }
+  mockLink.displayName = 'Link'
+  return { default: mockLink }
 })
 
 // https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom

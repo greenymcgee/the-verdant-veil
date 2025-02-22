@@ -4,15 +4,21 @@ import { setupServer } from 'msw/node'
 import {
   DARK_SOULS,
   GET_GAMES_RESPONSE_DATA,
+  GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA,
   NEW_GAME,
   SUPER_METROID,
 } from '../fixtures'
 import { getApiUrl } from '../helpers'
 
 const handlers = [
-  http.get(getApiUrl('games'), () =>
-    HttpResponse.json(GET_GAMES_RESPONSE_DATA),
-  ),
+  http.get(getApiUrl('games'), (request) => {
+    const { page } = request.params
+
+    if (page)
+      return HttpResponse.json(GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA)
+
+    return HttpResponse.json(GET_GAMES_RESPONSE_DATA)
+  }),
   http.post(getApiUrl('games'), () => HttpResponse.json({ game: NEW_GAME })),
   http.get(getApiUrl('game', [SUPER_METROID.slug]), () =>
     HttpResponse.json({ game: SUPER_METROID }),

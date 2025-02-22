@@ -14,4 +14,12 @@ export const NEW_GAME = gameFactory.build({
 
 export const GAMES = [SUPER_METROID, DARK_SOULS]
 
-export const GET_GAMES_RESPONSE_DATA: GamesIndexJson = { games: GAMES }
+export const GET_GAMES_RESPONSE_DATA: GamesIndexJson = {
+  games: GAMES,
+  totalPages: 1,
+}
+
+export const GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA: GamesIndexJson = {
+  games: GAMES,
+  totalPages: 1,
+}

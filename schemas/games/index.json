@@ -7,8 +7,9 @@
     "games": {
       "items": { "$ref": "file:/game_without_resources.json#" },
       "type": "array"
-    }
+    },
+    "totalPages": { "type": "integer" }
   },
-  "required": ["games"],
+  "required": ["games", "totalPages"],
   "type": "object"
 }

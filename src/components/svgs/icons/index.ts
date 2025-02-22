@@ -1,3 +1,5 @@
+export * from './chevronDoubleLeft'
+export * from './chevronDoubleRight'
 export * from './chevronLeft'
 export * from './editIcon'
 export * from './filterAlt'
