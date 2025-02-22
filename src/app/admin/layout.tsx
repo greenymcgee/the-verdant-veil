@@ -44,8 +44,13 @@ export default function AdminLayout({
         <div className="relative sm:flex">
           <Providers>
             <Navbar />
-            <main className="bg-primary-50 min-h-[100vh] w-full">
-              <div className="container pt-32 pb-8 sm:pt-8">{children}</div>
+            {/* The 129px will need to change if navbar width ever changes. */}
+            {/* For now the hard coded width avoids lots of unnecessary JS to measure navbar width */}
+            <main
+              className="bg-primary-50 min-h-[100vh] w-full md:ml-[129px]"
+              data-testid="admin-main"
+            >
+              <div className="container pt-32 pb-8 md:pt-8">{children}</div>
             </main>
           </Providers>
         </div>
