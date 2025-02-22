@@ -18,21 +18,21 @@ export function Navbar() {
     <nav
       className={clsx(
         'fixed z-10 w-full border-b-[1px] border-neutral-300 bg-white py-6',
-        'sm:static sm:flex sm:h-[100vh] sm:w-auto sm:flex-col sm:justify-between sm:border-b-0',
+        'md:flex md:h-[100vh] md:w-auto md:flex-col md:justify-between md:border-b-0',
       )}
     >
-      <div className="flex items-center justify-between px-4 sm:flex-col">
+      <div className="flex items-center justify-between px-4 md:flex-col">
         <Link
           aria-label="Green Quest"
           className={clsx(
             TRANSITION_STYLES.inputHover,
-            'block text-[4rem] transition-opacity hover:opacity-80 sm:mb-8 sm:text-[5.5rem]',
+            'block text-[4rem] transition-opacity hover:opacity-80 md:mb-8 md:text-[5.5rem]',
           )}
           href={ROUTES.home}
         >
           <Logo />
         </Link>
-        <HamburgerMenu className="flex sm:hidden" ref={hamburgerMenuRef}>
+        <HamburgerMenu className="flex md:hidden" ref={hamburgerMenuRef}>
           <div className="flex min-h-[inherit] min-w-[156px] flex-col px-3 pt-6 pb-3">
             <div className="mb-6 flex flex-col gap-3 border-b-1 pb-6">
               <Button
@@ -52,12 +52,12 @@ export function Navbar() {
           </div>
         </HamburgerMenu>
         <NavbarLinks
-          className="hidden flex-col gap-3 sm:flex"
+          className="hidden flex-col gap-3 md:flex"
           data-testid="desktop-navigation"
         />
       </div>
       <LogoutForm
-        className="hidden px-4 sm:block"
+        className="hidden px-4 md:block"
         testId="desktop-logout-button"
       />
     </nav>
