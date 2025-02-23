@@ -2,7 +2,7 @@ import React from 'react'
 import { SWRConfig } from 'swr'
 
 import { getGames } from '@/actions'
-import { Card, Searchbar } from '@/components'
+import { Card } from '@/components'
 import { API_ROUTES } from '@/constants'
 
 import { AdminErrorCard } from '../components'
@@ -22,7 +22,6 @@ export default async function AdminGamesPage() {
           </h1>
           <NewGameModal />
         </header>
-        <Searchbar className="mb-1 max-w-60" />
         <Games fallbackTotalPages={totalPages} />
       </Card>
     </SWRConfig>

@@ -2,6 +2,7 @@ type IconType =
   | 'chevron-double-left'
   | 'chevron-double-right'
   | 'chevron-left'
+  | 'close'
   | 'edit'
   | 'filter-alt'
   | 'image'

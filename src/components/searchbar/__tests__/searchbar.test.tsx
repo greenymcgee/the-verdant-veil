@@ -1,5 +1,9 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import mockRouter from 'next-router-mock'
+
+import { ROUTES } from '@/constants'
 
 import { Searchbar } from '..'
 
@@ -30,6 +34,38 @@ describe('<Searchbar />', () => {
       expect(
         screen.getByLabelText('Search by Name').getAttribute('for'),
       ).toEqual('test')
+    })
+  })
+
+  describe('searching', () => {
+    it("should update the route with the user's query automatically after a period of time", async () => {
+      mockRouter.push(ROUTES.adminGames)
+      render(<Searchbar />)
+      userEvent.type(screen.getByTestId('searchbar'), 'query')
+      await waitFor(
+        () =>
+          expect(mockRouter.asPath).toBe(`${ROUTES.adminGames}?query=query`),
+        { timeout: 1500 },
+      )
+    })
+
+    it('should allow user to enter the search with the enter key', async () => {
+      mockRouter.push(ROUTES.adminGames)
+      render(<Searchbar />)
+      await userEvent.type(screen.getByTestId('searchbar'), 'query')
+      fireEvent.keyUp(screen.getByTestId('searchbar'), {
+        currentTarget: { value: 'query' },
+        key: 'Enter',
+      })
+      expect(mockRouter.asPath).toBe(`${ROUTES.adminGames}?query=query`)
+    })
+
+    it('should render a button to clear the search', async () => {
+      mockRouter.push(`${ROUTES.adminGames}?query=query`)
+      render(<Searchbar />)
+      userEvent.type(screen.getByTestId('searchbar'), 'query')
+      userEvent.click(screen.getByLabelText('Clear Search'))
+      await waitFor(() => expect(mockRouter.asPath).toBe(ROUTES.adminGames))
     })
   })
 })

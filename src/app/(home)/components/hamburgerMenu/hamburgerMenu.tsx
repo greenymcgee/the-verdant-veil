@@ -6,7 +6,7 @@
 import React, { SyntheticEvent, useCallback, useRef, useState } from 'react'
 import clsx from 'clsx'
 
-import { Hamburger } from '@/components'
+import { Hamburger, Icon } from '@/components'
 import { ROUTES } from '@/constants'
 import { useCurrentUser } from '@/context'
 
@@ -61,14 +61,14 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
         <div className="min-h-[inherit] pt-4">
           <button
             aria-label="Close Hamburger Menu"
-            className="mb-4 ml-auto mr-4 block text-heading-sm font-medium"
+            className="mr-4 mb-2 ml-auto block text-2xl font-medium"
             onClick={toggleHamburgerMenu}
             type="button"
           >
-            X
+            <Icon icon="close" />
           </button>
           <nav>
-            <ul className="flex flex-col gap-4 pl-4 pr-20 font-bold">
+            <ul className="flex flex-col gap-4 pr-20 pl-4 font-bold">
               {user.admin ? (
                 <li>
                   <MainNavLink
