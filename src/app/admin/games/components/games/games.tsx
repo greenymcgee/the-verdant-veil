@@ -30,7 +30,6 @@ export function Games({ fallbackTotalPages }: Props) {
           autoFocus: Boolean(query),
           defaultValue: query,
         }}
-        route="adminGames"
       />
       <div className="mb-4 overflow-x-auto">
         <table className="w-full min-w-124 text-left" data-testid="games">

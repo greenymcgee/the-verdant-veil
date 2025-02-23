@@ -1,4 +1,4 @@
-class QueryParamsFacade {
+class SearchQueryFacade {
   private params: URLSearchParams
 
   private query: string
@@ -32,7 +32,7 @@ class QueryParamsFacade {
   }
 }
 
-export const searchQueryFacade = new QueryParamsFacade(
+export const searchQueryFacade = new SearchQueryFacade(
   '',
   new URLSearchParams(),
 )
