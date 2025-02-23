@@ -3,7 +3,16 @@ import React from 'react'
 import clsx from 'clsx'
 import { useSearchParams } from 'next/navigation'
 
-import { LinkTo, PaginationWrapper, Searchbar, Spinner } from '@/components'
+import {
+  LinkTo,
+  PaginationWrapper,
+  Searchbar,
+  Spinner,
+  Table,
+  Td,
+  Th,
+  Tr,
+} from '@/components'
 import { ROUTES } from '@/constants'
 import { useGetGamesQuery } from '@/hooks/api'
 
@@ -31,48 +40,42 @@ export function Games({ fallbackTotalPages }: Props) {
           defaultValue: query,
         }}
       />
-      <div className="mb-4 overflow-x-auto">
-        <table className="w-full min-w-124 text-left" data-testid="games">
-          <thead className="font-semibold">
-            <tr className="border-primary-400 border-b-1 text-neutral-800">
-              <th className="px-4 py-3 whitespace-nowrap">Name</th>
-              <th className="px-4 py-3 whitespace-nowrap">IGDB ID</th>
-              <th className="px-4 py-3 whitespace-nowrap">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {games.map((game) => (
-              <tr
-                className="border-b-primary-400 border-b-1 last:border-b-0 even:bg-neutral-50/30"
-                key={game.id}
+      <Table
+        header={
+          <>
+            <Th text="Name" />
+            <Th text="IGDB ID" />
+            <Th text="Actions" />
+          </>
+        }
+      >
+        {games.map((game) => (
+          <Tr key={game.id}>
+            <Td>
+              <LinkTo
+                className={clsx({ skeleton })}
+                href={ROUTES.adminGame(game.slug)}
               >
-                <td className="px-4 py-3">
-                  <LinkTo
-                    className={clsx({ skeleton })}
-                    href={ROUTES.adminGame(game.slug)}
-                  >
-                    {game.name}
-                  </LinkTo>
-                </td>
-                <td className="px-4 py-3">
-                  <span className={clsx({ skeleton })}>{game.igdbId}</span>
-                </td>
-                <td className="px-4 py-3 whitespace-nowrap">
-                  <LinkTo
-                    aria-label={`Edit ${game.name}`}
-                    className={clsx('mr-4', { skeleton })}
-                    href={ROUTES.adminEditGame(game.slug)}
-                    leftIcon="edit"
-                    size="sm"
-                    variant="solid"
-                  />
-                  <DeleteGameForm game={game} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                {game.name}
+              </LinkTo>
+            </Td>
+            <Td>
+              <span className={clsx({ skeleton })}>{game.igdbId}</span>
+            </Td>
+            <Td>
+              <LinkTo
+                aria-label={`Edit ${game.name}`}
+                className={clsx('mr-4', { skeleton })}
+                href={ROUTES.adminEditGame(game.slug)}
+                leftIcon="edit"
+                size="sm"
+                variant="solid"
+              />
+              <DeleteGameForm game={game} />
+            </Td>
+          </Tr>
+        ))}
+      </Table>
       <PaginationWrapper
         dataTestId="admin-games-pagination"
         route="adminGames"
