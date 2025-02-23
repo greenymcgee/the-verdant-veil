@@ -1,10 +1,12 @@
-import React, { InputHTMLAttributes } from 'react'
+import React, { InputHTMLAttributes, RefObject } from 'react'
 import clsx from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 import { BASE_INPUT_CLASSNAMES, INPUT_CLASS_NAMES_MAP } from './constants'
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  ref?: RefObject<HTMLInputElement | null>
+}
 
 export function Input({
   className,

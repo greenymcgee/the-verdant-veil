@@ -1,8 +1,9 @@
 'use client'
 import React from 'react'
 import clsx from 'clsx'
+import { useSearchParams } from 'next/navigation'
 
-import { LinkTo, PaginationWrapper, Spinner } from '@/components'
+import { LinkTo, PaginationWrapper, Searchbar, Spinner } from '@/components'
 import { ROUTES } from '@/constants'
 import { useGetGamesQuery } from '@/hooks/api'
 
@@ -15,11 +16,22 @@ interface Props {
 export function Games({ fallbackTotalPages }: Props) {
   const { games, isLoading, isValidating, totalPages } = useGetGamesQuery()
   const skeleton = isLoading || isValidating
+  const searchParams = useSearchParams()
+  const query = searchParams.get('query') ?? undefined
 
   if (isLoading && !games.length) return <Spinner className="py-32" size="lg" />
 
   return (
     <>
+      <Searchbar
+        className="mb-1 max-w-60"
+        inputProps={{
+          autoComplete: 'off',
+          autoFocus: Boolean(query),
+          defaultValue: query,
+        }}
+        route="adminGames"
+      />
       <div className="mb-4 overflow-x-auto">
         <table className="w-full min-w-124 text-left" data-testid="games">
           <thead className="font-semibold">
