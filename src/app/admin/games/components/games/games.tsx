@@ -1,22 +1,11 @@
 'use client'
 import React from 'react'
-import clsx from 'clsx'
 import { useSearchParams } from 'next/navigation'
 
-import {
-  LinkTo,
-  PaginationWrapper,
-  Searchbar,
-  Spinner,
-  Table,
-  Td,
-  Th,
-  Tr,
-} from '@/components'
-import { ROUTES } from '@/constants'
+import { PaginationWrapper, Searchbar, Spinner } from '@/components'
 import { useGetGamesQuery } from '@/hooks/api'
 
-import { DeleteGameForm } from '../deleteGameForm'
+import { GamesTable } from '../gamesTable'
 
 interface Props {
   fallbackTotalPages: number
@@ -24,7 +13,6 @@ interface Props {
 
 export function Games({ fallbackTotalPages }: Props) {
   const { games, isLoading, isValidating, totalPages } = useGetGamesQuery()
-  const skeleton = isLoading || isValidating
   const searchParams = useSearchParams()
   const query = searchParams.get('query') ?? undefined
 
@@ -40,42 +28,11 @@ export function Games({ fallbackTotalPages }: Props) {
           defaultValue: query,
         }}
       />
-      <Table
-        header={
-          <>
-            <Th text="Name" />
-            <Th text="IGDB ID" />
-            <Th text="Actions" />
-          </>
-        }
-      >
-        {games.map((game) => (
-          <Tr key={game.id}>
-            <Td>
-              <LinkTo
-                className={clsx({ skeleton })}
-                href={ROUTES.adminGame(game.slug)}
-              >
-                {game.name}
-              </LinkTo>
-            </Td>
-            <Td>
-              <span className={clsx({ skeleton })}>{game.igdbId}</span>
-            </Td>
-            <Td>
-              <LinkTo
-                aria-label={`Edit ${game.name}`}
-                className={clsx('mr-4', { skeleton })}
-                href={ROUTES.adminEditGame(game.slug)}
-                leftIcon="edit"
-                size="sm"
-                variant="solid"
-              />
-              <DeleteGameForm game={game} />
-            </Td>
-          </Tr>
-        ))}
-      </Table>
+      <GamesTable
+        games={games}
+        query={query}
+        showingSkeletons={isLoading || isValidating}
+      />
       <PaginationWrapper
         dataTestId="admin-games-pagination"
         route="adminGames"

@@ -73,6 +73,17 @@
   --color-danger-800: #c81a2c;
   --color-danger-900: #c20114;
 
+  --color-warning-50: #FEF3E7;
+  --color-warning-100: #FDE8CF;
+  --color-warning-200: #FBDCB8;
+  --color-warning-300: #FAD1A0;
+  --color-warning-400: #F9C588;
+  --color-warning-500: #F8B970;
+  --color-warning-600: #F7AE58;
+  --color-warning-700: #F5A241;
+  --color-warning-800: #F49729;
+  --color-warning-900: #f38b11;
+
   --font-sans: 'Noto Sans JP', 'Noto Sans JP Fallback';
   --font-serif: 'Libre Baskerville', 'Libre Baskerville Fallback';
 
