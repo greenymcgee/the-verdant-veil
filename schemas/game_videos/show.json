@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game_videos/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/game_videos/:id payload",
+  "properties": { "gameVideo": { "$ref": "file:/game_video.json#" } },
+  "required": ["gameVideo"],
+  "type": "object"
+}

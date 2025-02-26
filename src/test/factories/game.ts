@@ -37,5 +37,6 @@ export const gameFactory = Factory.define<Game>(({ sequence }) => ({
   supporters: [],
   themes: [],
   updatedAt: currentTime,
+  videos: [],
   websites: [],
 }))

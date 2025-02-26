@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/game_video.json#",
+  "additionalProperties": false,
+  "description": "A GameVideo.",
+  "properties": {
+    "createdAt": { "type": "string" },
+    "id": { "type": "integer" },
+    "igdbId": { "type": "integer" },
+    "name": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "videoId": { "type": "string" }
+  },
+  "required": ["createdAt", "id", "igdbId", "name", "updatedAt", "videoId"],
+  "title": "GameVideo",
+  "type": "object"
+}

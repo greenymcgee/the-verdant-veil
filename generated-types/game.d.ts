@@ -47,6 +47,7 @@ interface Game {
   supporters: Company[]
   themes: Theme1[]
   websites: Website[]
+  videos: GameVideo[]
   updatedAt: string
 }
 /**
@@ -256,4 +257,15 @@ interface Website {
   trusted: boolean
   url: string
   updatedAt: string
+}
+/**
+ * A GameVideo.
+ */
+interface GameVideo {
+  createdAt: string
+  id: number
+  igdbId: number
+  name: string
+  updatedAt: string
+  videoId: string
 }
