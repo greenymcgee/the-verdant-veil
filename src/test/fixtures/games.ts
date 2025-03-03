@@ -4,11 +4,13 @@ export const SUPER_METROID = gameFactory.build()
 export const DARK_SOULS = gameFactory.build({
   name: 'Dark Souls',
   published: false,
+  publishedAt: null,
   slug: 'dark-souls',
 })
 export const NEW_GAME = gameFactory.build({
   name: 'Secret of Evermore',
   published: false,
+  publishedAt: null,
   slug: 'secret-of-evermore',
 })
 

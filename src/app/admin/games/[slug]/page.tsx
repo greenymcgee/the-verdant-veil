@@ -27,6 +27,14 @@ export default async function AdminGameShowPage({ params }: Props) {
         ]}
       />
       <Card>
+        <div
+          className="max-w-full"
+          style={{
+            backgroundImage: `url(${game.bannerImage.url})`,
+            height: 400,
+            width: 1200,
+          }}
+        />
         <header className="mb-6 flex items-center justify-between gap-6">
           <h1 data-testid="main-heading">{game.name}</h1>
           <LinkTo

@@ -5,6 +5,7 @@ const currentTime = new Date().toISOString()
 export const gameFactory = Factory.define<Game>(({ sequence }) => ({
   ageRatings: [],
   artworks: [],
+  bannerImage: { mobile: { url: null }, url: null },
   cover: {
     animated: false,
     createdAt: currentTime,
@@ -17,6 +18,7 @@ export const gameFactory = Factory.define<Game>(({ sequence }) => ({
   },
   createdAt: currentTime,
   developers: [],
+  featuredVideoId: '',
   franchises: [],
   gameEngines: [],
   gameModes: [],
@@ -28,6 +30,7 @@ export const gameFactory = Factory.define<Game>(({ sequence }) => ({
   playerPerspectives: [],
   porters: [],
   published: true,
+  publishedAt: '2025-02-27T06:54',
   publishers: [],
   rating: 5,
   releaseDates: [],

@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import mockRouter from 'next-router-mock'
 
@@ -42,11 +42,14 @@ describe('<Searchbar />', () => {
       mockRouter.push(ROUTES.adminGames)
       render(<Searchbar />)
       userEvent.type(screen.getByTestId('searchbar'), 'query')
-      await waitFor(
-        () =>
-          expect(mockRouter.asPath).toBe(`${ROUTES.adminGames}?query=query`),
-        { timeout: 1500 },
-      )
+      await act(async () => {
+        await waitFor(
+          () => {
+            expect(mockRouter.asPath).toBe(`${ROUTES.adminGames}?query=query`)
+          },
+          { timeout: 1500 },
+        )
+      })
     })
 
     it('should allow user to enter the search with the enter key', async () => {
