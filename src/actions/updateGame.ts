@@ -51,7 +51,7 @@ export async function updateGame({ slug }: GameState, formData: FormData) {
     facade.convertPublishedAtToUTCEquivalent()
     facade.deleteEmptyBannerImage()
     const { game } = validateUpdateData(facade.formData)
-    logger.info({ ...game, slug }, 'Updating game')
+    logger.info({ ...game, slug }, 'UPDATING GAME')
     await baseApi.patch(API_ROUTES.game(slug), facade.formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })

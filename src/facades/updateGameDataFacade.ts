@@ -1,5 +1,4 @@
 import { GAME_FORM_NAMES } from '@/constants'
-import { logger } from '@/modules'
 import { fromCurrentTimezone } from '@/utils'
 
 export class UpdateGameDataFacade {
@@ -23,16 +22,8 @@ export class UpdateGameDataFacade {
   }
 
   public deleteEmptyBannerImage() {
-    logger.info(
-      this.bannerImage,
-      'UpdateGameDataFacade:bannerImage before manipulation',
-    )
     if (this.bannerImage?.size) return
 
-    logger.info(
-      this.bannerImage,
-      'UpdateGameDataFacade:deleting bannerImage from formData',
-    )
     this.formData.delete(GAME_FORM_NAMES.BANNER_IMAGE)
   }
 
