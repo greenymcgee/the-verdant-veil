@@ -11,6 +11,12 @@
 interface Game {
   ageRatings: AgeRating[]
   artworks: Artwork[]
+  bannerImage: {
+    mobile: {
+      url: string | null
+    }
+    url: string | null
+  }
   cover: Cover
   createdAt: string
   developers: Company[]
@@ -18,6 +24,7 @@ interface Game {
    * Any errors that might be present after fulfilling a game create request.
    */
   errors?: unknown[]
+  featuredVideoId: string
   franchises: Franchise[]
   gameEngines: GameEngine[]
   gameModes: GameMode[]
@@ -32,6 +39,7 @@ interface Game {
   id: number
   igdbId: number
   name: string
+  publishedAt: string | null
   published: boolean
   /**
    * Richtext: the review of the game.

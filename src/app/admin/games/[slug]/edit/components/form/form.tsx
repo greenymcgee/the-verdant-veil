@@ -1,6 +1,12 @@
 'use client'
 
-import React, { useActionState, useCallback, useEffect, useState } from 'react'
+import React, {
+  useActionState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { EditorEvents } from '@tiptap/react'
 import toast from 'react-hot-toast'
 
@@ -13,6 +19,7 @@ import {
   Spinner,
 } from '@/components'
 import { API_ROUTES } from '@/constants'
+import { formatDatetimeInputValue, toCurrentTimezone } from '@/utils'
 
 interface Props {
   game: Game
@@ -35,6 +42,14 @@ export function EditGameForm({ game }: Props) {
     [],
   )
 
+  const publishedAt = useMemo(() => {
+    if (!state.publishedAt && !game.publishedAt) return ''
+
+    return formatDatetimeInputValue(
+      toCurrentTimezone(state.publishedAt ?? game.publishedAt),
+    )
+  }, [game.publishedAt, state.publishedAt])
+
   useEffect(() => {
     if (!state.message) return
 
@@ -45,12 +60,17 @@ export function EditGameForm({ game }: Props) {
 
   return (
     <form action={action} data-testid="edit-game-form">
+      <input
+        name="timezone"
+        type="hidden"
+        value={Intl.DateTimeFormat().resolvedOptions().timeZone}
+      />
       <div className="mb-8 grid grid-cols-3 gap-8">
         <InputGroup
           id="rating"
           inputProps={{
-            defaultValue: game.rating,
-            name: 'rating',
+            defaultValue: state.rating ?? game.rating,
+            name: 'game[rating]',
             step: '0.1',
             type: 'number',
           }}
@@ -58,18 +78,43 @@ export function EditGameForm({ game }: Props) {
         />
         <InputGroup
           id="published-at"
-          inputProps={{ name: 'published-at', type: 'datetime-local' }}
+          inputProps={{
+            defaultValue: publishedAt,
+            name: 'game[published_at]',
+            type: 'datetime-local',
+          }}
           label="Published At"
+        />
+        <InputGroup
+          id="banner-image"
+          inputProps={{
+            accept: 'image/png, image/jpg, image/jpeg, image/webp',
+            name: 'game[banner_image]',
+            type: 'file',
+          }}
+          label="Banner Image"
+        />
+        <InputGroup
+          id="featured-video-id"
+          inputProps={{
+            defaultValue: state.featuredVideoId ?? game.featuredVideoId,
+            name: 'game[featured_video_id]',
+          }}
+          label="Featured Video ID"
         />
       </div>
       <div>
-        <input name="review" type="hidden" value={review} />
+        <input
+          name="game[review]"
+          type="hidden"
+          value={state.review ?? review}
+        />
         <Label className="mb-2 block cursor-auto" htmlFor="review">
           Review
         </Label>
         <RichTextEditor
           className="mb-4"
-          content={state.review ?? game.review}
+          content={state.review ?? review}
           data-testid="review"
           id="review"
           onUpdate={handleReviewUpdated}

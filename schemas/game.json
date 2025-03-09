@@ -12,6 +12,20 @@
       "items": { "$ref": "file:/artwork.json#" },
       "type": "array"
     },
+    "bannerImage": {
+      "additionalProperties": false,
+      "properties": {
+        "mobile": {
+          "additionalProperties": false,
+          "properties": { "url": { "type": ["string", "null"] } },
+          "required": ["url"],
+          "type": "object"
+        },
+        "url": { "type": ["string", "null"] }
+      },
+      "required": ["url", "mobile"],
+      "type": "object"
+    },
     "cover": { "$ref": "file:/cover.json#" },
     "createdAt": {
       "type": "string"
@@ -24,6 +38,7 @@
       "description": "Any errors that might be present after fulfilling a game create request.",
       "type": "array"
     },
+    "featuredVideoId": { "type": "string" },
     "franchises": {
       "items": { "$ref": "file:/franchise.json#" },
       "type": "array"
@@ -64,7 +79,8 @@
       "type": "integer"
     },
     "name": { "type": "string" },
-    "published": { "type": "boolean"},
+    "publishedAt": { "type": ["string", "null"] },
+    "published": { "type": "boolean" },
     "review": {
       "description": "Richtext: the review of the game.",
       "type": "string"
@@ -103,9 +119,11 @@
   "required": [
     "ageRatings",
     "artworks",
+    "bannerImage",
     "cover",
     "createdAt",
     "developers",
+    "featuredVideoId",
     "franchises",
     "gameEngines",
     "gameModes",
@@ -116,6 +134,7 @@
     "platforms",
     "playerPerspectives",
     "porters",
+    "publishedAt",
     "published",
     "publishers",
     "rating",
