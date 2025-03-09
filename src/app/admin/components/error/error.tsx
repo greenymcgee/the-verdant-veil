@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import { Card, LinkTo } from '@/components'
+import { Card, Heading, LinkTo } from '@/components'
 import { ROUTES } from '@/constants'
 
 interface Props {
@@ -19,7 +19,7 @@ export function AdminErrorCard({ message }: Props) {
           leftIcon="chevron-left"
           text="Back to games"
         />
-        <h1 className="mb-4">Whoops! Something went wrong</h1>
+        <Heading className="mb-4">Whoops! Something went wrong</Heading>
         <hr className="mb-4" />
         <p className="text-danger-900">{message}</p>
       </header>

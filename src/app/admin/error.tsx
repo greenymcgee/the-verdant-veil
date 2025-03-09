@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react'
 
-import { Button, Card } from '@/components'
+import { Button, Card, Heading } from '@/components'
 import { logger } from '@/modules'
 
 interface Props {
@@ -18,7 +18,7 @@ export default function AdminErrorBoundary({ error, reset }: Props) {
   return (
     <Card>
       <header className="mb-8 pb-4">
-        <h1 className="mb-4">Whoops! Something went wrong</h1>
+        <Heading className="mb-4">Whoops! Something went wrong</Heading>
         <hr />
       </header>
       <Button onClick={reset} text="Try Again" />

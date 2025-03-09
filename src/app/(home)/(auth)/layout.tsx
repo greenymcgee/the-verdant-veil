@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 
-import { LinkTo, Logo } from '@/components'
+import { Heading, LinkTo, Logo } from '@/components'
 import { ROUTES } from '@/constants'
 
 export default function AuthLayout({ children }: PropsWithChildren) {
@@ -12,7 +12,7 @@ export default function AuthLayout({ children }: PropsWithChildren) {
             <LinkTo aria-label="Home" href={ROUTES.home} theme="neutral">
               <Logo className="mb-4 inline-block text-[10rem]" />
             </LinkTo>
-            <h1 className="mb-8 font-serif">Green Quest</h1>
+            <Heading className="mb-8 font-serif">Green Quest</Heading>
           </header>
           {children}
         </div>
