@@ -1,5 +1,6 @@
+import { fromZonedTime } from 'date-fns-tz'
+
 import { GAME_FORM_NAMES } from '@/constants'
-import { fromCurrentTimezone } from '@/utils/fromCurrentTimezone'
 
 import { UpdateGameDataFacade } from '..'
 
@@ -16,10 +17,11 @@ describe('UpdateGameDataFacade', () => {
       const date = '2025-02-27T06:54'
       const formData = new FormData()
       formData.set(GAME_FORM_NAMES.PUBLISHED_AT, date)
+      formData.set('timezone', 'America/Denver')
       const facade = new UpdateGameDataFacade(formData)
       facade.convertPublishedAtToUTCEquivalent()
       expect(facade.formData.get(GAME_FORM_NAMES.PUBLISHED_AT)).toEqual(
-        fromCurrentTimezone(date).toISOString(),
+        fromZonedTime(new Date(date), 'America/Denver').toISOString(),
       )
     })
   })

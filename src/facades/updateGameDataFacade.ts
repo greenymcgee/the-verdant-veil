@@ -1,5 +1,7 @@
+import { fromZonedTime } from 'date-fns-tz'
+
 import { GAME_FORM_NAMES } from '@/constants'
-import { fromCurrentTimezone } from '@/utils'
+import { logger } from '@/modules'
 
 export class UpdateGameDataFacade {
   public formData: FormData
@@ -15,10 +17,9 @@ export class UpdateGameDataFacade {
   public convertPublishedAtToUTCEquivalent() {
     if (!this.publishedAt) return
 
-    this.formData.set(
-      GAME_FORM_NAMES.PUBLISHED_AT,
-      fromCurrentTimezone(this.publishedAt as string).toISOString(),
-    )
+    logger.info(`PUBLISHED AT DATE: ${this.timezone}:${this.publishedAt}`)
+    logger.info(`UTC CONVERSION: ${this.convertedPublishedAt}`)
+    this.formData.set(GAME_FORM_NAMES.PUBLISHED_AT, this.convertedPublishedAt)
   }
 
   public deleteEmptyBannerImage() {
@@ -32,6 +33,17 @@ export class UpdateGameDataFacade {
   }
 
   private get publishedAt() {
-    return this.formData.get(GAME_FORM_NAMES.PUBLISHED_AT)
+    return this.formData.get(GAME_FORM_NAMES.PUBLISHED_AT) as string
+  }
+
+  private get timezone() {
+    return this.formData.get('timezone') as string
+  }
+
+  private get convertedPublishedAt() {
+    return fromZonedTime(
+      new Date(this.publishedAt),
+      this.timezone,
+    ).toISOString()
   }
 }

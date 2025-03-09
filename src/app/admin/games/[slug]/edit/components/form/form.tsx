@@ -60,6 +60,11 @@ export function EditGameForm({ game }: Props) {
 
   return (
     <form action={action} data-testid="edit-game-form">
+      <input
+        name="timezone"
+        type="hidden"
+        value={Intl.DateTimeFormat().resolvedOptions().timeZone}
+      />
       <div className="mb-8 grid grid-cols-3 gap-8">
         <InputGroup
           id="rating"
