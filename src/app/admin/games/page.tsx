@@ -17,9 +17,7 @@ export default async function AdminGamesPage() {
     <SWRConfig value={{ fallback: { [API_ROUTES.games]: { games } } }}>
       <Card>
         <header className="mb-8 flex items-center justify-between">
-          <Heading className="text-neutral-800" data-testid="main-heading">
-            Games
-          </Heading>
+          <Heading data-testid="main-heading">Games</Heading>
           <NewGameModal />
         </header>
         <Games fallbackTotalPages={totalPages} />

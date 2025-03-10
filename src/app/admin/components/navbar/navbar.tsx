@@ -26,7 +26,7 @@ export function Navbar() {
           aria-label="Green Quest"
           className={clsx(
             TRANSITION_STYLES.inputHover,
-            'block text-[4rem] transition-opacity hover:opacity-80 md:mb-8 md:text-[5.5rem]',
+            'block text-[4rem] text-neutral-900 transition-opacity hover:opacity-80 md:mb-8 md:text-[5.5rem]',
           )}
           href={ROUTES.home}
         >
