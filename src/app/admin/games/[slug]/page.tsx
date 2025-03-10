@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { getGame } from '@/actions'
-import { Card, HTMLParser, LinkTo } from '@/components'
+import { Card, Heading, HTMLParser, LinkTo } from '@/components'
 import { ROUTES } from '@/constants'
 
 import { AdminErrorCard, Breadcrumbs } from '../../components'
@@ -36,7 +36,7 @@ export default async function AdminGameShowPage({ params }: Props) {
           }}
         />
         <header className="mb-6 flex items-center justify-between gap-6">
-          <h1 data-testid="main-heading">{game.name}</h1>
+          <Heading data-testid="main-heading">{game.name}</Heading>
           <LinkTo
             href={ROUTES.adminEditGame(game.slug)}
             leftIcon="edit"

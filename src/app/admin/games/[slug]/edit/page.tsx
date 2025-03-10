@@ -2,7 +2,7 @@ import React from 'react'
 
 import { getGame } from '@/actions'
 import { AdminErrorCard, Breadcrumbs } from '@/app/admin/components'
-import { Card } from '@/components'
+import { Card, Heading } from '@/components'
 import { ROUTES } from '@/constants'
 
 import { EditGameForm, GameCreateToaster } from './components'
@@ -28,7 +28,7 @@ export default async function EditGamePage({ params }: Props) {
         ]}
       />
       <Card>
-        <h1 className="mb-6">{game.name}</h1>
+        <Heading className="mb-6">{game.name}</Heading>
         <EditGameForm game={game} />
       </Card>
     </>

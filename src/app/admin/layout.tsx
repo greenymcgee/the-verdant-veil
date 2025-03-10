@@ -36,7 +36,7 @@ export default function AdminLayout({
         className={clsx(
           notoSansJp.variable,
           libreBaskerville.variable,
-          'font-sans text-neutral-900',
+          'leading-body bg-white font-sans text-neutral-700',
         )}
       >
         <SpeedInsights />

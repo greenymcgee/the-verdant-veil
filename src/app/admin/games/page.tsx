@@ -2,7 +2,7 @@ import React from 'react'
 import { SWRConfig } from 'swr'
 
 import { getGames } from '@/actions'
-import { Card } from '@/components'
+import { Card, Heading } from '@/components'
 import { API_ROUTES } from '@/constants'
 
 import { AdminErrorCard } from '../components'
@@ -17,9 +17,9 @@ export default async function AdminGamesPage() {
     <SWRConfig value={{ fallback: { [API_ROUTES.games]: { games } } }}>
       <Card>
         <header className="mb-8 flex items-center justify-between">
-          <h1 className="text-neutral-800" data-testid="main-heading">
+          <Heading className="text-neutral-800" data-testid="main-heading">
             Games
-          </h1>
+          </Heading>
           <NewGameModal />
         </header>
         <Games fallbackTotalPages={totalPages} />

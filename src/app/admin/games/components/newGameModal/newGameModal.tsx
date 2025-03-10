@@ -2,7 +2,7 @@
 import React, { useActionState, useRef } from 'react'
 
 import { createGame } from '@/actions'
-import { Banner, Button, Icon, InputGroup, Modal } from '@/components'
+import { Banner, Button, Heading, Icon, InputGroup, Modal } from '@/components'
 import { useModalDialogToggle } from '@/hooks'
 
 import { NewGameModalToggle } from './toggle'
@@ -16,13 +16,16 @@ export function NewGameModal() {
     <Modal Toggle={NewGameModalToggle} id="new-game" ref={ref}>
       <form action={action} className="min-w-[50vw]">
         <header className="bg-primary-50 border-b border-neutral-100 p-4">
-          <h2 className="text-heading-md flex items-center gap-1 font-semibold text-neutral-700">
+          <Heading
+            as="h2"
+            className="text-heading-md flex items-center gap-1 font-semibold text-neutral-700"
+          >
             New Game{' '}
             <Icon
               className="text-heading-lg text-primary-900 mt-[5px]"
               icon="videogame"
             />
-          </h2>
+          </Heading>
         </header>
         <div className="p-4">
           {state.message && !creating ? (

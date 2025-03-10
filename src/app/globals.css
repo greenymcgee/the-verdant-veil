@@ -73,15 +73,15 @@
   --color-danger-800: #c81a2c;
   --color-danger-900: #c20114;
 
-  --color-warning-50: #FEF3E7;
-  --color-warning-100: #FDE8CF;
-  --color-warning-200: #FBDCB8;
-  --color-warning-300: #FAD1A0;
-  --color-warning-400: #F9C588;
-  --color-warning-500: #F8B970;
-  --color-warning-600: #F7AE58;
-  --color-warning-700: #F5A241;
-  --color-warning-800: #F49729;
+  --color-warning-50: #fef3e7;
+  --color-warning-100: #fde8cf;
+  --color-warning-200: #fbdcb8;
+  --color-warning-300: #fad1a0;
+  --color-warning-400: #f9c588;
+  --color-warning-500: #f8b970;
+  --color-warning-600: #f7ae58;
+  --color-warning-700: #f5a241;
+  --color-warning-800: #f49729;
   --color-warning-900: #f38b11;
 
   --font-sans: 'Noto Sans JP', 'Noto Sans JP Fallback';
@@ -145,50 +145,8 @@
   }
 } */
 
-body {
-  @apply bg-white font-sans text-neutral-700;
-}
-
 dialog {
   @apply bg-white font-sans text-neutral-700;
-}
-
-html,
-:host {
-  @apply leading-body;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply leading-heading font-bold;
-}
-
-h1 {
-  @apply text-heading-lg md:text-heading-xl;
-}
-
-h2 {
-  @apply text-heading-md md:text-heading-lg;
-}
-
-h3 {
-  @apply text-heading-sm md:text-heading-md;
-}
-
-h4 {
-  @apply text-heading-xs md:text-heading-sm;
-}
-
-h5 {
-  @apply text-heading-xs;
-}
-
-h6 {
-  @apply text-heading-xs;
 }
 
 .ProseMirror {
