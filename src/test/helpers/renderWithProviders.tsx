@@ -1,10 +1,14 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import { render } from '@testing-library/react'
+import { clear, mockUserAgent } from 'jest-useragent-mock'
 import { SWRConfig } from 'swr'
 
 import { Providers } from '@/context'
 
 type Options = SecondParameterOf<typeof render> & PropsOf<typeof Providers>
+
+beforeEach(() => mockUserAgent('iPhone'))
+afterEach(() => clear())
 
 export function renderWithProviders(
   jsx: ReactElement,

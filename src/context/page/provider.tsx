@@ -1,34 +1,40 @@
 'use client'
 import React, { PropsWithChildren, useEffect, useState } from 'react'
+import { parse } from 'bowser'
 
 import { RouteKey } from '@/constants'
 
-import { PageContext } from './context'
+import { PageContext, PageContextType } from './context'
 
 interface PageContextProviderProps {
   initialActiveLink?: RouteKey
-  initialIsIOSDevice?: boolean
 }
 
 export function PageContextProvider({
   children,
   initialActiveLink = '' as RouteKey,
-  initialIsIOSDevice,
 }: PropsWithChildren<PageContextProviderProps>) {
   const [activeNavbarLink, setActiveNavbarLink] =
     useState<RouteKey>(initialActiveLink)
-  const [isIOSDevice, setIsIOSDevice] = useState(Boolean(initialIsIOSDevice))
+  const [userAgent, setUserAgent] = useState<PageContextType['userAgent']>({
+    browser: {},
+    engine: {},
+    isIOSDevice: false,
+    os: {},
+    platform: {},
+  })
 
   useEffect(() => {
-    setIsIOSDevice(/iPad|iPhone|iPod/.test(navigator.userAgent))
+    const parsed = parse(navigator.userAgent)
+    setUserAgent({ ...parsed, isIOSDevice: parsed.os.name === 'iOS' })
   }, [])
 
   return (
     <PageContext.Provider
       value={{
         activeNavbarLink,
-        isIOSDevice,
         setActiveNavbarLink,
+        userAgent,
       }}
     >
       {children}

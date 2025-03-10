@@ -7,7 +7,9 @@ import { PageContextProvider, usePageContext } from '..'
 afterEach(() => clear())
 
 function Child() {
-  const { isIOSDevice } = usePageContext()
+  const {
+    userAgent: { isIOSDevice },
+  } = usePageContext()
 
   return <div>{isIOSDevice ? 'Is iOS Device' : 'Not iOS Device'}</div>
 }
