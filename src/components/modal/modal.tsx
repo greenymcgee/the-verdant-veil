@@ -28,7 +28,9 @@ interface ModalProps extends PropsWithChildren {
 }
 
 export function Modal({ Toggle, children, id, ref }: ModalProps) {
-  const { isIOSDevice } = usePageContext()
+  const {
+    userAgent: { isIOSDevice },
+  } = usePageContext()
   const [expanded, setExpanded] = useState(false)
   const toggleExpanded = () => setExpanded((prevExpanded) => !prevExpanded)
   const toggleModal = useModalDialogToggle(ref)

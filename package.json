@@ -23,6 +23,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.7.9",
     "body-scroll-lock": "^4.0.0-beta.0",
+    "bowser": "^2.11.0",
     "change-case": "^5.4.4",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
