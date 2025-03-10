@@ -18,7 +18,11 @@ export function NewGameModal() {
         <header className="bg-primary-50 border-b border-neutral-100 p-4">
           <Heading
             as="h2"
-            className="text-heading-md flex items-center gap-1 font-semibold text-neutral-700"
+            className="flex items-center gap-1 text-neutral-900"
+            classNameOverrides={{
+              fontSize: 'text-heading-md',
+              fontWeight: 'font-semibold',
+            }}
           >
             New Game{' '}
             <Icon

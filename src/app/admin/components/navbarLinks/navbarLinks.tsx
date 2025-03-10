@@ -19,7 +19,7 @@ export function NavbarLinks({ onLinkClick, ...options }: NavbarLinksProps) {
         <Link
           className={clsx(
             TRANSITION_STYLES.inputHover,
-            'hover:bg-primary-100 flex gap-1 rounded-lg p-2 whitespace-nowrap',
+            'hover:bg-primary-100 flex gap-1 rounded-lg p-2 whitespace-nowrap text-neutral-900',
             {
               'bg-primary-50': activeNavbarLink === 'adminGames',
               skeleton: !activeNavbarLink,
@@ -30,23 +30,6 @@ export function NavbarLinks({ onLinkClick, ...options }: NavbarLinksProps) {
         >
           <Icon className="text-primary-900 text-[1.5rem]" icon="videogame" />{' '}
           <span className="-mt-[1px] font-semibold">Games</span>
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={clsx(
-            TRANSITION_STYLES.inputHover,
-            'hover:bg-primary-100 flex gap-1 rounded-lg p-2 whitespace-nowrap',
-            {
-              'bg-primary-50': activeNavbarLink === 'adminUsers',
-              skeleton: !activeNavbarLink,
-            },
-          )}
-          href={ROUTES.adminUsers}
-          onClick={onLinkClick}
-        >
-          <Icon className="text-primary-900 text-[1.5rem]" icon="user" />{' '}
-          <span className="font-semibold">Users</span>
         </Link>
       </li>
     </ul>
