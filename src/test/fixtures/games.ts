@@ -8,6 +8,7 @@ export const DARK_SOULS = gameFactory.build({
   slug: 'dark-souls',
 })
 export const NEW_GAME = gameFactory.build({
+  bannerImage: {},
   name: 'Secret of Evermore',
   published: false,
   publishedAt: null,

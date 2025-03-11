@@ -4,6 +4,7 @@ type IconType =
   | 'chevron-left'
   | 'close'
   | 'edit'
+  | 'exclamation-thick'
   | 'filter-alt'
   | 'image'
   | 'magnify'
