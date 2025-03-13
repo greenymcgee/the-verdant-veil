@@ -51,9 +51,9 @@ export function LinkTo({
       target={opensNewTab ? '_blank' : undefined}
       {...options}
     >
-      {leftIcon ? <Icon className="mt-[5%]" icon={leftIcon} /> : null}
+      {leftIcon ? <Icon icon={leftIcon} /> : null}
       {text ?? children}
-      {rightIcon ? <Icon className="mt-[5%]" icon={rightIcon} /> : null}
+      {rightIcon ? <Icon icon={rightIcon} /> : null}
     </Link>
   )
 }

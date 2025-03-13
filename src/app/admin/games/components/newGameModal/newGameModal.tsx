@@ -26,7 +26,7 @@ export function NewGameModal() {
           >
             New Game{' '}
             <Icon
-              className="text-heading-lg text-primary-900 mt-[5px]"
+              className="text-heading-lg text-primary-900"
               icon="videogame"
             />
           </Heading>

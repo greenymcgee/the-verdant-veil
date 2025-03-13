@@ -28,8 +28,8 @@ export function NavbarLinks({ onLinkClick, ...options }: NavbarLinksProps) {
           href={ROUTES.adminGames}
           onClick={onLinkClick}
         >
-          <Icon className="text-primary-900 text-[1.5rem]" icon="videogame" />{' '}
-          <span className="-mt-[1px] font-semibold">Games</span>
+          <Icon className="text-primary-900 text-[1.5rem]" icon="videogame" />
+          <span className="font-semibold">Games</span>
         </Link>
       </li>
     </ul>

@@ -85,7 +85,7 @@ export function PaginationWrapper({
       <nav>
         <ul className="flex items-center gap-1">
           <Pagination.PageButton
-            activeClassName="bg-primary-700 text-white hover:opacity-70"
+            activeClassName="bg-primary-900 text-white hover:opacity-70"
             as={<Link href="/" />}
             className={clsx(
               'flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg',

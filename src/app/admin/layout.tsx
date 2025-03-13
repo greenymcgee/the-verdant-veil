@@ -3,7 +3,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
-import { Libre_Baskerville, Noto_Sans_JP } from 'next/font/google'
+import { Inter, Libre_Baskerville } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
 import '../globals.css'
@@ -17,9 +17,9 @@ const libreBaskerville = Libre_Baskerville({
   weight: '700',
 })
 
-const notoSansJp = Noto_Sans_JP({
+const nunitoSans = Inter({
   subsets: ['latin'],
-  variable: '--font-noto-sans-jp',
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function AdminLayout({
     <html lang="en">
       <body
         className={clsx(
-          notoSansJp.variable,
+          nunitoSans.variable,
           libreBaskerville.variable,
           'leading-body bg-white font-sans text-neutral-700',
         )}

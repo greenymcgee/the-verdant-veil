@@ -28,12 +28,8 @@ export default async function AdminGameShowPage({ params }: Props) {
       />
       <Card>
         <div
-          className="max-w-full"
-          style={{
-            backgroundImage: `url(${game.bannerImage.url})`,
-            height: 400,
-            width: 1200,
-          }}
+          className="mb-4 aspect-3/1 max-w-full"
+          style={{ backgroundImage: `url(${game.bannerImage.url})` }}
         />
         <header className="mb-6 flex items-center justify-between gap-6">
           <Heading data-testid="main-heading">{game.name}</Heading>
