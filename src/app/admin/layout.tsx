@@ -17,7 +17,7 @@ const libreBaskerville = Libre_Baskerville({
   weight: '700',
 })
 
-const nunitoSans = Inter({
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
@@ -34,7 +34,7 @@ export default function AdminLayout({
     <html lang="en">
       <body
         className={clsx(
-          nunitoSans.variable,
+          inter.variable,
           libreBaskerville.variable,
           'leading-body bg-white font-sans text-neutral-700',
         )}
