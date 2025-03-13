@@ -84,7 +84,7 @@
   --color-warning-800: #f49729;
   --color-warning-900: #f38b11;
 
-  --font-sans: 'Noto Sans JP', 'Noto Sans JP Fallback';
+  --font-sans: 'Inter', 'Inter Fallback';
   --font-serif: 'Libre Baskerville', 'Libre Baskerville Fallback';
 
   --text-heading-xxl: 3.5rem;

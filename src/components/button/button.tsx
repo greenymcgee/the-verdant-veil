@@ -52,9 +52,9 @@ export function Button({
       {...options}
     >
       {loading ? <Spinner size="xs" theme={theme} /> : null}
-      {leftIcon ? <Icon className="mt-[5%]" icon={leftIcon} /> : null}
+      {leftIcon ? <Icon icon={leftIcon} /> : null}
       {text ?? children}
-      {rightIcon ? <Icon className="mt-[5%]" icon={rightIcon} /> : null}
+      {rightIcon ? <Icon icon={rightIcon} /> : null}
     </button>
   )
 }

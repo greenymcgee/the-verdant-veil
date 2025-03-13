@@ -87,7 +87,7 @@ export function Searchbar({
       <button
         aria-label="Clear Search"
         className={clsx(
-          'absolute top-[10px] right-2 cursor-pointer text-2xl',
+          'absolute top-[9px] right-2 cursor-pointer text-2xl',
           'text-neutral-500 hover:opacity-70',
         )}
         onClick={clearSearch}
