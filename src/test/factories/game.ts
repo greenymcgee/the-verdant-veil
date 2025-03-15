@@ -19,7 +19,7 @@ export const gameFactory = Factory.define<Game>(({ sequence }) => ({
     igdbId: sequence * Math.random(),
     imageId: `cover-image-${sequence}`,
     updatedAt: currentTime,
-    url: '',
+    url: 'http://test-gq-.com',
     width: 56,
   },
   createdAt: currentTime,

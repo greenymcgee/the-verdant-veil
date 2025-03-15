@@ -8,8 +8,14 @@ export async function getGame(slug: Game['slug']) {
     logger.info(data.game, 'GAME')
     return { game: data.game }
   } catch (error) {
-    const { message } = new ErrorFacade(error)
+    const { isNotFoundError, message, status } = new ErrorFacade(error)
     logger.error(error, message)
-    return { error, game: {} as Game, message }
+    return {
+      error,
+      game: {} as Game,
+      isNotFoundError,
+      message,
+      status,
+    }
   }
 }

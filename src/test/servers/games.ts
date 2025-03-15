@@ -44,10 +44,10 @@ export function mockGamesRequestFailure() {
   return { message, response }
 }
 
-export function mockGameRequestFailure() {
+export function mockGameRequestFailure(status = 404) {
   const message = `No games found matching ${SUPER_METROID.slug}`
   const response = () =>
-    new HttpResponse(JSON.stringify({ message }), { status: 404 })
+    new HttpResponse(JSON.stringify({ message }), { status })
   gamesServer.use(http.get(getApiUrl('game', [SUPER_METROID.slug]), response))
   return { message, response }
 }

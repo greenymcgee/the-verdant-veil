@@ -10,6 +10,7 @@ interface Props {
   heading: string | ReactElement
   status: number | undefined
   subtitle: string | ReactElement
+  testId?: string
 }
 
 export function HomeErrorBoundary({
@@ -18,10 +19,11 @@ export function HomeErrorBoundary({
   heading,
   subtitle,
   status,
+  testId,
 }: Props) {
   return (
     <PageWithNavbar activeLinkTitle={activeLinkTitle}>
-      <div className="container">
+      <div className="container" data-testid={testId}>
         <Card className="px-6 py-8">
           <header className="flex flex-col items-center gap-6 lg:flex-row">
             <Logo className="mb-3 text-[16rem] text-neutral-900 md:text-[20rem] lg:text-[16rem]" />
