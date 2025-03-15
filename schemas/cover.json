@@ -8,9 +8,8 @@
     "createdAt": { "type": "string" },
     "height": { "type": ["integer", "null"] },
     "id": { "type": "integer" },
-    "igdbId": {
-      "type": "integer"
-    },
+    "igdbId": { "type": "integer" },
+    "imageId": { "type": "string" },
     "updatedAt": { "type": "string" },
     "url": { "type": "string" },
     "width": { "type": ["integer", "null"] }
@@ -21,6 +20,7 @@
     "height",
     "id",
     "igdbId",
+    "imageId",
     "updatedAt",
     "url",
     "width"

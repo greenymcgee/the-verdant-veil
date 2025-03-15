@@ -31,6 +31,7 @@ interface Game {
    */
   errors?: unknown[]
   featuredVideoId: string
+  firstReleaseDate: string | null
   franchises: Franchise[]
   gameEngines: GameEngine[]
   gameModes: GameMode[]
@@ -58,6 +59,8 @@ interface Game {
   releaseDates: ReleaseDate[]
   screenshots: Screenshot[]
   slug: string
+  storyline: string
+  summary: string
   supporters: Company[]
   themes: Theme1[]
   websites: Website[]
@@ -103,6 +106,7 @@ interface Cover {
   height: number | null
   id: number
   igdbId: number
+  imageId: string
   updatedAt: string
   url: string
   width: number | null

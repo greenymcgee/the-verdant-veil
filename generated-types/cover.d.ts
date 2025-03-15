@@ -14,6 +14,7 @@ interface Cover {
   height: number | null
   id: number
   igdbId: number
+  imageId: string
   updatedAt: string
   url: string
   width: number | null
