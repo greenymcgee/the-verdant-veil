@@ -39,6 +39,7 @@
       "type": "array"
     },
     "featuredVideoId": { "type": "string" },
+    "firstReleaseDate": { "type": ["string", "null"] },
     "franchises": {
       "items": { "$ref": "file:/franchise.json#" },
       "type": "array"
@@ -98,6 +99,8 @@
       "type": "array"
     },
     "slug": { "type": "string" },
+    "storyline": { "type": "string" },
+    "summary": { "type": "string" },
     "supporters": {
       "items": { "$ref": "file:/company.json#" },
       "type": "array"
@@ -124,6 +127,7 @@
     "createdAt",
     "developers",
     "featuredVideoId",
+    "firstReleaseDate",
     "franchises",
     "gameEngines",
     "gameModes",
@@ -142,6 +146,8 @@
     "review",
     "screenshots",
     "slug",
+    "storyline",
+    "summary",
     "supporters",
     "themes",
     "updatedAt",
