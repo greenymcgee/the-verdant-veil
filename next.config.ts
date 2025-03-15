@@ -1,7 +1,15 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'images.igdb.com',
+        pathname: '/igdb/image/upload/**',
+        protocol: 'https',
+      },
+    ],
+  },
 }
 
 export default nextConfig

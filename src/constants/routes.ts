@@ -7,6 +7,8 @@ export const ROUTES = {
   adminUsers: '/admin/users',
   forbidden: '/forbidden',
   forgotYourPassword: '/forgot-password',
+  game: (slug: Game['slug']) => `/games/${slug}`,
+  gamePreview: (slug: Game['slug']) => `/games/${slug}/preview`,
   games: '/games',
   home: '/',
   login: '/login',

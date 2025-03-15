@@ -6,10 +6,10 @@ import { TRANSITION_STYLES } from '@/constants'
 import { useScrollPosition } from '@/hooks'
 
 interface MainNavLinkProps {
-  activeLinkTitle: 'Home' | 'About'
+  activeLinkTitle: 'Home' | 'About' | 'Games'
   href: PropsOf<typeof Link>['href']
   onClick?: VoidFunction
-  title: 'Home' | 'Admin' | 'About' | 'Login'
+  title: 'Home' | 'Admin' | 'About' | 'Login' | 'Games'
   type: 'desktop' | 'mobile'
 }
 

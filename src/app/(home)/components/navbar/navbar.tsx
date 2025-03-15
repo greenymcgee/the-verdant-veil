@@ -12,7 +12,7 @@ import { HamburgerMenu } from '../hamburgerMenu'
 import { MainNavLink } from '../mainNavLink'
 
 interface NavbarProps {
-  activeLinkTitle: 'Home' | 'About'
+  activeLinkTitle: PropsOf<typeof MainNavLink>['activeLinkTitle']
 }
 
 export function Navbar({ activeLinkTitle }: NavbarProps) {
@@ -69,6 +69,17 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
               data-testid="desktop-about-link"
               href={ROUTES.about}
               title="About"
+              type="desktop"
+            />
+          </li>
+          <li>
+            <MainNavLink
+              activeLinkTitle={activeLinkTitle}
+              data-testid="desktop-games-link"
+              href={ROUTES.gamePreview(
+                'the-legend-of-zelda-a-link-to-the-past',
+              )}
+              title="Games"
               type="desktop"
             />
           </li>

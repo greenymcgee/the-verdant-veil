@@ -14,7 +14,7 @@ import { MainNavLink } from '../mainNavLink'
 import { toggleSidebarDialog } from './utils'
 
 interface HamburgerMenuProps {
-  activeLinkTitle: 'Home' | 'About'
+  activeLinkTitle: PropsOf<typeof MainNavLink>['activeLinkTitle']
 }
 
 export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
@@ -42,10 +42,11 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
         aria-controls="hamburger-menu"
         aria-expanded={expanded}
         aria-label="Open Hamburger Menu"
+        className="sm:hidden"
         onClick={toggleHamburgerMenu}
         type="button"
       >
-        <Hamburger className="text-[2.5rem] sm:hidden" />
+        <Hamburger className="text-[2.5rem]" />
       </button>
       <dialog
         className={clsx(
@@ -97,6 +98,17 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
                   href={ROUTES.about}
                   onClick={toggleHamburgerMenu}
                   title="About"
+                  type="mobile"
+                />
+              </li>
+              <li>
+                <MainNavLink
+                  activeLinkTitle={activeLinkTitle}
+                  href={ROUTES.gamePreview(
+                    'the-legend-of-zelda-a-link-to-the-past',
+                  )}
+                  onClick={toggleHamburgerMenu}
+                  title="Games"
                   type="mobile"
                 />
               </li>
