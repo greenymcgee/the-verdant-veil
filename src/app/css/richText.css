@@ -1,0 +1,28 @@
+.rich-text h1 {
+  @apply text-heading-lg md:text-heading-xl leading-heading font-bold text-neutral-900;
+}
+
+.rich-text h2 {
+  @apply leading-heading text-heading-md md:text-heading-lg font-semibold text-neutral-900;
+}
+
+.rich-text h3 {
+  @apply leading-heading text-heading-sm md:text-heading-md font-semibold text-neutral-900;
+}
+
+.rich-text h4 {
+  @apply leading-heading text-heading-xs md:text-heading-sm font-semibold text-neutral-900;
+}
+
+.rich-text h5,
+.rich-text h6 {
+  @apply leading-heading text-heading-xs font-semibold text-neutral-900;
+}
+
+.ProseMirror {
+  @apply p-2;
+}
+
+div.rich-text p:empty::after {
+  @apply content-["\00A0"];
+}

@@ -1,5 +1,6 @@
 @import 'tailwindcss';
-@import './css/spinner.css' layer(utilities);
+@import './css/spinner.css';
+@import './css/richText.css';
 
 @plugin '@tailwindcss/forms';
 
@@ -13,6 +14,7 @@
   --border-width-1: 1px;
 
   --shadow-card-dark: 4px 4px 4px 0px rgba(23, 24, 26, 0.2);
+  --shadow-card-light: 2px 4px 4px 0px #fcfcff;
   --shadow-input-hover: 0px 0px 0px 2px #b3bcc8;
   --shadow-nav-light: 0px 2px 4px 0px #fcfcff;
 
@@ -147,14 +149,6 @@
 
 dialog {
   @apply bg-white font-sans text-neutral-700;
-}
-
-.ProseMirror {
-  @apply p-2;
-}
-
-div.rich-text p:empty::after {
-  @apply content-["\00A0"];
 }
 
 .skeleton {

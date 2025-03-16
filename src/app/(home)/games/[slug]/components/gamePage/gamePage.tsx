@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PageWithNavbar } from '@/app/(home)/components'
-import { Card } from '@/components'
+import { Card, Heading, HTMLParser, Tabs } from '@/components'
 
 import { CSVList } from '../csvList'
 import { GreenQuestRating } from '../greenQuestRating'
@@ -16,7 +16,7 @@ export function GamePage({ game }: Props) {
     <PageWithNavbar activeLinkTitle="Games" bannerImage={game.bannerImage}>
       <div className="container" data-testid="game-page">
         <GameHeader game={game} />
-        <Card className="mb-8">
+        <Card className="mb-12" shadowTheme="light">
           <GreenQuestRating game={game} />
           <CSVList
             listItems={game.genres}
@@ -30,13 +30,39 @@ export function GamePage({ game }: Props) {
           />
           <p data-testid="game-summary">{game.summary}</p>
         </Card>
-        {/* <Tabs
-          tabs={[
-            { icon: 'message-draw', title: 'Review' },
-            { icon: 'table', title: 'About' },
-            { icon: 'image', title: 'Media' },
+        <Tabs
+          tabContents={[
+            {
+              element: <HTMLParser html={game.review} />,
+              hash: 'review',
+            },
+            {
+              element: <Heading as="h2">About</Heading>,
+              hash: 'about',
+            },
+            {
+              element: <Heading as="h2">Media</Heading>,
+              hash: 'media',
+            },
           ]}
-        /> */}
+          tabs={[
+            {
+              hash: 'review',
+              icon: 'message-draw',
+              title: 'Review',
+            },
+            {
+              hash: 'about',
+              icon: 'table',
+              title: 'About',
+            },
+            {
+              hash: 'media',
+              icon: 'image',
+              title: 'Media',
+            },
+          ]}
+        />
       </div>
     </PageWithNavbar>
   )
