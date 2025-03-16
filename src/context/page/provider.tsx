@@ -1,6 +1,6 @@
 'use client'
 import React, { PropsWithChildren, useEffect, useState } from 'react'
-import { parse } from 'bowser'
+import Bowser from 'bowser'
 
 import { RouteKey } from '@/constants'
 
@@ -25,7 +25,7 @@ export function PageContextProvider({
   })
 
   useEffect(() => {
-    const parsed = parse(navigator.userAgent)
+    const parsed = Bowser.parse(navigator.userAgent)
     setUserAgent({ ...parsed, isIOSDevice: parsed.os.name === 'iOS' })
   }, [])
 

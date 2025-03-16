@@ -14,10 +14,8 @@ export function GreenQuestRating({ game }: Props) {
       data-testid="green-quest-rating"
     >
       Green Quest Rating:
-      <span
-        aria-label={`${game.rating} out of 5`}
-        className="inline-flex gap-1"
-      >
+      <span className="sr-only">{`${game.rating} out of 5`}</span>
+      <span aria-hidden className="inline-flex gap-1">
         {Array.from({ length: 5 }, (_, index) => index).map((interval) => (
           <LogoSword
             className={clsx('-rotate-45 text-2xl', {

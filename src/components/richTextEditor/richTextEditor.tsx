@@ -50,7 +50,7 @@ export function RichTextEditor({
   return (
     <div
       className={clsx(
-        'space-y-4 rounded-sm border border-neutral-600 p-4',
+        'rich-text space-y-4 rounded-sm border border-neutral-600 p-4',
         className,
       )}
     >
