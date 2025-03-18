@@ -1,27 +1,48 @@
 'use client'
-import React, { ReactElement } from 'react'
-import clsx from 'clsx'
+import React, { KeyboardEvent, ReactElement, useCallback, useRef } from 'react'
 
 import { useHash } from '@/hooks'
 
 import { Tab } from '../tab'
+import { TabPanel } from '../tabPanel'
+import { tabKeyChangeFacade } from './facades'
 
-interface Props {
-  tabContents: Array<{ element: ReactElement; hash: string }>
-  tabs: Array<{
-    hash: string
-    icon: IconType
-    title: string
-  }>
+interface Tab {
+  hash: string
+  icon: IconType
+  title: string
 }
 
-export function Tabs({ tabContents, tabs }: Props) {
+interface Props {
+  panels: Array<{ element: ReactElement; hash: string }>
+  tabs: Array<Tab>
+}
+
+export function Tabs({ panels, tabs }: Props) {
   const hash = useHash()
+  const tablistRef = useRef<HTMLUListElement>(null)
+  const tabFocusIndexRef = useRef(0)
+
+  const handleKeyDownChange = useCallback(
+    (event: KeyboardEvent<HTMLUListElement>) => {
+      tabKeyChangeFacade.update({ event, tabFocusIndexRef, tablistRef })
+      tabKeyChangeFacade.handleTabKeyChange()
+    },
+    [],
+  )
 
   return (
     <>
-      <nav className="mb-[21px]" data-testid="tabs">
-        <ul className="text-primary-900 flex">
+      <nav
+        className="md:overflow-x-unset max-w-full overflow-x-auto"
+        data-testid="tabs"
+      >
+        <ul
+          className="text-primary-900 flex"
+          onKeyDown={handleKeyDownChange}
+          ref={tablistRef}
+          role="tablist"
+        >
           {tabs.map((tab, index) => (
             <Tab
               active={hash ? `#${tab.hash}` === hash : index === 0}
@@ -33,21 +54,15 @@ export function Tabs({ tabContents, tabs }: Props) {
           ))}
         </ul>
       </nav>
-      {tabContents.map((tabContent, index) => {
-        const active = hash ? `#${tabContent.hash}` === hash : index === 0
+      {panels.map((panel, index) => {
         return (
-          <article
-            className={clsx(
-              'shadow-card-light rounded-tr-sm rounded-b-sm bg-white p-3',
-              {
-                hidden: !active,
-              },
-            )}
-            id={tabContent.hash}
-            key={tabContent.hash}
+          <TabPanel
+            active={hash ? `#${panel.hash}` === hash : index === 0}
+            hash={panel.hash}
+            key={panel.hash}
           >
-            {tabContent.element}
-          </article>
+            {panel.element}
+          </TabPanel>
         )
       })}
     </>

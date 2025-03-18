@@ -31,7 +31,7 @@ export function GamePage({ game }: Props) {
           <p data-testid="game-summary">{game.summary}</p>
         </Card>
         <Tabs
-          tabContents={[
+          panels={[
             {
               element: <HTMLParser html={game.review} />,
               hash: 'review',
