@@ -90,12 +90,12 @@ interface AgeRating {
 interface Artwork {
   animated: boolean
   createdAt: string
-  height: number | null
+  height: number
   id: number
   igdbId: number
   updatedAt: string
   url: string
-  width: number | null
+  width: number
 }
 /**
  * A Cover.
@@ -103,13 +103,13 @@ interface Artwork {
 interface Cover {
   animated: boolean
   createdAt: string
-  height: number | null
+  height: number
   id: number
   igdbId: number
   imageId: string
   updatedAt: string
   url: string
-  width: number | null
+  width: number
 }
 /**
  * A Company.
@@ -247,12 +247,12 @@ interface ReleaseDate {
 interface Screenshot {
   animated: boolean
   createdAt: string
-  height: number | null
+  height: number
   id: number
   igdbId: number
   updatedAt: string
   url: string
-  width: number | null
+  width: number
 }
 /**
  * A Theme.

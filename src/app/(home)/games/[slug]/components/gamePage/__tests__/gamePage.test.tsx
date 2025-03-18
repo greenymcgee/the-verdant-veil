@@ -30,4 +30,19 @@ describe('<GamePage />', () => {
     render(<GamePage game={SUPER_METROID} />)
     expect(screen.getByTestId('game-summary')).toBeVisible()
   })
+
+  it('should render tabs', () => {
+    render(<GamePage game={SUPER_METROID} />)
+    expect(screen.getByTestId('tabs')).toBeVisible()
+  })
+
+  it('should render the review tab', () => {
+    render(<GamePage game={SUPER_METROID} />)
+    expect(screen.getByTestId('game-review')).toBeInTheDocument()
+  })
+
+  it('should render the media tab', () => {
+    render(<GamePage game={SUPER_METROID} />)
+    expect(screen.getByTestId('game-videos')).toBeInTheDocument()
+  })
 })

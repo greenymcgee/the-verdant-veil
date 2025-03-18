@@ -17,10 +17,10 @@ interface ArtworksShowJson {
 interface Artwork {
   animated: boolean
   createdAt: string
-  height: number | null
+  height: number
   id: number
   igdbId: number
   updatedAt: string
   url: string
-  width: number | null
+  width: number
 }

@@ -34,9 +34,9 @@ export function GameHeader({ game }: Props) {
         <Image
           alt={`${game.name} Cover`}
           className="col-span-4 mb-4 max-w-[200px] sm:mb-0 sm:max-w-full"
-          height={game.cover.height ?? undefined}
+          height={game.cover.height}
           src={game.cover.url}
-          width={game.cover.width ?? undefined}
+          width={game.cover.width}
         />
         <iframe
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

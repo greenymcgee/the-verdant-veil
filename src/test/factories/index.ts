@@ -1,2 +1,7 @@
+export * from './artwork'
 export * from './game'
+export * from './genre'
+export * from './platform'
+export * from './screenshot'
 export * from './user'
+export * from './video'

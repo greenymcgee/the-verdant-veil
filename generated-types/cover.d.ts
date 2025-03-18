@@ -11,11 +11,11 @@
 interface Cover {
   animated: boolean
   createdAt: string
-  height: number | null
+  height: number
   id: number
   igdbId: number
   imageId: string
   updatedAt: string
   url: string
-  width: number | null
+  width: number
 }
