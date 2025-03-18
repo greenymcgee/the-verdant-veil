@@ -1,3 +1,5 @@
 export * from './authToken'
 export * from './games'
+export * from './genres'
+export * from './platforms'
 export * from './user'

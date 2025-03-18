@@ -6,13 +6,13 @@
   "properties": {
     "animated": { "type": "boolean" },
     "createdAt": { "type": "string" },
-    "height": { "type": ["integer", "null"] },
+    "height": { "type": "integer" },
     "id": { "type": "integer" },
     "igdbId": { "type": "integer" },
     "imageId": { "type": "string" },
     "updatedAt": { "type": "string" },
     "url": { "type": "string" },
-    "width": { "type": ["integer", "null"] }
+    "width": { "type": "integer" }
   },
   "required": [
     "animated",

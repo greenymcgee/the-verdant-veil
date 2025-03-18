@@ -6,6 +6,7 @@ import { Card, Heading, HTMLParser, Tabs } from '@/components'
 import { CSVList } from '../csvList'
 import { GreenQuestRating } from '../greenQuestRating'
 import { GameHeader } from '../header'
+import { MediaTab } from '../mediaTab'
 
 interface Props {
   game: Game
@@ -33,7 +34,9 @@ export function GamePage({ game }: Props) {
         <Tabs
           panels={[
             {
-              element: <HTMLParser html={game.review} />,
+              element: (
+                <HTMLParser data-testid="game-review" html={game.review} />
+              ),
               hash: 'review',
             },
             {
@@ -41,7 +44,7 @@ export function GamePage({ game }: Props) {
               hash: 'about',
             },
             {
-              element: <Heading as="h2">Media</Heading>,
+              element: <MediaTab game={game} />,
               hash: 'media',
             },
           ]}
