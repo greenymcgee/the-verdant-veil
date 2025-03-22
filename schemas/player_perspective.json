@@ -31,6 +31,6 @@
     "slug",
     "updatedAt"
   ],
-  "title": "Theme",
+  "title": "PlayerPerspective",
   "type": "object"
 }

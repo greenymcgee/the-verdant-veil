@@ -41,6 +41,11 @@ describe('<GamePage />', () => {
     expect(screen.getByTestId('game-review')).toBeInTheDocument()
   })
 
+  it('should render the about tab', () => {
+    render(<GamePage game={SUPER_METROID} />)
+    expect(screen.getByTestId('about-game')).toBeInTheDocument()
+  })
+
   it('should render the media tab', () => {
     render(<GamePage game={SUPER_METROID} />)
     expect(screen.getByTestId('game-videos')).toBeInTheDocument()

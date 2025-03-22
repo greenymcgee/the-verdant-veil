@@ -20,11 +20,11 @@ interface Props {
 
 export function Tabs({ panels, tabs }: Props) {
   const hash = useHash()
-  const tablistRef = useRef<HTMLUListElement>(null)
+  const tablistRef = useRef<HTMLDivElement>(null)
   const tabFocusIndexRef = useRef(0)
 
   const handleKeyDownChange = useCallback(
-    (event: KeyboardEvent<HTMLUListElement>) => {
+    (event: KeyboardEvent<HTMLDivElement>) => {
       tabKeyChangeFacade.update({ event, tabFocusIndexRef, tablistRef })
       tabKeyChangeFacade.handleTabKeyChange()
     },
@@ -37,7 +37,8 @@ export function Tabs({ panels, tabs }: Props) {
         className="md:overflow-x-unset max-w-full overflow-x-auto"
         data-testid="tabs"
       >
-        <ul
+        {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
+        <div
           className="text-primary-900 flex"
           onKeyDown={handleKeyDownChange}
           ref={tablistRef}
@@ -52,7 +53,7 @@ export function Tabs({ panels, tabs }: Props) {
               title={tab.title}
             />
           ))}
-        </ul>
+        </div>
       </nav>
       {panels.map((panel, index) => {
         return (

@@ -22,7 +22,7 @@ export function TabPanel({
     <article
       aria-labelledby={`${hash}-tab`}
       className={clsx(
-        'shadow-card-light rounded-b-sm bg-white px-3 py-6 sm:rounded-tr-sm',
+        'shadow-card-light rounded-b-sm bg-white p-6 sm:rounded-tr-sm',
         {
           hidden: !active,
         },

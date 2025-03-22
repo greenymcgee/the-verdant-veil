@@ -9,12 +9,12 @@
  * The GET /api/player_perspectives/:id payload
  */
 interface PlayerPerspectivesShowJson {
-  playerPerspective: Theme
+  playerPerspective: PlayerPerspective
 }
 /**
  * A PlayerPerspective.
  */
-interface Theme {
+interface PlayerPerspective {
   createdAt: string
   id: number
   igdbId: number

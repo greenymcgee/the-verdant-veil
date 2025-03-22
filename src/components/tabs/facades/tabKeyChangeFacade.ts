@@ -1,9 +1,9 @@
 import { KeyboardEvent, RefObject } from 'react'
 
 interface Params {
-  event: KeyboardEvent<HTMLUListElement>
+  event: KeyboardEvent<HTMLDivElement>
   tabFocusIndexRef: RefObject<number>
-  tablistRef: RefObject<HTMLUListElement | null>
+  tablistRef: RefObject<HTMLDivElement | null>
 }
 
 class TabKeyChangeFacade {
@@ -102,7 +102,7 @@ class TabKeyChangeFacade {
 }
 
 export const tabKeyChangeFacade = new TabKeyChangeFacade({
-  event: {} as KeyboardEvent<HTMLUListElement>,
+  event: {} as KeyboardEvent<HTMLDivElement>,
   tabFocusIndexRef: { current: 0 },
   tablistRef: { current: null },
 })
