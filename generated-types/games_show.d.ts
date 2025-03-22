@@ -37,7 +37,7 @@ interface Game {
   gameModes: GameMode[]
   genres: GenreWithoutResources[]
   platforms: PlatformWithoutResources[]
-  playerPerspectives: Theme[]
+  playerPerspectives: PlayerPerspective[]
   porters: Company[]
   publishers: Company[]
   /**
@@ -62,7 +62,7 @@ interface Game {
   storyline: string
   summary: string
   supporters: Company[]
-  themes: Theme1[]
+  themes: Theme[]
   websites: Website[]
   videos: GameVideo[]
   updatedAt: string
@@ -207,7 +207,7 @@ interface PlatformWithoutResources {
 /**
  * A PlayerPerspective.
  */
-interface Theme {
+interface PlayerPerspective {
   createdAt: string
   id: number
   igdbId: number
@@ -257,7 +257,7 @@ interface Screenshot {
 /**
  * A Theme.
  */
-interface Theme1 {
+interface Theme {
   createdAt: string
   id: number
   igdbId: number

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { KeyboardEvent, PropsWithChildren, useRef } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
@@ -9,41 +10,35 @@ function Wrapper({
   preselected = true,
 }: PropsWithChildren<{ includesRef?: boolean; preselected?: boolean }>) {
   const tabFocusIndexRef = useRef(0)
-  const tablistRef = useRef<HTMLUListElement>(null)
-  const handleKeyDownChange = (event: KeyboardEvent<HTMLUListElement>) => {
+  const tablistRef = useRef<HTMLDivElement>(null)
+  const handleKeyDownChange = (event: KeyboardEvent<HTMLDivElement>) => {
     tabKeyChangeFacade.update({ event, tabFocusIndexRef, tablistRef })
     tabKeyChangeFacade.handleTabKeyChange()
   }
 
   return (
     <>
-      <ul
+      <div
         data-testid="tablist"
         onKeyDown={handleKeyDownChange}
         ref={includesRef ? tablistRef : undefined}
         role="tablist"
       >
-        <li>
-          <a aria-selected="false" href="#review" role="tab" tabIndex={-1}>
-            Review
-          </a>
-        </li>
-        <li>
-          <a
-            aria-selected={preselected ? 'true' : 'false'}
-            href="#about"
-            role="tab"
-            tabIndex={preselected ? 0 : -1}
-          >
-            About
-          </a>
-        </li>
-        <li>
-          <a aria-selected="false" href="#media" role="tab" tabIndex={-1}>
-            Media
-          </a>
-        </li>
-      </ul>
+        <a aria-selected="false" href="#review" role="tab" tabIndex={-1}>
+          Review
+        </a>
+        <a
+          aria-selected={preselected ? 'true' : 'false'}
+          href="#about"
+          role="tab"
+          tabIndex={preselected ? 0 : -1}
+        >
+          About
+        </a>
+        <a aria-selected="false" href="#media" role="tab" tabIndex={-1}>
+          Media
+        </a>
+      </div>
       {children}
     </>
   )

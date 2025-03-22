@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { PageWithNavbar } from '@/app/(home)/components'
-import { Card, Heading, HTMLParser, Tabs } from '@/components'
+import { Card, HTMLParser, Tabs } from '@/components'
 
+import { AboutTab } from '../aboutTab'
 import { CSVList } from '../csvList'
 import { GreenQuestRating } from '../greenQuestRating'
 import { GameHeader } from '../header'
@@ -29,7 +30,9 @@ export function GamePage({ game }: Props) {
             name="Platforms"
             testId="platforms-csv-list"
           />
-          <p data-testid="game-summary">{game.summary}</p>
+          <p className="text-neutral-500" data-testid="game-summary">
+            {game.summary}
+          </p>
         </Card>
         <Tabs
           panels={[
@@ -40,7 +43,7 @@ export function GamePage({ game }: Props) {
               hash: 'review',
             },
             {
-              element: <Heading as="h2">About</Heading>,
+              element: <AboutTab game={game} />,
               hash: 'about',
             },
             {

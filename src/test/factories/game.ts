@@ -1,9 +1,13 @@
 import { Factory } from 'fishery'
 
 import { artworkFactory } from './artwork'
+import { companyFactory } from './company'
+import { franchiseFactory } from './franchise'
 import { genreFactory } from './genre'
 import { platformFactory } from './platform'
+import { playerPerspectiveFactory } from './playerPerspective'
 import { screenshotFactory } from './screenshot'
+import { themeFactory } from './theme'
 import { videoFactory } from './video'
 
 const currentTime = new Date().toISOString()
@@ -30,10 +34,10 @@ export const gameFactory = Factory.define<Game>(
       width: 56,
     },
     createdAt: currentTime,
-    developers: [],
+    developers: associations.developers || [companyFactory.build()],
     featuredVideoId: '',
     firstReleaseDate: '',
-    franchises: [],
+    franchises: associations.franchises || [franchiseFactory.build()],
     gameEngines: [],
     gameModes: [],
     genres: associations.genres || [genreFactory.build()],
@@ -41,11 +45,13 @@ export const gameFactory = Factory.define<Game>(
     igdbId: sequence * Math.random(),
     name: 'Super Metroid',
     platforms: associations.platforms || [platformFactory.build()],
-    playerPerspectives: [],
-    porters: [],
+    playerPerspectives: associations.playerPerspectives || [
+      playerPerspectiveFactory.build(),
+    ],
+    porters: associations.porters || [companyFactory.build()],
     published: true,
     publishedAt: '2025-03-12T15:57',
-    publishers: [],
+    publishers: associations.publishers || [companyFactory.build()],
     rating: 5,
     releaseDates: [],
     review: '<p>So good</p>',
@@ -53,8 +59,8 @@ export const gameFactory = Factory.define<Game>(
     slug: 'super-metroid',
     storyline: '',
     summary: '',
-    supporters: [],
-    themes: [],
+    supporters: associations.supporters || [companyFactory.build()],
+    themes: associations.themes || [themeFactory.build()],
     updatedAt: currentTime,
     videos: [videoFactory.build(), videoFactory.build()],
     websites: [],

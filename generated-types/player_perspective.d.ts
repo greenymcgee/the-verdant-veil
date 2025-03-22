@@ -8,7 +8,7 @@
 /**
  * A PlayerPerspective.
  */
-interface Theme {
+interface PlayerPerspective {
   createdAt: string
   id: number
   igdbId: number
