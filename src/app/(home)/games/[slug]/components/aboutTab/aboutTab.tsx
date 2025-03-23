@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Card } from '@/components'
+
 import { DetailList } from '../detailList'
 
 interface Props {
@@ -8,7 +10,7 @@ interface Props {
 
 export function AboutTab({ game }: Props) {
   return (
-    <div data-testid="about-game">
+    <Card data-testid="about-game" variant="tabpanel">
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
         <DetailList list={game.developers} title="Developers" />
         <DetailList list={game.publishers} title="Publishers" />
@@ -32,6 +34,6 @@ export function AboutTab({ game }: Props) {
         </p>
         <p className="text-neutral-500">{game.storyline}</p>
       </div>
-    </div>
+    </Card>
   )
 }

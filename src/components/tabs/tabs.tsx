@@ -1,10 +1,9 @@
 'use client'
-import React, { KeyboardEvent, ReactElement, useCallback, useRef } from 'react'
+import React, { KeyboardEvent, useCallback, useRef } from 'react'
 
 import { useHash } from '@/hooks'
 
 import { Tab } from '../tab'
-import { TabPanel } from '../tabPanel'
 import { tabKeyChangeFacade } from './facades'
 
 interface Tab {
@@ -14,11 +13,10 @@ interface Tab {
 }
 
 interface Props {
-  panels: Array<{ element: ReactElement; hash: string }>
   tabs: Array<Tab>
 }
 
-export function Tabs({ panels, tabs }: Props) {
+export function Tabs({ tabs }: Props) {
   const hash = useHash()
   const tablistRef = useRef<HTMLDivElement>(null)
   const tabFocusIndexRef = useRef(0)
@@ -32,40 +30,27 @@ export function Tabs({ panels, tabs }: Props) {
   )
 
   return (
-    <>
-      <nav
-        className="md:overflow-x-unset max-w-full overflow-x-auto"
-        data-testid="tabs"
+    <nav
+      className="md:overflow-x-unset max-w-full overflow-x-auto"
+      data-testid="tabs"
+    >
+      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
+      <div
+        className="text-primary-900 flex"
+        onKeyDown={handleKeyDownChange}
+        ref={tablistRef}
+        role="tablist"
       >
-        {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
-        <div
-          className="text-primary-900 flex"
-          onKeyDown={handleKeyDownChange}
-          ref={tablistRef}
-          role="tablist"
-        >
-          {tabs.map((tab, index) => (
-            <Tab
-              active={hash ? `#${tab.hash}` === hash : index === 0}
-              hash={tab.hash}
-              icon={tab.icon}
-              key={tab.hash}
-              title={tab.title}
-            />
-          ))}
-        </div>
-      </nav>
-      {panels.map((panel, index) => {
-        return (
-          <TabPanel
-            active={hash ? `#${panel.hash}` === hash : index === 0}
-            hash={panel.hash}
-            key={panel.hash}
-          >
-            {panel.element}
-          </TabPanel>
-        )
-      })}
-    </>
+        {tabs.map((tab, index) => (
+          <Tab
+            active={hash ? `#${tab.hash}` === hash : index === 0}
+            hash={tab.hash}
+            icon={tab.icon}
+            key={tab.hash}
+            title={tab.title}
+          />
+        ))}
+      </div>
+    </nav>
   )
 }

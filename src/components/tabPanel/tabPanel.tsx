@@ -1,40 +1,27 @@
-import React, { HTMLAttributes, PropsWithChildren } from 'react'
-import clsx from 'clsx'
+'use client'
+import React, { PropsWithChildren } from 'react'
 
-type Attributes = Omit<
-  PropsWithChildren<HTMLAttributes<HTMLElement>>,
-  'tabIndex' | 'role' | 'id' | 'aria-labelledby'
->
+import { useHash } from '@/hooks'
 
-interface Props extends Attributes {
-  active: boolean
+interface Props extends PropsWithChildren {
+  defaultActive?: boolean
   hash: string
 }
 
-export function TabPanel({
-  active,
-  children,
-  className,
-  hash,
-  ...options
-}: Props) {
+export function TabPanel({ children, defaultActive, hash }: Props) {
+  const currentHash = useHash()
+  const active = currentHash ? `#${hash}` === currentHash : defaultActive
+
   return (
-    <article
+    <div
       aria-labelledby={`${hash}-tab`}
-      className={clsx(
-        'shadow-card-light rounded-b-sm bg-white p-6 sm:rounded-tr-sm',
-        {
-          hidden: !active,
-        },
-        className,
-      )}
       data-testid={`${hash}-tabpanel`}
+      hidden={!active}
       id={`${hash}-tabpanel`}
       role="tabpanel"
       tabIndex={0}
-      {...options}
     >
       {children}
-    </article>
+    </div>
   )
 }

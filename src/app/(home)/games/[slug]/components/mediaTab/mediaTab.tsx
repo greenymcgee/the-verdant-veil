@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { Heading } from '@/components'
+import { Card, Heading } from '@/components'
 
 interface Props {
   game: Game
@@ -9,7 +9,7 @@ interface Props {
 
 export function MediaTab({ game }: Props) {
   return (
-    <>
+    <Card variant="tabpanel">
       <section className="mb-8" data-testid="game-videos">
         <Heading as="h2" className="mb-2">
           Videos
@@ -66,6 +66,6 @@ export function MediaTab({ game }: Props) {
           ))}
         </ul>
       </section>
-    </>
+    </Card>
   )
 }
