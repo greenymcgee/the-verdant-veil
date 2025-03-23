@@ -64,7 +64,7 @@ export function GamesTable({ games, query, showingSkeletons }: Props) {
               {game.igdbId}
             </span>
           </Td>
-          <Td>
+          <Td className="whitespace-nowrap">
             <LinkTo
               aria-label={`Edit ${game.name}`}
               className={clsx('mr-4', { skeleton: showingSkeletons })}

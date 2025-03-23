@@ -31,15 +31,25 @@ export default async function AdminGameShowPage({ params }: Props) {
           className="mb-4 aspect-3/1 max-w-full"
           style={{ backgroundImage: `url(${game.bannerImage.url})` }}
         />
-        <header className="mb-6 flex items-center justify-between gap-6">
+        <header className="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-center sm:gap-6">
           <Heading data-testid="main-heading">{game.name}</Heading>
-          <LinkTo
-            href={ROUTES.adminEditGame(game.slug)}
-            leftIcon="edit"
-            size="sm"
-            text="Edit"
-            variant="solid"
-          />
+          <div className="flex gap-2">
+            <LinkTo
+              href={ROUTES.adminEditGame(game.slug)}
+              leftIcon="edit"
+              size="sm"
+              text="Edit"
+              variant="solid"
+            />
+            <LinkTo
+              href={ROUTES.gamePreview(game.slug)}
+              leftIcon="videogame"
+              size="sm"
+              text="Preview"
+              theme="secondary"
+              variant="solid"
+            />
+          </div>
         </header>
         <div className="mb-8 grid grid-cols-3 gap-8">
           <div>

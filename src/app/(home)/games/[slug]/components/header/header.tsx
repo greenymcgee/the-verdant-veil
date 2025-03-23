@@ -4,6 +4,8 @@ import Image from 'next/image'
 
 import { Heading } from '@/components'
 
+import { BackToAdmin } from '../backToAdmin'
+
 interface Props {
   game: Game
 }
@@ -18,6 +20,7 @@ export function GameHeader({ game }: Props) {
       className="mb-4 bg-neutral-900 text-white"
       data-testid="game-header"
     >
+      <BackToAdmin slug={game.slug} />
       <Heading
         className="mb-1 font-serif"
         classNameOverrides={{ color: 'text-white' }}
