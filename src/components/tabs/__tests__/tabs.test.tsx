@@ -3,11 +3,6 @@ import { render, screen } from '@testing-library/react'
 
 import { Tabs } from '..'
 
-const PANELS = [
-  { element: <h2>Review</h2>, hash: 'review' },
-  { element: <h2>About</h2>, hash: 'about' },
-  { element: <h2>Media</h2>, hash: 'media' },
-]
 const TABS: PropsOf<typeof Tabs>['tabs'] = [
   {
     hash: 'review',
@@ -26,7 +21,6 @@ const TABS: PropsOf<typeof Tabs>['tabs'] = [
   },
 ]
 const PROPS: PropsOf<typeof Tabs> = {
-  panels: PANELS,
   tabs: TABS,
 }
 

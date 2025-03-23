@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PageWithNavbar } from '@/app/(home)/components'
-import { Card, HTMLParser, Tabs } from '@/components'
+import { Card, HTMLParser, TabPanel, Tabs } from '@/components'
 
 import { AboutTab } from '../aboutTab'
 import { CSVList } from '../csvList'
@@ -12,6 +12,10 @@ import { MediaTab } from '../mediaTab'
 interface Props {
   game: Game
 }
+
+const REVIEW_HASH = 'review'
+const ABOUT_HASH = 'about'
+const MEDIA_HASH = 'media'
 
 export function GamePage({ game }: Props) {
   return (
@@ -35,40 +39,35 @@ export function GamePage({ game }: Props) {
           </p>
         </Card>
         <Tabs
-          panels={[
-            {
-              element: (
-                <HTMLParser data-testid="game-review" html={game.review} />
-              ),
-              hash: 'review',
-            },
-            {
-              element: <AboutTab game={game} />,
-              hash: 'about',
-            },
-            {
-              element: <MediaTab game={game} />,
-              hash: 'media',
-            },
-          ]}
           tabs={[
             {
-              hash: 'review',
+              hash: REVIEW_HASH,
               icon: 'message-draw',
               title: 'Review',
             },
             {
-              hash: 'about',
+              hash: ABOUT_HASH,
               icon: 'table',
               title: 'About',
             },
             {
-              hash: 'media',
+              hash: MEDIA_HASH,
               icon: 'image',
               title: 'Media',
             },
           ]}
         />
+        <TabPanel defaultActive hash={REVIEW_HASH}>
+          <Card variant="tabpanel">
+            <HTMLParser data-testid="game-review" html={game.review} />
+          </Card>
+        </TabPanel>
+        <TabPanel hash={ABOUT_HASH}>
+          <AboutTab game={game} />
+        </TabPanel>
+        <TabPanel hash={MEDIA_HASH}>
+          <MediaTab game={game} />
+        </TabPanel>
       </div>
     </PageWithNavbar>
   )
