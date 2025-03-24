@@ -59,7 +59,7 @@
     "@types/body-scroll-lock": "^3.1.2",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.10",
-    "@types/react": "^19.0.10",
+    "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@vitest/coverage-v8": "^3.0.9",
     "cspell": "^8.17.5",
