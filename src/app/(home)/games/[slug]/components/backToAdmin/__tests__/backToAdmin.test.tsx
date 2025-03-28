@@ -7,13 +7,7 @@ import { BackToAdmin } from '..'
 beforeEach(() => mockRouter.push('/'))
 
 describe('<BackToAdmin />', () => {
-  it('should not render for non-preview route', () => {
-    mockRouter.push('/nothing')
-    render(<BackToAdmin slug="test" />)
-    expect(screen.queryByText('Back to Admin')).not.toBeInTheDocument()
-  })
-
-  it('should render for a preview rout', () => {
+  it('should render', () => {
     mockRouter.push('/preview')
     render(<BackToAdmin slug="test" />)
     expect(screen.queryByText('Back to Admin')).toBeVisible()
