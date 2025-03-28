@@ -10,6 +10,7 @@ vi.mock('next/cache', async () => {
   const cache = await vi.importActual('next/cache')
   return {
     ...cache,
+    revalidatePath: vi.fn(),
     revalidateTag: vi.fn(),
   }
 })
