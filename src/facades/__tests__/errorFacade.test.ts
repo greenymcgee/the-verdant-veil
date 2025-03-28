@@ -93,6 +93,11 @@ describe('ErrorFacade', () => {
       const result = new ErrorFacade(ERROR)
       expect(result.response).toEqual(RESPONSE)
     })
+
+    it('should return undefined when the error is undefined', () => {
+      const result = new ErrorFacade(undefined)
+      expect(result.response).toBeUndefined()
+    })
   })
 
   describe('status', () => {
@@ -102,6 +107,11 @@ describe('ErrorFacade', () => {
         'Message',
       )
       expect(result.status).toBe(RESPONSE.status)
+    })
+
+    it('should return undefined when the error is undefined', () => {
+      const result = new ErrorFacade(undefined)
+      expect(result.status).toBeUndefined()
     })
   })
 })

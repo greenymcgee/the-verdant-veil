@@ -17,4 +17,8 @@ type ThirdParameterOf<Method extends (...args: any) => any> =
 type PropsOf<Component extends (...args: any) => any> =
   FirstParameterOf<Component>
 
+interface ActionState {
+  status: 'success' | 'failure' | 'idle'
+}
+
 /* eslint-enable @typescript-eslint/no-explicit-any */

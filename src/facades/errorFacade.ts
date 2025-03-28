@@ -3,7 +3,7 @@ import { AxiosError } from 'axios'
 export class ErrorFacade<GQError extends AxiosError<{ message: string }>> {
   private defaultMessage: string
 
-  public error: GQError
+  public error: GQError | undefined
 
   constructor(error: unknown, defaultMessage = 'Whoops, something went wrong') {
     this.error = error as GQError
@@ -27,10 +27,10 @@ export class ErrorFacade<GQError extends AxiosError<{ message: string }>> {
   }
 
   public get response() {
-    return this.error.response
+    return this.error?.response
   }
 
   public get status() {
-    return this.error.status
+    return this.error?.status
   }
 }
