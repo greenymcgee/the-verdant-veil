@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import { Button } from '@/components'
 import { logger } from '@/modules'
 
-import { HomeErrorBoundary } from './components'
+import { HomeErrorBoundary, PageWithNavbar } from './components'
 
 interface Props {
   error: Error & { digest?: string }
@@ -18,12 +18,13 @@ export default function HomeLayoutErrorBoundary({ error, reset }: Props) {
   })
 
   return (
-    <HomeErrorBoundary
-      actionBar={<Button onClick={reset} text="Try again" />}
-      activeLinkTitle="Home"
-      heading="Blast! Something went wrong"
-      status={500}
-      subtitle="An error occurred. Check back soon to continue the journey."
-    />
+    <PageWithNavbar activeLinkTitle="Home">
+      <HomeErrorBoundary
+        actionBar={<Button onClick={reset} text="Try again" />}
+        heading="Blast! Something went wrong"
+        status={500}
+        subtitle="An error occurred. Check back soon to continue the journey."
+      />
+    </PageWithNavbar>
   )
 }

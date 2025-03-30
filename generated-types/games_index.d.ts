@@ -9,17 +9,17 @@
  * The GET /api/games payload
  */
 interface GamesIndexJson {
-  games: GameWithoutResources[]
+  games: IndexGame[]
   totalPages: number
 }
-/**
- * A version of a Game that doesn't include relational resources.
- */
-interface GameWithoutResources {
+interface IndexGame {
   createdAt: string
+  cover: Cover
+  firstReleaseDate: string | null
   id: number
   igdbId: number
   name: string
+  platforms: PlatformWithoutResources[]
   published: boolean
   slug: string
   /**
@@ -30,5 +30,43 @@ interface GameWithoutResources {
    * Richtext: the review of the game.
    */
   review: string
+  updatedAt: string
+}
+/**
+ * A Cover.
+ */
+interface Cover {
+  animated: boolean
+  createdAt: string
+  height: number
+  id: number
+  igdbId: number
+  imageId: string
+  updatedAt: string
+  url: string
+  width: number
+}
+/**
+ * A version of a Platform that doesn't include relational resources.
+ */
+interface PlatformWithoutResources {
+  /**
+   * An abbreviated name for the platform.
+   */
+  abbreviation: string
+  /**
+   * An alternative name for the platform.
+   */
+  alternativeName: string
+  createdAt: string
+  generation: number | null
+  id: number
+  igdbId: number
+  name: string
+  slug: string
+  /**
+   * The summary of the first Version of this platform.
+   */
+  summary: string
   updatedAt: string
 }

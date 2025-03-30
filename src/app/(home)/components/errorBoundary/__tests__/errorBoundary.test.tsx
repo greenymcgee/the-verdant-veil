@@ -8,7 +8,6 @@ describe('<HomeErrorBoundary />', () => {
     render(
       <HomeErrorBoundary
         actionBar={<div>actions</div>}
-        activeLinkTitle="Home"
         heading="Heading"
         status={404}
         subtitle="Subtitle"

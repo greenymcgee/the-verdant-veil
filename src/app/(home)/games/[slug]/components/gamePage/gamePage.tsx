@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { PageWithNavbar } from '@/app/(home)/components'
+import { GreenQuestRating, PageWithNavbar } from '@/app/(home)/components'
 import { Card, HTMLParser, TabPanel, Tabs } from '@/components'
 
 import { AboutTab } from '../aboutTab'
 import { CSVList } from '../csvList'
-import { GreenQuestRating } from '../greenQuestRating'
 import { GameHeader } from '../header'
 import { MediaTab } from '../mediaTab'
 
