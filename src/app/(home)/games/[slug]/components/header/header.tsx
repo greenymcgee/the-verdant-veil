@@ -1,8 +1,9 @@
 import React from 'react'
-import { format, formatDistance } from 'date-fns'
+import { formatDistance } from 'date-fns'
 import Image from 'next/image'
 
 import { Heading } from '@/components'
+import { Time } from '@/components/time'
 
 import { PreviewAdminSection } from '../previewAdminSection'
 
@@ -11,10 +12,6 @@ interface Props {
 }
 
 export function GameHeader({ game }: Props) {
-  const firstReleaseDate = game.firstReleaseDate
-    ? new Date(game.firstReleaseDate ?? '')
-    : ''
-
   return (
     <header
       className="mb-4 bg-neutral-900 text-white"
@@ -29,8 +26,8 @@ export function GameHeader({ game }: Props) {
       </Heading>
       {game.firstReleaseDate ? (
         <p className="text-primary-100 mb-4" data-testid="first-release-date">
-          {format(firstReleaseDate, 'M/d/yyyy')} (
-          {formatDistance(new Date(), firstReleaseDate)})
+          <Time date={game.firstReleaseDate} format="M/d/yyyy" /> (
+          {formatDistance(new Date(), new Date(game.firstReleaseDate))})
         </p>
       ) : null}
       <div className="grid-cols-12 gap-6 sm:grid">

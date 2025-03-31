@@ -13,7 +13,9 @@ describe('<GameHeader />', () => {
 
   it('should render the firstReleaseDate when present', () => {
     render(
-      <GameHeader game={gameFactory.build({ firstReleaseDate: '1-1-1999' })} />,
+      <GameHeader
+        game={gameFactory.build({ firstReleaseDate: '1999-11-18T00:00' })}
+      />,
     )
     expect(screen.queryByTestId('first-release-date')).toBeVisible()
   })
