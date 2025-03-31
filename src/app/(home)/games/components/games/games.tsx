@@ -3,10 +3,10 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 import { Heading } from '@/components'
+import { Time } from '@/components/time'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
 
 import { GreenQuestRating } from '../../../components'
-import { FirstReleaseDate } from '../firstReleaseDate'
 import { GameCover } from '../gameCover'
 import { GameLinkPlatforms } from '../gameLinkPlatforms'
 
@@ -50,9 +50,10 @@ export function Games({ games, isValidating }: Props) {
                     {game.name}
                   </span>
                 </Heading>
-                <FirstReleaseDate
+                <Time
                   className={clsx({ skeleton: isValidating })}
-                  firstReleaseDate={game.firstReleaseDate}
+                  date={game.firstReleaseDate}
+                  format="MMMM do, yyyy"
                 />
               </header>
               <GameLinkPlatforms game={game} isValidating={isValidating} />
