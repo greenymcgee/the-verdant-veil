@@ -47,7 +47,7 @@ export function GamesContainer({ fallbackTotalPages }: Props) {
         Games
       </Heading>
       <PaginationWrapper
-        className="mb-4"
+        className="mb-4 justify-end lg:max-w-3/4"
         dataTestId="games-pagination"
         route="games"
         totalPages={totalPages ?? fallbackTotalPages}
@@ -55,7 +55,7 @@ export function GamesContainer({ fallbackTotalPages }: Props) {
       <ValidatingGamesAlert isValidating={isValidating} />
       <Games games={games} isValidating={isValidating} />
       <PaginationWrapper
-        className="pt-4"
+        className="justify-end pt-4 lg:max-w-3/4"
         dataTestId="games-pagination"
         route="games"
         totalPages={totalPages ?? fallbackTotalPages}
