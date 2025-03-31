@@ -23,7 +23,7 @@ interface Props extends PaginationProps {
 }
 
 const PAGE_TURN_BUTTON_CLASSES =
-  'text-primary-700 flex h-8 w-8 items-center justify-center rounded-lg border-1 border-neutral-50'
+  'bg-white text-primary-700 flex h-8 w-8 items-center justify-center rounded-lg border-1 border-neutral-50'
 
 export function PaginationWrapper({
   className,
@@ -88,7 +88,7 @@ export function PaginationWrapper({
               'flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg',
               TRANSITION_STYLES.inputHover,
             )}
-            inactiveClassName="border-neutral-50 border-1 text-primary-700 hover:opacity-60"
+            inactiveClassName="border-neutral-50 bg-white border-1 text-primary-700 hover:opacity-60"
             renderExtraProps={renderExtraProps}
           />
         </ul>
