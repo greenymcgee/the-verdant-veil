@@ -32,7 +32,10 @@ export default async function GamesPage() {
 
   return (
     <SWRConfig value={{ fallback: { [API_ROUTES.games]: { games } } }}>
-      <PageWithNavbar activeLinkTitle="Games" paddingTop="pt-32">
+      <PageWithNavbar
+        activeLinkTitle="Games"
+        classNameOverrides={{ padding: 'pt-32 pb-44' }}
+      >
         <GamesContainer fallbackTotalPages={totalPages} />
       </PageWithNavbar>
     </SWRConfig>
