@@ -8,14 +8,14 @@ type Extensions = Pick<PropsOf<typeof Navbar>, 'activeLinkTitle'> &
   PropsWithChildren
 interface Props extends Extensions {
   bannerImage?: PropsOf<typeof BannerImage>['bannerImage']
-  paddingTop?: string
+  classNameOverrides?: { padding?: string }
 }
 
 export function PageWithNavbar({
   activeLinkTitle,
   bannerImage,
   children,
-  paddingTop,
+  classNameOverrides,
 }: Props) {
   return (
     <>
@@ -26,11 +26,10 @@ export function PageWithNavbar({
       <main
         className={clsx(
           {
-            'pb-44': bannerImage || paddingTop,
-            'pt-14': !paddingTop,
-            'py-44': !bannerImage && !paddingTop,
+            'pt-14 pb-44': bannerImage && !classNameOverrides?.padding,
+            'py-44': !bannerImage && !classNameOverrides?.padding,
           },
-          paddingTop,
+          classNameOverrides?.padding,
         )}
       >
         {children}
