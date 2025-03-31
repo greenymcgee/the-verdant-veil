@@ -1,11 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import GameShowLoader from '../loading'
+import GamesLoader from '../loading'
 
-describe('<GameShowLoader />', () => {
+describe('<GamesLoader />', () => {
   it('should render', () => {
-    render(<GameShowLoader />)
+    render(<GamesLoader />)
     expect(screen.getByRole('alert')).toBeVisible()
   })
 })

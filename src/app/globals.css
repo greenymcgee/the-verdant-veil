@@ -98,8 +98,8 @@
   --text-body-sm: 0.875rem;
   --text-body-xs: 0.75rem;
 
-  --leading-body: 150%;
-  --leading-heading: 125%;
+  --leading-body: 1.5;
+  --leading-heading: 1.25;
 
   --transition-property-width: width;
   --transition-property-main-nav: background-color, color, shadow;

@@ -104,9 +104,7 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
               <li>
                 <MainNavLink
                   activeLinkTitle={activeLinkTitle}
-                  href={ROUTES.gamePreview(
-                    'the-legend-of-zelda-a-link-to-the-past',
-                  )}
+                  href={ROUTES.games}
                   onClick={toggleHamburgerMenu}
                   title="Games"
                   type="mobile"

@@ -18,7 +18,7 @@ type PaginationProps = Omit<
 >
 
 interface Props extends PaginationProps {
-  route: 'adminGames'
+  route: 'adminGames' | 'games'
   totalPages: number
 }
 
@@ -60,10 +60,7 @@ export function PaginationWrapper({
 
   return (
     <Pagination
-      className={clsx(
-        'text-body-xs flex justify-end gap-1 font-medium',
-        className,
-      )}
+      className={clsx('text-body-xs flex gap-1 font-medium', className)}
       currentPage={currentPage}
       edgePageCount={2}
       middlePagesSiblingCount={2}

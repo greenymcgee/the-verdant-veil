@@ -6,6 +6,7 @@ import { baseApi, logger } from '@/modules'
 interface GetGames extends GamesIndexJson {
   error?: unknown
   message?: string
+  status?: number
 }
 
 export async function getGames(): Promise<GetGames> {
@@ -13,8 +14,8 @@ export async function getGames(): Promise<GetGames> {
     const { data } = await baseApi.get<GamesIndexJson>(API_ROUTES.games)
     return data
   } catch (error) {
-    const { message } = new ErrorFacade(error)
+    const { message, status } = new ErrorFacade(error)
     logger.error(error, message)
-    return { error, games: [], message, totalPages: 0 }
+    return { error, games: [], message, status, totalPages: 0 }
   }
 }

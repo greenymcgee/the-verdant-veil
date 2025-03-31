@@ -1,9 +1,13 @@
 import React from 'react'
 
 import { getGame } from '@/actions'
-import { HomeErrorBoundary } from '@/app/(home)/components'
+import {
+  ErrorBoundaryActionBar,
+  HomeErrorBoundary,
+  PageWithNavbar,
+} from '@/app/(home)/components'
 
-import { ErrorBoundaryActionBar, GamePage } from './components'
+import { GamePage } from './components'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -15,27 +19,29 @@ export default async function GameShowPage({ params }: Props) {
 
   if (isNotFoundError) {
     return (
-      <HomeErrorBoundary
-        actionBar={<ErrorBoundaryActionBar />}
-        activeLinkTitle="Games"
-        heading="This game is lost!"
-        status={status}
-        subtitle={`${slug} could not be found.`}
-        testId="game-not-found-error"
-      />
+      <PageWithNavbar activeLinkTitle="Games">
+        <HomeErrorBoundary
+          actionBar={<ErrorBoundaryActionBar />}
+          heading="This game is lost!"
+          status={status}
+          subtitle={`${slug} could not be found.`}
+          testId="game-not-found-error"
+        />
+      </PageWithNavbar>
     )
   }
 
   if (error) {
     return (
-      <HomeErrorBoundary
-        actionBar={<ErrorBoundaryActionBar />}
-        activeLinkTitle="Games"
-        heading="Blast! Something went wrong"
-        status={status}
-        subtitle={`An error occurred while retrieving ${slug}. Check back soon to continue the journey.`}
-        testId="generic-game-error"
-      />
+      <PageWithNavbar activeLinkTitle="Games">
+        <HomeErrorBoundary
+          actionBar={<ErrorBoundaryActionBar />}
+          heading="Blast! Something went wrong"
+          status={status}
+          subtitle={`An error occurred while retrieving ${slug}. Check back soon to continue the journey.`}
+          testId="generic-game-error"
+        />
+      </PageWithNavbar>
     )
   }
 

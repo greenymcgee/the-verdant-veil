@@ -34,6 +34,7 @@ export function Games({ fallbackTotalPages }: Props) {
         showingSkeletons={isLoading || isValidating}
       />
       <PaginationWrapper
+        className="justify-end"
         dataTestId="admin-games-pagination"
         route="adminGames"
         totalPages={totalPages ?? fallbackTotalPages}
