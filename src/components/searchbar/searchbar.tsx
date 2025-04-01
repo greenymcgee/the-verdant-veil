@@ -16,19 +16,35 @@ import { Icon } from '../icon'
 import { Input } from '../input'
 
 interface SearchbarProps extends HTMLAttributes<HTMLDivElement> {
+  autoSearch?: boolean
   inputProps?: Omit<PropsOf<typeof Input>, 'onChange' | 'ref' | 'id'>
+  labelProps?: Omit<HTMLAttributes<HTMLLabelElement>, 'htmlFor'> & {
+    ariaLabel?: string
+  }
+  pathnameOverride?: string
 }
 
 export function Searchbar({
+  autoSearch,
   className,
   id = 'searchbar',
-  inputProps,
+  inputProps = {},
+  labelProps = { ariaLabel: 'Search by Name' },
+  pathnameOverride,
   ...options
 }: SearchbarProps) {
   const searchParams = useSearchParams()
-  const pathname = usePathname()
+  const currentPathname = usePathname()
   const { push } = useRouter()
   const inputRef = useRef<HTMLInputElement>(null)
+  const pathname = pathnameOverride ?? currentPathname
+  const query = searchParams.get('query') ?? undefined
+  const {
+    ariaLabel = 'Search by Name',
+    className: labelClassName,
+    ...labelOptions
+  } = labelProps
+  const { className: inputClassName, ...inputOptions } = inputProps
 
   const pushToSearchResults = useCallback(
     (query: string) => {
@@ -65,36 +81,44 @@ export function Searchbar({
   return (
     <div className={clsx('relative', className)} {...options}>
       <label
-        aria-label="Search by Name"
+        aria-label={ariaLabel}
         className={clsx(
           'absolute top-1/2 left-2 -translate-y-1/2 transform cursor-pointer',
           'text-heading-md text-neutral-500',
+          labelClassName,
         )}
         htmlFor={id}
+        {...labelOptions}
       >
         <Icon icon="magnify" />
       </label>
       <Input
-        className={clsx('px-8', inputProps?.className)}
+        autoComplete="off"
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus={Boolean(query)}
+        className={clsx('px-8', inputClassName)}
         data-testid={id}
+        defaultValue={query}
         id={id}
-        onChange={handleSearchChange}
+        onChange={autoSearch ? handleSearchChange : undefined}
         onKeyUp={handleSearchKeyUp}
         placeholder="Search"
         ref={inputRef}
-        {...inputProps}
+        {...inputOptions}
       />
-      <button
-        aria-label="Clear Search"
-        className={clsx(
-          'absolute top-[9px] right-2 cursor-pointer text-2xl',
-          'text-neutral-500 hover:opacity-70',
-        )}
-        onClick={clearSearch}
-        type="button"
-      >
-        <Icon icon="close" />
-      </button>
+      {query ? (
+        <button
+          aria-label="Clear Search"
+          className={clsx(
+            'absolute top-[9px] right-2 cursor-pointer text-2xl',
+            'text-neutral-500 hover:opacity-70',
+          )}
+          onClick={clearSearch}
+          type="button"
+        >
+          <Icon icon="close" />
+        </button>
+      ) : null}
     </div>
   )
 }

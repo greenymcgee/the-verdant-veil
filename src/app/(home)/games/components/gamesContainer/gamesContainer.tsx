@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import { useSearchParams } from 'next/navigation'
 
 import {
   ErrorBoundaryActionBar,
@@ -16,12 +17,12 @@ interface Props {
 }
 
 // TODO:
-// search bar
 // lazy load images
-// style pagination
 export function GamesContainer({ fallbackTotalPages }: Props) {
   const { error, games, isLoading, isValidating, totalPages } =
     useGetGamesQuery()
+  const searchParams = useSearchParams()
+  const query = searchParams.get('query')
 
   if (isLoading && !games.length) return <Spinner className="py-32" size="lg" />
 
@@ -44,7 +45,7 @@ export function GamesContainer({ fallbackTotalPages }: Props) {
         className="mb-3 bg-neutral-900 font-serif text-white"
         classNameOverrides={{ color: 'text-neutral-900' }}
       >
-        Games
+        {query ? `Results for "${query}"` : 'Games'}
       </Heading>
       <PaginationWrapper
         className="mb-4 justify-end lg:max-w-3/4"

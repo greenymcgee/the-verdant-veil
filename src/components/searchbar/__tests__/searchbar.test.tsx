@@ -1,9 +1,10 @@
 import React from 'react'
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import mockRouter from 'next-router-mock'
 
 import { ROUTES } from '@/constants'
+import { sleep } from '@/test/helpers'
 
 import { Searchbar } from '..'
 
@@ -23,6 +24,11 @@ describe('<Searchbar />', () => {
     expect(screen.getByTestId('searchbar')).toHaveClass('mb-4')
   })
 
+  it('should pass labelProps', () => {
+    render(<Searchbar labelProps={{ ariaLabel: 'Given label' }} />)
+    expect(screen.getByLabelText('Given label')).toBeVisible()
+  })
+
   describe('id', () => {
     it('should pass the id to the input', () => {
       render(<Searchbar id="test" />)
@@ -38,18 +44,29 @@ describe('<Searchbar />', () => {
   })
 
   describe('searching', () => {
-    it("should update the route with the user's query automatically after a period of time", async () => {
+    it("should not update the route with the user's query automatically after 1 seconds when autoSearch is false", async () => {
       mockRouter.push(ROUTES.adminGames)
       render(<Searchbar />)
       userEvent.type(screen.getByTestId('searchbar'), 'query')
-      await act(async () => {
-        await waitFor(
-          () => {
-            expect(mockRouter.asPath).toBe(`${ROUTES.adminGames}?query=query`)
-          },
-          { timeout: 1500 },
-        )
-      })
+      await waitFor(
+        async () => {
+          await sleep(1000)
+          expect(mockRouter.asPath).toBe(ROUTES.adminGames)
+        },
+        { timeout: 1500 },
+      )
+    })
+
+    it("should update the route with the user's query automatically after 1 seconds when autoSearch is true", async () => {
+      mockRouter.push(ROUTES.adminGames)
+      render(<Searchbar autoSearch />)
+      userEvent.type(screen.getByTestId('searchbar'), 'query')
+      await waitFor(
+        () => {
+          expect(mockRouter.asPath).toBe(`${ROUTES.adminGames}?query=query`)
+        },
+        { timeout: 1500 },
+      )
     })
 
     it('should allow user to enter the search with the enter key', async () => {
@@ -66,9 +83,18 @@ describe('<Searchbar />', () => {
     it('should render a button to clear the search', async () => {
       mockRouter.push(`${ROUTES.adminGames}?query=query`)
       render(<Searchbar />)
-      userEvent.type(screen.getByTestId('searchbar'), 'query')
       userEvent.click(screen.getByLabelText('Clear Search'))
       await waitFor(() => expect(mockRouter.asPath).toBe(ROUTES.adminGames))
+    })
+
+    it('should use the given pathname', async () => {
+      mockRouter.push(ROUTES.home)
+      render(<Searchbar pathnameOverride={ROUTES.games} />)
+      await userEvent.type(screen.getByTestId('searchbar'), 'query')
+      await userEvent.type(screen.getByTestId('searchbar'), '{enter}')
+      await waitFor(() =>
+        expect(mockRouter.asPath).toBe(`${ROUTES.games}?query=query`),
+      )
     })
   })
 })

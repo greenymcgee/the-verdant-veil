@@ -1,6 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import mockRouter from 'next-router-mock'
 
+import { ROUTES } from '@/constants'
 import { gamesServer, mockGamesRequestFailure } from '@/test/servers'
 
 import { GamesContainer } from '..'
@@ -34,5 +36,12 @@ describe('<GamesContainer />', () => {
   it('should render pagination', () => {
     render(<GamesContainer fallbackTotalPages={2} />)
     expect(screen.getAllByTestId('games-pagination').length).toBe(2)
+  })
+
+  it('should render a search result as the heading', async () => {
+    mockRouter.push(`${ROUTES.games}?query=zelda`)
+    render(<GamesContainer fallbackTotalPages={2} />)
+    const heading = await screen.findByText('Results for "zelda"')
+    expect(heading.tagName).toBe('H1')
   })
 })
