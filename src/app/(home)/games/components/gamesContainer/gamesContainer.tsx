@@ -1,6 +1,5 @@
 'use client'
-import React from 'react'
-import { useSearchParams } from 'next/navigation'
+import React, { Suspense } from 'react'
 
 import {
   ErrorBoundaryActionBar,
@@ -10,6 +9,7 @@ import { Heading, PaginationWrapper, Spinner } from '@/components'
 import { useGetGamesQuery } from '@/hooks/api'
 
 import { Games } from '../games'
+import { GamesHeader } from '../gamesHeader'
 import { ValidatingGamesAlert } from '../validatingGamesAlert'
 
 interface Props {
@@ -21,8 +21,6 @@ interface Props {
 export function GamesContainer({ fallbackTotalPages }: Props) {
   const { error, games, isLoading, isValidating, totalPages } =
     useGetGamesQuery()
-  const searchParams = useSearchParams()
-  const query = searchParams.get('query')
 
   if (isLoading && !games.length) return <Spinner className="py-32" size="lg" />
 
@@ -41,12 +39,18 @@ export function GamesContainer({ fallbackTotalPages }: Props) {
 
   return (
     <div className="container" data-testid="games-container">
-      <Heading
-        className="mb-3 bg-neutral-900 font-serif text-white"
-        classNameOverrides={{ color: 'text-neutral-900' }}
+      <Suspense
+        fallback={
+          <Heading
+            className="mb-3 bg-neutral-900 font-serif text-white"
+            classNameOverrides={{ color: 'text-neutral-900' }}
+          >
+            Games
+          </Heading>
+        }
       >
-        {query ? `Results for "${query}"` : 'Games'}
-      </Heading>
+        <GamesHeader />
+      </Suspense>
       <PaginationWrapper
         className="mb-4 justify-end lg:max-w-3/4"
         dataTestId="games-pagination"
