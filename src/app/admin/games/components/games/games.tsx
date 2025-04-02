@@ -20,14 +20,7 @@ export function Games({ fallbackTotalPages }: Props) {
 
   return (
     <>
-      <Searchbar
-        className="mb-1 max-w-60"
-        inputProps={{
-          autoComplete: 'off',
-          autoFocus: Boolean(query),
-          defaultValue: query,
-        }}
-      />
+      <Searchbar autoSearch className="mb-1 max-w-60" />
       <GamesTable
         games={games}
         query={query}
