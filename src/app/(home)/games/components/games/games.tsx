@@ -7,15 +7,19 @@ import { Time } from '@/components/time'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
 
 import { GreenQuestRating } from '../../../components'
+import { EmptyGamesCard } from '../emptyGamesCard'
 import { GameCover } from '../gameCover'
 import { GameLinkPlatforms } from '../gameLinkPlatforms'
 
 interface Props {
   games: IndexGame[]
   isValidating: boolean
+  query: string | undefined
 }
 
-export function Games({ games, isValidating }: Props) {
+export function Games({ games, isValidating, query }: Props) {
+  if (!games.length) return <EmptyGamesCard query={query} />
+
   return (
     <ul className="space-y-6 lg:max-w-3/4" data-testid="games">
       {games.map((game) => (

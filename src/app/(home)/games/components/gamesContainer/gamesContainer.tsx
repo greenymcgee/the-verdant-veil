@@ -1,5 +1,6 @@
 'use client'
 import React, { Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 import {
   ErrorBoundaryActionBar,
@@ -21,6 +22,8 @@ interface Props {
 export function GamesContainer({ fallbackTotalPages }: Props) {
   const { error, games, isLoading, isValidating, totalPages } =
     useGetGamesQuery()
+  const searchParams = useSearchParams()
+  const query = searchParams.get('query') ?? undefined
 
   if (isLoading && !games.length) return <Spinner className="py-32" size="lg" />
 
@@ -51,20 +54,24 @@ export function GamesContainer({ fallbackTotalPages }: Props) {
       >
         <GamesHeader />
       </Suspense>
-      <PaginationWrapper
-        className="mb-4 justify-end lg:max-w-3/4"
-        dataTestId="games-pagination"
-        route="games"
-        totalPages={totalPages ?? fallbackTotalPages}
-      />
+      {games.length ? (
+        <PaginationWrapper
+          className="mb-4 justify-end lg:max-w-3/4"
+          dataTestId="games-pagination"
+          route="games"
+          totalPages={totalPages ?? fallbackTotalPages}
+        />
+      ) : null}
       <ValidatingGamesAlert isValidating={isValidating} />
-      <Games games={games} isValidating={isValidating} />
-      <PaginationWrapper
-        className="justify-end pt-4 lg:max-w-3/4"
-        dataTestId="games-pagination"
-        route="games"
-        totalPages={totalPages ?? fallbackTotalPages}
-      />
+      <Games games={games} isValidating={isValidating} query={query} />
+      {games.length ? (
+        <PaginationWrapper
+          className="justify-end pt-4 lg:max-w-3/4"
+          dataTestId="games-pagination"
+          route="games"
+          totalPages={totalPages ?? fallbackTotalPages}
+        />
+      ) : null}
     </div>
   )
 }

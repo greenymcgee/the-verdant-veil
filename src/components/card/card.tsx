@@ -3,7 +3,11 @@ import clsx from 'clsx'
 
 interface Props extends HTMLAttributes<HTMLElement> {
   as?: ElementType
-  classNameOverrides?: { borderRadius?: string; padding?: string }
+  classNameOverrides?: {
+    backgroundColor?: string
+    borderRadius?: string
+    padding?: string
+  }
   shadowTheme?: 'light' | 'dark'
   variant?: 'tabpanel'
 }
@@ -20,8 +24,8 @@ export function Card({
   return (
     <As
       className={clsx(
-        'bg-white',
         {
+          'bg-white': !classNameOverrides?.backgroundColor,
           'rounded-b-sm p-6 sm:rounded-tr-sm': variant === 'tabpanel',
           'shadow-card-dark border-1 border-neutral-100':
             shadowTheme === 'dark',
@@ -31,6 +35,7 @@ export function Card({
           'p-3': !classNameOverrides?.padding && !variant,
           'rounded-lg': !classNameOverrides?.borderRadius && !variant,
         },
+        classNameOverrides?.backgroundColor,
         classNameOverrides?.borderRadius,
         classNameOverrides?.padding,
         className,
