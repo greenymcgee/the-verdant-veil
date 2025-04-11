@@ -3,7 +3,10 @@ import { HTMLAttributes, JSX } from 'react'
 import {
   ChevronDoubleLeft,
   ChevronDoubleRight,
+  ChevronDown,
   ChevronLeft,
+  ChevronRight,
+  ChevronUp,
   Close,
   EditIcon,
   ExclamationThick,
@@ -26,7 +29,10 @@ export const ICON_TYPE_MAP: Record<
 > = {
   'chevron-double-left': ChevronDoubleLeft,
   'chevron-double-right': ChevronDoubleRight,
+  'chevron-down': ChevronDown,
   'chevron-left': ChevronLeft,
+  'chevron-right': ChevronRight,
+  'chevron-up': ChevronUp,
   close: Close,
   edit: EditIcon,
   'exclamation-thick': ExclamationThick,

@@ -81,10 +81,14 @@ describe('<Searchbar />', () => {
     })
 
     it('should render a button to clear the search', async () => {
-      mockRouter.push(`${ROUTES.adminGames}?query=query`)
+      mockRouter.push(`${ROUTES.adminGames}?platforms[]=1&query=query`)
       render(<Searchbar />)
       userEvent.click(screen.getByLabelText('Clear Search'))
-      await waitFor(() => expect(mockRouter.asPath).toBe(ROUTES.adminGames))
+      await waitFor(() =>
+        expect(mockRouter.asPath).toBe(
+          encodeURI(`${ROUTES.adminGames}?platforms[]=1`),
+        ),
+      )
     })
 
     it('should use the given pathname', async () => {

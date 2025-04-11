@@ -1,7 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { twMerge } from 'tailwind-merge'
 
 import {
   BUTTON_SIZES,
@@ -37,14 +36,15 @@ export function LinkTo({
   const buttonTheme = variant ? BUTTON_THEMES[variant][theme] : ''
   return (
     <Link
-      className={twMerge(
-        clsx({
+      className={clsx(
+        {
           [BASE_LINK_TO_CLASSNAME]: !variant,
           [LINK_TO_THEME_MAP[theme]]: !variant,
           [DEFAULT_BUTTON_CLASS_NAMES]: variant,
           [buttonTheme]: variant,
           [BUTTON_SIZES[size]]: variant,
-        }),
+          rounded: !variant,
+        },
         className,
       )}
       rel={opensNewTab ? 'noopener noreferrer' : undefined}

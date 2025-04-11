@@ -3,6 +3,7 @@ import { setupServer } from 'msw/node'
 
 import {
   DARK_SOULS,
+  GET_GAME_FILTERS_RESPONSE_DATA,
   GET_GAMES_RESPONSE_DATA,
   GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA,
   NEW_GAME,
@@ -31,6 +32,9 @@ const handlers = [
   ),
   http.delete(getApiUrl('game', [SUPER_METROID.slug]), () =>
     HttpResponse.json(),
+  ),
+  http.get(getApiUrl('gameFilters'), () =>
+    HttpResponse.json(GET_GAME_FILTERS_RESPONSE_DATA),
   ),
 ]
 
@@ -84,4 +88,12 @@ export function mockGamesWithoutDeletedGameRequest() {
       HttpResponse.json({ games: [DARK_SOULS] }),
     ),
   )
+}
+
+export function mockGameFiltersRequestFailure() {
+  const message = 'Server Error'
+  const response = () =>
+    new HttpResponse(JSON.stringify({ message }), { status: 500 })
+  gamesServer.use(http.get(getApiUrl('gameFilters'), response))
+  return { message, response }
 }

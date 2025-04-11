@@ -9,6 +9,7 @@ interface ButtonThemes {
  * Class names for consistent transition styles.
  */
 export const TRANSITION_STYLES = {
+  expand: 'duration-200 ease-out',
   inputHover: 'duration-100 ease-linear',
 } as const
 
@@ -55,3 +56,6 @@ export const BUTTON_SIZES: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
   sm: 'px-3 py-2',
   xs: 'px-2 py-1 text-sm',
 } as const
+
+export const FOCUS_STYLE_CLASS_NAME =
+  'focus-visible:ring-ring-color focus:shadow-none ring-offset-0 outline-none focus-visible:ring-2 ring-0'

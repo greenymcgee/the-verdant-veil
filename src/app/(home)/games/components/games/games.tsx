@@ -21,11 +21,14 @@ export function Games({ games, isValidating, query }: Props) {
   if (!games.length) return <EmptyGamesCard query={query} />
 
   return (
-    <ul className="space-y-6 lg:max-w-3/4" data-testid="games">
+    <ul
+      className="relative space-y-6 overflow-y-auto lg:max-h-[calc(100vh-17rem)]"
+      data-testid="games"
+    >
       {games.map((game) => (
         <li className={clsx({ group: !isValidating })} key={game.id}>
           <Link
-            className={clsx('flex flex-col md:flex-row', {
+            className={clsx('flex flex-col rounded-lg md:flex-row', {
               'pointer-events-none cursor-default select-none': isValidating,
             })}
             data-testid={`game-${game.id}`}

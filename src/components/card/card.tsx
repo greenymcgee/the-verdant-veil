@@ -1,4 +1,4 @@
-import React, { ElementType, HTMLAttributes } from 'react'
+import React, { ElementType, HTMLAttributes, RefObject } from 'react'
 import clsx from 'clsx'
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -8,6 +8,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
     borderRadius?: string
     padding?: string
   }
+  ref?: RefObject<HTMLElement | null>
   shadowTheme?: 'light' | 'dark'
   variant?: 'tabpanel'
 }

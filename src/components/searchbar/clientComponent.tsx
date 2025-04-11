@@ -73,10 +73,12 @@ export function SearchbarClientComponent({
   )
 
   const clearSearch = useCallback(() => {
-    push(pathname)
+    const params = new URLSearchParams(searchParams)
+    params.delete('query')
+    push(`${pathname}${params.size ? '?' : ''}${params}`)
     const input = inputRef.current as HTMLInputElement
     input.value = ''
-  }, [push, pathname])
+  }, [searchParams, push, pathname])
 
   return (
     <div className={clsx('relative', className)} {...options}>

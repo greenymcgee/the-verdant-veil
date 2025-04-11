@@ -18,6 +18,7 @@ type PaginationProps = Omit<
 >
 
 interface Props extends PaginationProps {
+  classNameOverrides?: { display?: string }
   route: 'adminGames' | 'games'
   totalPages: number
 }
@@ -27,6 +28,7 @@ const PAGE_TURN_BUTTON_CLASSES =
 
 export function PaginationWrapper({
   className,
+  classNameOverrides,
   route,
   totalPages,
   ...options
@@ -60,7 +62,12 @@ export function PaginationWrapper({
 
   return (
     <Pagination
-      className={clsx('text-body-xs flex gap-1 font-medium', className)}
+      className={clsx(
+        'text-body-xs gap-1 font-medium',
+        { flex: !classNameOverrides?.display },
+        classNameOverrides?.display,
+        className,
+      )}
       currentPage={currentPage}
       edgePageCount={2}
       middlePagesSiblingCount={2}

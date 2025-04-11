@@ -9,6 +9,7 @@ import {
 import { Heading, PaginationWrapper, Spinner } from '@/components'
 import { useGetGamesQuery } from '@/hooks/api'
 
+import { GameFilters } from '../gameFilters'
 import { Games } from '../games'
 import { GamesHeader } from '../gamesHeader'
 import { ValidatingGamesAlert } from '../validatingGamesAlert'
@@ -56,17 +57,23 @@ export function GamesContainer({ fallbackTotalPages }: Props) {
       </Suspense>
       {games.length ? (
         <PaginationWrapper
-          className="mb-4 justify-end lg:max-w-3/4"
+          className="mb-4 justify-end"
+          classNameOverrides={{ display: 'hidden lg:flex' }}
           dataTestId="games-pagination"
           route="games"
           totalPages={totalPages ?? fallbackTotalPages}
         />
       ) : null}
-      <ValidatingGamesAlert isValidating={isValidating} />
-      <Games games={games} isValidating={isValidating} query={query} />
+      <div className="gap-6 lg:grid lg:grid-cols-12">
+        <GameFilters />
+        <div className="md:col-span-9">
+          <ValidatingGamesAlert isValidating={isValidating} />
+          <Games games={games} isValidating={isValidating} query={query} />
+        </div>
+      </div>
       {games.length ? (
         <PaginationWrapper
-          className="justify-end pt-4 lg:max-w-3/4"
+          className="justify-end pt-4"
           dataTestId="games-pagination"
           route="games"
           totalPages={totalPages ?? fallbackTotalPages}
