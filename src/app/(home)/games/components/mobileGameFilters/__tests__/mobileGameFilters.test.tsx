@@ -30,7 +30,7 @@ describe('<MobileGameFilters />', () => {
     expect(PROPS.onSubmit).toHaveBeenCalledTimes(1)
   })
 
-  it('should call the onSubmit prop', () => {
+  it('should call the onClearClicked prop', () => {
     render(<MobileGameFilters {...PROPS} filtersPresent />)
     fireEvent.click(screen.getByTestId('mobile-filter-button'))
     fireEvent.click(screen.getByTestId('mobile-clear-filters-button'))

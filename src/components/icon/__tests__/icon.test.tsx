@@ -29,11 +29,6 @@ describe('<Icon />', () => {
     expect(screen.getByTestId('message-draw-icon')).toBeVisible()
   })
 
-  it('should render message-draw icon', () => {
-    render(<Icon icon="message-draw" />)
-    expect(screen.getByTestId('message-draw-icon')).toBeVisible()
-  })
-
   it('should render an outline-filter-alt icon', () => {
     render(<Icon icon="outline-filter-alt" />)
     expect(screen.getByTestId('outline-filter-alt-icon')).toBeVisible()
