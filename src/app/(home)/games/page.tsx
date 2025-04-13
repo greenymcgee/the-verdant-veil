@@ -1,7 +1,7 @@
 import React from 'react'
 import { SWRConfig } from 'swr'
 
-import { getGames } from '@/actions'
+import { getGameFilters, getGames } from '@/actions'
 import { API_ROUTES } from '@/constants'
 
 import {
@@ -13,6 +13,7 @@ import { GamesContainer } from './components'
 
 export default async function GamesPage() {
   const { error, games, status, totalPages } = await getGames()
+  const { filters } = await getGameFilters()
 
   if (error) {
     return (
@@ -31,10 +32,17 @@ export default async function GamesPage() {
   }
 
   return (
-    <SWRConfig value={{ fallback: { [API_ROUTES.games]: { games } } }}>
+    <SWRConfig
+      value={{
+        fallback: {
+          [API_ROUTES.games]: { games },
+          [API_ROUTES.gameFilters]: { filters },
+        },
+      }}
+    >
       <PageWithNavbar
         activeLinkTitle="Games"
-        classNameOverrides={{ padding: 'pt-32 pb-44' }}
+        classNameOverrides={{ padding: 'pt-32 pb-8' }}
       >
         <GamesContainer fallbackTotalPages={totalPages} />
       </PageWithNavbar>

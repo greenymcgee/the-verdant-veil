@@ -11,7 +11,7 @@ describe('<GameCover />', () => {
     expect(screen.getByTestId('cover-skeleton')).toBeVisible()
   })
 
-  it('should render a skeleton when isValidating is true', () => {
+  it('should render the cover when isValidating is false', () => {
     render(<GameCover game={SUPER_METROID} isValidating={false} />)
     expect(screen.getByTestId('game-cover')).toBeVisible()
   })

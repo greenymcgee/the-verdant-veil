@@ -15,7 +15,7 @@
 
   --shadow-card-dark: 4px 4px 4px 0px rgba(23, 24, 26, 0.2);
   --shadow-card-light: 2px 4px 4px 0px #fcfcff;
-  --shadow-input-hover: 0px 0px 0px 2px #b3bcc8;
+  --shadow-input-hover: 0px 0px 0px 1px #d4bedf;
   --shadow-nav-light: 0px 2px 4px 0px #fcfcff;
 
   --color-ring-color: #00a6ff;
@@ -101,6 +101,7 @@
   --leading-body: 1.5;
   --leading-heading: 1.25;
 
+  --transition-property-grid-template-rows: grid-template-rows;
   --transition-property-width: width;
   --transition-property-main-nav: background-color, color, shadow;
 }
@@ -129,6 +130,14 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-neutral-200, currentColor);
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    @apply focus-visible:ring-ring-color focus:ring-offset-0 focus:outline-none focus-visible:ring-2;
   }
 }
 

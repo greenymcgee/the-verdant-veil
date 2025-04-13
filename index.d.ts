@@ -17,6 +17,8 @@ type ThirdParameterOf<Method extends (...args: any) => any> =
 type PropsOf<Component extends (...args: any) => any> =
   FirstParameterOf<Component>
 
+type OneOf<AnyArray extends Array<unknown>> = AnyArray[0]
+
 interface ActionState {
   status: 'success' | 'failure' | 'idle'
 }

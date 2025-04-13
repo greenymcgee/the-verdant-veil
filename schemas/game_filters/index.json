@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game_filters/index.json",
+  "additionalProperties": false,
+  "description": "The GET /api/game_filters payload",
+  "properties": {
+    "filters": {
+      "additionalProperties": false,
+      "properties": {
+        "companies": {
+          "items": { "$ref": "file:/company.json#" },
+          "type": "array"
+        },
+        "genres": {
+          "items": { "$ref": "file:/genre_without_resources.json#" },
+          "type": "array"
+        },
+        "platforms": {
+          "items": { "$ref": "file:/platform_without_resources.json#" },
+          "type": "array"
+        }
+      },
+      "required": ["companies", "genres", "platforms"],
+      "type": "object"
+    }
+  },
+  "required": ["filters"],
+  "type": "object"
+}

@@ -1,6 +1,5 @@
 import React, { InputHTMLAttributes, RefObject } from 'react'
 import clsx from 'clsx'
-import { twMerge } from 'tailwind-merge'
 
 import { BASE_INPUT_CLASSNAMES, INPUT_CLASS_NAMES_MAP } from './constants'
 
@@ -20,7 +19,7 @@ export function Input({
       className={clsx(
         BASE_INPUT_CLASSNAMES,
         INPUT_CLASS_NAMES_MAP[type],
-        twMerge('w-full', className),
+        className,
       )}
       required={required}
       type={type}

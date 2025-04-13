@@ -35,7 +35,7 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
           aria-label="Home"
           className={clsx(
             TRANSITION_STYLES.inputHover,
-            'text-[4rem] transition-opacity hover:opacity-80',
+            'rounded text-[4rem] transition-opacity hover:opacity-80',
           )}
           href={ROUTES.home}
         >
