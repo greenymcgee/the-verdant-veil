@@ -2,15 +2,16 @@ import React from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 
-import { Icon } from '@/components'
 import { TRANSITION_STYLES } from '@/constants'
+
+import { Icon } from '../icon'
 
 interface Props {
   game: IndexGame
-  isValidating: boolean
+  validating: boolean
 }
 
-export function GameCover({ game, isValidating }: Props) {
+export function GameCover({ game, validating }: Props) {
   return (
     <div className="relative">
       <div
@@ -19,7 +20,7 @@ export function GameCover({ game, isValidating }: Props) {
           'absolute inset-0 transition-colors group-hover:bg-neutral-900/20',
         )}
       />
-      {isValidating ? (
+      {validating ? (
         <div
           className={clsx(
             'flex h-96 w-full items-center justify-center',
