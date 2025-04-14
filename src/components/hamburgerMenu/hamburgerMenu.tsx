@@ -7,16 +7,10 @@ import React, {
   HTMLAttributes,
   RefObject,
   SyntheticEvent,
-  useCallback,
-  useEffect,
   useState,
 } from 'react'
-import {
-  clearAllBodyScrollLocks,
-  disableBodyScroll,
-  enableBodyScroll,
-} from 'body-scroll-lock'
 import clsx from 'clsx'
+import { RemoveScroll } from 'react-remove-scroll'
 
 import { toggleSidebarDialog } from '@/utils'
 
@@ -35,23 +29,12 @@ export function HamburgerMenu({
   const toggleExpanded = () => setExpanded((prevExpanded) => !prevExpanded)
   const toggleHamburgerMenu = () => toggleSidebarDialog(ref.current)
 
-  const toggleBodyScrollLock = useCallback(() => {
-    const dialog = ref.current as HTMLDialogElement
-    if (expanded) return enableBodyScroll(dialog)
-
-    disableBodyScroll(dialog)
-  }, [expanded, ref])
-
   const openDialog = () => {
-    toggleBodyScrollLock()
     toggleExpanded()
     toggleHamburgerMenu()
   }
 
-  const toggleLeftoverStates = useCallback(() => {
-    toggleExpanded()
-    toggleBodyScrollLock()
-  }, [toggleBodyScrollLock])
+  const toggleLeftoverStates = () => toggleExpanded()
 
   const handleOutsideContentClick = (
     event: SyntheticEvent<HTMLDialogElement>,
@@ -60,8 +43,6 @@ export function HamburgerMenu({
 
     toggleHamburgerMenu()
   }
-
-  useEffect(() => () => clearAllBodyScrollLocks(), [])
 
   return (
     <div {...options}>
@@ -86,7 +67,9 @@ export function HamburgerMenu({
         onClose={toggleLeftoverStates}
         ref={ref}
       >
-        <div className="min-h-[inherit]">{children}</div>
+        <div className="min-h-[inherit]">
+          {expanded ? <RemoveScroll>{children}</RemoveScroll> : children}
+        </div>
       </dialog>
     </div>
   )
