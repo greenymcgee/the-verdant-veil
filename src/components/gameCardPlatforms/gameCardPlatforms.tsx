@@ -3,14 +3,14 @@ import clsx from 'clsx'
 
 interface Props {
   game: IndexGame
-  isValidating: boolean
+  validating: boolean
 }
 
-export function GameLinkPlatforms({ game, isValidating }: Props) {
+export function GameCardPlatforms({ game, validating }: Props) {
   return (
     <ul
       className={clsx('text-primary-800 inline max-w-[510px]', {
-        skeleton: isValidating,
+        skeleton: validating,
       })}
     >
       {game.platforms.map((platform) => (

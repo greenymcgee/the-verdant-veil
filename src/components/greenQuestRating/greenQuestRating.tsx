@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import clsx from 'clsx'
 
-import { LogoSword } from '@/components'
+import { LogoSword } from '../svgs'
 
 interface Props extends HTMLAttributes<HTMLParagraphElement> {
   game: GameWithoutResources

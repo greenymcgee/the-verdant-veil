@@ -1,7 +1,13 @@
 import React from 'react'
 
-import { GreenQuestRating, PageWithNavbar } from '@/app/(home)/components'
-import { Card, HTMLParser, TabPanel, Tabs } from '@/components'
+import { PageWithNavbar } from '@/app/(home)/components'
+import {
+  Card,
+  GreenQuestRating,
+  HTMLParser,
+  TabPanel,
+  Tabs,
+} from '@/components'
 
 import { AboutTab } from '../aboutTab'
 import { CSVList } from '../csvList'
