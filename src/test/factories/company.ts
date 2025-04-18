@@ -7,7 +7,7 @@ export const companyFactory = Factory.define<Company>(({ sequence }) => ({
   id: sequence,
   igdbId: sequence,
   name: 'Nintendo EAD',
-  slug: 'nintendo-ead',
+  slug: `company-slug-${sequence}`,
   startDate: '',
   updatedAt: '',
 }))

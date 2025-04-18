@@ -10,6 +10,12 @@ type SecondParameterOf<Method extends (...args: any) => any> =
 type ThirdParameterOf<Method extends (...args: any) => any> =
   Parameters<Method>[2]
 
+type ConstructorParams<Constructor extends new (...args: any) => any> =
+  Constructor extends new (...args: infer Params) => any ? Params : never
+
+type FirsConstructorParameterOf<Klass extends new (...args: any) => any> =
+  ConstructorParams<Klass>[0]
+
 /**
  * An alias for FirstParameterOf. It's a littles easier to read when working
  * with components.

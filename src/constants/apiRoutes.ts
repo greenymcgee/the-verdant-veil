@@ -3,6 +3,7 @@ export const API_ROUTES = {
   game: (slug: Game['slug']) => `/games/${slug}`,
   gameFilters: '/game_filters',
   games: '/games',
+  homeCarousel: (carousel: HomeCarousel) => `/home_carousels/${carousel}`,
   login: '/login',
   logout: '/logout',
   resetPassword: '/reset_password',

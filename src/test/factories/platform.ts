@@ -9,7 +9,7 @@ export const platformFactory = Factory.define<Platform>(({ sequence }) => ({
   id: sequence,
   igdbId: sequence,
   name: 'Super Nintendo Entertainment System',
-  slug: 'super-nintendo-entertainment-system',
+  slug: `platform-slug-${sequence}`,
   summary: '',
   updatedAt: '',
 }))

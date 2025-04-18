@@ -25,7 +25,11 @@ describe('<MobileGameFilters />', () => {
   it('should call the onSubmit prop', () => {
     render(<MobileGameFilters {...PROPS} />)
     fireEvent.click(screen.getByTestId('mobile-filter-button'))
-    fireEvent.click(screen.getByTestId('mobile-platforms-1'))
+    fireEvent.click(
+      screen.getByTestId(
+        `mobile-platforms-${SUPER_METROID.platforms.at(0)?.slug}`,
+      ),
+    )
     fireEvent.click(screen.getByTestId('mobile-apply-filters-button'))
     expect(PROPS.onSubmit).toHaveBeenCalledTimes(1)
   })

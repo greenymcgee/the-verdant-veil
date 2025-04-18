@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "home_carousels/show.json",
+  "additionalProperties": false,
+  "description": "The GET /api/home_carousels/:carousel payload",
+  "properties": {
+    "carousel": {
+      "additionalProperties": false,
+      "properties": {
+        "games": {
+          "items": { "$ref": "file:/game_with_limited_resources.json#" },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "required": ["games"]
+    }
+  },
+  "required": ["carousel"],
+  "type": "object"
+}

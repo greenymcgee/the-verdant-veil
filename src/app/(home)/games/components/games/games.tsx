@@ -1,12 +1,11 @@
 import React from 'react'
-import clsx from 'clsx'
 
 import { GameCard } from '@/components'
 
 import { EmptyGamesCard } from '../emptyGamesCard'
 
 interface Props {
-  games: IndexGame[]
+  games: GameWithLimitedResources[]
   isValidating: boolean
   query: string | undefined
 }
@@ -20,9 +19,7 @@ export function Games({ games, isValidating, query }: Props) {
       data-testid="games"
     >
       {games.map((game) => (
-        <li className={clsx({ group: !isValidating })} key={game.id}>
-          <GameCard game={game} validating={isValidating} />{' '}
-        </li>
+        <GameCard as="li" game={game} key={game.id} validating={isValidating} />
       ))}
     </ul>
   )

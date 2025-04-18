@@ -59,3 +59,21 @@ export const BUTTON_SIZES: Record<'xs' | 'sm' | 'md' | 'lg', string> = {
 
 export const FOCUS_STYLE_CLASS_NAME =
   'focus-visible:ring-ring-color focus:shadow-none ring-offset-0 outline-none focus-visible:ring-2 ring-0'
+
+export const GAME_CARD_VARIANTS = {
+  carousel: {
+    coverClassName: 'h-72 rounded-t-lg',
+    divClassName: 'rounded-b-lg',
+    heading: 'truncate',
+    linkClassName: 'rounded-lg',
+    platforms: 'truncate',
+  },
+  list: {
+    coverClassName:
+      'h-96 md:h-64 md:w-48 rounded-t-lg md:rounded-none md:rounded-s-lg',
+    divClassName: 'rounded-b-lg md:rounded-none md:rounded-e-lg',
+    heading: '',
+    linkClassName: 'flex flex-col rounded-lg md:flex-row',
+    platforms: '',
+  },
+} as const

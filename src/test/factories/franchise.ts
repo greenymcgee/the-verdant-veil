@@ -7,6 +7,6 @@ export const franchiseFactory = Factory.define<Franchise>(({ sequence }) => ({
   igdbId: sequence,
   main: true,
   name: 'The Legend of Zelda',
-  slug: 'the-legend-of-zelda',
+  slug: `franchise-slug-${sequence}`,
   updatedAt: '',
 }))

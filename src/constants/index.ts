@@ -1,4 +1,5 @@
 export * from './apiRoutes'
+export * from './breakpoints'
 export * from './classNames'
 export * from './cookies'
 export * from './env'

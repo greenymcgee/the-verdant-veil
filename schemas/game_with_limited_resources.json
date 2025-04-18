@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/game_with_limited_resources.json#",
+  "additionalProperties": false,
+  "description": "A version of a Game is in between a game without resources and a game with resources",
+  "properties": {
+    "createdAt": {
+      "type": "string"
+    },
+    "cover": { "$ref": "file:/cover.json#" },
+    "firstReleaseDate": { "type": ["string", "null"] },
+    "id": {
+      "type": "integer"
+    },
+    "igdbId": { "type": "integer" },
+    "name": { "type": "string" },
+    "platforms": {
+      "items": { "$ref": "file:/platform_without_resources.json#" },
+      "type": "array"
+    },
+    "published": { "type": "boolean" },
+    "slug": { "type": "string" },
+    "rating": {
+      "description": "Float: the rating for the game from 1 - 5.",
+      "type": "number"
+    },
+    "review": {
+      "description": "Richtext: the review of the game.",
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "cover",
+    "createdAt",
+    "firstReleaseDate",
+    "id",
+    "igdbId",
+    "name",
+    "platforms",
+    "published",
+    "slug",
+    "rating",
+    "review",
+    "updatedAt"
+  ],
+  "title": "GameWithLimitedResources",
+  "type": "object"
+}

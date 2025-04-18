@@ -13,8 +13,8 @@ type InputProps = Omit<
 > & { defaultChecked: boolean; id: string }
 
 interface Filter {
-  id: number
   name: string
+  slug: string
 }
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -61,7 +61,7 @@ export function Filters({
             return (
               <li
                 className="flex items-center justify-between py-2"
-                key={filter.id}
+                key={filter.slug}
               >
                 <label
                   className={clsx(
@@ -83,7 +83,7 @@ export function Filters({
                   name={id}
                   tabIndex={expanded ? 0 : -1}
                   type="checkbox"
-                  value={filter.id}
+                  value={filter.slug}
                   {...inputOptions}
                 />
               </li>
