@@ -9,10 +9,13 @@
  * The GET /api/games payload
  */
 interface GamesIndexJson {
-  games: IndexGame[]
+  games: GameWithLimitedResources[]
   totalPages: number
 }
-interface IndexGame {
+/**
+ * A version of a Game is in between a game without resources and a game with resources
+ */
+interface GameWithLimitedResources {
   createdAt: string
   cover: Cover
   firstReleaseDate: string | null

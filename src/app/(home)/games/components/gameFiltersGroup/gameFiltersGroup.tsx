@@ -24,8 +24,8 @@ export function GameFiltersGroup({
   const getInputProps = useCallback(
     (type: 'companies' | 'genres' | 'platforms') => {
       return (filter: OneOf<PropsOf<typeof Filters>['filters']>) => ({
-        defaultChecked: searchParams.has(`${type}[]`, String(filter.id)),
-        id: `${inputIdPrefix}-${type}-${filter.id}`,
+        defaultChecked: searchParams.has(`${type}[]`, filter.slug),
+        id: `${inputIdPrefix}-${type}-${filter.slug}`,
       })
     },
     [inputIdPrefix, searchParams],
@@ -36,8 +36,8 @@ export function GameFiltersGroup({
       <Filters
         className="mb-1"
         filters={platforms.map((platform) => ({
-          id: platform.id,
           name: platform.abbreviation || platform.name,
+          slug: platform.slug,
         }))}
         getInputProps={getInputProps('platforms')}
         id="platforms"

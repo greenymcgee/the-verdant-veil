@@ -6,6 +6,6 @@ export const genreFactory = Factory.define<Genre>(({ sequence }) => ({
   id: sequence,
   igdbId: sequence,
   name: 'RPG',
-  slug: 'rpg',
+  slug: `genre-slug-${sequence}`,
   updatedAt: '',
 }))

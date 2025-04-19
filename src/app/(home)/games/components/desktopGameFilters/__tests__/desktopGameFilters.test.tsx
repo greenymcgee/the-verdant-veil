@@ -24,7 +24,11 @@ beforeEach(() => {
 describe('<DesktopGameFilters />', () => {
   it('should render a form', () => {
     render(<DesktopGameFilters {...PROPS} />)
-    fireEvent.click(screen.getByTestId('desktop-platforms-1'))
+    fireEvent.click(
+      screen.getByTestId(
+        `desktop-platforms-${SUPER_METROID.platforms.at(0)?.slug}`,
+      ),
+    )
     fireEvent.click(screen.getByTestId('desktop-apply-filters-button'))
     expect(PROPS.onSubmit).toHaveBeenCalledTimes(1)
   })

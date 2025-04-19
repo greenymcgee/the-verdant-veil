@@ -2,30 +2,30 @@ import React from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 
-import { TRANSITION_STYLES } from '@/constants'
+import { GAME_CARD_VARIANTS, TRANSITION_STYLES } from '@/constants'
 
 import { Icon } from '../icon'
 
 interface Props {
-  game: IndexGame
+  game: GameWithLimitedResources
   validating: boolean
+  variant: keyof typeof GAME_CARD_VARIANTS
 }
 
-export function GameCover({ game, validating }: Props) {
+export function GameCardCover({ game, validating, variant }: Props) {
   return (
     <div className="relative">
       <div
         className={clsx(
-          TRANSITION_STYLES.inputHover,
           'absolute inset-0 transition-colors group-hover:bg-neutral-900/20',
+          TRANSITION_STYLES.inputHover,
         )}
       />
       {validating ? (
         <div
           className={clsx(
-            'flex h-96 w-full items-center justify-center',
-            'rounded-t-lg bg-neutral-50',
-            'md:h-64 md:w-48 md:rounded-none md:rounded-s-lg',
+            'flex w-full items-center justify-center bg-neutral-50',
+            GAME_CARD_VARIANTS[variant].coverClassName,
           )}
           data-testid="cover-skeleton"
         >
@@ -35,8 +35,8 @@ export function GameCover({ game, validating }: Props) {
         <Image
           alt={`${game.name} Cover`}
           className={clsx(
-            'h-96 w-full rounded-t-lg object-cover',
-            'md:h-auto md:w-48 md:rounded-none md:rounded-s-lg',
+            'w-full object-cover',
+            GAME_CARD_VARIANTS[variant].coverClassName,
           )}
           data-testid="game-cover"
           height={game.cover.height}

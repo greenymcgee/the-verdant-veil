@@ -1,17 +1,24 @@
 import React from 'react'
 import clsx from 'clsx'
 
+import { GAME_CARD_VARIANTS } from '@/constants'
+
 interface Props {
-  game: IndexGame
+  game: GameWithLimitedResources
   validating: boolean
+  variant: keyof typeof GAME_CARD_VARIANTS
 }
 
-export function GameCardPlatforms({ game, validating }: Props) {
+export function GameCardPlatforms({ game, validating, variant }: Props) {
   return (
     <ul
-      className={clsx('text-primary-800 inline max-w-[510px]', {
-        skeleton: validating,
-      })}
+      className={clsx(
+        'text-primary-800 inline max-w-[510px]',
+        GAME_CARD_VARIANTS[variant].platforms,
+        {
+          skeleton: validating,
+        },
+      )}
     >
       {game.platforms.map((platform) => (
         <li

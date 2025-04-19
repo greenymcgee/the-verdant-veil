@@ -6,7 +6,7 @@ import { SUPER_METROID } from '@/test/fixtures'
 import { Filters } from '..'
 
 function getInputProps(filter: OneOf<PropsOf<typeof Filters>['filters']>) {
-  return { defaultChecked: false, id: `genres-${filter.id}` }
+  return { defaultChecked: false, id: `genres-${filter.slug}` }
 }
 
 const PROPS: PropsOf<typeof Filters> = {
@@ -20,7 +20,7 @@ const PROPS: PropsOf<typeof Filters> = {
 describe('<Filters />', () => {
   it.each(SUPER_METROID.genres)('should render checkboxes', (genre) => {
     render(<Filters {...PROPS} />)
-    expect(screen.getByTestId(`genres-${genre.id}`)).toHaveAttribute(
+    expect(screen.getByTestId(`genres-${genre.slug}`)).toHaveAttribute(
       'type',
       'checkbox',
     )
@@ -31,7 +31,7 @@ describe('<Filters />', () => {
     (genre) => {
       render(<Filters {...PROPS} />)
       act(() => fireEvent.click(screen.getByText('Genres')))
-      expect(screen.getByTestId(`genres-${genre.id}`)).toHaveAttribute(
+      expect(screen.getByTestId(`genres-${genre.slug}`)).toHaveAttribute(
         'tabindex',
         '-1',
       )
@@ -42,7 +42,7 @@ describe('<Filters />', () => {
     'should enable tabindex when expanded is true',
     (genre) => {
       render(<Filters {...PROPS} />)
-      expect(screen.getByTestId(`genres-${genre.id}`)).toHaveAttribute(
+      expect(screen.getByTestId(`genres-${genre.slug}`)).toHaveAttribute(
         'tabindex',
         '0',
       )
