@@ -46,7 +46,7 @@
     "@chromatic-com/storybook": "^3.2.6",
     "@storybook/addon-a11y": "^8.6.8",
     "@storybook/addon-essentials": "^8.6.4",
-    "@storybook/addon-interactions": "^8.6.8",
+    "@storybook/addon-interactions": "^8.6.12",
     "@storybook/addon-onboarding": "^8.6.10",
     "@storybook/blocks": "^8.6.10",
     "@storybook/nextjs": "^8.6.8",
