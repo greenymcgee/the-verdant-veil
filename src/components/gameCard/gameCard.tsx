@@ -9,8 +9,10 @@ import { GameCardPlatforms } from '../gameCardPlatforms'
 import { GreenQuestRating } from '../greenQuestRating'
 import { Heading } from '../heading'
 import { Time } from '../time'
+import { getTabIndex } from './utils'
 
 interface Props extends HTMLAttributes<HTMLLIElement> {
+  active?: boolean
   as?: ElementType
   game: GameWithLimitedResources
   headingProps?: PropsOf<typeof Heading>
@@ -19,6 +21,7 @@ interface Props extends HTMLAttributes<HTMLLIElement> {
 }
 
 export function GameCard({
+  active,
   as: As = 'div',
   className,
   game,
@@ -44,7 +47,7 @@ export function GameCard({
         })}
         data-testid={`game-${game.id}`}
         href={ROUTES.game(game.slug)}
-        tabIndex={validating ? -1 : 0}
+        tabIndex={getTabIndex({ active, validating })}
       >
         <GameCardCover game={game} validating={validating} variant={variant} />
         <div
@@ -67,6 +70,7 @@ export function GameCard({
                 color: 'text-neutral-900',
                 fontSize: 'text-heading-md',
               }}
+              data-testid="game-card-heading"
               {...headingOptions}
             >
               <span className={clsx({ skeleton: validating })}>
@@ -75,6 +79,7 @@ export function GameCard({
             </Heading>
             <Time
               className={clsx({ skeleton: validating })}
+              data-testid="game-first-release-date"
               date={game.firstReleaseDate}
               format="MMMM do, yyyy"
             />

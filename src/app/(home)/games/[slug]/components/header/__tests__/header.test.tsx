@@ -7,7 +7,7 @@ import { GameHeader } from '../header'
 
 describe('<GameHeader />', () => {
   it('should handle a null release date gracefully', () => {
-    render(<GameHeader game={gameFactory.build()} />)
+    render(<GameHeader game={gameFactory.build({ firstReleaseDate: '' })} />)
     expect(screen.queryByTestId('first-release-date')).not.toBeInTheDocument()
   })
 

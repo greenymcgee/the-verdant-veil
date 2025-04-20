@@ -1,9 +1,17 @@
 'use client'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {
+  KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import clsx from 'clsx'
 import { useKeenSlider } from 'keen-slider/react'
+import { noop } from 'swr/_internal'
 
 import 'keen-slider/keen-slider.min.css'
+import { CarouselKeyChangeFacade } from '@/facades'
 import { useWindowSize } from '@/hooks'
 
 import { CarouselArrow } from '../carouselArrow'
@@ -22,6 +30,13 @@ interface Props {
   validating: boolean
 }
 
+const facade = new CarouselKeyChangeFacade({
+  carouselRef: { current: null },
+  event: {} as KeyboardEvent<HTMLDivElement>,
+  keenSliderInstanceRef: { current: { next: noop, prev: noop } },
+  slideFocusIndexRef: { current: 0 },
+})
+
 export function GameCarousel({
   allResultsLink,
   games,
@@ -34,6 +49,8 @@ export function GameCarousel({
   const [slidesPerView, setSlidesPerView] = useState(1)
   const [sliderLoaded, setSliderLoaded] = useState(false)
   const { width } = useWindowSize()
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const slideFocusIndexRef = useRef(0)
 
   const [sliderRef, instanceRef] = useKeenSlider({
     breakpoints: {
@@ -64,16 +81,32 @@ export function GameCarousel({
     [instanceRef],
   )
 
+  const handleKeyDownChange = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      facade.update({
+        carouselRef,
+        event,
+        keenSliderInstanceRef: instanceRef,
+        slideFocusIndexRef,
+      })
+      facade.handleTabKeyChange()
+    },
+    [instanceRef],
+  )
+
   useEffect(() => {
     updateSlidesPerView({ callback: setSlidesPerView, slidesPerView, width })
   }, [slidesPerView, width])
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <div
       aria-labelledby={headingId}
       aria-roledescription="carousel"
       className="bg-primary-50 border-primary-500 border-l-8 px-6 py-3"
       data-testid="carousel"
+      onKeyDown={handleKeyDownChange}
+      ref={carouselRef}
       role="region"
     >
       <header className="flex items-center justify-between">
@@ -104,6 +137,7 @@ export function GameCarousel({
 
               return (
                 <GameCard
+                  active={index === slideFocusIndexRef.current}
                   aria-labelledby={gameHeadingId}
                   aria-roledescription="slide"
                   className={clsx(
