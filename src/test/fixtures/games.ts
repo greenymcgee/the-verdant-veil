@@ -15,6 +15,14 @@ export const NEW_GAME = gameFactory.build({
   slug: 'secret-of-evermore',
 })
 
+export const THREADS_OF_FATE = gameFactory.build({
+  bannerImage: {},
+  name: 'Threads of Fate',
+  published: false,
+  publishedAt: null,
+  slug: 'threads-of-fate',
+})
+
 export const GAMES = [SUPER_METROID, DARK_SOULS]
 
 export const GET_GAMES_RESPONSE_DATA: GamesIndexJson = {

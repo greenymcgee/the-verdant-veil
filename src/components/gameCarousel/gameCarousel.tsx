@@ -1,5 +1,6 @@
 'use client'
 import React, {
+  HTMLAttributes,
   KeyboardEvent,
   useCallback,
   useEffect,
@@ -22,7 +23,7 @@ import { Spinner } from '../spinner'
 import { SLIDES_PER_VIEW_MAP } from './constants'
 import { updateSlidesPerView } from './utils'
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   allResultsLink: string
   games: GameWithLimitedResources[]
   loading: boolean
@@ -39,10 +40,12 @@ const facade = new CarouselKeyChangeFacade({
 
 export function GameCarousel({
   allResultsLink,
+  className,
   games,
   loading,
   title,
   validating,
+  ...options
 }: Props) {
   const headingId = `${title.toLocaleLowerCase()}-heading`
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -103,11 +106,15 @@ export function GameCarousel({
     <div
       aria-labelledby={headingId}
       aria-roledescription="carousel"
-      className="bg-primary-50 border-primary-500 border-l-8 px-6 py-3"
+      className={clsx(
+        'bg-primary-50 border-primary-500 border-l-8 px-6 py-3',
+        className,
+      )}
       data-testid="carousel"
       onKeyDown={handleKeyDownChange}
       ref={carouselRef}
       role="region"
+      {...options}
     >
       <header className="flex items-center justify-between">
         <Heading

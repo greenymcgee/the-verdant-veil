@@ -1,6 +1,6 @@
 import { waitFor } from '@testing-library/react'
 
-import { GET_HOME_CAROUSEL_RESPONSE_DATA } from '@/test/fixtures'
+import { GET_SNES_CAROUSEL_RESPONSE_DATA } from '@/test/fixtures'
 import { renderHookWithProviders, toastMock } from '@/test/helpers'
 import { homeServer, mockHomeCarouselRequestFailure } from '@/test/servers'
 
@@ -21,14 +21,14 @@ describe('useGetHomeCarouselQuery', () => {
       )
       await waitFor(() => expect(result.current.isLoading).toEqual(false))
       expect(result.current.games).toEqual(
-        GET_HOME_CAROUSEL_RESPONSE_DATA.carousel.games,
+        GET_SNES_CAROUSEL_RESPONSE_DATA.carousel.games,
       )
     })
   })
 
   describe('failure', () => {
     it('should toast a message to the user', async () => {
-      const { message } = mockHomeCarouselRequestFailure()
+      const { message } = mockHomeCarouselRequestFailure('snes')
       const { result } = renderHookWithProviders(() =>
         useGetHomeCarouselQuery('snes'),
       )
