@@ -36,7 +36,7 @@ export const gameFactory = Factory.define<Game>(
     createdAt: currentTime,
     developers: associations.developers || [companyFactory.build()],
     featuredVideoId: '',
-    firstReleaseDate: '',
+    firstReleaseDate: '1999-01-09T00:00:00Z',
     franchises: associations.franchises || [franchiseFactory.build()],
     gameEngines: [],
     gameModes: [],

@@ -19,6 +19,7 @@ export function GameCardPlatforms({ game, validating, variant }: Props) {
           skeleton: validating,
         },
       )}
+      data-testid="game-card-platforms"
     >
       {game.platforms.map((platform) => (
         <li
