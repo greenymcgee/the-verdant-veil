@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 
-import { Heading, Logo, Spinner } from '@/components'
+import { Heading, Logo } from '@/components'
 
-import { PageWithNavbar, SNESCarousel } from './components'
+import { PageWithNavbar, PS1Carousel, SNESCarousel } from './components'
 
 export default function HomePage() {
   return (
@@ -21,15 +21,8 @@ export default function HomePage() {
             Green Quest
           </Heading>
         </header>
-        <Suspense
-          fallback={
-            <div className="flex justify-center">
-              <Spinner />
-            </div>
-          }
-        >
-          <SNESCarousel />
-        </Suspense>
+        <SNESCarousel />
+        <PS1Carousel />
       </div>
     </PageWithNavbar>
   )

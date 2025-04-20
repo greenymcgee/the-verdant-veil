@@ -5,16 +5,15 @@ import { GameCarousel } from '@/components'
 import { ROUTES } from '@/constants'
 import { useGetHomeCarouselQuery } from '@/hooks/api'
 
-export function SNESCarousel() {
-  const { games, isLoading, isValidating } = useGetHomeCarouselQuery('snes')
+export function PS1Carousel() {
+  const { games, isLoading, isValidating } = useGetHomeCarouselQuery('ps')
 
   return (
     <GameCarousel
-      allResultsLink={ROUTES.platform('snes')}
-      className="mb-18"
+      allResultsLink={ROUTES.platform('ps')}
       games={games}
       loading={isLoading}
-      title="SNES"
+      title="PS1"
       validating={isValidating}
     />
   )

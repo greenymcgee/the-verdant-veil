@@ -12,7 +12,7 @@ async function getGames(url: string) {
 
 const INITIAL_DATA: HomeCarouselsShowJson = { carousel: { games: [] } }
 
-export function useGetHomeCarouselQuery(carousel: HomeCarousel) {
+export function useGetHomeCarouselQuery(carousel: HomeCarouselType) {
   const query = useSWR(API_ROUTES.homeCarousel(carousel), getGames, {
     onError(error) {
       const { message } = new ErrorFacade(error)

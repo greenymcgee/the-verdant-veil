@@ -12,6 +12,7 @@ export const ROUTES = {
   games: '/games',
   home: '/',
   login: '/login',
+  platform: (slug: Platform['slug']) => `/games?platforms[]=${slug}`,
 } as const
 
 export type RouteKey = keyof typeof ROUTES
