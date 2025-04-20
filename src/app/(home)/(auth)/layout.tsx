@@ -12,7 +12,7 @@ export default function AuthLayout({ children }: PropsWithChildren) {
             <LinkTo aria-label="Home" href={ROUTES.home} theme="neutral">
               <Logo className="mb-4 inline-block text-[10rem]" />
             </LinkTo>
-            <Heading className="mb-8 font-serif">Green Quest</Heading>
+            <Heading className="mb-8 font-serif">The Verdant Veil</Heading>
           </header>
           {children}
         </div>

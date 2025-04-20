@@ -4,9 +4,9 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { Navbar } from '..'
 
 describe('<Navbar />', () => {
-  it('should render a link to Green Quest', () => {
+  it('should render a link to The Verdant Veil', () => {
     render(<Navbar />)
-    expect(screen.getByLabelText('Green Quest')).toBeVisible()
+    expect(screen.getByLabelText('The Verdant Veil')).toBeVisible()
   })
 
   it('should render a hamburger menu', () => {

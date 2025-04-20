@@ -1,7 +1,10 @@
 import { AxiosError } from 'axios'
 import { cookies } from 'next/headers'
 
-import { GREEN_QUEST_CURRENT_USER, GREEN_QUEST_JWT } from '@/constants'
+import {
+  THE_VERDANT_VEIL_CURRENT_USER,
+  THE_VERDANT_VEIL_JWT,
+} from '@/constants'
 import { logger } from '@/modules'
 import { ADMIN_USER, AUTH_TOKEN } from '@/test/fixtures'
 import { mockJwtVerify } from '@/test/helpers'
@@ -29,7 +32,7 @@ describe('login', () => {
       await login({}, formData)
       const [, token] = AUTH_TOKEN.split(' ')
       const { set } = await cookies()
-      expect(set).toHaveBeenCalledWith(GREEN_QUEST_JWT, token, {
+      expect(set).toHaveBeenCalledWith(THE_VERDANT_VEIL_JWT, token, {
         httpOnly: true,
         maxAge: decodedJwt.exp,
         sameSite: 'strict',
@@ -42,7 +45,7 @@ describe('login', () => {
       await login({}, formData)
       const { set } = await cookies()
       expect(set).toHaveBeenCalledWith(
-        GREEN_QUEST_CURRENT_USER,
+        THE_VERDANT_VEIL_CURRENT_USER,
         JSON.stringify(ADMIN_USER),
         {
           httpOnly: true,

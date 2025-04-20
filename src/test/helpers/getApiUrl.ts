@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { API_ROUTES, GREEN_QUEST_API_URL } from '@/constants'
+import { API_ROUTES, THE_VERDANT_VEIL_API_URL } from '@/constants'
 
 type RouteKey = keyof typeof API_ROUTES
 type RouteArgs<
@@ -14,8 +14,8 @@ export function getApiUrl<Key extends RouteKey>(
   if (typeof API_ROUTES[key] === 'function' && Array.isArray(args)) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    return `${GREEN_QUEST_API_URL}${API_ROUTES[key](...args)}`
+    return `${THE_VERDANT_VEIL_API_URL}${API_ROUTES[key](...args)}`
   }
 
-  return `${GREEN_QUEST_API_URL}${API_ROUTES[key]}`
+  return `${THE_VERDANT_VEIL_API_URL}${API_ROUTES[key]}`
 }

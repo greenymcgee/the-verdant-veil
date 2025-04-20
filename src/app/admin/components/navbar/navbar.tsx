@@ -23,7 +23,7 @@ export function Navbar() {
     >
       <div className="flex items-center justify-between px-4 md:flex-col">
         <Link
-          aria-label="Green Quest"
+          aria-label="The Verdant Veil"
           className={clsx(
             TRANSITION_STYLES.inputHover,
             'block text-[4rem] text-neutral-900 transition-opacity hover:opacity-80 md:mb-8 md:text-[5.5rem]',

@@ -8,14 +8,14 @@ import { resolve } from 'path'
 import { snakecase } from 'snakecase'
 
 /**
- * This script collects the JSON schemas from green-quest-api and generates type
- * declaration files for each one of them.
+ * This script collects the JSON schemas from the-verdant-veil-api and generates
+ * type declaration files for each one of them.
  */
 
 const SCHEMA_DIR = 'schemas'
 const GENERATED_TYPES_DIR = 'generated-types'
 const API_SCHEMA_PATH = 'test/support/api/schemas'
-const LOCAL_API_GIT_REPO = process.env.LOCAL_GREEN_QUEST_API_GIT_REPO
+const LOCAL_API_GIT_REPO = process.env.LOCAL_THE_VERDANT_VEIL_API_GIT_REPO
 const PRETTIER_CONFIG_PATH = '.prettierrc.json'
 
 const archiveArgs = [

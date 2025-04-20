@@ -23,7 +23,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   description: 'A video game review site.',
-  title: 'Green Quest',
+  title: 'The Verdant Veil',
 }
 
 export default function HomeLayout({

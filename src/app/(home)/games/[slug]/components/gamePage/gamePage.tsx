@@ -3,10 +3,10 @@ import React from 'react'
 import { PageWithNavbar } from '@/app/(home)/components'
 import {
   Card,
-  GreenQuestRating,
   HTMLParser,
   TabPanel,
   Tabs,
+  VerdantVeilRating,
 } from '@/components'
 
 import { AboutTab } from '../aboutTab'
@@ -28,7 +28,7 @@ export function GamePage({ game }: Props) {
       <div className="container" data-testid="game-page">
         <GameHeader game={game} />
         <Card className="mb-12" shadowTheme="light">
-          <GreenQuestRating game={game} />
+          <VerdantVeilRating game={game} />
           <CSVList
             listItems={game.genres}
             name="Genres"

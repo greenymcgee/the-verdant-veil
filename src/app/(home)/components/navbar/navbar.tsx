@@ -43,7 +43,7 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
         </Link>
         <div className="flex items-center justify-end gap-6">
           <Searchbar
-            className="max-w-1/2"
+            className="max-w-1/2 sm:max-w-1/3 lg:max-w-1/2"
             labelProps={{ ariaLabel: 'Search for games by name' }}
             pathnameOverride={ROUTES.games}
           />
