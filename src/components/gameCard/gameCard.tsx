@@ -6,9 +6,9 @@ import { GAME_CARD_VARIANTS, ROUTES, TRANSITION_STYLES } from '@/constants'
 
 import { GameCardCover } from '../gameCardCover'
 import { GameCardPlatforms } from '../gameCardPlatforms'
-import { GreenQuestRating } from '../greenQuestRating'
 import { Heading } from '../heading'
 import { Time } from '../time'
+import { VerdantVeilRating } from '../verdantVeilRating'
 import { getTabIndex } from './utils'
 
 interface Props extends HTMLAttributes<HTMLLIElement> {
@@ -89,7 +89,7 @@ export function GameCard({
             validating={validating}
             variant={variant}
           />
-          <GreenQuestRating
+          <VerdantVeilRating
             className={clsx({ skeleton: validating })}
             game={game}
             includesTitle={false}

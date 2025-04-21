@@ -101,6 +101,8 @@
   --leading-body: 1.5;
   --leading-heading: 1.25;
 
+  --tracking-ultra-wide: 0.5em;
+
   --transition-property-grid-template-rows: grid-template-rows;
   --transition-property-width: width;
   --transition-property-main-nav: background-color, color, shadow;

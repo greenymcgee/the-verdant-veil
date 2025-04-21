@@ -23,8 +23,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  description: 'The Green Quest admin.',
-  title: 'Green Quest Admin',
+  description: "The Verdant Veil's admin.",
+  title: 'The Verdant Veil Admin',
 }
 
 export default function AdminLayout({

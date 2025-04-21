@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-import { GREEN_QUEST_API_URL } from '@/constants/env'
+import { THE_VERDANT_VEIL_API_URL } from '@/constants/env'
 
 export const baseApi = axios.create({
-  baseURL: GREEN_QUEST_API_URL,
+  baseURL: THE_VERDANT_VEIL_API_URL,
 })
 
 baseApi.defaults.headers.common['Accept'] = 'application/json'

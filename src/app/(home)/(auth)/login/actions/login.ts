@@ -3,9 +3,9 @@
 import { cookies } from 'next/headers'
 
 import {
-  GREEN_QUEST_CURRENT_USER,
-  GREEN_QUEST_JWT,
   IS_PRODUCTION_NODE_ENV,
+  THE_VERDANT_VEIL_CURRENT_USER,
+  THE_VERDANT_VEIL_JWT,
 } from '@/constants'
 import { logger, verifyJwt } from '@/modules'
 
@@ -26,13 +26,13 @@ export async function login(
     const { token, user } = await postLoginRequest(formData)
     const decodedToken = await verifyJwt(token)
     const { set } = await cookies()
-    set(GREEN_QUEST_JWT, token, {
+    set(THE_VERDANT_VEIL_JWT, token, {
       httpOnly: true,
       maxAge: decodedToken.exp,
       sameSite: 'strict',
       secure: IS_PRODUCTION_NODE_ENV,
     })
-    set(GREEN_QUEST_CURRENT_USER, JSON.stringify(user), {
+    set(THE_VERDANT_VEIL_CURRENT_USER, JSON.stringify(user), {
       httpOnly: true,
       maxAge: decodedToken.exp,
       sameSite: 'strict',

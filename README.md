@@ -1,6 +1,6 @@
-# Green Quest Frontend
+# The Verdant Veil
 
-This is the frontend that reaches out to `green-quest-api`.
+This is the frontend that reaches out to `the-verdant-veil-api`.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ see the result.
 ## Lib
 
 The `generate-types` script in the `package.json` will run a script within the
-`lib/` directory to pull JSON schemas from `green-quest-api` and use them to
+`lib/` directory to pull JSON schemas from `the-verdant-veil-api` and use them to
 generate type definitions for every endpoint in the API. You must set an
 environment variable in your bash or zsh profile:
-`LOCAL_GREEN_QUEST_API_GIT_REPO`.
+`LOCAL_THE_VERDANT_VEIL_API_GIT_REPO`.

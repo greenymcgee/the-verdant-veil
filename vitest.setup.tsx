@@ -4,7 +4,8 @@ import { createDynamicRouteParser } from 'next-router-mock/dynamic-routes'
 
 import '@testing-library/jest-dom'
 
-process.env.NEXT_PUBLIC_GREEN_QUEST_API_URL = 'http://www.test_api.com'
+process.env.NEXT_PUBLIC_THE_VERDANT_VEIL_API_URL =
+  'http://www.test_the_verdant_veil_api.com'
 
 vi.mock('next/cache', async () => {
   const cache = await vi.importActual('next/cache')

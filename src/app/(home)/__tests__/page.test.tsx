@@ -12,6 +12,6 @@ afterAll(() => homeServer.close())
 describe('<HomePage />', () => {
   it('should render an h1', () => {
     render(<HomePage />)
-    expect(screen.getByText('Green Quest').tagName).toEqual('H1')
+    expect(screen.getByText('The Verdant Veil').tagName).toEqual('H1')
   })
 })

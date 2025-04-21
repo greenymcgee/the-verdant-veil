@@ -8,7 +8,7 @@ interface Props extends HTMLAttributes<HTMLParagraphElement> {
   includesTitle?: boolean
 }
 
-export function GreenQuestRating({
+export function VerdantVeilRating({
   className,
   game,
   includesTitle = true,
@@ -20,10 +20,10 @@ export function GreenQuestRating({
         'mb-2 flex items-center gap-2 font-semibold text-neutral-900',
         className,
       )}
-      data-testid="green-quest-rating"
+      data-testid="verdant-veil-rating"
       {...options}
     >
-      {includesTitle ? 'Green Quest Rating' : null}
+      {includesTitle ? 'Verdant Veil Rating' : null}
       <span className="sr-only">{`${game.rating} out of 5`}</span>
       <span aria-hidden className="inline-flex gap-1">
         {Array.from({ length: 5 }, (_, index) => index).map((interval) => (

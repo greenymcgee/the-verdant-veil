@@ -11,9 +11,9 @@ describe('<GamePage />', () => {
     expect(screen.getByTestId('game-header')).toBeVisible()
   })
 
-  it('should render a GreenQuestRating', () => {
+  it('should render a VerdantVeilRating', () => {
     render(<GamePage game={SUPER_METROID} />)
-    expect(screen.getByTestId('green-quest-rating')).toBeVisible()
+    expect(screen.getByTestId('verdant-veil-rating')).toBeVisible()
   })
 
   it('should render a Genres CSVList', () => {

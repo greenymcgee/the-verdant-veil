@@ -1,7 +1,7 @@
 import { jwtVerify } from 'jose'
 import { NextRequest } from 'next/server'
 
-import { DEVISE_SECRET_KEY } from '@/constants'
+import { DEVISE_SECRET_KEY, THE_VERDANT_VEIL_JWT } from '@/constants'
 
 export async function verifyJwt(token: string) {
   const decodedJwt = await jwtVerify(
@@ -14,7 +14,7 @@ export async function verifyJwt(token: string) {
 }
 
 export async function authenticateUser(request: NextRequest) {
-  const token = request.cookies.get('green-quest-jwt')?.value
+  const token = request.cookies.get(THE_VERDANT_VEIL_JWT)?.value
   if (!token) throw Error('Authenticate User: Missing JWT')
 
   return await verifyJwt(token)
