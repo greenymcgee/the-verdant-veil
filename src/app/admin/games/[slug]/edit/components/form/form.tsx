@@ -65,13 +65,25 @@ export function EditGameForm({ game }: Props) {
         type="hidden"
         value={Intl.DateTimeFormat().resolvedOptions().timeZone}
       />
-      <div className="mb-8 grid grid-cols-3 gap-8">
+      <div className="mb-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <InputGroup
+          id="currently-playing"
+          inputProps={{
+            defaultChecked:
+              state.currentlyPlaying !== undefined
+                ? state.currentlyPlaying
+                : game.currentlyPlaying,
+            name: 'game[currently_playing]',
+            type: 'checkbox',
+          }}
+          label="Currently Playing"
+        />
         <InputGroup
           id="rating"
           inputProps={{
             defaultValue: state.rating ?? game.rating,
             name: 'game[rating]',
-            step: '0.1',
+            step: '1',
             type: 'number',
           }}
           label="Rating"

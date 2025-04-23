@@ -13,6 +13,7 @@ afterEach(() => gamesServer.resetHandlers())
 function getFormData() {
   const formData = new FormData()
   formData.set('game[banner_image]', { size: 7 } as File)
+  formData.set('game[currently_playing]', 'true')
   formData.set('game[featured_video_id]', '123abc')
   formData.set('game[published_at]', '2025-02-27T06:54')
   formData.set('game[rating]', '5')

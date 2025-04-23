@@ -4,9 +4,8 @@
   "additionalProperties": false,
   "description": "A version of a Game that doesn't include relational resources.",
   "properties": {
-    "createdAt": {
-      "type": "string"
-    },
+    "createdAt": { "type": "string" },
+    "currentlyPlaying": { "type": "boolean" },
     "id": {
       "type": "integer"
     },
@@ -28,6 +27,7 @@
   },
   "required": [
     "createdAt",
+    "currentlyPlaying",
     "id",
     "igdbId",
     "name",

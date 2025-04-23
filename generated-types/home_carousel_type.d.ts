@@ -5,4 +5,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-type HomeCarouselType = 'snes' | 'ps'
+type HomeCarouselType = 'currently_playing' | 'snes' | 'ps'

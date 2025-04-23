@@ -34,6 +34,7 @@ export const gameFactory = Factory.define<Game>(
       width: 56,
     },
     createdAt: currentTime,
+    currentlyPlaying: false,
     developers: associations.developers || [companyFactory.build()],
     featuredVideoId: '',
     firstReleaseDate: '1999-01-09T00:00:00Z',
