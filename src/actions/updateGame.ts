@@ -1,6 +1,6 @@
 'use server'
 import { redirect } from 'next/navigation'
-import { any, number, object, string } from 'zod'
+import { any, boolean, number, object, string } from 'zod'
 
 import { API_ROUTES, GAME_FORM_NAMES, ROUTES } from '@/constants'
 import { ErrorFacade, UpdateGameDataFacade } from '@/facades'
@@ -10,6 +10,7 @@ import { setBaseApiAuthorization } from './setBaseApiAuthorization'
 
 interface GameState {
   bannerImage?: FormDataEntryValue
+  currentlyPlaying?: Game['currentlyPlaying']
   featuredVideoId?: Game['featuredVideoId']
   message?: string
   publishedAt?: Game['publishedAt']
@@ -21,6 +22,7 @@ interface GameState {
 const schema = object({
   game: object({
     bannerImage: any().optional(),
+    currentlyPlaying: boolean().optional(),
     featuredVideoId: string().optional(),
     publishedAt: string().optional(),
     rating: number().optional(),
@@ -32,6 +34,10 @@ function getFormDataValues(formData: FormData) {
   return {
     game: {
       bannerImage: formData.get(GAME_FORM_NAMES.BANNER_IMAGE),
+      currentlyPlaying:
+        formData.get(GAME_FORM_NAMES.CURRENTLY_PLAYING) === 'true'
+          ? true
+          : false,
       featuredVideoId: formData.get(GAME_FORM_NAMES.FEATURED_VIDEO_ID),
       publishedAt: formData.get(GAME_FORM_NAMES.PUBLISHED_AT),
       rating: Number(formData.get(GAME_FORM_NAMES.RATING)),
@@ -50,6 +56,7 @@ export async function updateGame({ slug }: GameState, formData: FormData) {
     const facade = new UpdateGameDataFacade(formData)
     facade.convertPublishedAtToUTCEquivalent()
     facade.deleteEmptyBannerImage()
+    facade.translateCurrentlyPlaying()
     const { game } = validateUpdateData(facade.formData)
     logger.info({ ...game, slug }, 'UPDATING GAME')
     await baseApi.patch(API_ROUTES.game(slug), facade.formData, {

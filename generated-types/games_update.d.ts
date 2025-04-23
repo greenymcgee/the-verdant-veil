@@ -25,6 +25,7 @@ interface Game {
   }
   cover: Cover
   createdAt: string
+  currentlyPlaying: boolean
   developers: Company[]
   /**
    * Any errors that might be present after fulfilling a game create request.

@@ -18,6 +18,7 @@ interface HomeCarouselsShowJson {
  */
 interface GameWithLimitedResources {
   createdAt: string
+  currentlyPlaying: boolean
   cover: Cover
   firstReleaseDate: string | null
   id: number

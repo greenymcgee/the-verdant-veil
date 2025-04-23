@@ -52,4 +52,25 @@ describe('UpdateGameDataFacade', () => {
       expect(facade.formData.get(GAME_FORM_NAMES.BANNER_IMAGE)).toBeNull()
     })
   })
+
+  describe('translateCurrentlyPlaying', () => {
+    it('should convert null to false', () => {
+      const formData = new FormData()
+      const facade = new UpdateGameDataFacade(formData)
+      facade.translateCurrentlyPlaying()
+      expect(facade.formData.get(GAME_FORM_NAMES.CURRENTLY_PLAYING)).toBe(
+        'false',
+      )
+    })
+
+    it('should convert "on" to true', () => {
+      const formData = new FormData()
+      formData.set(GAME_FORM_NAMES.CURRENTLY_PLAYING, 'on')
+      const facade = new UpdateGameDataFacade(formData)
+      facade.translateCurrentlyPlaying()
+      expect(facade.formData.get(GAME_FORM_NAMES.CURRENTLY_PLAYING)).toBe(
+        'true',
+      )
+    })
+  })
 })

@@ -4,14 +4,11 @@
   "additionalProperties": false,
   "description": "A version of a Game is in between a game without resources and a game with resources",
   "properties": {
-    "createdAt": {
-      "type": "string"
-    },
+    "createdAt": { "type": "string" },
+    "currentlyPlaying": { "type": "boolean" },
     "cover": { "$ref": "file:/cover.json#" },
     "firstReleaseDate": { "type": ["string", "null"] },
-    "id": {
-      "type": "integer"
-    },
+    "id": { "type": "integer" },
     "igdbId": { "type": "integer" },
     "name": { "type": "string" },
     "platforms": {
@@ -35,6 +32,7 @@
   "required": [
     "cover",
     "createdAt",
+    "currentlyPlaying",
     "firstReleaseDate",
     "id",
     "igdbId",

@@ -27,9 +27,8 @@
       "type": "object"
     },
     "cover": { "$ref": "file:/cover.json#" },
-    "createdAt": {
-      "type": "string"
-    },
+    "createdAt": { "type": "string" },
+    "currentlyPlaying": { "type": "boolean" },
     "developers": {
       "items": { "$ref": "file:/company.json#" },
       "type": "array"
@@ -125,6 +124,7 @@
     "bannerImage",
     "cover",
     "createdAt",
+    "currentlyPlaying",
     "developers",
     "featuredVideoId",
     "firstReleaseDate",

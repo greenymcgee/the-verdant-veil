@@ -10,6 +10,7 @@
  */
 interface GameWithoutResources {
   createdAt: string
+  currentlyPlaying: boolean
   id: number
   igdbId: number
   name: string
