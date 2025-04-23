@@ -1,3 +1,4 @@
+export * from './currentlyPlaying'
 export * from './errorBoundary'
 export * from './errorBoundaryActionBar'
 export * from './navbar'

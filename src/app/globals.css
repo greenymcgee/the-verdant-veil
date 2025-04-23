@@ -7,6 +7,7 @@
 @theme {
   --background-image-*: initial;
   --background-image-stars: url('/images/backgrounds/stars-xxl.svg');
+  --background-image-swords: url('/images/backgrounds/swords.svg');
 
   --background-position-*: initial;
   --background-position-top-center: top center;

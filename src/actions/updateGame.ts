@@ -35,9 +35,7 @@ function getFormDataValues(formData: FormData) {
     game: {
       bannerImage: formData.get(GAME_FORM_NAMES.BANNER_IMAGE),
       currentlyPlaying:
-        formData.get(GAME_FORM_NAMES.CURRENTLY_PLAYING) === 'true'
-          ? true
-          : false,
+        formData.get(GAME_FORM_NAMES.CURRENTLY_PLAYING) === 'true',
       featuredVideoId: formData.get(GAME_FORM_NAMES.FEATURED_VIDEO_ID),
       publishedAt: formData.get(GAME_FORM_NAMES.PUBLISHED_AT),
       rating: Number(formData.get(GAME_FORM_NAMES.RATING)),

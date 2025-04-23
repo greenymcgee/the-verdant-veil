@@ -36,7 +36,7 @@ export function GameCard({
     <As
       className={clsx(
         className,
-        'ring-ring-color rounded-lg focus-within:ring-2',
+        'ring-ring-color has-focus-visible::ring-2 rounded-lg',
         { group: !validating },
       )}
       {...options}
@@ -78,7 +78,10 @@ export function GameCard({
               </span>
             </Heading>
             <Time
-              className={clsx({ skeleton: validating })}
+              className={clsx('text-neutral-500', {
+                skeleton: validating,
+                'text-body-sm': variant === 'carousel',
+              })}
               data-testid="game-first-release-date"
               date={game.firstReleaseDate}
               format="MMMM do, yyyy"
