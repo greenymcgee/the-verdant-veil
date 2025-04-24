@@ -23,7 +23,7 @@ export function VerdantVeilRating({
       data-testid="verdant-veil-rating"
       {...options}
     >
-      {includesTitle ? 'Verdant Veil Rating' : null}
+      {includesTitle ? 'Verdant Veil Rating:' : null}
       <span className="sr-only">{`${game.rating} out of 5`}</span>
       <span aria-hidden className="inline-flex gap-1">
         {Array.from({ length: 5 }, (_, index) => index).map((interval) => (

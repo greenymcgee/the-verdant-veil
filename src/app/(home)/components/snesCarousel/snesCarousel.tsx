@@ -9,13 +9,14 @@ export function SNESCarousel() {
   const { games, isLoading, isValidating } = useGetHomeCarouselQuery('snes')
 
   return (
-    <GameCarousel
-      allResultsLink={ROUTES.platform('snes')}
-      className="mb-18"
-      games={games}
-      loading={isLoading}
-      title="SNES"
-      validating={isValidating}
-    />
+    <div className="container mb-18">
+      <GameCarousel
+        allResultsLink={ROUTES.platform('snes')}
+        games={games}
+        loading={isLoading}
+        title="SNES"
+        validating={isValidating}
+      />
+    </div>
   )
 }

@@ -3,7 +3,12 @@ import clsx from 'clsx'
 
 import { Heading, Logo } from '@/components'
 
-import { PageWithNavbar, PS1Carousel, SNESCarousel } from './components'
+import {
+  CurrentlyPlaying,
+  PageWithNavbar,
+  PS1Carousel,
+  SNESCarousel,
+} from './components'
 
 export default function HomePage() {
   return (
@@ -37,9 +42,10 @@ export default function HomePage() {
             </p>
           </div>
         </header>
-        <SNESCarousel />
-        <PS1Carousel />
       </div>
+      <CurrentlyPlaying />
+      <SNESCarousel />
+      <PS1Carousel />
     </PageWithNavbar>
   )
 }

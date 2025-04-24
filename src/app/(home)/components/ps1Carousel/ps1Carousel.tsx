@@ -9,12 +9,14 @@ export function PS1Carousel() {
   const { games, isLoading, isValidating } = useGetHomeCarouselQuery('ps')
 
   return (
-    <GameCarousel
-      allResultsLink={ROUTES.platform('ps')}
-      games={games}
-      loading={isLoading}
-      title="PS1"
-      validating={isValidating}
-    />
+    <div className="container">
+      <GameCarousel
+        allResultsLink={ROUTES.platform('ps')}
+        games={games}
+        loading={isLoading}
+        title="PS1"
+        validating={isValidating}
+      />
+    </div>
   )
 }
