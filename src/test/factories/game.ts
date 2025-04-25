@@ -36,6 +36,7 @@ export const gameFactory = Factory.define<Game>(
     createdAt: currentTime,
     currentlyPlaying: false,
     developers: associations.developers || [companyFactory.build()],
+    estimatedFirstPlayedDate: null,
     featuredVideoId: '',
     firstReleaseDate: '1999-01-09T00:00:00Z',
     franchises: associations.franchises || [franchiseFactory.build()],
@@ -44,6 +45,7 @@ export const gameFactory = Factory.define<Game>(
     genres: associations.genres || [genreFactory.build()],
     id: sequence,
     igdbId: sequence * Math.random(),
+    lastPlayedDate: null,
     name: 'Super Metroid',
     platforms: associations.platforms || [platformFactory.build()],
     playerPerspectives: associations.playerPerspectives || [

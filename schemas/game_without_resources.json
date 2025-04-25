@@ -6,10 +6,12 @@
   "properties": {
     "createdAt": { "type": "string" },
     "currentlyPlaying": { "type": "boolean" },
+    "estimatedFirstPlayedDate": { "type": ["string", "null"] },
     "id": {
       "type": "integer"
     },
     "igdbId": { "type": "integer" },
+    "lastPlayedDate": { "type": ["string", "null"] },
     "name": { "type": "string" },
     "published": { "type": "boolean" },
     "slug": { "type": "string" },
@@ -28,8 +30,10 @@
   "required": [
     "createdAt",
     "currentlyPlaying",
+    "estimatedFirstPlayedDate",
     "id",
     "igdbId",
+    "lastPlayedDate",
     "name",
     "published",
     "slug",
