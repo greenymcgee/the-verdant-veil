@@ -18,8 +18,9 @@ import {
   RichTextEditor,
   Spinner,
 } from '@/components'
-import { API_ROUTES } from '@/constants'
-import { formatDatetimeInputValue, toCurrentTimezone } from '@/utils'
+import { API_ROUTES, GAME_FORM_NAMES } from '@/constants'
+
+import { getFormDates } from './utils'
 
 interface Props {
   game: Game
@@ -42,13 +43,10 @@ export function EditGameForm({ game }: Props) {
     [],
   )
 
-  const publishedAt = useMemo(() => {
-    if (!state.publishedAt && !game.publishedAt) return ''
-
-    return formatDatetimeInputValue(
-      toCurrentTimezone(state.publishedAt ?? game.publishedAt),
-    )
-  }, [game.publishedAt, state.publishedAt])
+  const { estimatedFirstPlayedDate, lastPlayedDate, publishedAt } = useMemo(
+    () => getFormDates(game, state),
+    [game, state],
+  )
 
   useEffect(() => {
     if (!state.message) return
@@ -65,59 +63,78 @@ export function EditGameForm({ game }: Props) {
         type="hidden"
         value={Intl.DateTimeFormat().resolvedOptions().timeZone}
       />
-      <div className="mb-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <InputGroup
+        className="mb-4"
+        id="currently-playing"
+        inputProps={{
+          defaultChecked:
+            state.currentlyPlaying !== undefined
+              ? state.currentlyPlaying
+              : game.currentlyPlaying,
+          name: GAME_FORM_NAMES.CURRENTLY_PLAYING,
+          type: 'checkbox',
+        }}
+        label="Currently Playing"
+      />
+      <div className="mb-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <InputGroup
-          id="currently-playing"
+          id="banner-image"
           inputProps={{
-            defaultChecked:
-              state.currentlyPlaying !== undefined
-                ? state.currentlyPlaying
-                : game.currentlyPlaying,
-            name: 'game[currently_playing]',
-            type: 'checkbox',
+            accept: 'image/png, image/jpg, image/jpeg, image/webp',
+            name: GAME_FORM_NAMES.BANNER_IMAGE,
+            type: 'file',
           }}
-          label="Currently Playing"
+          label="Banner Image"
         />
         <InputGroup
           id="rating"
           inputProps={{
             defaultValue: state.rating ?? game.rating,
-            name: 'game[rating]',
+            name: GAME_FORM_NAMES.RATING,
             step: '1',
             type: 'number',
           }}
           label="Rating"
         />
         <InputGroup
+          id="featured-video-id"
+          inputProps={{
+            defaultValue: state.featuredVideoId ?? game.featuredVideoId,
+            name: GAME_FORM_NAMES.FEATURED_VIDEO_ID,
+          }}
+          label="Featured Video ID"
+        />
+        <InputGroup
           id="published-at"
           inputProps={{
             defaultValue: publishedAt,
-            name: 'game[published_at]',
+            name: GAME_FORM_NAMES.PUBLISHED_AT,
             type: 'datetime-local',
           }}
           label="Published At"
         />
         <InputGroup
-          id="banner-image"
+          id="estimated-first-played-dat3e"
           inputProps={{
-            accept: 'image/png, image/jpg, image/jpeg, image/webp',
-            name: 'game[banner_image]',
-            type: 'file',
+            defaultValue: estimatedFirstPlayedDate,
+            name: GAME_FORM_NAMES.ESTIMATED_FIRST_PLAYED_DATE,
+            type: 'date',
           }}
-          label="Banner Image"
+          label="Estimated First Played Date"
         />
         <InputGroup
-          id="featured-video-id"
+          id="last-played-date"
           inputProps={{
-            defaultValue: state.featuredVideoId ?? game.featuredVideoId,
-            name: 'game[featured_video_id]',
+            defaultValue: lastPlayedDate,
+            name: GAME_FORM_NAMES.LAST_PLAYED_DATE,
+            type: 'date',
           }}
-          label="Featured Video ID"
+          label="Last Played Date"
         />
       </div>
       <div>
         <input
-          name="game[review]"
+          name={GAME_FORM_NAMES.REVIEW}
           type="hidden"
           value={state.review ?? review}
         />
