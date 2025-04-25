@@ -12,9 +12,11 @@ interface GameWithLimitedResources {
   createdAt: string
   currentlyPlaying: boolean
   cover: Cover
+  estimatedFirstPlayedDate: string | null
   firstReleaseDate: string | null
   id: number
   igdbId: number
+  lastPlayedDate: string | null
   name: string
   platforms: PlatformWithoutResources[]
   published: boolean

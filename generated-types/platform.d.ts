@@ -36,8 +36,10 @@ interface Platform {
 interface GameWithoutResources {
   createdAt: string
   currentlyPlaying: boolean
+  estimatedFirstPlayedDate: string | null
   id: number
   igdbId: number
+  lastPlayedDate: string | null
   name: string
   published: boolean
   slug: string

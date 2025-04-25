@@ -25,12 +25,14 @@ interface Game {
    * Any errors that might be present after fulfilling a game create request.
    */
   errors?: unknown[]
+  estimatedFirstPlayedDate: string | null
   featuredVideoId: string
   firstReleaseDate: string | null
   franchises: Franchise[]
   gameEngines: GameEngine[]
   gameModes: GameMode[]
   genres: GenreWithoutResources[]
+  lastPlayedDate: string | null
   platforms: PlatformWithoutResources[]
   playerPerspectives: PlayerPerspective[]
   porters: Company[]

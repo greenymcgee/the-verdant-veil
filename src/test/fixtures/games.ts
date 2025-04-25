@@ -1,6 +1,10 @@
 import { gameFactory } from '../factories'
 
-export const SUPER_METROID = gameFactory.build({ currentlyPlaying: true })
+export const SUPER_METROID = gameFactory.build({
+  currentlyPlaying: true,
+  estimatedFirstPlayedDate: '1-1-1999',
+  lastPlayedDate: '1-1-2023',
+})
 export const DARK_SOULS = gameFactory.build({
   name: 'Dark Souls',
   published: false,
