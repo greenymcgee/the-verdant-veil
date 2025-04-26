@@ -76,6 +76,7 @@ export function EditGameForm({ game }: Props) {
         }}
         label="Currently Playing"
       />
+
       <div className="mb-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <InputGroup
           id="banner-image"
@@ -99,6 +100,7 @@ export function EditGameForm({ game }: Props) {
         <InputGroup
           id="featured-video-id"
           inputProps={{
+            autoComplete: 'off',
             defaultValue: state.featuredVideoId ?? game.featuredVideoId,
             name: GAME_FORM_NAMES.FEATURED_VIDEO_ID,
           }}
@@ -131,7 +133,17 @@ export function EditGameForm({ game }: Props) {
           }}
           label="Last Played Date"
         />
+        <InputGroup
+          id="review-title"
+          inputProps={{
+            autoComplete: 'off',
+            defaultValue: state.reviewTitle ?? game.reviewTitle,
+            name: GAME_FORM_NAMES.REVIEW_TITLE,
+          }}
+          label="Review Title"
+        />
       </div>
+
       <div>
         <input
           name={GAME_FORM_NAMES.REVIEW}

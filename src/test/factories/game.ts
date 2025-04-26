@@ -58,6 +58,7 @@ export const gameFactory = Factory.define<Game>(
     rating: 5,
     releaseDates: [],
     review: '<p>So good</p>',
+    reviewTitle: '',
     screenshots: [screenshotFactory.build(), screenshotFactory.build()],
     slug: 'super-metroid',
     storyline: '',

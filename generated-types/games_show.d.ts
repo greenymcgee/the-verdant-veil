@@ -38,23 +38,24 @@ interface Game {
   gameEngines: GameEngine[]
   gameModes: GameMode[]
   genres: GenreWithoutResources[]
-  lastPlayedDate: string | null
-  platforms: PlatformWithoutResources[]
-  playerPerspectives: PlayerPerspective[]
-  porters: Company[]
-  publishers: Company[]
   /**
    * The unique identifier for a game.
    */
   id: number
   igdbId: number
+  lastPlayedDate: string | null
   name: string
+  platforms: PlatformWithoutResources[]
+  playerPerspectives: PlayerPerspective[]
+  porters: Company[]
+  publishers: Company[]
   publishedAt: string | null
   published: boolean
   /**
    * Richtext: the review of the game.
    */
   review: string
+  reviewTitle: string
   /**
    * Float: the rating for the game from 1 - 5.
    */

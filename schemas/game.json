@@ -56,7 +56,15 @@
       "items": { "$ref": "file:/genre_without_resources.json#" },
       "type": "array"
     },
+    "id": {
+      "description": "The unique identifier for a game.",
+      "type": "integer"
+    },
+    "igdbId": {
+      "type": "integer"
+    },
     "lastPlayedDate": { "type": ["string", "null"] },
+    "name": { "type": "string" },
     "platforms": {
       "items": { "$ref": "file:/platform_without_resources.json#" },
       "type": "array"
@@ -73,20 +81,13 @@
       "items": { "$ref": "file:/company.json#" },
       "type": "array"
     },
-    "id": {
-      "description": "The unique identifier for a game.",
-      "type": "integer"
-    },
-    "igdbId": {
-      "type": "integer"
-    },
-    "name": { "type": "string" },
     "publishedAt": { "type": ["string", "null"] },
     "published": { "type": "boolean" },
     "review": {
       "description": "Richtext: the review of the game.",
       "type": "string"
     },
+    "reviewTitle": { "type": "string" },
     "rating": {
       "description": "Float: the rating for the game from 1 - 5.",
       "type": "number"
@@ -148,6 +149,7 @@
     "rating",
     "releaseDates",
     "review",
+    "reviewTitle",
     "screenshots",
     "slug",
     "storyline",
