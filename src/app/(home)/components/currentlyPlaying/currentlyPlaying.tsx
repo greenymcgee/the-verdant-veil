@@ -16,7 +16,7 @@ export function CurrentlyPlaying() {
   return (
     <article className="bg-swords mb-18 bg-cover bg-center bg-no-repeat pt-12">
       <div className="container">
-        <Heading as="h2" className="mb-3 bg-neutral-900 text-white">
+        <Heading as="h2" className="mb-3 text-white">
           Currently Playing
         </Heading>
         <div className="items-center gap-4 sm:grid sm:grid-cols-2">
