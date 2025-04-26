@@ -18,6 +18,7 @@ interface UpdateGameState {
   publishedAt?: Game['publishedAt']
   rating?: Game['rating']
   review?: Game['review']
+  reviewTitle?: Game['review']
   slug: Game['slug']
 }
 
@@ -31,6 +32,7 @@ const schema = object({
     publishedAt: string().optional().nullable(),
     rating: number().optional(),
     review: string().optional(),
+    reviewTitle: string().optional(),
   }),
 })
 
@@ -48,6 +50,7 @@ function getFormDataValues(formData: FormData) {
       publishedAt: formData.get(GAME_FORM_NAMES.PUBLISHED_AT),
       rating: Number(formData.get(GAME_FORM_NAMES.RATING)),
       review: formData.get(GAME_FORM_NAMES.REVIEW),
+      reviewTitle: formData.get(GAME_FORM_NAMES.REVIEW_TITLE),
     },
   }
 }

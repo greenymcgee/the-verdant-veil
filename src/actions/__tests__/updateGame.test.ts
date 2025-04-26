@@ -18,6 +18,7 @@ function getFormData() {
   formData.set('game[published_at]', '2025-02-27T06:54')
   formData.set('game[rating]', '5')
   formData.set('game[review]', '<p>an updated review</p>')
+  formData.set('game[review_title]', 'So Good')
   return formData
 }
 

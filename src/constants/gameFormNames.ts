@@ -7,4 +7,5 @@ export const GAME_FORM_NAMES = {
   PUBLISHED_AT: 'game[published_at]',
   RATING: 'game[rating]',
   REVIEW: 'game[review]',
+  REVIEW_TITLE: 'game[review_title]',
 }

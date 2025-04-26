@@ -3,9 +3,11 @@ import React from 'react'
 import { PageWithNavbar } from '@/app/(home)/components'
 import {
   Card,
+  Heading,
   HTMLParser,
   TabPanel,
   Tabs,
+  Time,
   VerdantVeilRating,
 } from '@/components'
 
@@ -64,6 +66,17 @@ export function GamePage({ game }: Props) {
         />
         <TabPanel defaultActive hash={REVIEW_HASH}>
           <Card variant="tabpanel">
+            <header className="mb-4">
+              <Heading as="h2" className="mb-1">
+                {game.reviewTitle}
+              </Heading>
+              <p className="text-sm text-neutral-500">
+                <Time
+                  date={game.publishedAt ?? new Date().toISOString()}
+                  format="MMMM do, yyyy"
+                />
+              </p>
+            </header>
             <HTMLParser data-testid="game-review" html={game.review} />
           </Card>
         </TabPanel>
