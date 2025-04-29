@@ -62,7 +62,7 @@
     "@types/node": "^22.13.14",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.1.2",
-    "@typescript-eslint/utils": "^8.29.1",
+    "@typescript-eslint/utils": "^8.31.1",
     "@vitest/coverage-v8": "^3.0.9",
     "@vitest/eslint-plugin": "^1.1.42",
     "cspell": "^8.19.1",
