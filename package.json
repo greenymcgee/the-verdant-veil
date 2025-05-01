@@ -85,7 +85,7 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "snakecase": "^1.0.0",
     "storybook": "^8.6.12",
-    "tailwindcss": "^4.0.17",
+    "tailwindcss": "^4.1.5",
     "typescript": "^5.8.3",
     "vitest": "^3.0.9"
   }
