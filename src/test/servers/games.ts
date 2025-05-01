@@ -36,6 +36,15 @@ const handlers = [
   http.get(getApiUrl('gameFilters'), () =>
     HttpResponse.json(GET_GAME_FILTERS_RESPONSE_DATA),
   ),
+  http.post(getApiUrl('publishGame', [SUPER_METROID.slug]), () =>
+    HttpResponse.json(),
+  ),
+  http.post(getApiUrl('publishGame', [DARK_SOULS.slug]), () =>
+    HttpResponse.json(),
+  ),
+  http.delete(getApiUrl('publishGame', [SUPER_METROID.slug]), () =>
+    HttpResponse.json(),
+  ),
 ]
 
 export const gamesServer = setupServer(...handlers)
@@ -96,4 +105,20 @@ export function mockGameFiltersRequestFailure() {
     new HttpResponse(JSON.stringify({ message }), { status: 500 })
   gamesServer.use(http.get(getApiUrl('gameFilters'), response))
   return { message, response }
+}
+
+export function mockUnpublishableGameFailure(slug: string) {
+  const unpublishableReasons = [
+    "Featured video id can't be blank",
+    "Banner image can't be blank",
+  ]
+  const response = () =>
+    new HttpResponse(JSON.stringify({ unpublishableReasons }), { status: 422 })
+  gamesServer.use(http.post(getApiUrl('publishGame', [slug]), response))
+  return unpublishableReasons
+}
+
+export function mockUnpublishGameFailure(slug: string) {
+  const response = () => new HttpResponse(JSON.stringify({}), { status: 500 })
+  gamesServer.use(http.delete(getApiUrl('publishGame', [slug]), response))
 }

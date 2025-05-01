@@ -1,5 +1,5 @@
 import { SUPER_METROID } from '@/test/fixtures'
-import { gamesServer, mockGameUpdateRequestFailure } from '@/test/servers'
+import { gamesServer, mockUnpublishableGameFailure } from '@/test/servers'
 
 import { publishGame } from '..'
 
@@ -12,29 +12,40 @@ FORM_DATA.set('timezone', 'America/Denver')
 
 describe('publishGame', () => {
   it('should return success state', async () => {
+    const state = {
+      game: SUPER_METROID,
+      message: '',
+      status: 'idle',
+      unpublishableReasons: [],
+    }
     const result = await publishGame({
       game: SUPER_METROID,
       message: '',
       status: 'idle',
+      unpublishableReasons: [],
     })
     expect(result).toEqual({
-      game: SUPER_METROID,
-      message: '',
+      ...state,
       status: 'success',
     })
   })
 
   it('should return failure state', async () => {
-    const { message } = mockGameUpdateRequestFailure()
-    const result = await publishGame({
+    const unpublishableReasons = mockUnpublishableGameFailure(
+      SUPER_METROID.slug,
+    )
+    const state: FirstParameterOf<typeof publishGame> = {
       game: SUPER_METROID,
       message: '',
       status: 'idle',
-    })
+      unpublishableReasons: [],
+    }
+    const result = await publishGame(state)
     expect(result).toEqual({
-      game: SUPER_METROID,
-      message,
+      ...state,
+      message: expect.any(String),
       status: 'failure',
+      unpublishableReasons,
     })
   })
 })

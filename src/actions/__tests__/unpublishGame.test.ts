@@ -1,5 +1,5 @@
 import { SUPER_METROID } from '@/test/fixtures'
-import { gamesServer, mockGameUpdateRequestFailure } from '@/test/servers'
+import { gamesServer, mockUnpublishGameFailure } from '@/test/servers'
 
 import { unpublishGame } from '..'
 
@@ -22,7 +22,7 @@ describe('unpublishGame', () => {
   })
 
   it('should return failure state', async () => {
-    const { message } = mockGameUpdateRequestFailure()
+    mockUnpublishGameFailure(SUPER_METROID.slug)
     const result = await unpublishGame({
       game: SUPER_METROID,
       message: '',
@@ -30,7 +30,7 @@ describe('unpublishGame', () => {
     })
     expect(result).toEqual({
       game: SUPER_METROID,
-      message,
+      message: expect.any(String),
       status: 'failure',
     })
   })

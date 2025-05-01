@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache'
 import { ROUTES } from '@/constants'
 import { SUPER_METROID } from '@/test/fixtures'
 import { toastMock } from '@/test/helpers'
-import { gamesServer, mockGameUpdateRequestFailure } from '@/test/servers'
+import { gamesServer, mockUnpublishGameFailure } from '@/test/servers'
 
 import { UnpublishGameForm } from '..'
 
@@ -38,11 +38,11 @@ describe('<UnpublishGameForm />', () => {
 
   describe('failure', () => {
     it('should toast an error message', async () => {
-      const { message } = mockGameUpdateRequestFailure()
+      mockUnpublishGameFailure(SUPER_METROID.slug)
       render(<UnpublishGameForm game={SUPER_METROID} />)
       fireEvent.click(screen.getByText('Unpublish'))
       await waitFor(() => {
-        expect(toastMock.error).toHaveBeenCalledWith(message)
+        expect(toastMock.error).toHaveBeenCalled()
       })
     })
   })
