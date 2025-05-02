@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios'
 
-export class ErrorFacade<GQError extends AxiosError<{ message: string }>> {
+export class ErrorFacade<Data extends { message: string }> {
   private defaultMessage: string
 
-  public error: GQError | undefined
+  public error: AxiosError<Data> | undefined
 
   constructor(error: unknown, defaultMessage = 'Whoops, something went wrong') {
-    this.error = error as GQError
+    this.error = error as AxiosError<Data>
     this.defaultMessage = defaultMessage
   }
 

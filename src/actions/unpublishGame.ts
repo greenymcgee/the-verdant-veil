@@ -1,7 +1,5 @@
 'use server'
 
-import { snakeCase } from 'change-case/keys'
-
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
 import { baseApi, logger } from '@/modules'
@@ -18,10 +16,7 @@ export async function unpublishGame(state: State): Promise<State> {
   await setBaseApiAuthorization()
   logger.info({ slug: state.game.slug }, 'UNPUBLISHING GAME')
   try {
-    await baseApi.patch(
-      API_ROUTES.game(state.game.slug),
-      snakeCase({ publishedAt: '' }),
-    )
+    await baseApi.delete(API_ROUTES.publishGame(state.game.slug))
     return { ...state, status: 'success' }
   } catch (error) {
     const { message } = new ErrorFacade(error)

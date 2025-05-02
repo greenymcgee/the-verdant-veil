@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game_publishes/unpublishable_game.json",
+  "additionalProperties": false,
+  "description": "The POST /api/games/:slug/publish error payload",
+  "properties": {
+    "unpublishableReasons": { "items": { "type": "string" }, "type": "array" }
+  },
+  "required": ["unpublishableReasons"],
+  "title": "UnpublishableGame",
+  "type": "object"
+}

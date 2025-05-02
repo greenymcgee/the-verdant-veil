@@ -11,21 +11,24 @@ import { Button } from '../button'
 
 interface Props {
   game: Game
+  onErrorCallback(unpublishableReasons: string[]): void
 }
 
 type State = FirstParameterOf<typeof publishGame>
 
-export function PublishGameForm({ game }: Props) {
+export function PublishGameForm({ game, onErrorCallback }: Props) {
   const router = useRouter()
   const initialState: State = {
     game,
     message: '',
     status: 'idle',
+    unpublishableReasons: [],
   }
 
   const callbacks = {
-    async onError({ message }: State) {
+    async onError({ message, unpublishableReasons }: State) {
       toast.error(message)
+      onErrorCallback(unpublishableReasons)
     },
     async onSuccess() {
       router.push(ROUTES.game(game.slug))

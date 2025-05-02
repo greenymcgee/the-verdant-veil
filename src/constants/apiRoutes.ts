@@ -6,5 +6,6 @@ export const API_ROUTES = {
   homeCarousel: (carousel: HomeCarouselType) => `/home_carousels/${carousel}`,
   login: '/login',
   logout: '/logout',
+  publishGame: (slug: Game['slug']) => `/games/${slug}/publish`,
   resetPassword: '/reset_password',
 } as const
