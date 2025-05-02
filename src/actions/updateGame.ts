@@ -15,7 +15,6 @@ interface UpdateGameState {
   featuredVideoId?: Game['featuredVideoId']
   lastPlayedDate?: Game['lastPlayedDate']
   message?: string
-  publishedAt?: Game['publishedAt']
   rating?: Game['rating']
   review?: Game['review']
   reviewTitle?: Game['review']
@@ -29,7 +28,6 @@ const schema = object({
     estimatedFirstPlayedDate: string().optional().nullable(),
     featuredVideoId: string().optional(),
     lastPlayedDate: string().optional().nullable(),
-    publishedAt: string().optional().nullable(),
     rating: number().optional(),
     review: string().optional(),
     reviewTitle: string().optional(),
@@ -47,7 +45,6 @@ function getFormDataValues(formData: FormData) {
       ),
       featuredVideoId: formData.get(GAME_FORM_NAMES.FEATURED_VIDEO_ID),
       lastPlayedDate: formData.get(GAME_FORM_NAMES.LAST_PLAYED_DATE),
-      publishedAt: formData.get(GAME_FORM_NAMES.PUBLISHED_AT),
       rating: Number(formData.get(GAME_FORM_NAMES.RATING)),
       review: formData.get(GAME_FORM_NAMES.REVIEW),
       reviewTitle: formData.get(GAME_FORM_NAMES.REVIEW_TITLE),

@@ -43,7 +43,7 @@ export function EditGameForm({ game }: Props) {
     [],
   )
 
-  const { estimatedFirstPlayedDate, lastPlayedDate, publishedAt } = useMemo(
+  const { estimatedFirstPlayedDate, lastPlayedDate } = useMemo(
     () => getFormDates(game, state),
     [game, state],
   )
@@ -88,9 +88,20 @@ export function EditGameForm({ game }: Props) {
           label="Banner Image"
         />
         <InputGroup
+          id="review-title"
+          inputProps={{
+            autoComplete: 'off',
+            defaultValue: state.reviewTitle ?? game.reviewTitle,
+            name: GAME_FORM_NAMES.REVIEW_TITLE,
+          }}
+          label="Review Title"
+        />
+        <InputGroup
           id="rating"
           inputProps={{
             defaultValue: state.rating ?? game.rating,
+            max: 5,
+            min: 1,
             name: GAME_FORM_NAMES.RATING,
             step: '1',
             type: 'number',
@@ -105,15 +116,6 @@ export function EditGameForm({ game }: Props) {
             name: GAME_FORM_NAMES.FEATURED_VIDEO_ID,
           }}
           label="Featured Video ID"
-        />
-        <InputGroup
-          id="published-at"
-          inputProps={{
-            defaultValue: publishedAt,
-            name: GAME_FORM_NAMES.PUBLISHED_AT,
-            type: 'datetime-local',
-          }}
-          label="Published At"
         />
         <InputGroup
           id="estimated-first-played-dat3e"
@@ -132,15 +134,6 @@ export function EditGameForm({ game }: Props) {
             type: 'date',
           }}
           label="Last Played Date"
-        />
-        <InputGroup
-          id="review-title"
-          inputProps={{
-            autoComplete: 'off',
-            defaultValue: state.reviewTitle ?? game.reviewTitle,
-            name: GAME_FORM_NAMES.REVIEW_TITLE,
-          }}
-          label="Review Title"
         />
       </div>
 
