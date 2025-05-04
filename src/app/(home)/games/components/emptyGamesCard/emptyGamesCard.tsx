@@ -10,7 +10,7 @@ interface Props {
 export function EmptyGamesCard({ query }: Props) {
   return (
     <Card
-      className="mt-20 text-center"
+      className="text-center"
       classNameOverrides={{
         backgroundColor: 'bg-primary-50',
         padding: 'px-3 py-12',
@@ -23,20 +23,27 @@ export function EmptyGamesCard({ query }: Props) {
         <span
           aria-hidden
           className={clsx(
-            'bg-warning-500 border-warning-300 inline-flex border text-3xl',
+            'bg-warning-600 border-warning-300 inline-flex border text-3xl',
             'rounded-full border p-1 text-white',
           )}
         >
           <Icon className="inline" icon="magnify" />
         </span>{' '}
         <span>
-          No games found for{' '}
-          <span className="text-primary-800">&quot;{query}&quot;</span>
+          {query ? (
+            <>
+              No games found for{' '}
+              <span className="text-primary-800">&quot;{query}&quot;</span>
+            </>
+          ) : (
+            'No games found'
+          )}
         </span>
       </p>
       <p className="text-neutral-500">
-        We couldn&apos;t find any games match &quot;{query}.&quot; Try refining
-        your search.
+        {query
+          ? `We couldn't find any games matching "${query}". Please try refining your search.`
+          : 'No games matching the given criteria were able to be found.'}
       </p>
     </Card>
   )
