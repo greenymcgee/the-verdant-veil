@@ -6,17 +6,22 @@ import {
   GET_GAME_FILTERS_RESPONSE_DATA,
   GET_GAMES_RESPONSE_DATA,
   GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA,
+  GET_PUBLISHED_GAMES_RESPONSE_DATA,
   NEW_GAME,
   SUPER_METROID,
 } from '../fixtures'
 import { getApiUrl } from '../helpers'
 
 const handlers = [
-  http.get(getApiUrl('games'), (request) => {
-    const { page } = request.params
+  http.get(getApiUrl('games'), ({ request: { url } }) => {
+    const params = new URL(url).searchParams
+    const page = params.get('page')
+    const published = params.get('published')
 
     if (page)
       return HttpResponse.json(GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA)
+
+    if (published) return HttpResponse.json(GET_PUBLISHED_GAMES_RESPONSE_DATA)
 
     return HttpResponse.json(GET_GAMES_RESPONSE_DATA)
   }),
@@ -65,12 +70,19 @@ export function mockGameRequestFailure(status = 404) {
   return { message, response }
 }
 
-export function mockGameUpdateRequestFailure() {
-  const message = 'Bad request'
+export function mockGameUpdateRequestFailure(withReasons = false) {
+  const message = 'Game could not be updated'
+  const reasons = ['You did bad', 'Try again']
   const response = () =>
-    new HttpResponse(JSON.stringify({ message }), { status: 422 })
+    new HttpResponse(
+      JSON.stringify({
+        message,
+        reasons: withReasons ? reasons : undefined,
+      }),
+      { status: 422 },
+    )
   gamesServer.use(http.patch(getApiUrl('game', [SUPER_METROID.slug]), response))
-  return { message, response }
+  return { message, reasons, response }
 }
 
 export function mockGameCreateRequestFailure() {

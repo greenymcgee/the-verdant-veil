@@ -58,6 +58,22 @@ export function EditGameForm({ game }: Props) {
 
   return (
     <form action={action} data-testid="edit-game-form">
+      {state.failureReasons?.length ? (
+        <div
+          aria-live="polite"
+          className="border-danger-900 bg-danger-50 text-danger-900 mb-4 rounded-lg border-1 p-3"
+          role="alert"
+        >
+          <p className="mb-1">
+            Please fix the following issues to update the game:
+          </p>
+          <ul className="ml-3 list-disc pl-3">
+            {state.failureReasons.map((reason) => (
+              <li key={reason}>{reason}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       <input
         name="timezone"
         type="hidden"

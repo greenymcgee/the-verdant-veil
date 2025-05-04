@@ -35,6 +35,11 @@ export const GET_GAMES_RESPONSE_DATA: GamesIndexJson = {
 }
 
 export const GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA: GamesIndexJson = {
-  games: GAMES,
+  games: [gameFactory.build(), gameFactory.build()],
+  totalPages: 1,
+}
+
+export const GET_PUBLISHED_GAMES_RESPONSE_DATA: GamesIndexJson = {
+  games: [SUPER_METROID, gameFactory.build(), gameFactory.build()],
   totalPages: 1,
 }

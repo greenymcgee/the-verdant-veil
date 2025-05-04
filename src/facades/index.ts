@@ -1,4 +1,5 @@
 export * from './carouselKeyChangeFacade'
 export * from './errorFacade'
+export * from './publishedParamFacade'
 export * from './searchQueryFacade'
 export * from './updateGameDataFacade'
