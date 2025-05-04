@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 import { Inter, Libre_Baskerville } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
-import '../globals.css'
+import './globals.css'
 import { Providers } from '@/context'
 
 const libreBaskerville = Libre_Baskerville({
@@ -26,19 +26,14 @@ export const metadata: Metadata = {
   title: 'The Verdant Veil',
 }
 
-export default function HomeLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html lang="en">
+    <html className="h-full" lang="en">
       <body
         className={clsx(
           inter.variable,
           libreBaskerville.variable,
-          'bg-stars bg-top-center leading-body relative',
-          'bg-neutral-900 font-sans text-neutral-700',
+          'leading-body relative h-full font-sans text-neutral-700',
         )}
       >
         <SpeedInsights />

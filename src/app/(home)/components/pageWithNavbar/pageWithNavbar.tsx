@@ -18,7 +18,7 @@ export function PageWithNavbar({
   classNameOverrides,
 }: Props) {
   return (
-    <>
+    <div className="bg-stars bg-top-center min-h-full bg-neutral-900">
       <Navbar activeLinkTitle={activeLinkTitle} />
       {bannerImage ? (
         <BannerImage bannerImage={bannerImage} className="pt-28" />
@@ -34,6 +34,6 @@ export function PageWithNavbar({
       >
         {children}
       </main>
-    </>
+    </div>
   )
 }

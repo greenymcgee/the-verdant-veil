@@ -1,60 +1,27 @@
-import React, { ReactNode } from 'react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import clsx from 'clsx'
+import React, { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
-// eslint-disable-next-line camelcase
-import { Inter, Libre_Baskerville } from 'next/font/google'
-import { Toaster } from 'react-hot-toast'
 
 import '../globals.css'
 
-import { Providers } from '../../context'
 import { Navbar } from './components'
-
-const libreBaskerville = Libre_Baskerville({
-  subsets: ['latin'],
-  variable: '--font-libre-baskerville',
-  weight: '700',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
 
 export const metadata: Metadata = {
   description: "The Verdant Veil's admin.",
   title: 'The Verdant Veil Admin',
 }
 
-export default function AdminLayout({
-  children,
-}: Readonly<{ children: ReactNode }>) {
+export default function AdminLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html lang="en">
-      <body
-        className={clsx(
-          inter.variable,
-          libreBaskerville.variable,
-          'leading-body bg-white font-sans text-neutral-700',
-        )}
+    <div className="relative bg-white sm:flex">
+      <Navbar />
+      {/* The 129px will need to change if navbar width ever changes. */}
+      {/* For now the hard coded width avoids lots of unnecessary JS to measure navbar width */}
+      <main
+        className="bg-primary-50 min-h-[100vh] w-full md:ml-[129px]"
+        data-testid="admin-main"
       >
-        <SpeedInsights />
-        <Toaster />
-        <div className="relative sm:flex">
-          <Providers>
-            <Navbar />
-            {/* The 129px will need to change if navbar width ever changes. */}
-            {/* For now the hard coded width avoids lots of unnecessary JS to measure navbar width */}
-            <main
-              className="bg-primary-50 min-h-[100vh] w-full md:ml-[129px]"
-              data-testid="admin-main"
-            >
-              <div className="container pt-32 pb-8 md:pt-8">{children}</div>
-            </main>
-          </Providers>
-        </div>
-      </body>
-    </html>
+        <div className="container pt-32 pb-8 md:pt-8">{children}</div>
+      </main>
+    </div>
   )
 }
