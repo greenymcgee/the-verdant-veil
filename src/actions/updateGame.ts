@@ -12,6 +12,7 @@ interface UpdateGameState {
   bannerImage?: FormDataEntryValue
   currentlyPlaying?: Game['currentlyPlaying']
   estimatedFirstPlayedDate?: Game['estimatedFirstPlayedDate']
+  failureReasons?: string[]
   featuredVideoId?: Game['featuredVideoId']
   lastPlayedDate?: Game['lastPlayedDate']
   message?: string
@@ -19,6 +20,11 @@ interface UpdateGameState {
   review?: Game['review']
   reviewTitle?: Game['review']
   slug: Game['slug']
+}
+
+interface UpdateGameError {
+  message: string
+  reasons: string[] | undefined
 }
 
 const schema = object({
@@ -35,11 +41,12 @@ const schema = object({
 })
 
 function getFormDataValues(formData: FormData) {
+  const currentlyPlaying = formData.get(GAME_FORM_NAMES.CURRENTLY_PLAYING)
   return {
     game: {
       bannerImage: formData.get(GAME_FORM_NAMES.BANNER_IMAGE),
       currentlyPlaying:
-        formData.get(GAME_FORM_NAMES.CURRENTLY_PLAYING) === 'true',
+        currentlyPlaying === 'true' || currentlyPlaying === 'on',
       estimatedFirstPlayedDate: formData.get(
         GAME_FORM_NAMES.ESTIMATED_FIRST_PLAYED_DATE,
       ),
@@ -72,10 +79,11 @@ export async function updateGame(
       headers: { 'Content-Type': 'multipart/form-data' },
     })
   } catch (error) {
-    const { message } = new ErrorFacade(error)
+    const { data, message } = new ErrorFacade<UpdateGameError>(error)
     logger.error(error, message)
     return {
       ...getFormDataValues(formData).game,
+      failureReasons: data?.reasons,
       message,
       slug,
     } as UpdateGameState

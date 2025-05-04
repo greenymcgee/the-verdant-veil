@@ -6,6 +6,7 @@ import { ROUTES } from '@/constants'
 import {
   GET_GAMES_RESPONSE_DATA,
   GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA,
+  GET_PUBLISHED_GAMES_RESPONSE_DATA,
 } from '@/test/fixtures'
 import { getApiUrl, renderHookWithProviders, toastMock } from '@/test/helpers'
 import { gamesServer } from '@/test/servers'
@@ -45,6 +46,18 @@ describe('useGetGamesQuery', () => {
       await waitFor(() => expect(result.current.isLoading).toEqual(false))
       expect(toastMock.error).toHaveBeenCalledWith(
         'Whoops, something went wrong',
+      )
+    })
+  })
+
+  describe('options', () => {
+    it('should utilize published option', async () => {
+      const { result } = renderHookWithProviders(() =>
+        useGetGamesQuery({ published: true }),
+      )
+      await waitFor(() => expect(result.current.isLoading).toEqual(false))
+      expect(result.current.games).toEqual(
+        GET_PUBLISHED_GAMES_RESPONSE_DATA.games,
       )
     })
   })

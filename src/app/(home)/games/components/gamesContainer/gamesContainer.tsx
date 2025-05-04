@@ -22,7 +22,7 @@ interface Props {
 // lazy load images
 export function GamesContainer({ fallbackTotalPages }: Props) {
   const { error, games, isLoading, isValidating, totalPages } =
-    useGetGamesQuery()
+    useGetGamesQuery({ published: true })
   const searchParams = useSearchParams()
   const query = searchParams.get('query') ?? undefined
 

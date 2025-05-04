@@ -15,7 +15,6 @@ function getFormData() {
   formData.set('game[banner_image]', { size: 7 } as File)
   formData.set('game[currently_playing]', 'true')
   formData.set('game[featured_video_id]', '123abc')
-  formData.set('game[published_at]', '2025-02-27T06:54')
   formData.set('game[rating]', '5')
   formData.set('game[review]', '<p>an updated review</p>')
   formData.set('game[review_title]', 'So Good')
@@ -31,13 +30,22 @@ describe('updateGame', () => {
   })
 
   describe('failure', () => {
-    it('should return state with a message', async () => {
+    it('should return a message when present', async () => {
       const { message } = mockGameUpdateRequestFailure()
       const response = await updateGame(
         { slug: SUPER_METROID.slug },
         getFormData(),
       )
       expect(response.message).toEqual(message)
+    })
+
+    it('should return reasons when present', async () => {
+      const { reasons } = mockGameUpdateRequestFailure(true)
+      const response = await updateGame(
+        { slug: SUPER_METROID.slug },
+        getFormData(),
+      )
+      expect(response.failureReasons).toEqual(reasons)
     })
   })
 })
