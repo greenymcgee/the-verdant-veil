@@ -5,7 +5,7 @@ import { ROUTES } from '@/constants'
 
 export default function AuthLayout({ children }: PropsWithChildren) {
   return (
-    <main>
+    <main className="bg-stars bg-top-center min-h-full bg-neutral-900">
       <div className="container flex h-screen flex-col justify-center">
         <div className="mx-auto w-full max-w-xl rounded-md bg-white p-4 text-neutral-900">
           <header className="text-center">

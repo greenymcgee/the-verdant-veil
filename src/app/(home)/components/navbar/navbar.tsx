@@ -22,7 +22,7 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
   return (
     <nav
       className={clsx(
-        'transition-main-nav fixed z-10 w-full py-6 duration-300 ease-linear',
+        'transition-main-nav fixed z-20 w-full py-6 duration-300 ease-linear',
         {
           'shadow-nav-light bg-white text-neutral-900': y,
           'text-white': !y,

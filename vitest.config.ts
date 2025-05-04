@@ -22,7 +22,7 @@ export default defineConfig({
         'src/components/svgs/**',
         'src/test/**',
         'src/modules/logger.ts',
-        'src/app/(home)/layout.tsx',
+        'src/app/layout.tsx',
         'src/app/admin/layout.tsx',
         'src/app/admin/components/index.ts',
       ],
