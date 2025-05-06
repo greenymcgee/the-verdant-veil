@@ -8,6 +8,8 @@ interface EditorState {
   isH5Active: boolean
   isH6Active: boolean
   isItalicActive: boolean
+  isLinkActive: boolean
+  isUnsetLinkActive: boolean
 }
 
 export function getEditorState(editor: Editor | null) {
@@ -21,5 +23,7 @@ export function getEditorState(editor: Editor | null) {
     isH5Active: editor.isActive('heading', { level: 5 }),
     isH6Active: editor.isActive('heading', { level: 6 }),
     isItalicActive: editor.isActive('italic'),
+    isLinkActive: editor.isActive('link'),
+    isUnsetLinkActive: !editor.isActive('link'),
   }
 }
