@@ -1,6 +1,26 @@
+/* eslint-disable import/no-named-as-default */
 'use client'
 
 import React from 'react'
+import Blockquote from '@tiptap/extension-blockquote'
+import Bold from '@tiptap/extension-bold'
+import BulletList from '@tiptap/extension-bullet-list'
+import Code from '@tiptap/extension-code'
+import Codeblock from '@tiptap/extension-code-block'
+import Document from '@tiptap/extension-document'
+import Dropcursor from '@tiptap/extension-dropcursor'
+import Gapcursor from '@tiptap/extension-gapcursor'
+import HardBreak from '@tiptap/extension-hard-break'
+import Heading from '@tiptap/extension-heading'
+import History from '@tiptap/extension-history'
+import HorizontalRule from '@tiptap/extension-horizontal-rule'
+import Italic from '@tiptap/extension-italic'
+import Link from '@tiptap/extension-link'
+import ListItem from '@tiptap/extension-list-item'
+import OrderedList from '@tiptap/extension-ordered-list'
+import Paragraph from '@tiptap/extension-paragraph'
+import Strike from '@tiptap/extension-strike'
+import Text from '@tiptap/extension-text'
 import {
   EditorContent,
   EditorContentProps,
@@ -8,11 +28,13 @@ import {
   useEditor,
   useEditorState,
 } from '@tiptap/react'
-// eslint-disable-next-line import/no-named-as-default
-import StarterKit from '@tiptap/starter-kit'
 import clsx from 'clsx'
 
-import { TRANSITION_STYLES } from '@/constants'
+import {
+  BASE_LINK_TO_CLASSNAME,
+  LINK_TO_THEME_MAP,
+  TRANSITION_STYLES,
+} from '@/constants'
 
 import { RichTextEditorControl } from '../richTextEditorControl'
 import {
@@ -21,6 +43,9 @@ import {
   handleHardBreakClicked,
   handleHeadingClicked,
   handleItalicClicked,
+  handleSetLinkClicked,
+  handleUnsetLinkClicked,
+  isAllowedUri,
 } from './utils'
 
 interface Props extends Omit<EditorContentProps, 'editor'> {
@@ -35,7 +60,36 @@ export function RichTextEditor({
 }: Props) {
   const editor = useEditor({
     content,
-    extensions: [StarterKit],
+    extensions: [
+      Blockquote,
+      Bold,
+      BulletList,
+      Code,
+      Codeblock,
+      Document,
+      Dropcursor,
+      Gapcursor,
+      HardBreak,
+      Heading,
+      History,
+      HorizontalRule,
+      Italic,
+      Link.configure({
+        HTMLAttributes: {
+          class: clsx(BASE_LINK_TO_CLASSNAME, LINK_TO_THEME_MAP.primary),
+          target: '_blank',
+        },
+        autolink: true,
+        defaultProtocol: 'https',
+        isAllowedUri,
+        protocols: ['http', 'https'],
+      }),
+      ListItem,
+      OrderedList,
+      Paragraph,
+      Strike,
+      Text,
+    ],
     immediatelyRender: false,
     onUpdate,
   })
@@ -98,6 +152,16 @@ export function RichTextEditor({
           onClick={handleHardBreakClicked(editor)}
           text="Hard Break"
         />
+        <RichTextEditorControl
+          active={editorState.isLinkActive}
+          onClick={handleSetLinkClicked(editor)}
+          text="Set Link"
+        />
+        <RichTextEditorControl
+          active={editorState.isUnsetLinkActive}
+          onClick={handleUnsetLinkClicked(editor)}
+          text="Unset Link"
+        />
       </div>
       <hr />
       <EditorContent
@@ -112,3 +176,5 @@ export function RichTextEditor({
     </div>
   )
 }
+
+/* eslint-enable import/no-named-as-default */

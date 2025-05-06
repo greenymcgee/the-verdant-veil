@@ -22,6 +22,8 @@ describe('getEditorState', () => {
       isH5Active: true,
       isH6Active: true,
       isItalicActive: true,
+      isLinkActive: true,
+      isUnsetLinkActive: false,
     })
   })
 })

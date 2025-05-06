@@ -3,13 +3,14 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 import {
+  BASE_LINK_TO_CLASSNAME,
   BUTTON_SIZES,
   BUTTON_THEMES,
   DEFAULT_BUTTON_CLASS_NAMES,
+  LINK_TO_THEME_MAP,
 } from '@/constants'
 
 import { Icon } from '../icon'
-import { BASE_LINK_TO_CLASSNAME, LINK_TO_THEME_MAP } from './constants'
 
 interface LinkToProps extends PropsOf<typeof Link> {
   leftIcon?: IconType

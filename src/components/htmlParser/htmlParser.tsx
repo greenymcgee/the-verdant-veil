@@ -10,7 +10,9 @@ export function HTMLParser({ html, ...options }: Props) {
     <div
       className="rich-text"
       dangerouslySetInnerHTML={{
-        __html: DOMPurify.sanitize(html),
+        __html: DOMPurify.sanitize(html, {
+          ALLOWED_ATTR: ['class', 'href', 'rel', 'target'],
+        }),
       }}
       {...options}
     />
