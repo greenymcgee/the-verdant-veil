@@ -79,7 +79,7 @@
     "jest-useragent-mock": "^0.1.1",
     "jsdom": "^26.0.0",
     "json-schema-to-typescript": "^15.0.4",
-    "msw": "^2.7.3",
+    "msw": "^2.7.6",
     "next-router-mock": "^0.9.13",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
