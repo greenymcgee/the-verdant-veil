@@ -110,15 +110,6 @@ export function HamburgerMenu({ activeLinkTitle }: HamburgerMenuProps) {
                   type="mobile"
                 />
               </li>
-              <li>
-                <MainNavLink
-                  activeLinkTitle={activeLinkTitle}
-                  href={ROUTES.login}
-                  onClick={toggleHamburgerMenu}
-                  title="Login"
-                  type="mobile"
-                />
-              </li>
             </ul>
           </nav>
         </div>

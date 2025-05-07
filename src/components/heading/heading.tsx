@@ -35,7 +35,7 @@ export function Heading({
           'font-bold': !classNameOverrides?.fontWeight && As === 'h1',
           'font-semibold': !classNameOverrides?.fontWeight && As !== 'h1',
           'leading-heading': !classNameOverrides?.leading,
-          'text-neutral-900': !classNameOverrides?.color && As === 'h1',
+          'text-neutral-900': !classNameOverrides?.color,
         },
         classNameOverrides?.color,
         classNameOverrides?.fontSize,

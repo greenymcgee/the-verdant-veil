@@ -18,7 +18,7 @@ describe('<Navbar />', () => {
     )
   })
 
-  it.each(['desktop-home-link', 'desktop-about-link', 'desktop-login-link'])(
+  it.each(['desktop-home-link', 'desktop-about-link'])(
     'should render desktop main nav links',
     (id) => {
       render(<Navbar activeLinkTitle="Home" />)
