@@ -68,7 +68,7 @@
     "@vitest/eslint-plugin": "^1.1.42",
     "cspell": "^8.19.1",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^15.2.4",
+    "eslint-config-next": "^15.3.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-simple-import-sort": "^12.1.1",
