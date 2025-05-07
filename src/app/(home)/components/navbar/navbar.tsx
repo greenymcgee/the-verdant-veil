@@ -87,15 +87,6 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
                 type="desktop"
               />
             </li>
-            <li>
-              <MainNavLink
-                activeLinkTitle={activeLinkTitle}
-                data-testid="desktop-login-link"
-                href={ROUTES.login}
-                title="Login"
-                type="desktop"
-              />
-            </li>
           </ul>
         </div>
       </div>

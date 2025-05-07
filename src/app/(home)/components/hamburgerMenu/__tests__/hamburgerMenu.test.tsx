@@ -11,7 +11,7 @@ import {
 import { HamburgerMenu } from '..'
 
 describe('<HamburgerMenu />', () => {
-  it.each(['Home', 'About', 'Login'])(
+  it.each(['Home', 'About'])(
     'should render the main nav menu items',
     (title) => {
       render(<HamburgerMenu activeLinkTitle="Home" />)
