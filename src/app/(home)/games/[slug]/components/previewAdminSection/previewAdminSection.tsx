@@ -2,9 +2,10 @@
 import React, { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
-import { PublishGameForm, UnpublishGameForm } from '@/components'
+import { Banner, PublishGameForm, UnpublishGameForm } from '@/components'
 
 import { BackToAdmin } from '../backToAdmin'
+import { RefreshGameForm } from '../refreshGameForm'
 
 interface Props {
   game: Game
@@ -13,16 +14,19 @@ interface Props {
 export function PreviewAdminSection({ game }: Props) {
   const pathname = usePathname()
   const [unpublishableReasons, setUnpublishableReasons] = useState<string[]>([])
+  const [partiallyRefreshed, setPartiallyRefreshed] = useState(false)
 
   const handleUnpublishableError = (unpublishableReasons: string[]) =>
     setUnpublishableReasons(unpublishableReasons)
+
+  const handlePartialRefresh = () => setPartiallyRefreshed(true)
 
   if (!pathname.includes('preview')) return null
 
   return (
     <div className="mb-8">
       {unpublishableReasons.length ? (
-        <div className="border-danger-500 text-danger-900 mb-8 rounded-lg bg-white p-3">
+        <Banner as="div" className="mb-4">
           <p className="font-semibold">
             Please fix the following errors before publishing:
           </p>
@@ -31,7 +35,14 @@ export function PreviewAdminSection({ game }: Props) {
               <li key={reason}>{reason}</li>
             ))}
           </ul>
-        </div>
+        </Banner>
+      ) : null}
+      {partiallyRefreshed ? (
+        <Banner
+          className="mb-4"
+          data-testid="partial-refresh-warning"
+          message={`Whoops! ${game.name} was only partially refreshed.`}
+        />
       ) : null}
       <div className="flex gap-2" data-testid="preview-admin-section">
         <BackToAdmin slug={game.slug} />
@@ -43,6 +54,10 @@ export function PreviewAdminSection({ game }: Props) {
             onErrorCallback={handleUnpublishableError}
           />
         )}
+        <RefreshGameForm
+          game={game}
+          onPartialRefreshCallback={handlePartialRefresh}
+        />
       </div>
     </div>
   )

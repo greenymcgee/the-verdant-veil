@@ -1,18 +1,25 @@
-import React, { HTMLAttributes } from 'react'
-import { twMerge } from 'tailwind-merge'
+import React, { ElementType, HTMLAttributes, ReactNode } from 'react'
+import clsx from 'clsx'
 
 interface Props extends HTMLAttributes<HTMLParagraphElement> {
-  message: string
+  as?: ElementType
+  message?: ReactNode
 }
 
-export function Banner({ className, message, ...options }: Props) {
+export function Banner({
+  as: As = 'p',
+  children,
+  className,
+  message,
+  ...options
+}: Props) {
   return (
-    <p
-      className={twMerge('rounded-sm bg-danger-800 p-3 text-white', className)}
+    <As
+      className={clsx('bg-danger-800 rounded-sm p-3 text-white', className)}
       role="alert"
       {...options}
     >
-      <strong>{message}</strong>
-    </p>
+      {message ? <strong>{message}</strong> : children}
+    </As>
   )
 }
