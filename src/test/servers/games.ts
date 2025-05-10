@@ -50,6 +50,9 @@ const handlers = [
   http.delete(getApiUrl('publishGame', [SUPER_METROID.slug]), () =>
     HttpResponse.json(),
   ),
+  http.post(getApiUrl('refreshGame', [SUPER_METROID.slug]), () =>
+    HttpResponse.json(),
+  ),
 ]
 
 export const gamesServer = setupServer(...handlers)
@@ -133,4 +136,18 @@ export function mockUnpublishableGameFailure(slug: string) {
 export function mockUnpublishGameFailure(slug: string) {
   const response = () => new HttpResponse(JSON.stringify({}), { status: 500 })
   gamesServer.use(http.delete(getApiUrl('publishGame', [slug]), response))
+}
+
+export function mockPartialGameRefreshResponse(slug: string) {
+  const response = () => new HttpResponse(JSON.stringify({}), { status: 207 })
+  gamesServer.use(http.post(getApiUrl('refreshGame', [slug]), response))
+  return { response }
+}
+
+export function mockRefreshGameFailure(slug: string) {
+  const message = 'Bad request'
+  const response = () =>
+    new HttpResponse(JSON.stringify({ message }), { status: 422 })
+  gamesServer.use(http.post(getApiUrl('refreshGame', [slug]), response))
+  return { message, response }
 }

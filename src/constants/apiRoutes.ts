@@ -7,5 +7,6 @@ export const API_ROUTES = {
   login: '/login',
   logout: '/logout',
   publishGame: (slug: Game['slug']) => `/games/${slug}/publish`,
+  refreshGame: (slug: Game['slug']) => `/games/${slug}/refresh`,
   resetPassword: '/reset_password',
 } as const

@@ -3,7 +3,11 @@ import { act, fireEvent, render, screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { DARK_SOULS, SUPER_METROID } from '@/test/fixtures'
-import { gamesServer, mockUnpublishableGameFailure } from '@/test/servers'
+import {
+  gamesServer,
+  mockPartialGameRefreshResponse,
+  mockUnpublishableGameFailure,
+} from '@/test/servers'
 
 import { PreviewAdminSection } from '..'
 
@@ -49,5 +53,15 @@ describe('<PreviewAdminSection />', () => {
     unpublishableReasons.forEach((reason) =>
       expect(screen.getByText(reason)).toBeVisible(),
     )
+  })
+
+  it('should handle a partial refresh', async () => {
+    act(() => {
+      mockRouter.push('/preview')
+    })
+    mockPartialGameRefreshResponse(DARK_SOULS.slug)
+    render(<PreviewAdminSection game={DARK_SOULS} />)
+    fireEvent.click(screen.getByText('Refresh IGDB Data'))
+    expect(await screen.findByTestId('partial-refresh-warning')).toBeVisible()
   })
 })
