@@ -1,7 +1,8 @@
 # The Verdant Veil
 
-The Verdant Veil is a video game review site with an admin for generating and
-updating games based on the [IGDB API](https://api-docs.igdb.com/#getting-started).
+[The Verdant Veil](https://www.theverdantveil.com/) is a video game review site
+with an admin for generating and updating games based on the [IGDB
+API](https://api-docs.igdb.com/#getting-started).
 
 ## Philosophy
 

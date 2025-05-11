@@ -70,7 +70,7 @@ export function RichTextEditor({
       Dropcursor,
       Gapcursor,
       HardBreak,
-      Heading,
+      Heading.configure({ HTMLAttributes: { class: 'mb-2' } }),
       History,
       HorizontalRule,
       Italic,
