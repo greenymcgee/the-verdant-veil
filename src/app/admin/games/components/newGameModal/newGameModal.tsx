@@ -1,15 +1,30 @@
 'use client'
 import React, { useActionState, useRef } from 'react'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 import { createGame } from '@/actions'
 import { Banner, Button, Heading, Icon, InputGroup, Modal } from '@/components'
+import { ROUTES } from '@/constants'
 import { useModalDialogToggle } from '@/hooks'
+import { withCallbacks } from '@/utils'
 
 import { NewGameModalToggle } from './toggle'
 
 export function NewGameModal() {
   const ref = useRef<HTMLDialogElement>(null)
-  const [state = {}, action, creating] = useActionState(createGame, {})
+  const router = useRouter()
+  const [state = { status: 'idle' }, action, creating] = useActionState(
+    withCallbacks(createGame, {
+      async onSuccess({ game, isMultiStatus }) {
+        router.push(
+          `${ROUTES.adminEditGame((game as Game).slug)}${isMultiStatus ? '?multi-status=true' : ''}`,
+        )
+        toast.success(`${(game as Game).name} created successfully!`)
+      },
+    }),
+    { status: 'idle' },
+  )
   const toggleModal = useModalDialogToggle(ref)
 
   return (

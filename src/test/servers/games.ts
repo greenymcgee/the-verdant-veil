@@ -1,6 +1,8 @@
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 
+import { HTML_STATUSES } from '@/constants'
+
 import {
   DARK_SOULS,
   GET_GAME_FILTERS_RESPONSE_DATA,
@@ -150,4 +152,16 @@ export function mockRefreshGameFailure(slug: string) {
     new HttpResponse(JSON.stringify({ message }), { status: 422 })
   gamesServer.use(http.post(getApiUrl('refreshGame', [slug]), response))
   return { message, response }
+}
+
+export function mockMultiStatusCreateResponse() {
+  gamesServer.use(
+    http.post(
+      getApiUrl('games'),
+      () =>
+        new HttpResponse(JSON.stringify({ game: NEW_GAME }), {
+          status: HTML_STATUSES.MULTI_STATUS,
+        }),
+    ),
+  )
 }

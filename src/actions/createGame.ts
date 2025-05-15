@@ -1,19 +1,19 @@
 'use server'
 import { AxiosResponse } from 'axios'
 import { snakeCase } from 'change-case/keys'
-import { redirect } from 'next/navigation'
 import { number, object } from 'zod'
 
-import { API_ROUTES, ROUTES } from '@/constants'
+import { API_ROUTES, HTML_STATUSES } from '@/constants'
 import { ErrorFacade } from '@/facades'
 import { baseApi, logger } from '@/modules'
 
 import { setBaseApiAuthorization } from './setBaseApiAuthorization'
 
-interface CreateGameState {
+interface CreateGameState extends ActionState {
+  game?: Game
   igdbId?: number
+  isMultiStatus?: boolean
   message?: string
-  slug?: string
 }
 
 interface CreateGameParams {
@@ -42,16 +42,20 @@ export async function createGame(state: CreateGameState, formData: FormData) {
   try {
     const game = validateFormData(formData)
     logger.info(game, 'Creating game')
-    const { data } = await postGame(game)
-    state.slug = data.game.slug
+    const { data, status } = await postGame(game)
+    return {
+      ...state,
+      game: data.game,
+      isMultiStatus: status === HTML_STATUSES.MULTI_STATUS,
+      status: 'success',
+    } as CreateGameState
   } catch (error) {
     const { message } = new ErrorFacade(error)
     logger.error(error, message)
     return {
       ...getFormDataValues(formData),
       message,
+      status: 'failure',
     } as CreateGameState
   }
-
-  redirect(`${ROUTES.adminEditGame(state.slug)}?created=true`)
 }
