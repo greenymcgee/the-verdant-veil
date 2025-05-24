@@ -1,72 +1,66 @@
+import { kebabCase } from 'change-case'
 import { Factory } from 'fishery'
 
-import { artworkFactory } from './artwork'
 import { companyFactory } from './company'
-import { franchiseFactory } from './franchise'
+import { coverFactory } from './cover'
+import { gameModeFactory } from './gameMode'
 import { genreFactory } from './genre'
 import { platformFactory } from './platform'
 import { playerPerspectiveFactory } from './playerPerspective'
 import { screenshotFactory } from './screenshot'
 import { themeFactory } from './theme'
-import { videoFactory } from './video'
 
 const currentTime = new Date().toISOString()
 
 export const gameFactory = Factory.define<Game>(
-  ({ associations, sequence }) => ({
-    ageRatings: [],
-    artworks: [artworkFactory.build(), artworkFactory.build()],
-    bannerImage: {
-      mobile: {
-        url: `https://test.com/storage/uploads/games/${sequence}/mobile_blah.webp`,
-      },
-      url: `https://test.com/storage/uploads/games/${sequence}/blah.webp`,
-    },
-    cover: {
-      animated: false,
-      createdAt: currentTime,
-      height: 24,
-      id: sequence,
-      igdbId: sequence * Math.random(),
-      imageId: `cover-image-${sequence}`,
-      updatedAt: currentTime,
-      url: 'http://test-gq-.com',
-      width: 56,
-    },
+  ({ associations, params, sequence }) => ({
+    ageRatings: associations.ageRatings || [],
+    artworks: associations.artworks || [],
+    bannerImage: { mobile: { url: '' }, url: '' },
+    cover: coverFactory.build(),
     createdAt: currentTime,
     currentlyPlaying: false,
-    developers: associations.developers || [companyFactory.build()],
+    developers: associations.developers || [
+      companyFactory.build({ name: `Developer ${sequence}: 1` }),
+      companyFactory.build({ name: `Developer ${sequence}: 2` }),
+    ],
     estimatedFirstPlayedDate: null,
     featuredVideoId: '',
     firstReleaseDate: '1999-01-09T00:00:00Z',
-    franchises: associations.franchises || [franchiseFactory.build()],
-    gameEngines: [],
-    gameModes: [],
+    franchises: associations.franchises || [],
+    gameEngines: associations.gameEngines || [],
+    gameModes: associations.gameModes || [gameModeFactory.build()],
     genres: associations.genres || [genreFactory.build()],
     id: sequence,
-    igdbId: sequence * Math.random(),
+    igdbId: sequence,
     lastPlayedDate: null,
     name: 'Super Metroid',
     platforms: associations.platforms || [platformFactory.build()],
     playerPerspectives: associations.playerPerspectives || [
       playerPerspectiveFactory.build(),
     ],
-    porters: associations.porters || [companyFactory.build()],
-    published: true,
-    publishedAt: '2025-03-12T15:57',
-    publishers: associations.publishers || [companyFactory.build()],
+    porters: associations.porters || [],
+    published: false,
+    publishedAt: null,
+    publishers: associations.publishers || [
+      companyFactory.build({ name: `Publisher ${sequence}: 1` }),
+      companyFactory.build({ name: `Publisher ${sequence}: 2` }),
+    ],
     rating: 5,
-    releaseDates: [],
+    releaseDates: associations.releaseDates || [],
     review: '<p>So good</p>',
     reviewTitle: '',
-    screenshots: [screenshotFactory.build(), screenshotFactory.build()],
-    slug: 'super-metroid',
-    storyline: '',
-    summary: '',
-    supporters: associations.supporters || [companyFactory.build()],
+    screenshots: associations.screenshots || [
+      screenshotFactory.build(),
+      screenshotFactory.build(),
+    ],
+    slug: params.slug || kebabCase(params.name ?? ''),
+    storyline: `${params.name} storyline.`,
+    summary: `${params.name} summary.`,
+    supporters: associations.supporters || [],
     themes: associations.themes || [themeFactory.build()],
     updatedAt: currentTime,
-    videos: [videoFactory.build(), videoFactory.build()],
-    websites: [],
+    videos: associations.videos || [],
+    websites: associations.websites || [],
   }),
 )

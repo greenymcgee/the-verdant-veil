@@ -1,11 +1,12 @@
 import { screen } from '@testing-library/dom'
 import { render } from '@testing-library/react'
 
+import { generateGameMetadata } from '@/actions'
 import { ROUTES } from '@/constants'
 import { SUPER_METROID } from '@/test/fixtures'
 import { gamesServer, mockGameRequestFailure } from '@/test/servers'
 
-import EditGamePage from '../page'
+import EditGamePage, { generateMetadata } from '../page'
 
 beforeAll(() => gamesServer.listen())
 afterAll(() => gamesServer.close())
@@ -16,6 +17,18 @@ const PROPS: PropsOf<typeof EditGamePage> = {
 }
 
 describe('<EditGamePage />', () => {
+  describe('generateMetadata', () => {
+    it('should generate the game metadata', async () => {
+      const result = await generateMetadata(PROPS)
+      expect(result).toEqual(
+        await generateGameMetadata({
+          pageParams: Promise.resolve({ slug: SUPER_METROID.slug }),
+          type: 'edit',
+        }),
+      )
+    })
+  })
+
   describe('success', () => {
     it('should render the edit game form', async () => {
       const jsx = await EditGamePage(PROPS)

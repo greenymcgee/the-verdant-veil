@@ -1,8 +1,11 @@
 import React from 'react'
+import type { Metadata } from 'next'
 
 import { Card, Heading, Icon } from '@/components'
 
 import { PageWithNavbar } from '../components'
+
+export const metadata: Metadata = { title: 'About' }
 
 export default function AboutPage() {
   return (
@@ -12,28 +15,24 @@ export default function AboutPage() {
           <Heading className="mb-2 flex items-center gap-3">
             About The Verdant Veil
           </Heading>
-          <p className="mb-2">The Verdant Veil is a place to wander.</p>
           <p className="mb-4">
-            It&apos;s a review site for any game I can conjure up memories
-            about. I associate a lot of my favorite memories closely to the
-            games I was playing at any given point in my life. Oftentimes people
-            are a core part of those memories, and I hope to capture what I like
-            or dislike about a game by traveling down memory lane.
+            The Verdant Veil is a review site for any game I can conjure up
+            memories about. I associate many of my favorite memories closely
+            with the games I was playing at any given point in my life.
+            Oftentimes, people are a core part of those memories, and I hope to
+            capture what I like or dislike about a game by traveling down memory
+            lane.
           </p>
           <Heading as="h2" className="mb-1 flex items-center gap-1">
             <Icon className="text-primary-900 inline" icon="user" /> Who?
           </Heading>
-          <p className="mb-2">
-            Hi, I&apos;m greenymcgee. I&apos;m a web developer, and I&apos;ve
-            loved video games for as long as I can remember. They&apos;ve always
-            been a big part of how I relax, get inspired, and think about design
-            — both technical and creative.
-          </p>
           <p className="mb-4">
-            I started The Verdant Veil because I wanted a new kind of creative
-            outlet. Something that wasn&apos;t just code or just writing, but a
-            blend of both. A space where I could explore ideas without worrying
-            about deadlines or metrics.
+            Hi, I&apos;m Houston. I&apos;ve loved video games for as long as I
+            can remember, and I plan to keep playing new games I find
+            interesting and revisiting old games I love. I&apos;ve realized in
+            recent years that my brain is running out of space for some of those
+            older memories, and I want to try to capture them before I lose
+            them.
           </p>
           <Heading as="h2" className="mb-1 flex items-center gap-1">
             <Icon className="text-primary-900 inline" icon="edit" /> What to

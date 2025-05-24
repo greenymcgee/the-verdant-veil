@@ -1,6 +1,7 @@
 import React from 'react'
+import type { Metadata } from 'next'
 
-import { getGame } from '@/actions'
+import { generateGameMetadata, getGame } from '@/actions'
 import { Card, Heading, HTMLParser, LinkTo } from '@/components'
 import { ROUTES } from '@/constants'
 
@@ -9,6 +10,10 @@ import { GameUpdateToaster } from './components'
 
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return await generateGameMetadata({ pageParams: params, type: 'admin-show' })
 }
 
 export default async function AdminGameShowPage({ params }: Props) {

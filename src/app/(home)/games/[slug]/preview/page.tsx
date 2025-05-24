@@ -1,6 +1,7 @@
 import React from 'react'
+import type { Metadata } from 'next'
 
-import { getGame } from '@/actions'
+import { generateGameMetadata, getGame } from '@/actions'
 import {
   ErrorBoundaryActionBar,
   HomeErrorBoundary,
@@ -11,6 +12,13 @@ import { GamePage } from '../components'
 
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return await generateGameMetadata({
+    pageParams: params,
+    type: 'preview-show',
+  })
 }
 
 export default async function GamePreviewPage({ params }: Props) {
