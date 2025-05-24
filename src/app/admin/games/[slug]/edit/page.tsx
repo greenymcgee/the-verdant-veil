@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
+import type { Metadata } from 'next'
 
-import { getGame } from '@/actions'
+import { generateGameMetadata, getGame } from '@/actions'
 import { AdminErrorCard, Breadcrumbs } from '@/app/admin/components'
 import { Card, Heading } from '@/components'
 import { ROUTES } from '@/constants'
@@ -9,6 +10,10 @@ import { EditGameForm, PartialGameCreateBanner } from './components'
 
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return await generateGameMetadata({ pageParams: params, type: 'edit' })
 }
 
 export default async function EditGamePage({ params }: Props) {

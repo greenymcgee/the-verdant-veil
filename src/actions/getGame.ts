@@ -1,8 +1,10 @@
+import { cache } from 'react'
+
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
 import { baseApi, logger } from '@/modules'
 
-export async function getGame(slug: Game['slug']) {
+export const getGame = cache(async (slug: Game['slug']) => {
   try {
     const { data } = await baseApi.get<GamesShowJson>(API_ROUTES.game(slug))
     return { game: data.game }
@@ -17,4 +19,4 @@ export async function getGame(slug: Game['slug']) {
       status,
     }
   }
-}
+})

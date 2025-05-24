@@ -22,8 +22,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  description: 'A video game review site.',
-  title: 'The Verdant Veil',
+  applicationName: 'The Verdant Veil',
+  description:
+    'The Verdant Veil is part casual video game review site, part personal archive of memories and experiences.',
+  title: {
+    default: 'The Verdant Veil',
+    template: '%s | The Verdant Veil',
+  },
 }
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {

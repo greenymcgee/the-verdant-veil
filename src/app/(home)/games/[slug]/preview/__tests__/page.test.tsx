@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react'
 
+import { generateGameMetadata } from '@/actions'
 import { SUPER_METROID } from '@/test/fixtures'
 import { gamesServer, mockGameRequestFailure } from '@/test/servers'
 
-import GamePreviewPage from '../page'
+import GamePreviewPage, { generateMetadata } from '../page'
 
 const PROPS: PropsOf<typeof GamePreviewPage> = {
   params: new Promise((resolve) => resolve({ slug: SUPER_METROID.slug })),
@@ -14,6 +15,18 @@ afterEach(() => gamesServer.resetHandlers())
 afterAll(() => gamesServer.close())
 
 describe('<GamePreviewPage />', () => {
+  describe('generateMetadata', () => {
+    it('should generate the game metadata', async () => {
+      const result = await generateMetadata(PROPS)
+      expect(result).toEqual(
+        await generateGameMetadata({
+          pageParams: Promise.resolve({ slug: SUPER_METROID.slug }),
+          type: 'preview-show',
+        }),
+      )
+    })
+  })
+
   it('should render a 404 error', async () => {
     mockGameRequestFailure()
     const jsx = await GamePreviewPage(PROPS)

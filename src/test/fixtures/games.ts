@@ -1,31 +1,35 @@
-import { gameFactory } from '../factories'
+import {
+  artworkFactory,
+  bannerImageFactory,
+  franchiseFactory,
+  gameFactory,
+  videoFactory,
+} from '../factories'
 
-export const SUPER_METROID = gameFactory.build({
-  currentlyPlaying: true,
-  estimatedFirstPlayedDate: '1-1-1999',
-  lastPlayedDate: '1-1-2023',
-})
+export const SUPER_METROID = gameFactory
+  .associations({
+    artworks: [artworkFactory.build(), artworkFactory.build()],
+    franchises: [franchiseFactory.build()],
+    videos: [videoFactory.build(), videoFactory.build()],
+  })
+  .build({
+    bannerImage: bannerImageFactory.build(),
+    currentlyPlaying: true,
+    estimatedFirstPlayedDate: '1-1-1999',
+    lastPlayedDate: '1-1-2023',
+    name: 'Super Metroid',
+    published: true,
+    publishedAt: '2025-03-12T15:57',
+  })
+
 export const DARK_SOULS = gameFactory.build({
+  bannerImage: bannerImageFactory.build(),
   name: 'Dark Souls',
-  published: false,
-  publishedAt: null,
-  slug: 'dark-souls',
-})
-export const NEW_GAME = gameFactory.build({
-  bannerImage: {},
-  name: 'Secret of Evermore',
-  published: false,
-  publishedAt: null,
-  slug: 'secret-of-evermore',
 })
 
-export const THREADS_OF_FATE = gameFactory.build({
-  bannerImage: {},
-  name: 'Threads of Fate',
-  published: false,
-  publishedAt: null,
-  slug: 'threads-of-fate',
-})
+export const NEW_GAME = gameFactory.build({ name: 'Secret of Evermore' })
+
+export const THREADS_OF_FATE = gameFactory.build({ name: 'Threads of Fate' })
 
 export const GAMES = [SUPER_METROID, DARK_SOULS]
 
