@@ -1,5 +1,7 @@
 export * from './artwork'
+export * from './bannerImage'
 export * from './company'
+export * from './cover'
 export * from './franchise'
 export * from './game'
 export * from './gameEngine'

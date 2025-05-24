@@ -1,4 +1,5 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import { SWRConfig } from 'swr'
 
 import { getGameFilters, getGames } from '@/actions'
@@ -10,6 +11,8 @@ import {
   PageWithNavbar,
 } from '../components'
 import { GamesContainer } from './components'
+
+export const metadata: Metadata = { title: 'Games' }
 
 export default async function GamesPage() {
   const { error, games, status, totalPages } = await getGames()

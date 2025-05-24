@@ -1,4 +1,5 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import { SWRConfig } from 'swr'
 
 import { getGames } from '@/actions'
@@ -7,6 +8,8 @@ import { API_ROUTES } from '@/constants'
 
 import { AdminErrorCard } from '../components'
 import { Games, NewGameModal } from './components'
+
+export const metadata: Metadata = { title: 'Admin Games' }
 
 export default async function AdminGamesPage() {
   const { error, games, message, totalPages } = await getGames()

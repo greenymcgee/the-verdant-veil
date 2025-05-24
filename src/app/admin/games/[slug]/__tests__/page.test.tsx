@@ -1,11 +1,12 @@
 import { screen } from '@testing-library/dom'
 import { render } from '@testing-library/react'
 
+import { generateGameMetadata } from '@/actions'
 import { ROUTES } from '@/constants'
 import { DARK_SOULS, SUPER_METROID } from '@/test/fixtures'
 import { gamesServer, mockGameRequestFailure } from '@/test/servers'
 
-import AdminGameShowPage from '../page'
+import AdminGameShowPage, { generateMetadata } from '../page'
 
 beforeAll(() => gamesServer.listen())
 afterAll(() => gamesServer.close())
@@ -16,6 +17,18 @@ const PROPS: PropsOf<typeof AdminGameShowPage> = {
 }
 
 describe('<AdminGameShowPage />', () => {
+  describe('generateMetadata', () => {
+    it('should generate the game metadata', async () => {
+      const result = await generateMetadata(PROPS)
+      expect(result).toEqual(
+        await generateGameMetadata({
+          pageParams: Promise.resolve({ slug: SUPER_METROID.slug }),
+          type: 'admin-show',
+        }),
+      )
+    })
+  })
+
   describe('success', () => {
     it('should render the game name as an h1', async () => {
       const jsx = await AdminGameShowPage(PROPS)
