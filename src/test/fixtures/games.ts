@@ -15,8 +15,8 @@ export const SUPER_METROID = gameFactory
   .build({
     bannerImage: bannerImageFactory.build(),
     currentlyPlaying: true,
-    estimatedFirstPlayedDate: '1-1-1999',
-    lastPlayedDate: '1-1-2023',
+    estimatedFirstPlayedDate: '1994-03-12T15:57',
+    lastPlayedDate: '2023-03-12T15:57',
     name: 'Super Metroid',
     published: true,
     publishedAt: '2025-03-12T15:57',

@@ -12,7 +12,6 @@ import {
 } from '@/components'
 
 import { AboutTab } from '../aboutTab'
-import { CSVList } from '../csvList'
 import { GameHeader } from '../header'
 import { MediaTab } from '../mediaTab'
 
@@ -31,16 +30,25 @@ export function GamePage({ game }: Props) {
         <GameHeader game={game} />
         <Card className="mb-12" shadowTheme="light">
           <VerdantVeilRating game={game} />
-          <CSVList
-            listItems={game.genres}
-            name="Genres"
-            testId="genres-csv-list"
-          />
-          <CSVList
-            listItems={game.platforms}
-            name="Platforms"
-            testId="platforms-csv-list"
-          />
+          <div
+            className="mb-2 flex gap-1"
+            data-testid="estimated-first-played-date"
+          >
+            <dt className="inline font-semibold text-neutral-900">
+              First Played:{' '}
+            </dt>
+            <dd>
+              <Time date={game.estimatedFirstPlayedDate} format="MMMM, yyyy" />
+            </dd>
+          </div>
+          <div className="mb-2 flex gap-1" data-testid="last-played-date">
+            <dt className="inline font-semibold text-neutral-900">
+              Last Played:{' '}
+            </dt>
+            <dd>
+              <Time date={game.lastPlayedDate} format="MMMM, yyyy" />
+            </dd>
+          </div>
           <p className="text-neutral-500" data-testid="game-summary">
             {game.summary}
           </p>

@@ -15,7 +15,7 @@ export function AboutTab({ game }: Props) {
         <DetailList list={game.developers} title="Developers" />
         <DetailList list={game.publishers} title="Publishers" />
         <DetailList list={game.genres} title="Genres" />
-        <DetailList list={game.gameModes} title="Game Modes" />
+        <DetailList list={game.platforms} title="Platforms" />
       </div>
       <hr className="my-4 border-b-neutral-500" />
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
@@ -25,15 +25,23 @@ export function AboutTab({ game }: Props) {
           title="Player Perspectives"
         />
         <DetailList list={game.franchises} title="Franchises" />
-        <DetailList list={game.gameEngines} title="Game Engines" />
       </div>
       <hr className="my-4 border-b-neutral-500" />
-      <div>
-        <p className="text-heading-sm mb-2 font-semibold text-neutral-800">
-          Storyline
-        </p>
-        <p className="text-neutral-500">{game.storyline}</p>
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+        <DetailList list={game.gameModes} title="Game Modes" />
+        <DetailList list={game.gameEngines} title="Game Engines" />
       </div>
+      {game.storyline ? (
+        <>
+          <hr className="my-4 border-b-neutral-500" />
+          <div>
+            <p className="text-heading-sm mb-2 font-semibold text-neutral-800">
+              Storyline
+            </p>
+            <p className="text-neutral-500">{game.storyline}</p>
+          </div>
+        </>
+      ) : null}
     </Card>
   )
 }
