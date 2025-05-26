@@ -16,14 +16,14 @@ describe('<GamePage />', () => {
     expect(screen.getByTestId('verdant-veil-rating')).toBeVisible()
   })
 
-  it('should render a Genres CSVList', () => {
+  it('should render the estimated first played date', () => {
     render(<GamePage game={SUPER_METROID} />)
-    expect(screen.getByTestId('genres-csv-list')).toBeVisible()
+    expect(screen.getByTestId('estimated-first-played-date')).toBeVisible()
   })
 
-  it('should render a Platforms CSVList', () => {
+  it('should render the last played date', () => {
     render(<GamePage game={SUPER_METROID} />)
-    expect(screen.getByTestId('platforms-csv-list')).toBeVisible()
+    expect(screen.getByTestId('last-played-date')).toBeVisible()
   })
 
   it('should render the game summary', () => {
