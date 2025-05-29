@@ -6,7 +6,7 @@ import {
   THE_VERDANT_VEIL_JWT,
 } from '@/constants'
 import { logger } from '@/modules'
-import { ADMIN_USER, AUTH_TOKEN } from '@/test/fixtures'
+import { ADMIN_USER, JWT_TOKEN_FIXTURE } from '@/test/fixtures'
 import { mockJwtVerify } from '@/test/helpers'
 import { loginServer, mockUnauthorizedLoginResponse } from '@/test/servers'
 
@@ -30,14 +30,17 @@ describe('login', () => {
     it('should store the jwt in a cookie', async () => {
       const decodedJwt = mockJwtVerify()
       await login({}, formData)
-      const [, token] = AUTH_TOKEN.split(' ')
       const { set } = await cookies()
-      expect(set).toHaveBeenCalledWith(THE_VERDANT_VEIL_JWT, token, {
-        httpOnly: true,
-        maxAge: decodedJwt.exp,
-        sameSite: 'strict',
-        secure: process.env.NODE_ENV === 'production',
-      })
+      expect(set).toHaveBeenCalledWith(
+        THE_VERDANT_VEIL_JWT,
+        JWT_TOKEN_FIXTURE,
+        {
+          httpOnly: true,
+          maxAge: decodedJwt.exp,
+          sameSite: 'strict',
+          secure: process.env.NODE_ENV === 'production',
+        },
+      )
     })
 
     it('should store the user in a cookie', async () => {

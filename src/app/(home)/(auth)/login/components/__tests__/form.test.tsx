@@ -1,11 +1,10 @@
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
 
 import { ROUTES } from '@/constants'
-import { useCurrentUser } from '@/context'
 import { ADMIN_USER } from '@/test/fixtures'
-import { renderWithProviders, toastMock } from '@/test/helpers'
+import { toastMock } from '@/test/helpers'
 import { loginServer, mockUnauthorizedLoginResponse } from '@/test/servers'
 
 import { LoginForm } from '..'
@@ -57,23 +56,6 @@ describe('<LoginForm />', () => {
         expect(toastMock.success).toHaveBeenCalledWith(
           `Welcome back ${ADMIN_USER.username}`,
         )
-      })
-    })
-
-    it('should set the current user', async () => {
-      function Wrapper({ children }: PropsWithChildren) {
-        const { user } = useCurrentUser()
-        return (
-          <>
-            <span>{user.firstName}</span>
-            {children}
-          </>
-        )
-      }
-      renderWithProviders(<LoginForm />, { wrapper: Wrapper })
-      submitForm()
-      await waitFor(() => {
-        expect(screen.getByText(ADMIN_USER.firstName)).toBeVisible()
       })
     })
   })

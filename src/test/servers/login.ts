@@ -2,7 +2,7 @@ import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 
 import { ADMIN_USER } from '../fixtures'
-import { AUTH_TOKEN } from '../fixtures/authToken'
+import { JWT_TOKEN_FIXTURE } from '../fixtures/authToken'
 import { getApiUrl } from '../helpers'
 
 const ROUTE = getApiUrl('login')
@@ -11,7 +11,7 @@ const handlers = [
     ROUTE,
     () =>
       new HttpResponse(JSON.stringify({ user: ADMIN_USER }), {
-        headers: { authorization: AUTH_TOKEN },
+        headers: { authorization: `Bearer ${JWT_TOKEN_FIXTURE}` },
       }),
   ),
 ]

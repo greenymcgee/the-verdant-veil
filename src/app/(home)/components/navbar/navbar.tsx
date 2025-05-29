@@ -5,8 +5,8 @@ import Link from 'next/link'
 
 import { Logo, Searchbar } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
-import { useCurrentUser } from '@/context'
 import { useScrollPosition } from '@/hooks'
+import { useCurrentUser } from '@/hooks/api'
 
 import { HamburgerMenu } from '../hamburgerMenu'
 import { MainNavLink } from '../mainNavLink'

@@ -1,51 +1,47 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, screen } from '@testing-library/react'
 
 import { ROUTES } from '@/constants'
-import {
-  renderWithProviders,
-  signInAdminUser,
-  signInBasicUser,
-} from '@/test/helpers'
+import { mockJwtTokenCookie, renderWithProviders, sleep } from '@/test/helpers'
+import { currentUserServer, mockNonAdminUser } from '@/test/servers'
 
 import { Navbar } from '..'
 
+beforeAll(() => currentUserServer.listen())
+afterEach(() => currentUserServer.resetHandlers())
+afterAll(() => currentUserServer.close())
+
 describe('<Navbar />', () => {
-  it('should render a home link', () => {
-    render(<Navbar activeLinkTitle="Home" />)
-    expect(screen.getByLabelText('Home').getAttribute('href')).toEqual(
-      ROUTES.home,
-    )
+  it('should render a home link', async () => {
+    renderWithProviders(<Navbar activeLinkTitle="Home" />)
+    const link = await screen.findByLabelText('Home')
+    expect(link.getAttribute('href')).toEqual(ROUTES.home)
   })
 
   it.each(['desktop-home-link', 'desktop-about-link'])(
     'should render desktop main nav links',
-    (id) => {
-      render(<Navbar activeLinkTitle="Home" />)
-      expect(screen.getByTestId(id)).toBeVisible()
+    async (id) => {
+      renderWithProviders(<Navbar activeLinkTitle="Home" />)
+      expect(await screen.findByTestId(id)).toBeVisible()
     },
   )
 
-  it('should render the hamburger menu', () => {
-    render(<Navbar activeLinkTitle="Home" />)
-    expect(screen.getByTestId('hamburger-menu')).toBeInTheDocument()
+  it('should render the hamburger menu', async () => {
+    renderWithProviders(<Navbar activeLinkTitle="Home" />)
+    expect(await screen.findByTestId('hamburger-menu')).toBeInTheDocument()
   })
 
   describe('admin link', () => {
     it('should render an admin link for an admin user', async () => {
-      await signInAdminUser()
+      mockJwtTokenCookie()
       renderWithProviders(<Navbar activeLinkTitle="Home" />)
-      await waitFor(() =>
-        expect(screen.getByTestId('desktop-admin-link')).toBeVisible(),
-      )
+      expect(await screen.findByTestId('desktop-admin-link')).toBeVisible()
     })
 
     it('should not render an admin link for a basic user', async () => {
-      await signInBasicUser()
+      mockNonAdminUser()
       renderWithProviders(<Navbar activeLinkTitle="Home" />)
-      await waitFor(
-        () => new Promise((resolve) => setTimeout(() => resolve(''), 3)),
-      )
+      await act(async () => await sleep(3))
       expect(screen.queryByTestId('desktop-admin-link')).not.toBeInTheDocument()
     })
   })
