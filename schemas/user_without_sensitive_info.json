@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "file:/user_without_sensitive_info.json#",
+  "additionalProperties": false,
+  "description": "A User minus their sensitive info.",
+  "properties": {
+    "admin": {
+      "description": "A flag for whether or not the user is an admin.",
+      "type": "boolean"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    }
+  },
+  "required": ["admin", "firstName", "id", "lastName", "username"],
+  "title": "UserWithoutSensitiveInfo",
+  "type": "object"
+}

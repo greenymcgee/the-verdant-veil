@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from 'react'
 
-import { CurrentUserContextProvider } from './currentUser'
 import { PageContextProvider } from './page'
 
 interface ProvidersProps {
@@ -13,7 +12,7 @@ export function Providers({
 }: PropsWithChildren<ProvidersProps>) {
   return (
     <PageContextProvider {...initialPageContext}>
-      <CurrentUserContextProvider>{children}</CurrentUserContextProvider>
+      {children}
     </PageContextProvider>
   )
 }

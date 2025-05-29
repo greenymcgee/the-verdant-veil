@@ -8,7 +8,7 @@ import clsx from 'clsx'
 
 import { Hamburger, Icon } from '@/components'
 import { ROUTES } from '@/constants'
-import { useCurrentUser } from '@/context'
+import { useCurrentUser } from '@/hooks/api'
 
 import { MainNavLink } from '../mainNavLink'
 import { toggleSidebarDialog } from './utils'

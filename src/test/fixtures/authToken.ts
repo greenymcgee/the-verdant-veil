@@ -1,1 +1,1 @@
-export const AUTH_TOKEN = 'Bearer 1234ssfffvnlk'
+export const JWT_TOKEN_FIXTURE = '1234ssfffvnlk'

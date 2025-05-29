@@ -1,7 +1,7 @@
 import { Factory } from 'fishery'
 
 export const userFactory = Factory.define<User>(({ sequence }) => ({
-  admin: true,
+  admin: false,
   email: `test${sequence}@test.com`,
   firstName: 'Bart',
   id: sequence,

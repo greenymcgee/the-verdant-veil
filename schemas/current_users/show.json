@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "current_users/show.json",
+  "additionalProperties": false,
+  "properties": { "user": { "$ref": "file:/user_without_sensitive_info.json#" } },
+  "required": ["user"],
+  "type": "object"
+}
