@@ -26,11 +26,11 @@ export function PublishGameForm({ game, onErrorCallback }: Props) {
   }
 
   const callbacks = {
-    async onError({ message, unpublishableReasons }: State) {
+    onError({ message, unpublishableReasons }: State) {
       toast.error(message)
       onErrorCallback(unpublishableReasons)
     },
-    async onSuccess() {
+    onSuccess() {
       router.push(ROUTES.game(game.slug))
       toast.success(`${game.name} has been successfully published`)
     },

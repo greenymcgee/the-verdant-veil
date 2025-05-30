@@ -20,7 +20,7 @@ function Wrapper({ children }: PropsWithChildren) {
 describe('<AdminGamesLayout />', () => {
   it('should set the active navbar link', async () => {
     renderWithProviders(<AdminGamesLayout />, { wrapper: Wrapper })
-    await act(async () => sleep())
+    await act(async () => await sleep())
     expect(screen.getByText('adminGames')).toBeVisible()
   })
 })

@@ -16,7 +16,7 @@ export function NewGameModal() {
   const router = useRouter()
   const [state = { status: 'idle' }, action, creating] = useActionState(
     withCallbacks(createGame, {
-      async onSuccess({ game, isMultiStatus }) {
+      onSuccess({ game, isMultiStatus }) {
         router.push(
           `${ROUTES.adminEditGame((game as Game).slug)}${isMultiStatus ? '?multi-status=true' : ''}`,
         )

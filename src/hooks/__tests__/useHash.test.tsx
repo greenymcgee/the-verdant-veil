@@ -36,7 +36,7 @@ describe('useHash', () => {
     await waitFor(() => expect(result.current).toBe('#about'))
   })
 
-  it('should remove the event listener', async () => {
+  it('should remove the event listener', () => {
     vi.spyOn(window, 'removeEventListener')
     const { unmount } = renderHook(() => useHash())
     unmount()

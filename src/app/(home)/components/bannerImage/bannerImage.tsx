@@ -1,29 +1,44 @@
 'use client'
-import React, { HTMLAttributes } from 'react'
+import React, { HTMLAttributes, useMemo } from 'react'
+import clsx from 'clsx'
 
-import { usePageContext } from '@/context'
+import { Icon } from '@/components'
+import { BREAKPOINTS } from '@/constants'
+import { useWindowSize } from '@/hooks'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   bannerImage: { mobile: { url: string | null }; url: string | null }
 }
 
 export function BannerImage({ bannerImage, className, ...options }: Props) {
-  const { userAgent } = usePageContext()
-  const url =
-    userAgent.platform.type === 'desktop'
-      ? bannerImage.url
-      : bannerImage.mobile.url
+  const { width } = useWindowSize()
+  const url = useMemo(() => {
+    if (!width) return ''
+
+    return width >= BREAKPOINTS.md ? bannerImage.url : bannerImage.mobile.url
+  }, [bannerImage.mobile.url, bannerImage.url, width])
 
   return (
     <div className={className}>
       <div
-        className="aspect-3/1 bg-contain bg-no-repeat"
+        className={clsx('bg-success-50 aspect-3/1 bg-contain bg-no-repeat', {
+          'text-primary-700 flex animate-pulse items-center justify-center':
+            !url,
+        })}
         data-testid="banner-image"
         style={{
           backgroundImage: url ? `url("${url}")` : undefined,
         }}
         {...options}
-      />
+      >
+        {url ? null : (
+          <Icon
+            className="text-7xl"
+            data-testid="banner-image-icon"
+            icon="image"
+          />
+        )}
+      </div>
     </div>
   )
 }

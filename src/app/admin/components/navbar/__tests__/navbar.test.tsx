@@ -29,7 +29,7 @@ describe('<Navbar />', () => {
     expect(screen.getByTestId('hamburger-menu')).not.toBeVisible()
   })
 
-  it('should render a logout button', async () => {
+  it('should render a logout button', () => {
     render(<Navbar />)
     expect(screen.getByTestId('desktop-logout-button')).toBeVisible()
   })
