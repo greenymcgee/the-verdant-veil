@@ -1,6 +1,6 @@
 type Callbacks<Result> = {
-  onError?: (result: Result) => Promise<void>
-  onSuccess?: (result: Result) => Promise<void>
+  onError?: (result: Result) => Promise<void> | void
+  onSuccess?: (result: Result) => Promise<void> | void
 }
 
 export function withCallbacks<

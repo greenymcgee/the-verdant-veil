@@ -1,10 +1,9 @@
 'use client'
-import React, { PropsWithChildren, useEffect, useState } from 'react'
-import Bowser from 'bowser'
+import React, { PropsWithChildren, useState } from 'react'
 
 import { RouteKey } from '@/constants'
 
-import { PageContext, PageContextType } from './context'
+import { PageContext } from './context'
 
 interface PageContextProviderProps {
   initialActiveLink?: RouteKey
@@ -16,27 +15,9 @@ export function PageContextProvider({
 }: PropsWithChildren<PageContextProviderProps>) {
   const [activeNavbarLink, setActiveNavbarLink] =
     useState<RouteKey>(initialActiveLink)
-  const [userAgent, setUserAgent] = useState<PageContextType['userAgent']>({
-    browser: {},
-    engine: {},
-    isIOSDevice: false,
-    os: {},
-    platform: {},
-  })
-
-  useEffect(() => {
-    const parsed = Bowser.parse(navigator.userAgent)
-    setUserAgent({ ...parsed, isIOSDevice: parsed.os.name === 'iOS' })
-  }, [])
 
   return (
-    <PageContext.Provider
-      value={{
-        activeNavbarLink,
-        setActiveNavbarLink,
-        userAgent,
-      }}
-    >
+    <PageContext.Provider value={{ activeNavbarLink, setActiveNavbarLink }}>
       {children}
     </PageContext.Provider>
   )

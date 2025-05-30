@@ -25,7 +25,7 @@ describe('<HamburgerMenu />', () => {
     renderWithProviders(<HamburgerMenu activeLinkTitle="Home" />)
     fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
     fireEvent.click(screen.getByLabelText('Close Hamburger Menu'))
-    await act(async () => sleep(100))
+    await act(async () => await sleep(100))
     expect(screen.getByTestId('hamburger-menu')).not.toBeVisible()
   })
 
@@ -37,7 +37,7 @@ describe('<HamburgerMenu />', () => {
       keys: '[MouseLeft]',
       target: screen.getByTestId('hamburger-menu'),
     })
-    await act(async () => sleep(100))
+    await act(async () => await sleep(100))
     expect(screen.getByTestId('hamburger-menu')).not.toBeVisible()
   })
 
@@ -49,7 +49,7 @@ describe('<HamburgerMenu />', () => {
       keys: '[MouseLeft]',
       target: screen.getByRole('navigation'),
     })
-    await act(async () => sleep(100))
+    await act(async () => await sleep(100))
     expect(screen.getByTestId('hamburger-menu')).toBeVisible()
   })
 
@@ -65,7 +65,7 @@ describe('<HamburgerMenu />', () => {
       mockNonAdminUser()
       renderWithProviders(<HamburgerMenu activeLinkTitle="Home" />)
       fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
-      await act(async () => sleep(3))
+      await act(async () => await sleep(3))
       expect(screen.queryByTestId('mobile-admin-link')).not.toBeInTheDocument()
     })
   })

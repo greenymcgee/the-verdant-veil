@@ -21,10 +21,10 @@ export function RefreshGameForm({ game, onPartialRefreshCallback }: Props) {
   }
 
   const callbacks = {
-    async onError({ message }: State) {
+    onError({ message }: State) {
       toast.error(message)
     },
-    async onSuccess({ responseStatus }: State) {
+    onSuccess({ responseStatus }: State) {
       toast.success(`${game.name} has been successfully refreshed`)
       if (responseStatus !== 207) return
 

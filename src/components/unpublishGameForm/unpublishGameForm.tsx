@@ -15,7 +15,7 @@ type State = FirstParameterOf<typeof unpublishGame>
 
 export function UnpublishGameForm({ game }: Props) {
   const callbacks = {
-    async onError(result: State) {
+    onError(result: State) {
       toast.error(result.message)
     },
     async onSuccess() {
