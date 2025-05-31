@@ -10,8 +10,9 @@ afterEach(() => homeServer.resetHandlers())
 afterAll(() => homeServer.close())
 
 describe('<HomePage />', () => {
-  it('should render an h1', () => {
+  it('should render an h1', async () => {
     render(<HomePage />)
-    expect(screen.getByText('The Verdant Veil').tagName).toEqual('H1')
+    const heading = await screen.findByText('The Verdant Veil')
+    expect(heading.tagName).toEqual('H1')
   })
 })

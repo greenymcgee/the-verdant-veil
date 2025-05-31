@@ -6,9 +6,9 @@ import { SUPER_METROID } from '@/test/fixtures'
 import { GamePage } from '..'
 
 describe('<GamePage />', () => {
-  it('should render a GameHeader', () => {
+  it('should render a GameHeader', async () => {
     render(<GamePage game={SUPER_METROID} />)
-    expect(screen.getByTestId('game-header')).toBeVisible()
+    expect(await screen.findByTestId('game-header')).toBeVisible()
   })
 
   it('should render a VerdantVeilRating', () => {

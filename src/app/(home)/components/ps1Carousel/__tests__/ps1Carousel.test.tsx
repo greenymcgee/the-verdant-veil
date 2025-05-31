@@ -12,9 +12,9 @@ afterEach(() => homeServer.resetHandlers())
 afterAll(() => homeServer.close())
 
 describe('<PS1Carousel />', () => {
-  it('should render a header', () => {
+  it('should render a header', async () => {
     render(<PS1Carousel />)
-    expect(screen.getByText('PS1')).toBeVisible()
+    expect(await screen.findByText('PS1')).toBeVisible()
   })
 
   it('should render a "See all" link', () => {

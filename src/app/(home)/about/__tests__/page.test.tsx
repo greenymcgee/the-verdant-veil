@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/react'
 import AboutPage from '../page'
 
 describe('<AboutPage />', () => {
-  it('should render', () => {
+  it('should render', async () => {
     render(<AboutPage />)
-    expect(screen.getByTestId('about-page')).toBeVisible()
+    expect(await screen.findByTestId('about-page')).toBeVisible()
   })
 })

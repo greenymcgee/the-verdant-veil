@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/react'
 import HomeLayoutErrorBoundary from '../error'
 
 describe('<HomeLayoutErrorBoundary />', () => {
-  it('should render', () => {
+  it('should render', async () => {
     render(<HomeLayoutErrorBoundary error={{} as Error} reset={vi.fn()} />)
-    expect(screen.getByText('Blast! Something went wrong')).toBeVisible()
+    expect(await screen.findByText('Blast! Something went wrong')).toBeVisible()
   })
 })

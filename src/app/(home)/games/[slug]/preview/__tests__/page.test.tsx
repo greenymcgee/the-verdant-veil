@@ -31,7 +31,7 @@ describe('<GamePreviewPage />', () => {
     mockGameRequestFailure()
     const jsx = await GamePreviewPage(PROPS)
     render(jsx)
-    expect(screen.getByTestId('game-not-found-error')).toBeVisible()
+    expect(await screen.findByTestId('game-not-found-error')).toBeVisible()
   })
 
   it('should render a generic error', async () => {

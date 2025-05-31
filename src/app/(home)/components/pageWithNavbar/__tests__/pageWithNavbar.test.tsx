@@ -7,14 +7,14 @@ import { PageWithNavbar } from '..'
 
 describe('<PageWithNavbar />', () => {
   describe('bannerImage', () => {
-    it('should render a banner image when present', () => {
+    it('should render a banner image when present', async () => {
       render(
         <PageWithNavbar
           activeLinkTitle="About"
           bannerImage={SUPER_METROID.bannerImage}
         />,
       )
-      expect(screen.getByTestId('banner-image')).toBeVisible()
+      expect(await screen.findByTestId('banner-image')).toBeVisible()
     })
 
     it('should not render a banner image when blank', () => {
