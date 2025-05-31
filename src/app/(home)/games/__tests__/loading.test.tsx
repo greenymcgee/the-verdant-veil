@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/react'
 import GamesLoader from '../loading'
 
 describe('<GamesLoader />', () => {
-  it('should render', () => {
+  it('should render', async () => {
     render(<GamesLoader />)
-    expect(screen.getByRole('alert')).toBeVisible()
+    expect(await screen.findByRole('alert')).toBeVisible()
   })
 })

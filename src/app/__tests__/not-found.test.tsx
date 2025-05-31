@@ -4,8 +4,10 @@ import { render, screen } from '@testing-library/react'
 import NotFoundPage from '../not-found'
 
 describe('<NotFoundPage />', () => {
-  it('should render', () => {
+  it('should render', async () => {
     render(<NotFoundPage />)
-    expect(screen.getByText("Whoops, I couldn't find that one")).toBeVisible()
+    expect(
+      await screen.findByText("Whoops, I couldn't find that one"),
+    ).toBeVisible()
   })
 })
