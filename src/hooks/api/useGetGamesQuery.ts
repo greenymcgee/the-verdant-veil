@@ -4,7 +4,7 @@ import useSWR from 'swr'
 
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade, publishedParamFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 import { useSearchParamsWithCorrectedPageNumber } from '..'
 

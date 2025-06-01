@@ -1,6 +1,6 @@
 import { waitFor } from '@testing-library/react'
 
-import { logger } from '@/modules'
+import { logger } from '@/lib'
 import { ADMIN_USER } from '@/test/fixtures'
 import { mockJwtTokenCookie, renderHookWithProviders } from '@/test/helpers'
 import {

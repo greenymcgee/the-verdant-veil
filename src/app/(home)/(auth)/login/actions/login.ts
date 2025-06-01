@@ -7,7 +7,7 @@ import {
   THE_VERDANT_VEIL_CURRENT_USER,
   THE_VERDANT_VEIL_JWT,
 } from '@/constants'
-import { logger, verifyJwt } from '@/modules'
+import { logger, verifyJwt } from '@/lib'
 
 import { getLoginErrorMessage, postLoginRequest } from '../utils'
 

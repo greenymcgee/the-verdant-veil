@@ -111,8 +111,8 @@ beforeAll(() => {
   })
 })
 
-vi.mock('./src/modules/logger.ts', async () => {
-  const { logger } = await vi.importActual('./src/modules/logger.ts')
+vi.mock('./src/lib/logger.ts', async () => {
+  const { logger } = await vi.importActual('./src/lib/logger.ts')
   return {
     logger: {
       ...(logger as Record<string, unknown>),

@@ -7,7 +7,7 @@ export default defineConfig({
     coverage: {
       exclude: [
         'generated-types/**',
-        'lib/generateTypes.ts',
+        'src/lib/generateTypes.ts',
         '.next/**',
         'next.config.ts',
         'next-env.d.ts',
@@ -21,7 +21,7 @@ export default defineConfig({
         'index.d.ts',
         'src/components/svgs/**',
         'src/test/**',
-        'src/modules/logger.ts',
+        'src/lib/logger.ts',
         'src/app/layout.tsx',
         'src/app/admin/layout.tsx',
         'src/app/admin/components/index.ts',

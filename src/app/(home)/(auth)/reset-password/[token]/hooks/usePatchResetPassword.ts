@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import useSWRMutation from 'swr/mutation'
 
 import { API_ROUTES, ROUTES } from '@/constants'
-import { baseApi } from '@/modules/baseApi'
+import { baseApi } from '@/lib/baseApi'
 
 type ResetPasswordError = AxiosError<{ message: string }>
 type Route = typeof API_ROUTES.resetPassword

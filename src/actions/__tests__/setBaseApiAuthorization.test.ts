@@ -1,7 +1,7 @@
 import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 import { cookies } from 'next/headers'
 
-import { baseApi } from '@/modules'
+import { baseApi } from '@/lib'
 
 import { setBaseApiAuthorization } from '../setBaseApiAuthorization'
 

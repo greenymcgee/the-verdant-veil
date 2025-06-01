@@ -4,17 +4,17 @@
   "private": false,
   "scripts": {
     "build-storybook": "storybook build",
-    "compile": "tsc",
+    "tsc": "tsc",
     "dev": "next dev -p 3001 | pino-pretty",
     "build": "next build",
-    "generate-types": "npx ts-node -O '{\"module\":\"commonjs\"}' lib/generateTypes.ts",
+    "generate-types": "npx ts-node -O '{\"module\":\"commonjs\"}' src/lib/generateTypes.ts",
     "lint": "next lint",
     "spellcheck": "cspell \"/**/*.*\"",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "validate": "npm run compile && npm run lint && npm run spellcheck && npm run test:coverage"
+    "validate": "npm run tsc && npm run lint && npm run spellcheck && npm run test:coverage"
   },
   "dependencies": {
     "@tiptap/extension-link": "^2.12.0",

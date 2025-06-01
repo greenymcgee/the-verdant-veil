@@ -1,7 +1,7 @@
 'use server'
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 import { setBaseApiAuthorization } from './setBaseApiAuthorization'
 

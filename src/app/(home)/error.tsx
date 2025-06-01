@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react'
 
 import { Button } from '@/components'
-import { logger } from '@/modules'
+import { logger } from '@/lib'
 
 import { HomeErrorBoundary, PageWithNavbar } from './components'
 

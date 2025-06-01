@@ -1,4 +1,4 @@
-import { logger } from '@/modules'
+import { logger } from '@/lib'
 
 export function isValidJson(json: string) {
   try {

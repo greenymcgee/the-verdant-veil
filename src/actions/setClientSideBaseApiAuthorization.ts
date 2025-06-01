@@ -1,4 +1,4 @@
-import { baseApi } from '@/modules'
+import { baseApi } from '@/lib'
 
 import { getVerifiedJwtToken } from './getVerifiedJwtToken'
 

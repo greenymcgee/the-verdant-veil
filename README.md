@@ -122,10 +122,10 @@ The `src/hooks/` directory is intended for global hooks that can be used
 anywhere like `useToggle` or `useWindowSize`. There is also an `api` namespace
 for hooks that reach out to the backend using SWR.
 
-### Modules
+### Lib
 
-**Note:** this directory is a temporary home for external wrappers and will
-eventually be merged into `lib/`.
+This directory is for any code that is typically a wrapper for a library like
+Jose or Pino.
 
 ### Policies
 

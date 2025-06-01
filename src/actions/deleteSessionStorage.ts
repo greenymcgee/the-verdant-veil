@@ -5,7 +5,7 @@ import {
   THE_VERDANT_VEIL_CURRENT_USER,
   THE_VERDANT_VEIL_JWT,
 } from '@/constants'
-import { logger } from '@/modules'
+import { logger } from '@/lib'
 
 export async function deleteSessionStorage() {
   logger.info('Deleting session storage')

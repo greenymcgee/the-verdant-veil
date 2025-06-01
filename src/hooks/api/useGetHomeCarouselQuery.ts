@@ -4,7 +4,7 @@ import useSWR from 'swr'
 
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 async function getGames(url: string) {
   return await baseApi.get<HomeCarouselsShowJson>(url).then(({ data }) => data)

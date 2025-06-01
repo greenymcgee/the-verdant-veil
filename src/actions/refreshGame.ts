@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 
 import { API_ROUTES, ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 import { setBaseApiAuthorization } from './setBaseApiAuthorization'
 

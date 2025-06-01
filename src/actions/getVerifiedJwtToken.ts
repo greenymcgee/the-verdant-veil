@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers'
 
 import { THE_VERDANT_VEIL_JWT } from '@/constants'
-import { verifyJwt } from '@/modules'
+import { verifyJwt } from '@/lib'
 
 /**
  * Only returns the token if it is successfully verified. Useful for fetching

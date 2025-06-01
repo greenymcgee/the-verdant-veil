@@ -5,7 +5,7 @@ import { number, object } from 'zod'
 
 import { API_ROUTES, HTML_STATUSES } from '@/constants'
 import { ErrorFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 import { setBaseApiAuthorization } from './setBaseApiAuthorization'
 

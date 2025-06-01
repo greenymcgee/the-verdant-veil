@@ -4,7 +4,7 @@ import { any, boolean, number, object, string } from 'zod'
 
 import { API_ROUTES, GAME_FORM_NAMES, ROUTES } from '@/constants'
 import { ErrorFacade, UpdateGameDataFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 import { setBaseApiAuthorization } from './setBaseApiAuthorization'
 
