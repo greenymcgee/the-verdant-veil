@@ -62,12 +62,17 @@ export function LoginForm() {
             required
           />
           <LinkTo
-            className="text-body-sm mb-6 block"
+            className="text-body-sm mb-6"
+            classNameOverrides={{ display: 'block' }}
             href={ROUTES.forgotYourPassword}
           >
             Forgot your password?
           </LinkTo>
-          <Button className="ml-auto block" type="submit">
+          <Button
+            className="ml-auto"
+            classNameOverrides={{ display: 'block' }}
+            type="submit"
+          >
             Login
           </Button>
         </>

@@ -171,7 +171,8 @@ export function EditGameForm({ game }: Props) {
         />
       </div>
       <Button
-        className="ml-auto block"
+        className="ml-auto"
+        classNameOverrides={{ display: 'block' }}
         data-testid="submit-game-update-button"
         text="Submit"
         type="submit"

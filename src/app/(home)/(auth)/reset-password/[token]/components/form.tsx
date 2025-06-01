@@ -38,7 +38,11 @@ export function ResetPasswordForm() {
         label="Confirmation"
         required
       />
-      <Button className="ml-auto block" type="submit">
+      <Button
+        className="ml-auto"
+        classNameOverrides={{ display: 'block' }}
+        type="submit"
+      >
         Reset password
       </Button>
     </form>

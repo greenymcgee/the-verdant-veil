@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { ROUTES } from '@/constants'
+import { DEFAULT_BUTTON_DISPLAY_CLASS_NAMES, ROUTES } from '@/constants'
 
 import { LinkTo } from '..'
 
@@ -20,6 +20,26 @@ describe('<LinkTo />', () => {
     it('should render text', () => {
       render(<LinkTo href={ROUTES.games} text="Text" />)
       expect(screen.getByText('Text')).toBeVisible()
+    })
+  })
+
+  describe('classNameOverrides', () => {
+    it('should render with default display classes', () => {
+      render(<LinkTo href="/">Children</LinkTo>)
+      expect(screen.getByText('Children')).toHaveClass(
+        DEFAULT_BUTTON_DISPLAY_CLASS_NAMES,
+      )
+    })
+
+    it('should render a given display override', () => {
+      render(
+        <LinkTo classNameOverrides={{ display: 'block' }} href="/">
+          Children
+        </LinkTo>,
+      )
+      const button = screen.getByText('Children')
+      expect(button).not.toHaveClass(DEFAULT_BUTTON_DISPLAY_CLASS_NAMES)
+      expect(button).toHaveClass('block')
     })
   })
 
