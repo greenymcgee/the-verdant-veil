@@ -159,7 +159,11 @@ export function EditGameForm({ game }: Props) {
           type="hidden"
           value={state.review ?? review}
         />
-        <Label className="mb-2 block cursor-auto" htmlFor="review">
+        <Label
+          className="mb-2 block"
+          classNameOverrides={{ cursor: 'cursor-auto' }}
+          htmlFor="review"
+        >
           Review
         </Label>
         <RichTextEditor

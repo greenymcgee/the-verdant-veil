@@ -1,20 +1,24 @@
 import React, { LabelHTMLAttributes } from 'react'
-import { twMerge } from 'tailwind-merge'
+import clsx from 'clsx'
 
 interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  classNameOverrides?: { cursor?: string }
   required?: boolean
 }
 
 export function Label({
   children,
   className,
+  classNameOverrides,
   required,
   ...options
 }: LabelProps) {
   return (
     <label
-      className={twMerge(
-        'cursor-pointer text-body-sm font-semibold',
+      className={clsx(
+        'text-body-sm font-semibold',
+        { 'cursor-pointer': !classNameOverrides?.cursor },
+        classNameOverrides?.cursor,
         className,
       )}
       {...options}
