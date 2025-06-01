@@ -5,7 +5,7 @@ import {
   THE_VERDANT_VEIL_CURRENT_USER,
   THE_VERDANT_VEIL_JWT,
 } from '@/constants'
-import { logger } from '@/modules'
+import { logger } from '@/lib'
 import { ADMIN_USER, JWT_TOKEN_FIXTURE } from '@/test/fixtures'
 import { mockJwtVerify } from '@/test/helpers'
 import { loginServer, mockUnauthorizedLoginResponse } from '@/test/servers'

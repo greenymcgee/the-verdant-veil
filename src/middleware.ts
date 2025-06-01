@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 import { ROUTES } from './constants'
-import { authenticateUser, logger } from './modules'
+import { authenticateUser, logger } from './lib'
 import { authorizeAdminRouteRequest } from './policies'
 import { redirectUnauthenticatedUser } from './utils'
 

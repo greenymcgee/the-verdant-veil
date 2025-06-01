@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import { setClientSideBaseApiAuthorization } from '@/actions'
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 async function getCurrentUser(url: string) {
   if (!(await setClientSideBaseApiAuthorization())) return

@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers'
 
 import { THE_VERDANT_VEIL_JWT } from '@/constants'
-import { baseApi } from '@/modules'
+import { baseApi } from '@/lib'
 
 export async function setBaseApiAuthorization() {
   const { get } = await cookies()

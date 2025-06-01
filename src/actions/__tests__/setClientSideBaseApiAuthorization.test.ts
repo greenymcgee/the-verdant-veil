@@ -1,4 +1,4 @@
-import { baseApi } from '@/modules'
+import { baseApi } from '@/lib'
 import { JWT_TOKEN_FIXTURE } from '@/test/fixtures'
 import { mockJwtTokenCookie } from '@/test/helpers'
 

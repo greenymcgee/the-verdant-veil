@@ -2,7 +2,7 @@ import { cache } from 'react'
 
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 export const getGame = cache(async (slug: Game['slug']) => {
   try {

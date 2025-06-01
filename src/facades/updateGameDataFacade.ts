@@ -1,7 +1,7 @@
 import { fromZonedTime } from 'date-fns-tz'
 
 import { GAME_FORM_NAMES } from '@/constants'
-import { logger } from '@/modules'
+import { logger } from '@/lib'
 
 export class UpdateGameDataFacade {
   public formData: FormData

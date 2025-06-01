@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react'
 
 import { Button, Card, Heading } from '@/components'
-import { logger } from '@/modules'
+import { logger } from '@/lib'
 
 interface Props {
   error: Error & { digest?: string }

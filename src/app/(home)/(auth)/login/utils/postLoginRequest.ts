@@ -1,7 +1,7 @@
 import { object, string } from 'zod'
 
 import { API_ROUTES } from '@/constants'
-import { baseApi } from '@/modules'
+import { baseApi } from '@/lib'
 
 const schema = object({
   user: object({

@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 
 import { API_ROUTES, ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
-import { baseApi, logger } from '@/modules'
+import { baseApi, logger } from '@/lib'
 
 import { deleteSessionStorage } from './deleteSessionStorage'
 import { setBaseApiAuthorization } from './setBaseApiAuthorization'
