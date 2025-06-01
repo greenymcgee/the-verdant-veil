@@ -55,6 +55,7 @@ export function NewGameModal() {
             id="igdb-id"
             inputProps={{
               autoComplete: 'off',
+              autoFocus: true,
               defaultValue: state.igdbId,
               name: 'igdb-id',
               type: 'number',
