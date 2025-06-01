@@ -22,7 +22,8 @@ export function LogoutForm({ className, testId }: Props) {
   return (
     <form action={action} className={className}>
       <Button
-        className="flex w-full justify-center"
+        className="w-full"
+        classNameOverrides={{ display: 'flex justify-center' }}
         data-testid={testId}
         loading={isLoggingOut}
         size="sm"

@@ -1,18 +1,19 @@
 /* eslint-disable react/button-has-type */
 import React, { ButtonHTMLAttributes } from 'react'
 import clsx from 'clsx'
-import { twMerge } from 'tailwind-merge'
 
 import {
   BUTTON_SIZES,
   BUTTON_THEMES,
   DEFAULT_BUTTON_CLASS_NAMES,
+  DEFAULT_BUTTON_DISPLAY_CLASS_NAMES,
 } from '@/constants'
 
 import { Icon } from '../icon'
 import { Spinner } from '../spinner'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  classNameOverrides?: { display?: string }
   leftIcon?: IconType
   loading?: boolean
   rightIcon?: IconType
@@ -25,6 +26,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function Button({
   children,
   className,
+  classNameOverrides,
   leftIcon,
   loading,
   rightIcon,
@@ -39,13 +41,15 @@ export function Button({
     <button
       aria-disabled={loading}
       aria-label={loading ? 'Loading' : undefined}
-      className={twMerge(
-        clsx(
-          BUTTON_THEMES[variant][theme],
-          BUTTON_SIZES[size],
-          DEFAULT_BUTTON_CLASS_NAMES,
-          { 'pointer-events-none cursor-not-allowed opacity-70': loading },
-        ),
+      className={clsx(
+        BUTTON_THEMES[variant][theme],
+        BUTTON_SIZES[size],
+        DEFAULT_BUTTON_CLASS_NAMES,
+        {
+          [DEFAULT_BUTTON_DISPLAY_CLASS_NAMES]: !classNameOverrides?.display,
+          'pointer-events-none cursor-not-allowed opacity-70': loading,
+        },
+        classNameOverrides?.display,
         className,
       )}
       type={type}

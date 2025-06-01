@@ -14,9 +14,12 @@ export const TRANSITION_STYLES = {
 } as const
 
 export const DEFAULT_BUTTON_CLASS_NAMES = clsx(
-  'inline-flex items-center gap-1 rounded-md font-semibold transition-colors cursor-pointer',
+  'rounded-md font-semibold transition-colors cursor-pointer',
   TRANSITION_STYLES.inputHover,
 )
+
+export const DEFAULT_BUTTON_DISPLAY_CLASS_NAMES =
+  'inline-flex items-center gap-1'
 
 export const BUTTON_THEMES: ButtonThemes = {
   outline: {
@@ -79,7 +82,7 @@ export const GAME_CARD_VARIANTS = {
 } as const
 
 export const BASE_LINK_TO_CLASSNAME = clsx(
-  'inline-flex items-center hover:opacity-70 hover:underline font-medium transition-opacity',
+  'hover:opacity-70 hover:underline font-medium transition-opacity',
   TRANSITION_STYLES.inputHover,
 )
 

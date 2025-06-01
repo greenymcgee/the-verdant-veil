@@ -36,7 +36,8 @@ export function Navbar() {
           <div className="flex min-h-[inherit] min-w-[156px] flex-col px-3 pt-6 pb-3">
             <div className="mb-6 flex flex-col gap-3 border-b-1 pb-6">
               <Button
-                className="block w-full text-center"
+                className="w-full text-center"
+                classNameOverrides={{ display: 'block' }}
                 onClick={closeHamburgerMenu}
                 size="sm"
                 theme="neutral"

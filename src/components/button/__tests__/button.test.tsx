@@ -1,7 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { DEFAULT_BUTTON_CLASS_NAMES } from '@/constants'
+import {
+  DEFAULT_BUTTON_CLASS_NAMES,
+  DEFAULT_BUTTON_DISPLAY_CLASS_NAMES,
+} from '@/constants'
 
 import { Button } from '..'
 
@@ -21,14 +24,32 @@ describe('<Button />', () => {
   describe('className', () => {
     it('should render a base className', () => {
       render(<Button>Children</Button>)
-      DEFAULT_BUTTON_CLASS_NAMES.split(' ').forEach((className) => {
-        expect(screen.getByText('Children')).toHaveClass(className)
-      })
+      expect(screen.getByText('Children')).toHaveClass(
+        DEFAULT_BUTTON_CLASS_NAMES,
+      )
     })
 
     it('should render a given className', () => {
       render(<Button className="mb-4">Children</Button>)
       expect(screen.getByText('Children')).toHaveClass('mb-4')
+    })
+  })
+
+  describe('classNameOverrides', () => {
+    it('should render with default display classes', () => {
+      render(<Button>Children</Button>)
+      expect(screen.getByText('Children')).toHaveClass(
+        DEFAULT_BUTTON_DISPLAY_CLASS_NAMES,
+      )
+    })
+
+    it('should render a given display override', () => {
+      render(
+        <Button classNameOverrides={{ display: 'block' }}>Children</Button>,
+      )
+      const button = screen.getByText('Children')
+      expect(button).not.toHaveClass(DEFAULT_BUTTON_DISPLAY_CLASS_NAMES)
+      expect(button).toHaveClass('block')
     })
   })
 

@@ -26,4 +26,21 @@ describe('<Label />', () => {
     )
     expect(screen.getByLabelText('required')).toBeVisible()
   })
+
+  describe('classNameOverrides', () => {
+    it('render with a default cursor class', () => {
+      render(<Label htmlFor="test">Label</Label>)
+      expect(screen.getByText('Label')).toHaveClass('cursor-pointer')
+    })
+
+    it('render with a given cursor class', () => {
+      render(
+        <Label classNameOverrides={{ cursor: 'cursor-auto' }} htmlFor="test">
+          Label
+        </Label>,
+      )
+      expect(screen.getByText('Label')).not.toHaveClass('cursor-pointer')
+      expect(screen.getByText('Label')).toHaveClass('cursor-auto')
+    })
+  })
 })

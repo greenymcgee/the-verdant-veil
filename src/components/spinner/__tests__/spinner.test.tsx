@@ -17,4 +17,20 @@ describe('<Spinner />', () => {
       true,
     )
   })
+
+  describe('classNameOverrides', () => {
+    it('render with a display class', () => {
+      render(<Spinner />)
+      expect(screen.getByRole('alert').parentElement).toHaveClass(
+        'flex items-center justify-center',
+      )
+    })
+
+    it('render with a given display class', () => {
+      render(<Spinner classNameOverrides={{ display: 'block' }} />)
+      const spinner = screen.getByRole('alert').parentElement
+      expect(spinner).not.toHaveClass('flex items-center justify-center')
+      expect(spinner).toHaveClass('block')
+    })
+  })
 })

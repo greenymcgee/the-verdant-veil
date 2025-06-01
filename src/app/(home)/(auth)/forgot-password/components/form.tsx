@@ -33,7 +33,7 @@ export function ForgotPasswordForm() {
   if (succeeded) {
     return (
       <p
-        className="px-6 text-primary-900"
+        className="text-primary-900 px-6"
         data-testid="reset-password-email-sent-message"
       >
         An email has been sent to <strong>{email}</strong> with a link to reset
@@ -56,10 +56,18 @@ export function ForgotPasswordForm() {
         label="Email"
         required
       />
-      <LinkTo className="text-body-sm mb-6 block" href={ROUTES.login}>
+      <LinkTo
+        className="text-body-sm mb-6"
+        classNameOverrides={{ display: 'block' }}
+        href={ROUTES.login}
+      >
         Back to login
       </LinkTo>
-      <Button className="ml-auto block" type="submit">
+      <Button
+        className="ml-auto"
+        classNameOverrides={{ display: 'block' }}
+        type="submit"
+      >
         Submit
       </Button>
     </form>
