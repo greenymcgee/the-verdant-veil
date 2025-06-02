@@ -7,7 +7,7 @@ export default defineConfig({
     coverage: {
       exclude: [
         'generated-types/**',
-        'src/lib/generateTypes.ts',
+        'scripts/generateTypes.ts',
         '.next/**',
         'next.config.ts',
         'next-env.d.ts',

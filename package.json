@@ -7,7 +7,7 @@
     "tsc": "tsc",
     "dev": "next dev -p 3001 | pino-pretty",
     "build": "next build",
-    "generate-types": "npx ts-node -O '{\"module\":\"commonjs\"}' src/lib/generateTypes.ts",
+    "generate-types": "npx ts-node -O '{\"module\":\"commonjs\"}' scripts/generateTypes.ts",
     "lint": "next lint",
     "spellcheck": "cspell \"/**/*.*\"",
     "start": "next start",
