@@ -65,7 +65,7 @@ export const FOCUS_STYLE_CLASS_NAME =
 
 export const GAME_CARD_VARIANTS = {
   carousel: {
-    coverClassName: 'aspect-1/1 rounded-t-lg',
+    coverClassName: 'aspect-2/3 rounded-t-lg',
     divClassName: 'rounded-b-lg',
     heading: 'truncate',
     linkClassName: 'rounded-lg',
