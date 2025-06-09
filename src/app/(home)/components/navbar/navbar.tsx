@@ -3,7 +3,7 @@ import React from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
 
-import { Logo, Searchbar } from '@/components'
+import { IndexSearchbar, Logo } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
 import { useScrollPosition } from '@/hooks'
 import { useCurrentUser } from '@/hooks/api'
@@ -42,7 +42,7 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
           <Logo />
         </Link>
         <div className="flex items-center justify-end gap-6">
-          <Searchbar
+          <IndexSearchbar
             className="max-w-1/2 sm:max-w-1/3 lg:max-w-1/2"
             labelProps={{ ariaLabel: 'Search for games by name' }}
             pathnameOverride={ROUTES.games}
