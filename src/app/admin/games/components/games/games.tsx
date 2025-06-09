@@ -2,7 +2,7 @@
 import React from 'react'
 import { useSearchParams } from 'next/navigation'
 
-import { PaginationWrapper, Searchbar, Spinner } from '@/components'
+import { IndexSearchbar, PaginationWrapper, Spinner } from '@/components'
 import { useGetGamesQuery } from '@/hooks/api'
 
 import { GamesTable } from '../gamesTable'
@@ -20,7 +20,7 @@ export function Games({ fallbackTotalPages }: Props) {
 
   return (
     <>
-      <Searchbar autoSearch className="mb-1 max-w-60" />
+      <IndexSearchbar autoSearch className="mb-1 max-w-60" />
       <GamesTable
         games={games}
         query={query}
