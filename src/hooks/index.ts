@@ -1,3 +1,4 @@
+export * from './useDialogToggle'
 export * from './useHash'
 export * from './useModalDialogToggle'
 export * from './useScrollPosition'

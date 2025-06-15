@@ -21,7 +21,7 @@ export function BannerImage({ bannerImage, className, ...options }: Props) {
   return (
     <div className={className}>
       <div
-        className={clsx('bg-success-50 aspect-3/1 bg-contain bg-no-repeat', {
+        className={clsx('aspect-3/1 bg-neutral-50 bg-contain bg-no-repeat', {
           'text-primary-700 flex animate-pulse items-center justify-center':
             !url,
         })}

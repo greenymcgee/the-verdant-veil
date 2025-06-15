@@ -58,7 +58,7 @@ export function HamburgerMenu({
       <dialog
         className={clsx(
           'fixed m-0 ml-auto min-h-[100vh] translate-x-full transform',
-          'transition-transform duration-100 ease-linear',
+          'bg-white transition-transform duration-100 ease-linear',
           'backdrop:bg-neutral-900 backdrop:opacity-60',
         )}
         data-testid="hamburger-menu"

@@ -53,7 +53,7 @@ export function Modal({ Toggle, children, id, ref }: ModalProps) {
       <dialog
         className={clsx(
           'top-[50%] left-[50%] -translate-x-[50%] rounded-lg duration-300 ease-out',
-          'transition-transform backdrop:bg-neutral-900/30',
+          'bg-white transition-transform backdrop:bg-neutral-900/30',
         )}
         data-testid={id}
         id={id}
