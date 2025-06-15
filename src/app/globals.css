@@ -104,6 +104,7 @@
 
   --tracking-ultra-wide: 0.5em;
 
+  --transition-property-bottom: bottom;
   --transition-property-grid-template-rows: grid-template-rows;
   --transition-property-width: width;
   --transition-property-main-nav: background-color, color, shadow;
@@ -112,6 +113,10 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 1.5rem;
+}
+
+@utility max-w-unset {
+  max-width: unset;
 }
 
 @utility overflow-x-unset {
@@ -152,7 +157,7 @@
 } */
 
 dialog {
-  @apply bg-white font-sans text-neutral-700;
+  @apply font-sans text-neutral-700;
 }
 
 .skeleton {

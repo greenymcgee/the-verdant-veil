@@ -1,15 +1,17 @@
 'use client'
-import React from 'react'
+import React, { Suspense } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
 
-import { IndexSearchbar, Logo } from '@/components'
+import { Logo } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
 import { useScrollPosition } from '@/hooks'
 import { useCurrentUser } from '@/hooks/api'
 
+import { GlobalSearchbar } from '../globalSearchbar'
 import { HamburgerMenu } from '../hamburgerMenu'
 import { MainNavLink } from '../mainNavLink'
+import { MobileGlobalSearchbarModal } from '../mobileGlobalSearchbarModal'
 
 interface NavbarProps {
   activeLinkTitle: PropsOf<typeof MainNavLink>['activeLinkTitle']
@@ -42,11 +44,10 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
           <Logo />
         </Link>
         <div className="flex items-center justify-end gap-6">
-          <IndexSearchbar
-            className="max-w-1/2 sm:max-w-1/3 lg:max-w-1/2"
-            labelProps={{ ariaLabel: 'Search for games by name' }}
-            pathnameOverride={ROUTES.games}
-          />
+          <Suspense>
+            <GlobalSearchbar className="hidden w-56 sm:block md:w-96" />
+            <MobileGlobalSearchbarModal />
+          </Suspense>
           <HamburgerMenu activeLinkTitle={activeLinkTitle} />
           <ul className="hidden gap-6 sm:flex">
             {user.admin ? (

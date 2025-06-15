@@ -9,6 +9,7 @@ import {
   GET_GAMES_RESPONSE_DATA,
   GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA,
   GET_PUBLISHED_GAMES_RESPONSE_DATA,
+  GET_QUERIED_GAMES_RESPONSE_DATA,
   NEW_GAME,
   SUPER_METROID,
 } from '../fixtures'
@@ -19,6 +20,9 @@ const handlers = [
     const params = new URL(url).searchParams
     const page = params.get('page')
     const published = params.get('published')
+    const query = params.get('query')
+
+    if (query) return HttpResponse.json(GET_QUERIED_GAMES_RESPONSE_DATA)
 
     if (page)
       return HttpResponse.json(GET_GAMES_WITH_SEARCH_PARAMS_RESPONSE_DATA)
