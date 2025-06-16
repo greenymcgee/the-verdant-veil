@@ -37,7 +37,7 @@
     "react-dom": "^19.1.0",
     "react-headless-pagination": "^1.1.6",
     "react-hot-toast": "^2.5.2",
-    "react-remove-scroll": "^2.6.3",
+    "react-remove-scroll": "^2.7.1",
     "swr": "^2.3.3",
     "use-debounce": "^10.0.4",
     "zod": "^3.25.42"
