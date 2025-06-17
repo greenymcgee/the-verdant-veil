@@ -2,7 +2,7 @@
 import React, { RefObject, SyntheticEvent, useRef } from 'react'
 
 import { Button, Icon, Modal } from '@/components'
-import { useModalDialogToggle } from '@/hooks'
+import { useDialogToggle } from '@/hooks'
 
 import { GameFiltersGroup } from '../gameFiltersGroup'
 
@@ -29,7 +29,7 @@ export function MobileGameFilters({
   validating,
 }: Props) {
   const modalRef = useRef<HTMLDialogElement>(null)
-  const toggleModal = useModalDialogToggle(modalRef)
+  const { expanded, toggleDialog } = useDialogToggle(modalRef)
 
   return (
     <form
@@ -61,8 +61,10 @@ export function MobileGameFilters({
             Filter
           </Button>
         )}
+        expanded={expanded}
         id="filter-games"
         ref={modalRef}
+        toggleDialog={toggleDialog}
       >
         <div className="bg-primary-50 px-1 py-3">
           <h2 className="mb-2 flex justify-between px-2 font-medium">
@@ -81,14 +83,14 @@ export function MobileGameFilters({
         </div>
         <div className="flex justify-end gap-2 px-1 py-2">
           <Button
-            onClick={toggleModal}
+            onClick={toggleDialog}
             text="Cancel"
             theme="neutral"
             variant="outline"
           />
           <Button
             data-testid="mobile-apply-filters-button"
-            onClick={toggleModal}
+            onClick={toggleDialog}
             text="Apply"
             type="submit"
           />

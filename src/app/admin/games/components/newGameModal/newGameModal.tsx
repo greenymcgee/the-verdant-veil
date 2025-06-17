@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import { createGame } from '@/actions'
 import { Banner, Button, Heading, Icon, InputGroup, Modal } from '@/components'
 import { ROUTES } from '@/constants'
-import { useModalDialogToggle } from '@/hooks'
+import { useDialogToggle } from '@/hooks'
 import { withCallbacks } from '@/utils'
 
 import { NewGameModalToggle } from './toggle'
@@ -25,10 +25,16 @@ export function NewGameModal() {
     }),
     { status: 'idle' },
   )
-  const toggleModal = useModalDialogToggle(ref)
+  const { expanded, toggleDialog } = useDialogToggle(ref)
 
   return (
-    <Modal Toggle={NewGameModalToggle} id="new-game" ref={ref}>
+    <Modal
+      Toggle={NewGameModalToggle}
+      expanded={expanded}
+      id="new-game"
+      ref={ref}
+      toggleDialog={toggleDialog}
+    >
       <form action={action} className="min-w-[50vw]">
         <header className="bg-primary-50 border-b border-neutral-100 p-4">
           <Heading
@@ -65,7 +71,7 @@ export function NewGameModal() {
           />
           <div className="flex justify-end gap-2">
             <Button
-              onClick={toggleModal}
+              onClick={toggleDialog}
               size="sm"
               text="Cancel"
               theme="neutral"

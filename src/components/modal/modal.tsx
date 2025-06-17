@@ -6,62 +6,47 @@ import React, {
   PropsWithChildren,
   ReactElement,
   RefObject,
-  SyntheticEvent,
-  useCallback,
-  useState,
 } from 'react'
 import clsx from 'clsx'
 import { RemoveScroll } from 'react-remove-scroll'
 
-import { useModalDialogToggle } from '@/hooks'
+import { handleOutsideDialogClick } from '@/utils'
 
 interface ModalProps extends PropsWithChildren {
   Toggle(props: HTMLAttributes<HTMLButtonElement>): ReactElement
+  expanded: boolean
   id: string
   ref: RefObject<HTMLDialogElement | null>
+  toggleDialog: VoidFunction
 }
 
-export function Modal({ Toggle, children, id, ref }: ModalProps) {
-  const [expanded, setExpanded] = useState(false)
-  const toggleExpanded = () => setExpanded((prevExpanded) => !prevExpanded)
-  const toggleModal = useModalDialogToggle(ref)
-
-  const openDialog = useCallback(() => {
-    toggleExpanded()
-    toggleModal()
-  }, [toggleModal])
-
-  const toggleLeftoverStates = useCallback(() => {
-    toggleExpanded()
-  }, [])
-
-  const handleOutsideContentClick = (
-    event: SyntheticEvent<HTMLDialogElement>,
-  ) => {
-    if (event.target !== ref.current) return
-
-    toggleModal()
-  }
-
+export function Modal({
+  Toggle,
+  children,
+  expanded,
+  id,
+  ref,
+  toggleDialog,
+}: ModalProps) {
   return (
     <>
       <Toggle
         aria-controls={id}
         aria-expanded={expanded}
-        onClick={openDialog}
+        onClick={toggleDialog}
       />
       <dialog
         className={clsx(
           'top-[50%] left-[50%] -translate-x-[50%] rounded-lg duration-300 ease-out',
           'bg-white transition-transform backdrop:bg-neutral-900/30',
+          { '-translate-y-[50%]': expanded },
         )}
         data-testid={id}
         id={id}
-        onClick={handleOutsideContentClick}
-        onClose={toggleLeftoverStates}
+        onClick={handleOutsideDialogClick(ref.current, toggleDialog)}
         ref={ref}
       >
-        {expanded ? <RemoveScroll>{children}</RemoveScroll> : children}
+        <RemoveScroll enabled={expanded}>{children}</RemoveScroll>
       </dialog>
     </>
   )
