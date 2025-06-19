@@ -1,63 +1,28 @@
 import React, { createRef } from 'react'
-import { act, fireEvent, render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import { HamburgerMenu } from '..'
 
 const ref = createRef<HTMLDialogElement>()
+const toggleDialog = vi.fn()
+const PROPS: PropsOf<typeof HamburgerMenu> = {
+  expanded: false,
+  ref,
+  toggleDialog,
+}
+
+afterEach(() => {
+  vi.clearAllMocks()
+})
 
 describe('<HamburgerMenu />', () => {
-  describe('expanded', () => {
-    it('should be true when the menu opens', () => {
-      render(
-        <HamburgerMenu ref={ref}>
-          <nav>Hamburger</nav>
-        </HamburgerMenu>,
-      )
-      fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
-      expect(
-        screen
-          .getByLabelText('Open Hamburger Menu')
-          .getAttribute('aria-expanded'),
-      ).toEqual('true')
-    })
-  })
-
-  describe('close on outside click', () => {
-    it('should close on outside click', async () => {
-      render(
-        <HamburgerMenu ref={ref}>
-          <nav>Hamburger</nav>
-        </HamburgerMenu>,
-      )
-      fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
-      await userEvent.pointer({
-        coords: { x: -400 },
-        keys: '[MouseLeft]',
-        target: screen.getByTestId('hamburger-menu'),
-      })
-      await act(async () => {
-        await new Promise((resolve) => setTimeout(() => resolve(''), 100))
-      })
-      expect(screen.getByTestId('hamburger-menu')).not.toBeVisible()
-    })
-
-    it('should not close on inside click', async () => {
-      render(
-        <HamburgerMenu ref={ref}>
-          <nav>Hamburger</nav>
-        </HamburgerMenu>,
-      )
-      fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
-      await userEvent.pointer({
-        coords: { y: -400 },
-        keys: '[MouseLeft]',
-        target: screen.getByRole('navigation'),
-      })
-      await act(async () => {
-        await new Promise((resolve) => setTimeout(() => resolve(''), 100))
-      })
-      expect(screen.getByTestId('hamburger-menu')).toBeVisible()
-    })
+  it('should pass the toggleDialog prop to the hamburger button', () => {
+    render(
+      <HamburgerMenu {...PROPS}>
+        <nav>Hamburger</nav>
+      </HamburgerMenu>,
+    )
+    fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
+    expect(PROPS.toggleDialog).toHaveBeenCalledTimes(1)
   })
 })

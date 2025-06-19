@@ -9,7 +9,7 @@ import { useScrollPosition } from '@/hooks'
 import { useCurrentUser } from '@/hooks/api'
 
 import { GlobalSearchbar } from '../globalSearchbar'
-import { HamburgerMenu } from '../hamburgerMenu'
+import { HomeNavbarHamburgerMenu } from '../homeNavbarHamburgerMenu'
 import { MainNavLink } from '../mainNavLink'
 import { MobileGlobalSearchbarModal } from '../mobileGlobalSearchbarModal'
 
@@ -48,7 +48,7 @@ export function Navbar({ activeLinkTitle }: NavbarProps) {
             <GlobalSearchbar className="hidden w-56 sm:block md:w-96" />
             <MobileGlobalSearchbarModal />
           </Suspense>
-          <HamburgerMenu activeLinkTitle={activeLinkTitle} />
+          <HomeNavbarHamburgerMenu activeLinkTitle={activeLinkTitle} />
           <ul className="hidden gap-6 sm:flex">
             {user.admin ? (
               <li>

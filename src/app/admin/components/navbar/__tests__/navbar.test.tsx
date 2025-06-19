@@ -1,6 +1,8 @@
 import React, { act } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
+import { sleep } from '@/test/helpers'
+
 import { Navbar } from '..'
 
 describe('<Navbar />', () => {
@@ -23,9 +25,7 @@ describe('<Navbar />', () => {
     render(<Navbar />)
     fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
     fireEvent.click(screen.getByText('Close'))
-    await act(async () => {
-      await new Promise((resolve) => setTimeout(() => resolve(''), 100))
-    })
+    await act(async () => await sleep(100))
     expect(screen.getByTestId('hamburger-menu')).not.toBeVisible()
   })
 
@@ -34,13 +34,9 @@ describe('<Navbar />', () => {
     expect(screen.getByTestId('desktop-logout-button')).toBeVisible()
   })
 
-  it('should render a logout button for the hamburger menu', async () => {
+  it('should render a logout button for the hamburger menu', () => {
     render(<Navbar />)
     fireEvent.click(screen.getByLabelText('Open Hamburger Menu'))
-    fireEvent.click(screen.getByText('Close'))
-    await act(async () => {
-      await new Promise((resolve) => setTimeout(() => resolve(''), 100))
-    })
-    expect(screen.getByTestId('mobile-logout-button')).not.toBeVisible()
+    expect(screen.getByTestId('mobile-logout-button')).toBeVisible()
   })
 })
