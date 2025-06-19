@@ -5,14 +5,16 @@ import Link from 'next/link'
 
 import { Button, HamburgerMenu, Logo } from '@/components'
 import { ROUTES, TRANSITION_STYLES } from '@/constants'
-import { toggleSidebarDialog } from '@/utils'
+import { useDialogToggle } from '@/hooks'
 
 import { LogoutForm } from '../logoutForm'
 import { NavbarLinks } from '../navbarLinks'
 
 export function Navbar() {
   const hamburgerMenuRef = useRef<HTMLDialogElement>(null)
-  const closeHamburgerMenu = () => toggleSidebarDialog(hamburgerMenuRef.current)
+  const { expanded, toggleDialog } = useDialogToggle(hamburgerMenuRef, {
+    animationDuration: 100,
+  })
 
   return (
     <nav
@@ -32,13 +34,18 @@ export function Navbar() {
         >
           <Logo />
         </Link>
-        <HamburgerMenu className="flex md:hidden" ref={hamburgerMenuRef}>
+        <HamburgerMenu
+          className="flex md:hidden"
+          expanded={expanded}
+          ref={hamburgerMenuRef}
+          toggleDialog={toggleDialog}
+        >
           <div className="flex min-h-[inherit] min-w-[156px] flex-col px-3 pt-6 pb-3">
             <div className="mb-6 flex flex-col gap-3 border-b-1 pb-6">
               <Button
                 className="w-full text-center"
                 classNameOverrides={{ display: 'block' }}
-                onClick={closeHamburgerMenu}
+                onClick={toggleDialog}
                 size="sm"
                 theme="neutral"
               >
@@ -48,7 +55,7 @@ export function Navbar() {
             </div>
             <NavbarLinks
               className="flex flex-col gap-3"
-              onLinkClick={closeHamburgerMenu}
+              onLinkClick={toggleDialog}
             />
           </div>
         </HamburgerMenu>
