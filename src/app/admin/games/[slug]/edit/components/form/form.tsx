@@ -7,7 +7,6 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { EditorEvents } from '@tiptap/react'
 import toast from 'react-hot-toast'
 
 import { updateGame } from '@/actions'
@@ -38,10 +37,7 @@ export function EditGameForm({ game }: Props) {
   )
   const [review, setReview] = useState(game.review)
 
-  const handleReviewUpdated = useCallback(
-    (event: EditorEvents['update']) => setReview(event.editor.getHTML()),
-    [],
-  )
+  const handleReviewUpdated = useCallback((html: string) => setReview(html), [])
 
   const { estimatedFirstPlayedDate, lastPlayedDate } = useMemo(
     () => getFormDates(game, state),
