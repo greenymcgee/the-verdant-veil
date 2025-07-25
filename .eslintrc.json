@@ -44,6 +44,7 @@
     "react/jsx-boolean-value": "error",
     "import/no-cycle": "error",
     "@vitest/max-expects": ["error", { "max": 2 }],
-    "require-await": "error"
+    "require-await": "error",
+    "import/no-named-as-default": 0
   }
 }
