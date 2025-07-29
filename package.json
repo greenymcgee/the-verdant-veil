@@ -31,7 +31,7 @@
     "date-fns-tz": "^3.2.0",
     "downshift": "^9.0.9",
     "isomorphic-dompurify": "^2.26.0",
-    "jose": "^6.0.11",
+    "jose": "^6.0.12",
     "keen-slider": "^6.8.6",
     "lexical": "^0.32.1",
     "next": "^15.3.5",
