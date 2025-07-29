@@ -24,7 +24,7 @@
     "@lexical/selection": "^0.32.1",
     "@lexical/utils": "^0.32.1",
     "@vercel/speed-insights": "^1.2.0",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
     "change-case": "^5.4.4",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
