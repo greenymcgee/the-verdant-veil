@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import { ROUTES } from '@/constants'
 import { GET_GAMES_RESPONSE_DATA } from '@/test/fixtures'
@@ -31,7 +31,18 @@ describe('<GameCarousel />', () => {
     expect(screen.getByRole('alert')).toBeVisible()
   })
 
-  describe('aria attributes', () => {
+  it('should render navigation buttons', () => {
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      value: 425,
+      writable: true,
+    })
+    render(<GameCarousel {...PROPS} />)
+    expect(screen.getByLabelText('Go to next slide')).toBeVisible()
+    expect(screen.getByLabelText('Go to previous slide')).toBeVisible()
+  })
+
+  describe('accessibility', () => {
     it.each(CAROUSEL_ATTRIBUTES)(
       'should render a carousel',
       ({ attribute, value }) => {
@@ -40,28 +51,19 @@ describe('<GameCarousel />', () => {
       },
     )
 
-    it('should render a previous button', () => {
-      render(<GameCarousel {...PROPS} />)
-      expect(screen.getByTestId('previous-slide-button')).toHaveAttribute(
-        'aria-label',
-        'Go to previous slide',
-      )
-    })
-
-    it('should render a next button', () => {
-      render(<GameCarousel {...PROPS} />)
-      expect(screen.getByTestId('next-slide-button')).toHaveAttribute(
-        'aria-label',
-        'Go to next slide',
-      )
-    })
-
     it.each(GET_GAMES_RESPONSE_DATA.games)('should render slides', (game) => {
       render(<GameCarousel {...PROPS} />)
       expect(screen.getByTestId(`game-slide-${game.id}`)).toHaveAttribute(
         'aria-roledescription',
         'slide',
       )
+    })
+
+    it('should render with keyboard controls', () => {
+      render(<GameCarousel {...PROPS} />)
+      fireEvent.keyDown(screen.getByTestId('carousel'), { key: 'ArrowRight' })
+      const activeLink = screen.getByTestId(`game-${PROPS.games.at(1)?.id}`)
+      expect(activeLink).toHaveAttribute('tabindex', '0')
     })
   })
 })

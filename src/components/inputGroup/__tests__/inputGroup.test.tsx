@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
@@ -29,5 +28,3 @@ describe('<InputGroup />', () => {
     expect(screen.getByTestId('test-input')).toBeRequired()
   })
 })
-
-/* eslint-enable @typescript-eslint/ban-ts-comment */

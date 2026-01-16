@@ -7,7 +7,7 @@ import React, { HTMLAttributes, RefObject } from 'react'
 import clsx from 'clsx'
 import { RemoveScroll } from 'react-remove-scroll'
 
-import { handleOutsideDialogClick } from '@/utils'
+import { useCloseOnOutsideClick } from '@/hooks'
 
 import { Hamburger } from '../svgs/hamburger'
 
@@ -24,6 +24,8 @@ export function HamburgerMenu({
   toggleDialog,
   ...options
 }: HamburgerMenuProps) {
+  const handleOutsideClick = useCloseOnOutsideClick(ref, toggleDialog)
+
   return (
     <div {...options}>
       <button
@@ -44,7 +46,7 @@ export function HamburgerMenu({
         )}
         data-testid="hamburger-menu"
         id="hamburger-menu"
-        onClick={handleOutsideDialogClick(ref.current, toggleDialog)}
+        onClick={handleOutsideClick}
         ref={ref}
       >
         <div className="min-h-[inherit]">

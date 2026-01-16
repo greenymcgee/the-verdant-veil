@@ -23,7 +23,6 @@ export function CarouselArrow({
 
   return (
     <button
-      aria-disabled={disabled}
       aria-label={
         direction === 'left' ? 'Go to previous slide' : 'Go to next slide'
       }
@@ -33,6 +32,7 @@ export function CarouselArrow({
         disabled ? 'cursor-default opacity-70 select-none' : 'cursor-pointer',
       )}
       data-testid={`${direction === 'left' ? 'previous' : 'next'}-slide-button`}
+      disabled={disabled}
       onClick={onClick}
       type="button"
     >

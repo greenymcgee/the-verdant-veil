@@ -36,7 +36,7 @@ export function GameCard({
     <As
       className={clsx(
         className,
-        'ring-ring-color has-focus-visible::ring-2 rounded-lg',
+        'ring-ring-color rounded-lg has-focus-visible:ring-2',
         { group: !validating },
       )}
       {...options}

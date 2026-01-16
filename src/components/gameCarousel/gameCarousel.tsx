@@ -4,15 +4,14 @@ import React, {
   KeyboardEvent,
   useCallback,
   useEffect,
-  useRef,
+  useMemo,
   useState,
 } from 'react'
 import clsx from 'clsx'
 import { useKeenSlider } from 'keen-slider/react'
-import { noop } from 'swr/_internal'
 
 import 'keen-slider/keen-slider.min.css'
-import { CarouselKeyChangeFacade } from '@/facades'
+import { KeenSliderFacade } from '@/facades'
 import { useWindowSize } from '@/hooks'
 
 import { CarouselArrow } from '../carouselArrow'
@@ -31,13 +30,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   validating: boolean
 }
 
-const facade = new CarouselKeyChangeFacade({
-  carouselRef: { current: null },
-  event: {} as KeyboardEvent<HTMLDivElement>,
-  keenSliderInstanceRef: { current: { next: noop, prev: noop } },
-  slideFocusIndexRef: { current: 0 },
-})
-
 export function GameCarousel({
   allResultsLink,
   className,
@@ -48,13 +40,22 @@ export function GameCarousel({
   ...options
 }: Props) {
   const headingId = `${title.toLocaleLowerCase()}-heading`
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSliderIndex, setCurrentSliderIndex] = useState(0)
   const [slidesPerView, setSlidesPerView] = useState(1)
   const [sliderLoaded, setSliderLoaded] = useState(false)
   const { width } = useWindowSize()
-  const carouselRef = useRef<HTMLDivElement>(null)
-  const slideFocusIndexRef = useRef(0)
+  const [focusedLinkIndex, setFocusedLinkIndex] = useState(0)
+  const [isEndOfSlides, setIsEndOfSlides] = useState(false)
+  const facade = useMemo(
+    () =>
+      new KeenSliderFacade({
+        event: null,
+        keenSliderInstanceRef: { current: null },
+      }),
+    [],
+  )
 
+  /* v8 ignore start */
   const [sliderRef, instanceRef] = useKeenSlider({
     breakpoints: {
       '(min-width: 40rem)': {
@@ -69,32 +70,36 @@ export function GameCarousel({
     },
     mode: 'snap',
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
+      setCurrentSliderIndex(slider.track.details.rel)
     },
     slides: { perView: SLIDES_PER_VIEW_MAP.base },
   })
 
-  const goToPreviousSlide = useCallback(
-    () => instanceRef.current?.prev(),
-    [instanceRef],
-  )
+  const goToPreviousSlide = useCallback(() => {
+    instanceRef.current?.prev()
+    facade.update({ keenSliderInstanceRef: instanceRef })
+    facade.decrementFocusIndex()
+    setFocusedLinkIndex(facade.focusedLinkIndex)
+    setIsEndOfSlides(facade.isEndOfSlides)
+  }, [facade, instanceRef])
 
-  const goToNextSlide = useCallback(
-    () => instanceRef.current?.next(),
-    [instanceRef],
-  )
+  const goToNextSlide = useCallback(() => {
+    instanceRef.current?.next()
+    facade.update({ keenSliderInstanceRef: instanceRef })
+    facade.incrementFocusIndex()
+    setFocusedLinkIndex(facade.focusedLinkIndex)
+    setIsEndOfSlides(facade.isEndOfSlides)
+  }, [facade, instanceRef])
+  /* v8 ignore stop */
 
   const handleKeyDownChange = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
-      facade.update({
-        carouselRef,
-        event,
-        keenSliderInstanceRef: instanceRef,
-        slideFocusIndexRef,
-      })
-      facade.handleTabKeyChange()
+      facade.update({ event, keenSliderInstanceRef: instanceRef })
+      facade.handleKeyChange()
+      setFocusedLinkIndex(facade.focusedLinkIndex)
+      setIsEndOfSlides(facade.isEndOfSlides)
     },
-    [instanceRef],
+    [facade, instanceRef],
   )
 
   useEffect(() => {
@@ -112,7 +117,6 @@ export function GameCarousel({
       )}
       data-testid="carousel"
       onKeyDown={handleKeyDownChange}
-      ref={carouselRef}
       role="region"
       {...options}
     >
@@ -134,7 +138,7 @@ export function GameCarousel({
         <div className="relative">
           <CarouselArrow
             direction="left"
-            disabled={currentSlide === 0}
+            disabled={currentSliderIndex === 0}
             onClick={goToPreviousSlide}
             sliderLoaded={sliderLoaded}
           />
@@ -144,7 +148,7 @@ export function GameCarousel({
 
               return (
                 <GameCard
-                  active={index === slideFocusIndexRef.current}
+                  active={index === focusedLinkIndex}
                   aria-labelledby={gameHeadingId}
                   aria-roledescription="slide"
                   className={clsx(
@@ -164,7 +168,7 @@ export function GameCarousel({
           </div>
           <CarouselArrow
             direction="right"
-            disabled={currentSlide === games.length - slidesPerView}
+            disabled={isEndOfSlides}
             onClick={goToNextSlide}
             sliderLoaded={sliderLoaded}
           />

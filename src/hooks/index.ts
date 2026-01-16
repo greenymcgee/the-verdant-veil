@@ -1,3 +1,4 @@
+export * from './useCloseOnOutsideClick'
 export * from './useDialogToggle'
 export * from './useHash'
 export * from './useScrollPosition'
