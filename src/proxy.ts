@@ -5,7 +5,7 @@ import { authenticateUser, logger } from './lib'
 import { authorizeAdminRouteRequest } from './policies'
 import { redirectUnauthenticatedUser } from './utils'
 
-export default async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   try {
     await authenticateUser(request)
   } catch (error) {

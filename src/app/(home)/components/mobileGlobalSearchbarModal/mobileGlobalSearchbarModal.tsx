@@ -7,8 +7,7 @@ import { RemoveScroll } from 'react-remove-scroll'
 
 import { Icon } from '@/components'
 import { INPUT_CLASS_NAMES_MAP } from '@/components/input/constants'
-import { useDialogToggle } from '@/hooks'
-import { handleOutsideDialogClick } from '@/utils'
+import { useCloseOnOutsideClick, useDialogToggle } from '@/hooks'
 
 import { GlobalSearchbar } from '../globalSearchbar'
 
@@ -17,6 +16,7 @@ export function MobileGlobalSearchbarModal() {
   const { expanded, toggleDialog } = useDialogToggle(ref, {
     animationDuration: 300,
   })
+  const handleOutsideClick = useCloseOnOutsideClick(ref, toggleDialog)
 
   return (
     <>
@@ -41,7 +41,7 @@ export function MobileGlobalSearchbarModal() {
         )}
         data-testid="mobile-global-searchbar-modal"
         id="mobile-global-searchbar-modal"
-        onClick={handleOutsideDialogClick(ref.current, toggleDialog)}
+        onClick={handleOutsideClick}
         ref={ref}
       >
         <RemoveScroll enabled={expanded}>

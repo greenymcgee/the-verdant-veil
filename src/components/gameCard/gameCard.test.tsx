@@ -38,8 +38,8 @@ describe('<GameCard />', () => {
     )
   })
 
-  it('should render a focusable link by default', () => {
-    render(<GameCard {...PROPS} />)
+  it('should render a focusable link when validating is false and active is true', () => {
+    render(<GameCard {...PROPS} active validating={false} />)
     expect(screen.getByTestId(`game-${PROPS.game.id}`)).toHaveAttribute(
       'tabindex',
       '0',

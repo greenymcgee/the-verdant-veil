@@ -16,7 +16,7 @@ vi.mock('next/cache', async () => {
   }
 })
 
-vi.mock('next/headers', async () => {
+vi.mock('next/headers', () => {
   const deleteCookie = vi.fn()
   const get = vi.fn()
   const set = vi.fn()

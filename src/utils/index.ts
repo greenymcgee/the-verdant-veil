@@ -1,5 +1,4 @@
 export * from './formatDatetimeInputValue'
-export * from './handleOutsideDialogClick'
 export * from './isValidJson'
 export * from './redirectUnauthenticatedUser'
 export * from './toCurrentTimezone'

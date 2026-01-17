@@ -31,7 +31,9 @@ export const NEW_GAME = gameFactory.build({ name: 'Secret of Evermore' })
 
 export const THREADS_OF_FATE = gameFactory.build({ name: 'Threads of Fate' })
 
-export const GAMES = [SUPER_METROID, DARK_SOULS]
+export const SAGA_FRONTIER = gameFactory.build({ name: 'Saga Frontier' })
+
+export const GAMES = [SUPER_METROID, DARK_SOULS, SAGA_FRONTIER]
 
 export const GET_GAMES_RESPONSE_DATA: GamesIndexJson = {
   games: GAMES,

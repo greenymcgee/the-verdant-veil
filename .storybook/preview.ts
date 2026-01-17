@@ -11,7 +11,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: {
+      options: {
         base: {
           name: 'Base',
           styles: {
@@ -61,10 +61,16 @@ const preview: Preview = {
           type: 'desktop',
         },
         ...INITIAL_VIEWPORTS,
-      },
-      defaultViewport: 'large',
+      }
     },
   },
+
+  initialGlobals: {
+    viewport: {
+      value: 'large',
+      isRotated: false
+    }
+  }
 }
 
 export default preview

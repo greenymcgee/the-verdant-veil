@@ -13,7 +13,7 @@ type ThirdParameterOf<Method extends (...args: any) => any> =
 type ConstructorParams<Constructor extends new (...args: any) => any> =
   Constructor extends new (...args: infer Params) => any ? Params : never
 
-type FirsConstructorParameterOf<Klass extends new (...args: any) => any> =
+type FirstConstructorParameterOf<Klass extends new (...args: any) => any> =
   ConstructorParams<Klass>[0]
 
 /**

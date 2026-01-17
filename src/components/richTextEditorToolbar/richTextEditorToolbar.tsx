@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 'use client'
 
 import React, { useCallback, useEffect, useState } from 'react'

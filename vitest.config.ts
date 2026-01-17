@@ -26,6 +26,7 @@ export default defineConfig({
         'src/app/admin/layout.tsx',
         'src/app/admin/components/index.ts',
         'src/**/types.ts',
+        'eslint.config.mjs',
       ],
       thresholds: {
         branches: 97,

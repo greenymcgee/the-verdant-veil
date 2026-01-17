@@ -10,7 +10,7 @@ import React, {
 import clsx from 'clsx'
 import { RemoveScroll } from 'react-remove-scroll'
 
-import { handleOutsideDialogClick } from '@/utils'
+import { useCloseOnOutsideClick } from '@/hooks'
 
 interface ModalProps extends PropsWithChildren {
   Toggle(props: HTMLAttributes<HTMLButtonElement>): ReactElement
@@ -28,6 +28,8 @@ export function Modal({
   ref,
   toggleDialog,
 }: ModalProps) {
+  const handleOutsideClick = useCloseOnOutsideClick(ref, toggleDialog)
+
   return (
     <>
       <Toggle
@@ -43,7 +45,7 @@ export function Modal({
         )}
         data-testid={id}
         id={id}
-        onClick={handleOutsideDialogClick(ref.current, toggleDialog)}
+        onClick={handleOutsideClick}
         ref={ref}
       >
         <RemoveScroll enabled={expanded}>{children}</RemoveScroll>

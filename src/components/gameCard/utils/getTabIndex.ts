@@ -4,11 +4,9 @@ interface Params {
 }
 
 export function getTabIndex({ active, validating }: Params) {
-  if (typeof active === 'undefined' && validating) return -1
+  if (validating) return -1
 
-  if (typeof active === 'undefined' && !validating) return 0
-
-  if (!active || validating) return -1
+  if (!active) return -1
 
   return 0
 }
