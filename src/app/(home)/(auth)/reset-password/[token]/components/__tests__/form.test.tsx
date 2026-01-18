@@ -8,7 +8,11 @@ import {
 import mockRouter from 'next-router-mock'
 
 import { ROUTES } from '@/constants'
-import { resetPasswordServer } from '@/test/servers'
+import { toastMock } from '@/test/helpers'
+import {
+  mockErrorResetPasswordResponse,
+  resetPasswordServer,
+} from '@/test/servers'
 
 import { ResetPasswordForm } from '..'
 
@@ -30,5 +34,21 @@ describe('<ResetPasswordForm />', () => {
     fireEvent.click(screen.getByText('Reset password'))
     await waitForElementToBeRemoved(screen.getByRole('alert'))
     expect(mockRouter.pathname).toEqual(ROUTES.login)
+  })
+
+  it('should render the reset password form', async () => {
+    mockErrorResetPasswordResponse('patch')
+    const password = 'Testpass456!'
+    render(<ResetPasswordForm />)
+    fireEvent.change(screen.getByTestId('password-input'), {
+      target: { value: password },
+    })
+    fireEvent.change(screen.getByTestId('password-confirmation-input'), {
+      target: { value: password },
+    })
+    fireEvent.click(screen.getByText('Reset password'))
+    await waitForElementToBeRemoved(screen.getByRole('alert'))
+    expect(mockRouter.pathname).not.toEqual(ROUTES.login)
+    expect(toastMock.error).toHaveBeenCalledWith('Whoops, something went wrong')
   })
 })
