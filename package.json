@@ -42,7 +42,7 @@
     "react-hot-toast": "^2.5.2",
     "react-remove-scroll": "^2.7.1",
     "swr": "^2.3.3",
-    "use-debounce": "^10.0.5",
+    "use-debounce": "^10.1.0",
     "zod": "^4.3.5"
   },
   "devDependencies": {
