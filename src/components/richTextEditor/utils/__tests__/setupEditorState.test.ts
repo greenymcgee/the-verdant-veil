@@ -33,9 +33,16 @@ beforeEach(() => {
   vi.mocked($getRoot).mockReturnValue(ROOT)
   vi.mocked($generateNodesFromDOM).mockReturnValue([])
   vi.mocked($isLinkNode).mockReturnValue(false)
-  global.DOMParser = vi.fn().mockImplementation(() => ({
-    parseFromString: vi.fn().mockReturnValue(PARSED_DOM_CONTENT),
-  }))
+  vi.stubGlobal(
+    'DOMParser',
+    class {
+      parseFromString = vi.fn().mockReturnValue(PARSED_DOM_CONTENT)
+    },
+  )
+})
+
+afterAll(() => {
+  vi.unstubAllGlobals()
 })
 
 describe('setupEditorState', () => {

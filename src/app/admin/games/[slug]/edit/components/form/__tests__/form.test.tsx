@@ -36,7 +36,7 @@ describe('<EditGameForm />', () => {
   })
 
   it('should toast a message to the user upon failure', async () => {
-    const { message } = mockGameUpdateRequestFailure()
+    const { message, reasons } = mockGameUpdateRequestFailure(true)
     render(<EditGameForm game={SUPER_METROID} />)
     fireEvent.change(screen.getByTestId('review'), {
       editor: { getHTML: () => '<p>Updated</p>' },
@@ -44,5 +44,6 @@ describe('<EditGameForm />', () => {
     fireEvent.click(screen.getByTestId('submit-game-update-button'))
     await waitForElementToBeRemoved(screen.getByRole('alert'))
     expect(toastMock.error).toHaveBeenCalledWith(message)
+    reasons.forEach((reason) => expect(screen.getByText(reason)).toBeVisible())
   })
 })
