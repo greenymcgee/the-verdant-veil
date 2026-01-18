@@ -20,7 +20,7 @@ export function Navbar() {
     <nav
       className={clsx(
         'fixed z-10 w-full border-b-[1px] border-neutral-300 bg-white py-6',
-        'md:flex md:h-[100vh] md:w-auto md:flex-col md:justify-between md:border-b-0',
+        'md:flex md:h-screen md:w-auto md:flex-col md:justify-between md:border-b-0',
       )}
     >
       <div className="flex items-center justify-between px-4 md:flex-col">

@@ -50,7 +50,7 @@ export function Filters({
         label={label}
         toggleExpanded={toggleExpanded}
       >
-        <ul className="max-h-[13rem] overflow-y-auto" tabIndex={-1}>
+        <ul className="max-h-52 overflow-y-auto" tabIndex={-1}>
           {filters.map((filter) => {
             const {
               className: inputClassName,

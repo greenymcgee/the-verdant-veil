@@ -54,7 +54,7 @@ export function GameCard({
           className={clsx(
             TRANSITION_STYLES.inputHover,
             'transition-color bg-white group-hover:bg-neutral-50',
-            'flex grow-1 flex-col justify-center gap-3',
+            'flex grow flex-col justify-center gap-3',
             'overflow-x-auto p-4',
             GAME_CARD_VARIANTS[variant].divClassName,
           )}
