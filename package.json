@@ -65,7 +65,7 @@
     "@vitest/eslint-plugin": "^1.6.6",
     "cspell": "^9.6.0",
     "eslint": "^9.39.2",
-    "eslint-config-next": "16.1.1",
+    "eslint-config-next": "16.1.6",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-storybook": "^10.1.11",
     "fishery": "^2.4.0",
