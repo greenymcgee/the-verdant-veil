@@ -1,4 +1,4 @@
-import React, { RefObject, SyntheticEvent } from 'react'
+import React, { RefObject, SubmitEvent } from 'react'
 
 import { Button, Card, Spinner } from '@/components'
 
@@ -10,7 +10,7 @@ interface Props extends GroupProps {
   filtersPresent: boolean
   loading: boolean
   onClearClicked: VoidFunction
-  onSubmit(event: SyntheticEvent<HTMLFormElement>): void
+  onSubmit(event: SubmitEvent<HTMLFormElement>): void
   ref: RefObject<HTMLFormElement | null>
   validating: boolean
 }
