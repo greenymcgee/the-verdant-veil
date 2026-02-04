@@ -35,7 +35,7 @@
     "keen-slider": "^6.8.6",
     "lexical": "^0.39.0",
     "next": "16.1.6",
-    "pino": "^10.2.0",
+    "pino": "^10.3.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-headless-pagination": "^1.1.6",
