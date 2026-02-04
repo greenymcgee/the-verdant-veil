@@ -48,6 +48,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.3",
     "@greenymcgee/next-eslint-config": "^0.1.1",
+    "@greenymcgee/tailwind-prettier-config": "^0.1.0",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/addon-onboarding": "^10.1.11",
