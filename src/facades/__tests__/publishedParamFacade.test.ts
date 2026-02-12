@@ -43,5 +43,17 @@ describe('PublishedParamFacade', () => {
       new PublishedParamFacade(params).setOrDeletePublishedParam()
       expect(params.searchParams.delete).not.toHaveBeenCalled()
     })
+
+    it('should delete the param when it is present', () => {
+      const params = {
+        published: false,
+        searchParams: {
+          delete: vi.fn(),
+          has: vi.fn().mockReturnValue(true),
+        } as unknown as URLSearchParams,
+      }
+      new PublishedParamFacade(params).setOrDeletePublishedParam()
+      expect(params.searchParams.delete).toHaveBeenCalledWith('published')
+    })
   })
 })

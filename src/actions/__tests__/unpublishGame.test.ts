@@ -12,12 +12,12 @@ describe('unpublishGame', () => {
     const result = await unpublishGame({
       game: SUPER_METROID,
       message: '',
-      status: 'idle',
+      status: 'IDLE',
     })
     expect(result).toEqual({
       game: SUPER_METROID,
       message: '',
-      status: 'success',
+      status: 'SUCCESS',
     })
   })
 
@@ -26,12 +26,12 @@ describe('unpublishGame', () => {
     const result = await unpublishGame({
       game: SUPER_METROID,
       message: '',
-      status: 'idle',
+      status: 'IDLE',
     })
     expect(result).toEqual({
       game: SUPER_METROID,
       message: expect.any(String),
-      status: 'failure',
+      status: 'ERROR',
     })
   })
 })

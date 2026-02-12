@@ -1,11 +1,11 @@
 'use client'
 import React, { useActionState } from 'react'
+import { withCallbacks } from '@greenymcgee/typescript-utils'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
 import { publishGame } from '@/actions'
 import { ROUTES } from '@/constants'
-import { withCallbacks } from '@/utils'
 
 import { Button } from '../button'
 
@@ -21,7 +21,7 @@ export function PublishGameForm({ game, onErrorCallback }: Props) {
   const initialState: State = {
     game,
     message: '',
-    status: 'idle',
+    status: 'IDLE',
     unpublishableReasons: [],
   }
 

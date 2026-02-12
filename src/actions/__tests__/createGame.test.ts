@@ -16,11 +16,11 @@ describe('createGame', () => {
     it('should return success state', async () => {
       const formData = new FormData()
       formData.set('igdb-id', '1359')
-      const result = await createGame({ status: 'idle' }, formData)
+      const result = await createGame({ status: 'IDLE' }, formData)
       expect(result).toEqual({
         game: NEW_GAME,
         isMultiStatus: false,
-        status: 'success',
+        status: 'SUCCESS',
       })
     })
 
@@ -28,11 +28,11 @@ describe('createGame', () => {
       mockMultiStatusCreateResponse()
       const formData = new FormData()
       formData.set('igdb-id', '1359')
-      const result = await createGame({ status: 'idle' }, formData)
+      const result = await createGame({ status: 'IDLE' }, formData)
       expect(result).toEqual({
         game: NEW_GAME,
         isMultiStatus: true,
-        status: 'success',
+        status: 'SUCCESS',
       })
     })
   })
@@ -42,11 +42,11 @@ describe('createGame', () => {
       const { message } = mockGameCreateRequestFailure()
       const formData = new FormData()
       formData.set('igdb-id', NEW_GAME.igdbId.toString())
-      const result = await createGame({ status: 'idle' }, formData)
+      const result = await createGame({ status: 'IDLE' }, formData)
       expect(result).toEqual({
         igdbId: NEW_GAME.igdbId,
         message,
-        status: 'failure',
+        status: 'ERROR',
       })
     })
   })

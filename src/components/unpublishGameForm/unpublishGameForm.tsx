@@ -1,9 +1,9 @@
 'use client'
 import React, { useActionState } from 'react'
+import { withCallbacks } from '@greenymcgee/typescript-utils'
 import toast from 'react-hot-toast'
 
 import { revalidateGamePreview, unpublishGame } from '@/actions'
-import { withCallbacks } from '@/utils'
 
 import { Button } from '../button'
 
@@ -24,7 +24,7 @@ export function UnpublishGameForm({ game }: Props) {
     },
   }
 
-  const initialState: State = { game, message: '', status: 'idle' }
+  const initialState: State = { game, message: '', status: 'IDLE' }
 
   const [, action, isExecuting] = useActionState(
     withCallbacks(unpublishGame, callbacks),

@@ -20,7 +20,7 @@ afterAll(() => gamesServer.close())
 describe('refreshGame', () => {
   describe('success', () => {
     it('should revalidate the game preview path', async () => {
-      await refreshGame({ game: SUPER_METROID, message: '', status: 'idle' })
+      await refreshGame({ game: SUPER_METROID, message: '', status: 'IDLE' })
       expect(revalidatePath).toHaveBeenCalledWith(
         ROUTES.gamePreview(SUPER_METROID.slug),
       )
@@ -31,13 +31,13 @@ describe('refreshGame', () => {
       const state = {
         game: SUPER_METROID,
         message: '',
-        status: 'idle',
+        status: 'IDLE',
       } as FirstParameterOf<typeof refreshGame>
       const result = await refreshGame(state)
       expect(result).toEqual({
         ...state,
         responseStatus: response().status,
-        status: 'success',
+        status: 'SUCCESS',
       })
     })
   })
@@ -48,14 +48,14 @@ describe('refreshGame', () => {
       const state = {
         game: SUPER_METROID,
         message: '',
-        status: 'idle',
+        status: 'IDLE',
       } as FirstParameterOf<typeof refreshGame>
       const result = await refreshGame(state)
       expect(result).toEqual({
         ...state,
         message,
         responseStatus: response().status,
-        status: 'failure',
+        status: 'ERROR',
       })
     })
 
@@ -64,7 +64,7 @@ describe('refreshGame', () => {
       const state = {
         game: SUPER_METROID,
         message: '',
-        status: 'idle',
+        status: 'IDLE',
       } as FirstParameterOf<typeof refreshGame>
       await refreshGame(state)
       expect(revalidatePath).not.toHaveBeenCalled()

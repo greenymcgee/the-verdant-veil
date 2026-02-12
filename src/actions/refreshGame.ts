@@ -1,5 +1,6 @@
 'use server'
 
+import type { ActionState } from '@greenymcgee/typescript-utils'
 import { revalidatePath } from 'next/cache'
 
 import { API_ROUTES, ROUTES } from '@/constants'
@@ -25,9 +26,9 @@ export async function refreshGame(state: State): Promise<State> {
   } catch (error) {
     const { data, message, status } = new ErrorFacade(error)
     logger.error({ data, error }, message)
-    return { ...state, message, responseStatus: status, status: 'failure' }
+    return { ...state, message, responseStatus: status, status: 'ERROR' }
   }
 
   revalidatePath(ROUTES.gamePreview(state.game.slug))
-  return { ...state, status: 'success' }
+  return { ...state, status: 'SUCCESS' }
 }
