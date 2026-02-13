@@ -42,7 +42,7 @@
     "react-headless-pagination": "^1.1.6",
     "react-hot-toast": "^2.6.0",
     "react-remove-scroll": "^2.7.2",
-    "swr": "^2.3.8",
+    "swr": "^2.4.0",
     "use-debounce": "^10.1.0",
     "zod": "^4.3.5"
   },
