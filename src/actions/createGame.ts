@@ -1,4 +1,5 @@
 'use server'
+import type { ActionState } from '@greenymcgee/typescript-utils'
 import { AxiosResponse } from 'axios'
 import { snakeCase } from 'change-case/keys'
 import { number, object } from 'zod'
@@ -47,7 +48,7 @@ export async function createGame(state: CreateGameState, formData: FormData) {
       ...state,
       game: data.game,
       isMultiStatus: status === HTML_STATUSES.MULTI_STATUS,
-      status: 'success',
+      status: 'SUCCESS',
     } as CreateGameState
   } catch (error) {
     const { message } = new ErrorFacade(error)
@@ -55,7 +56,7 @@ export async function createGame(state: CreateGameState, formData: FormData) {
     return {
       ...getFormDataValues(formData),
       message,
-      status: 'failure',
+      status: 'ERROR',
     } as CreateGameState
   }
 }

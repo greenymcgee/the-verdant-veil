@@ -1,5 +1,7 @@
 'use server'
 
+import type { ActionState } from '@greenymcgee/typescript-utils'
+
 import { API_ROUTES } from '@/constants'
 import { ErrorFacade } from '@/facades'
 import { baseApi, logger } from '@/lib'
@@ -22,14 +24,14 @@ export async function publishGame(state: State): Promise<State> {
   logger.info({ slug: state.game.slug }, 'PUBLISHING GAME')
   try {
     await baseApi.post(API_ROUTES.publishGame(state.game.slug))
-    return { ...state, status: 'success', unpublishableReasons: [] }
+    return { ...state, status: 'SUCCESS', unpublishableReasons: [] }
   } catch (error) {
     const { data, message } = new ErrorFacade<ErrorData>(error)
     logger.error({ data, error }, message)
     return {
       ...state,
       message,
-      status: 'failure',
+      status: 'ERROR',
       unpublishableReasons: data?.unpublishableReasons ?? [],
     }
   }

@@ -1,10 +1,10 @@
 'use client'
 import React, { useActionState } from 'react'
+import { withCallbacks } from '@greenymcgee/typescript-utils'
 import toast from 'react-hot-toast'
 
 import { refreshGame } from '@/actions'
 import { Button } from '@/components'
-import { withCallbacks } from '@/utils'
 
 interface Props {
   game: Game
@@ -17,7 +17,7 @@ export function RefreshGameForm({ game, onPartialRefreshCallback }: Props) {
   const initialState: State = {
     game,
     message: '',
-    status: 'idle',
+    status: 'IDLE',
   }
 
   const callbacks = {

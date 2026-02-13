@@ -17,6 +17,7 @@
     "validate": "npm run tsc && npm run lint && npm run spellcheck && npm run test:coverage"
   },
   "dependencies": {
+    "@greenymcgee/typescript-utils": "^0.1.1",
     "@lexical/html": "^0.39.0",
     "@lexical/link": "^0.39.0",
     "@lexical/react": "^0.39.0",

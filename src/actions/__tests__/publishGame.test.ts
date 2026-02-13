@@ -15,18 +15,18 @@ describe('publishGame', () => {
     const state = {
       game: SUPER_METROID,
       message: '',
-      status: 'idle',
+      status: 'IDLE',
       unpublishableReasons: [],
     }
     const result = await publishGame({
       game: SUPER_METROID,
       message: '',
-      status: 'idle',
+      status: 'IDLE',
       unpublishableReasons: [],
     })
     expect(result).toEqual({
       ...state,
-      status: 'success',
+      status: 'SUCCESS',
     })
   })
 
@@ -37,14 +37,14 @@ describe('publishGame', () => {
     const state: FirstParameterOf<typeof publishGame> = {
       game: SUPER_METROID,
       message: '',
-      status: 'idle',
+      status: 'IDLE',
       unpublishableReasons: [],
     }
     const result = await publishGame(state)
     expect(result).toEqual({
       ...state,
       message: expect.any(String),
-      status: 'failure',
+      status: 'ERROR',
       unpublishableReasons,
     })
   })

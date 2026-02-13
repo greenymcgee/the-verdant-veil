@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import { Tabs } from '..'
 
@@ -41,5 +41,12 @@ describe('<Tabs />', () => {
       'aria-selected',
       'true',
     )
+  })
+
+  it('should handle keydown changes', () => {
+    vi.stubGlobal('location', { hash: '#review' })
+    render(<Tabs {...PROPS} />)
+    fireEvent.keyDown(screen.getByRole('tablist'), { key: 'ArrowRight' })
+    expect(screen.getByTestId('about-tab')).toHaveFocus()
   })
 })
