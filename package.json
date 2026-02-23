@@ -52,7 +52,7 @@
     "@greenymcgee/tailwind-prettier-config": "^0.1.0",
     "@greenymcgee/utility-types": "^0.1.0",
     "@storybook/addon-a11y": "^10.2.6",
-    "@storybook/addon-docs": "^10.2.6",
+    "@storybook/addon-docs": "^10.2.10",
     "@storybook/addon-onboarding": "^10.2.6",
     "@storybook/nextjs": "^10.2.6",
     "@tailwindcss/forms": "^0.5.11",
