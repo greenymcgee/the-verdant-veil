@@ -20,7 +20,7 @@
     "@greenymcgee/typescript-utils": "^0.1.1",
     "@lexical/html": "^0.39.0",
     "@lexical/link": "^0.39.0",
-    "@lexical/react": "^0.39.0",
+    "@lexical/react": "^0.41.0",
     "@lexical/rich-text": "^0.39.0",
     "@lexical/selection": "^0.39.0",
     "@lexical/utils": "^0.39.0",
