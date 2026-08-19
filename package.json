@@ -37,7 +37,7 @@
     "lexical": "^0.39.0",
     "next": "16.1.6",
     "pino": "^10.3.1",
-    "react": "19.2.4",
+    "react": "19.2.8",
     "react-dom": "19.2.4",
     "react-headless-pagination": "^1.1.6",
     "react-hot-toast": "^2.6.0",
@@ -63,7 +63,7 @@
     "@types/body-scroll-lock": "^3.1.2",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.2.0",
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.18",
     "@types/react-dom": "19.2.3",
     "@vitest/coverage-v8": "^4.0.18",
     "@vitest/eslint-plugin": "^1.6.9",
@@ -89,7 +89,7 @@
     "vitest": "^4.0.17"
   },
   "overrides": {
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.18",
     "@types/react-dom": "19.2.3"
   },
   "type": "module"
